@@ -57,13 +57,13 @@
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="thank-you.html">
         <label>Name *</label>
-        <input type="text" name="Name" placeholder="Your Name" required>
+        <input type="text" name="Name" placeholder="Your Name" required required>
         <label>Phone *</label>
-        <input type="tel" name="Phone" placeholder="Your Phone Number" required pattern="[0-9\-\+\(\)\s]{7,}" required>
+        <input type="tel" name="Phone" placeholder="Your Phone Number" required pattern="[0-9\-\+\(\)\s]{7,}" required required>
         <label>Email</label>
-        <input type="email" name="Email" placeholder="Your Email" required>
+        <input type="email" name="Email" placeholder="Your Email" required required>
         <label>Address</label>
-        <input type="text" name="Address" placeholder="Street, City" required>
+        <input type="text" name="Address" placeholder="Street, City" required required>
         <label>Message *</label>
         <textarea name="Message" rows="5" placeholder="Tell us what you need" required></textarea>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
