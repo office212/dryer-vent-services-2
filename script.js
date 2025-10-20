@@ -95,3 +95,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
     render();
   });
 });
+
+/* v5.8 contact cleanup */
+document.addEventListener('DOMContentLoaded', ()=>{
+  if((document.body.getAttribute('data-page')||'') !== 'contact') return;
+  // Remove tiny emoji-only boxes (white squares) if they exist
+  document.querySelectorAll('.section .container > *').forEach(el=>{
+    const text = (el.textContent||'').trim();
+    if(text && text.length <= 2 && el.children.length === 0){
+      el.remove();
+    }
+  });
+  // Also kill any standalone boxes that only contain a single emoji inside a wrapper
+  document.querySelectorAll('.section .container div').forEach(el=>{
+    const t = (el.textContent||'').trim();
+    if(t in {'💬':1,'🗨️':1,'💭':1} && el.children.length === 0){
+      el.remove();
+    }
+  });
+});
