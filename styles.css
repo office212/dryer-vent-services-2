@@ -110,3 +110,21 @@ a{ color: var(--blue); text-decoration:none; }
 /* Animations */
 .fade-in{ opacity:0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
 .fade-in.appear{ opacity:1; transform:none; }
+
+/* v5.3 hero-modern */
+.hero-modern{
+  position:relative;
+  min-height:58vh;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(62,106,214,0.12), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(27,54,93,0.10), transparent 55%),
+    linear-gradient(180deg, #f9fbff, #eef3ff);
+  overflow:hidden;
+}
+.hero-modern .hero-inner{ position:relative; padding: 90px 0 80px; }
+.hero-modern .hero-title{ color:#0f1b2d; }
+.hero-modern .hero-sub{ color:#425a78; }
+.hero-modern .hero-shape{
+  position:absolute; bottom:-1px; left:0; width:100%; height:180px;
+  pointer-events:none; opacity:.85;
+}
