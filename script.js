@@ -24,22 +24,26 @@ document.addEventListener('DOMContentLoaded', () => {
   items.forEach(el=>io.observe(el));
 });
 
-/* v5.2 reviews */
+/* v5.4 reviews load more */
 document.addEventListener('DOMContentLoaded', ()=>{
-  const wrap = document.getElementById('reviewsCarousel');
-  if(!wrap) return;
-  const prev = document.getElementById('prevReviews');
-  const next = document.getElementById('nextReviews');
-  const items = Array.from(wrap.querySelectorAll('.review'));
-  function perView(){ return window.matchMedia('(max-width: 920px)').matches ? 1 : 3; }
-  let idx = 0;
+  const list = document.getElementById('reviewsList');
+  const loadBtn = document.getElementById('loadMoreReviews');
+  if(!list || !loadBtn) return;
+  const items = Array.from(list.querySelectorAll('.review'));
+  let shown = 0;
+  const step = 3;
   function render(){
-    const pv = perView();
-    items.forEach(el => el.style.display='none');
-    for(let i=0;i<pv;i++){ const k = (idx + i) % items.length; items[k].style.display = 'block'; }
+    items.forEach((el, i) => {
+      el.style.display = i < shown ? 'block' : 'none';
+    });
+    if(shown >= items.length){
+      loadBtn.style.display = 'none';
+    }
   }
-  prev && prev.addEventListener('click', ()=>{ idx = (idx - perView() + items.length) % items.length; render(); });
-  next && next.addEventListener('click', ()=>{ idx = (idx + perView()) % items.length; render(); });
-  window.addEventListener('resize', render);
+  shown = Math.min(step, items.length);
   render();
+  loadBtn.addEventListener('click', ()=>{
+    shown = Math.min(shown + step, items.length);
+    render();
+  });
 });
