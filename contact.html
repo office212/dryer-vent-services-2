@@ -3,28 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact - Dryer Vent Services</title>
-  <meta name="description" content="Professional dryer vent cleaning, repairs & installations in NYC & NJ.">
+  <title>Contact – Dryer Vent Services</title>
+  <meta name="description" content="Request a free estimate or ask a question — we respond quickly.">
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <meta property="og:title" content="Contact - Dryer Vent Services"/>
-  <meta property="og:description" content="Professional dryer vent cleaning, repairs & installations in NYC & NJ."/>
-  <meta property="og:type" content="website"/>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "image": "logo.png", "telephone": "+13472449382", "email": "office@dryer-ventservices.com", "url": "https://dryer-ventservices.com", "areaServed": ["Staten Island", "Brooklyn", "Queens", "Manhattan", "Bronx", "New Jersey"], "address": {"@type": "PostalAddress", "addressLocality": "Staten Island", "addressRegion": "NY", "addressCountry": "US"}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body data-page="contact">
-
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="index.html">
         <img src="logo.png" alt="Dryer Vent Services logo" class="logo">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
-          <span>CLEANING • REPAIRS • INSTALLATIONS</span>
+          <span>Cleaning · Repairs · Installations</span>
         </div>
       </a>
       <nav id="site-nav" class="site-nav">
@@ -42,14 +37,14 @@
     </div>
   </header>
 
-  <section class="page-hero">
+  <section class="page-hero fade-in">
     <div class="container">
       <h1>Contact</h1>
-      <p>Request a free estimate or ask a question. We respond quickly.</p>
+      <p>All fields are required.</p>
     </div>
   </section>
 
-  <section class="section container two-col">
+  <section class="section container two-col fade-in">
     <div>
       <h2>Send a Message</h2>
       <form id="leadForm" action="https://formsubmit.co/office@dryer-ventservices.com" method="POST" class="lead-form" data-webhook="PUT_YOUR_APPS_SCRIPT_URL_HERE">
@@ -57,15 +52,15 @@
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="thank-you.html">
         <label>Name *</label>
-        <input type="text" name="Name" placeholder="Your Name" required required required>
+        <input type="text" name="Name" placeholder="Your Name" required>
         <label>Phone *</label>
-        <input type="tel" name="Phone" placeholder="Your Phone Number" required pattern="[0-9\-\+\(\)\s]{7,}" required required required>
-        <label>Email</label>
-        <input type="email" name="Email" placeholder="Your Email" required required required>
-        <label>Address</label>
-        <input type="text" name="Address" placeholder="Street, City" required required required>
+        <input type="tel" name="Phone" placeholder="Your Phone Number" pattern="[0-9\-\+\(\)\s]{7,}" required>
+        <label>Email *</label>
+        <input type="email" name="Email" placeholder="Your Email" required>
+        <label>Address *</label>
+        <input type="text" name="Address" placeholder="Street, City" required>
         <label>Message *</label>
-        <textarea name="Message" rows="5" placeholder="Tell us what you need" required required></textarea>
+        <textarea name="Message" rows="5" placeholder="Tell us what you need" required></textarea>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="SubmittedAt" id="submittedAt" value="">
@@ -81,7 +76,7 @@
         <li><a href="tel:+13472449382">347-244-9382</a></li>
         <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
         <li><a href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li>Staten Island, NY · Five Boroughs & NJ</li>
+        <li>Staten Island, NY · New York & New Jersey</li>
       </ul>
     </div>
   </section>
@@ -90,13 +85,13 @@
     <div class="container footer-grid">
       <div>
         <h4>Dryer Vent Services</h4>
-        <p>CLEANING • REPAIRS • INSTALLATIONS</p>
+        <p>Dryer Vent Cleaning · Repairs · Installations</p>
       </div>
       <div>
         <ul class="contact-list">
           <li><a href="tel:+13472449382">347-244-9382</a></li>
           <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
-          <li>Staten Island, NY · Five Boroughs & NJ</li>
+          <li>Staten Island, NY · New York & New Jersey</li>
         </ul>
       </div>
       <div class="footer-cta">
@@ -106,8 +101,11 @@
     </div>
     <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
   </footer>
+  <div class="mobile-cta">
+    <a class="btn" href="tel:+13472449382">Call</a>
+    <a class="btn btn--primary" href="contact.html">Book Now</a>
+  </div>
   <script src="script.js" defer></script>
-<div class="mobile-cta"><a class="btn" href="tel:+13472449382">Call</a><a class="btn btn--primary" href="contact.html">Book Now</a></div>
 </body>
 </html>
 
