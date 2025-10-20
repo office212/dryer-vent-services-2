@@ -129,3 +129,50 @@ a{ color: var(--blue); text-decoration:none; }
 /* Animations */
 .fade-in{ opacity:0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
 .fade-in.appear{ opacity:1; transform:none; }
+
+/* v5.5 motion */
+:root{
+  --elev-sm: 0 6px 20px rgba(0,0,0,.06);
+  --elev-md: 0 12px 30px rgba(0,0,0,.12);
+  --dur-fast: .18s;
+  --dur-med: .38s;
+  --dur-slow: .6s;
+  --ease-smooth: cubic-bezier(.22,.61,.36,1);
+}
+
+/* Reveal (applied via JS by adding .reveal; toggles .appear) */
+.reveal{ opacity:0; transform: translateY(14px); transition: opacity var(--dur-slow) var(--ease-smooth), transform var(--dur-slow) var(--ease-smooth); will-change: opacity, transform; }
+.reveal.appear{ opacity:1; transform:none; }
+.reveal-up{ transform: translateY(16px); }
+.reveal-scale{ transform: scale(.98); }
+.reveal-scale.appear{ transform: none; }
+
+/* Cards hover lift */
+.card{ transition: transform var(--dur-fast) var(--ease-smooth), box-shadow var(--dur-fast) var(--ease-smooth); }
+.card:hover{ transform: translateY(-3px); box-shadow: var(--elev-md); }
+
+/* Buttons micro interactions */
+.btn{ position:relative; overflow:hidden; }
+.btn:focus-visible{ outline: 3px solid rgba(62,106,214,.35); outline-offset:2px; }
+.btn:active{ transform: translateY(0) scale(.98); }
+
+/* CTA subtle pulse on primary buttons in hero */
+.hero .btn--primary{ animation: pulseCTA 2.6s var(--ease-smooth) infinite; }
+@keyframes pulseCTA { 0%,100%{ box-shadow:0 8px 18px rgba(244,124,32,.18);} 50%{ box-shadow:0 16px 32px rgba(244,124,32,.32);} }
+
+/* Parallax hero fix to avoid jank */
+.hero-modern{ will-change: background-position, transform; }
+
+/* Smooth scrolling */
+html{ scroll-behavior: smooth; }
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .hero .btn--primary{ animation: none; }
+}
+
+/* v5.6 fixes */
+.card:empty{ display:none !important; }
+a.btn:empty{ display:none !important; }
+.section .center:empty{ display:none !important; }

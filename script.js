@@ -24,26 +24,74 @@ document.addEventListener('DOMContentLoaded', () => {
   items.forEach(el=>io.observe(el));
 });
 
-/* v5.4 reviews load more */
-document.addEventListener('DOMContentLoaded', ()=>{
-  const list = document.getElementById('reviewsList');
-  const loadBtn = document.getElementById('loadMoreReviews');
-  if(!list || !loadBtn) return;
-  const items = Array.from(list.querySelectorAll('.review'));
-  let shown = 0;
-  const step = 3;
-  function render(){
-    items.forEach((el, i) => {
-      el.style.display = i < shown ? 'block' : 'none';
+
+/* v5.5 motion */
+document.addEventListener('DOMContentLoaded', () => {
+  // Add .reveal to targets for nicer entrance (without FOUC on all elements)
+  const groups = [];
+  document.querySelectorAll('.section, .page-hero, .cta-bar').forEach(sec => {
+    const targets = sec.querySelectorAll('h1, h2, .card, .btn, p, .cards-3 > *');
+    targets.forEach((el)=> el.classList.add('reveal'));
+    groups.push([...targets]);
+  });
+  // Also hero inner
+  document.querySelectorAll('.hero .hero-inner > *').forEach(el => el.classList.add('reveal'));
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        // Stagger: if element is part of a group, delay based on index
+        let delay = 0;
+        for(const g of groups){
+          const i = g.indexOf(el);
+          if(i >= 0){ delay = Math.min(i * 60, 360); break; }
+        }
+        el.style.transitionDelay = delay + 'ms';
+        el.classList.add('appear');
+        io.unobserve(el);
+      }
     });
-    if(shown >= items.length){
-      loadBtn.style.display = 'none';
+  },{ threshold: 0.18 });
+
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+});
+
+// Subtle hero parallax (translated content, not background image for performance)
+(function(){
+  const hero = document.querySelector('.hero-modern .hero-inner');
+  if(!hero) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(ticking) return;
+    window.requestAnimationFrame(() => {
+      const y = window.scrollY || 0;
+      const off = Math.min(20, y * 0.06); // cap at 20px
+      hero.style.transform = 'translateY(' + off + 'px)';
+      ticking = false;
+    });
+    ticking = true;
+  }, { passive: true });
+})();
+
+/* v5.6 reviews cycle */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const wrap = document.getElementById('reviewsCycle');
+  const btn = document.getElementById('cycleReviews');
+  if(!wrap || !btn) return;
+  const items = Array.from(wrap.querySelectorAll('.review'));
+  const step = 3;
+  let idx = 0;
+  function render(){
+    items.forEach(el => el.style.display='none');
+    for(let i=0;i<step;i++){
+      const k = (idx + i) % items.length;
+      items[k].style.display = 'block';
     }
   }
-  shown = Math.min(step, items.length);
   render();
-  loadBtn.addEventListener('click', ()=>{
-    shown = Math.min(shown + step, items.length);
+  btn.addEventListener('click', ()=>{
+    idx = (idx + step) % items.length;
     render();
   });
 });
