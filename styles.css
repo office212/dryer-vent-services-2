@@ -112,3 +112,22 @@ a{ color: var(--blue); text-decoration:none; }
 /* Animations */
 .fade-in{ opacity:0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
 .fade-in.appear{ opacity:1; transform:none; }
+
+/* v4.9 */
+.hero-grid{ grid-template-columns: 1.1fr .9fr; gap:24px; padding: 54px 0 24px; }
+.hero-img{ max-height: 520px; object-fit: cover; }
+.svc-picture{ display:block; }
+.svc-picture .svc-img{ width:100%; height: 220px; object-fit: cover; display:block; border-bottom:1px solid var(--border); }
+.gallery-photos .gal-img{ width:100%; height: 220px; object-fit: cover; }
+.map-embed{ aspect-ratio: 16 / 9; border-radius:12px; overflow:hidden; background:#eef1f5; }
+@media (max-width:760px){
+  .map-embed{ height: 300px; aspect-ratio:auto; }
+}
+
+/* v5.0 */
+.hero-grid{ grid-template-columns: 1.1fr .9fr; gap:26px; padding: 64px 0 28px; }
+.hero-img{ max-height: 540px; object-fit: cover; }
+.map-embed{ aspect-ratio: 16 / 9; border-radius:12px; overflow:hidden; background:#eef1f5; }
+@media (max-width:760px){
+  .map-embed{ height: 320px; aspect-ratio:auto; }
+}
