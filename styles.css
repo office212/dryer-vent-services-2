@@ -140,3 +140,8 @@ a{ color: var(--blue); text-decoration:none; }
 .btn{ transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease; }
 .btn:active{ transform: translateY(0); }
 .btn:hover{ transform: translateY(-2px); box-shadow:0 14px 32px rgba(0,0,0,.12); }
+
+/* v4.5 */
+.hero-fallback-img{ display:none; width:100%; height:auto; margin:0 0 10px; border-radius:12px; }
+@media (max-width:760px){ .hero-fallback-img{ display:block; } }
+.gallery-grid img{ object-fit:cover; border-radius:12px; border:1px solid #e6eaf2; }
