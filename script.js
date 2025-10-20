@@ -32,3 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, {capture:true});
   }
 });
+
+// Reveal on scroll
+const items = document.querySelectorAll('.fade-in, .card, .gallery-grid img');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('appear'); io.unobserve(e.target);} });
+},{threshold:0.1});
+items.forEach(el=>io.observe(el));

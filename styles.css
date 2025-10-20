@@ -31,7 +31,7 @@ a{ color: var(--blue); text-decoration:none; }
 /* Hero */
 .hero{ background:none; padding:0; }
 .hero-bg{
-  position: relative; min-height: 68vh;
+  position: relative; min-height: 56vh;
   display:grid; place-items:center; text-align:left;
   color:#fff; isolation:isolate; background-size:cover; background-position:center;
 }
@@ -118,3 +118,13 @@ a{ color: var(--blue); text-decoration:none; }
 /* Card hover */
 .cards-3 .card{ transition:transform .16s ease, box-shadow .16s ease; }
 .cards-3 .card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(0,0,0,.08); }
+
+/* v4.2 animations */
+.fade-in{ opacity:0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+.fade-in.appear{ opacity:1; transform:none; }
+.hero-title, .hero-sub, .hero-actions, .icon-list { opacity:0; transform: translateY(14px); animation: rise .7s ease forwards; }
+.hero-title{ animation-delay: .05s; }
+.hero-sub{ animation-delay: .18s; }
+.hero-actions{ animation-delay: .3s; }
+.icon-list{ animation-delay: .42s; }
+@keyframes rise{ to{ opacity:1; transform:none; } }
