@@ -176,3 +176,6 @@ html{ scroll-behavior: smooth; }
 .card:empty{ display:none !important; }
 a.btn:empty{ display:none !important; }
 .section .center:empty{ display:none !important; }
+
+/* v5.7 cleanup */
+div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:empty {display:none!important;}
