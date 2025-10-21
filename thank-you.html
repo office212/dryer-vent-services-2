@@ -1,19 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Thank You — Dryer Vent Services</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
-  <meta http-equiv="refresh" content="4; url=/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thank You – Dryer Vent Services</title>
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X77CVTW1CD');
+</script>
+
 </head>
 <body>
-  <section class="section center">
-    <div class="container">
-      <h1>Thank you!</h1>
-      <p>Your request was sent successfully. We’ll get back to you shortly.</p>
-      <a href="/" class="btn btn-primary">Back to Home</a>
+
+    <div class="navbar">
+      <div class="inner container">
+        <div class="logo-wrap">
+          <div class="logo"></div>
+          <div class="brand">
+            <h1>Dryer Vent Services</h1>
+            <small>Cleaning - Repairs - Installations</small>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="/index.html" >Home</a>
+          <a href="/services.html" >Services</a>
+          <a href="/gallery.html" >Gallery</a>
+          <a href="/reviews.html" >Reviews</a>
+          <a href="/about.html" >About</a>
+          <a href="/service-areas.html" >Service Areas</a>
+          <a href="/contact.html" class="cta">Contact Us</a>
+        </div>
+      </div>
     </div>
-  </section>
-</body>
-</html>
+    
+
+<section class="container" style="padding:60px 0 90px;text-align:center">
+  <h2 class="reveal" style="font-size:36px;margin:0 0 6px">Thanks! Your request was sent.</h2>
+  <p class="reveal reveal-slow">We’ll get back to you shortly. Returning to the homepage in <span id="secs">10</span> seconds…</p>
+  <div class="reveal" style="margin-top:18px">
+    <a class="btn accent" href="/index.html">Go to Homepage now</a>
+  </div>
+</section>
+<script>
+  let n=10; const el=document.getElementById('secs');
+  const t=setInterval(()=>{ n--; el.textContent=n; if(n<=0){ clearInterval(t); window.location.href='/index.html'; } },1000);
+</script>
+
+
+    <div class="footer">
+      <div class="container row">
+        <div>© 2025 Dryer Vent Services</div>
+        <div class="cta">
+          <a class="btn" href="tel:+13472449382">Call</a>
+          <a class="btn accent" href="/contact.html">Book Now</a>
+        </div>
+      </div>
+    </div>
+    
+<script src="/assets/js/main.js"></script>
+</body></html>
