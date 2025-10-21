@@ -179,13 +179,3 @@ a.btn:empty{ display:none !important; }
 
 /* v5.7 cleanup */
 div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:empty {display:none!important;}
-
-/* v5.9 guard: hide stray emoji-only bubbles */
-.section .container > div:only-child, .section .container > p:only-child {
-  /* no-op; selector kept for specificity */
-}
-.section .container > * {
-  /* nothing */
-}
-/* If any element renders with only a single emoji and no children, hide it */
-.hide-emoji-only {}
