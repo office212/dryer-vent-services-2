@@ -62,25 +62,95 @@
   <section class="section container two-col fade-in">
     <div>
       <h2>Send a Message</h2>
-      <form id="leadForm" action="https://formsubmit.co/office@dryer-ventservices.com" method="POST" class="lead-form" data-webhook="PUT_YOUR_APPS_SCRIPT_URL_HERE">
-        <input type="hidden" name="_subject" value="New Lead from Dryer Vent Services Website">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="thank-you.html">
-        <label>Name *</label>
-        <input type="text" name="Name" placeholder="Your Name" required>
-        <label>Phone *</label>
-        <input type="tel" name="Phone" placeholder="Your Phone Number" pattern="[0-9\-\+\(\)\s]{7,}" required>
-        <label>Email *</label>
-        <input type="email" name="Email" placeholder="Your Email" required>
-        <label>Address *</label>
-        <input type="text" name="Address" placeholder="Street, City" required>
-        <label>Message *</label>
-        <textarea name="Message" rows="5" placeholder="Tell us how we can help" required></textarea>
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="SubmittedAt" id="submittedAt" value="">
-        <button type="submit" class="btn btn--primary">Send Message</button>
-      </form>
+      
+<form id="contact-form"
+      action="https://formsubmit.co/office@dryer-ventservices.com"
+      method="POST" novalidate class="contact-form">
+
+  <!-- FormSubmit options -->
+  <input type="hidden" name="_subject" value="New Lead from Dryer-Vent Services website">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_redirect" value="https://dryer-ventservices.com/thank-you">
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+  <div class="grid two">
+    <div>
+      <label for="name">Full Name *</label>
+      <input id="name" name="name" type="text" required>
+    </div>
+
+    <div>
+      <label for="email">Email *</label>
+      <input id="email" name="email" type="email" required>
+    </div>
+
+    <div>
+      <label for="phone">Phone *</label>
+      <input id="phone" name="phone" type="tel" inputmode="tel" required placeholder="+1 (___) ___-____">
+    </div>
+
+    <div>
+      <label for="phone2">Confirm Phone *</label>
+      <input id="phone2" name="phone_confirm" type="tel" inputmode="tel" required placeholder="Re-enter phone">
+    </div>
+
+    <div>
+      <label for="zip">ZIP code *</label>
+      <input id="zip" name="zip" type="text" inputmode="numeric" pattern="^\d{5}(-\d{4})?$" required placeholder="e.g. 10314">
+    </div>
+  </div>
+
+  <fieldset class="services-fieldset">
+    <legend>Which service do you need? (select at least one) *</legend>
+    <label class="chk"><input type="checkbox" name="services[]" value="Cleaning"> Dryer Vent Cleaning</label>
+    <label class="chk"><input type="checkbox" name="services[]" value="Repair"> Repair</label>
+    <label class="chk"><input type="checkbox" name="services[]" value="Installation"> New Installation</label>
+  </fieldset>
+
+  <div>
+    <label for="message">How can we help? (optional)</label>
+    <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)…"></textarea>
+  </div>
+
+  <div id="form-errors" class="form-errors" aria-live="polite" style="display:none;"></div>
+
+  <button type="submit" class="btn btn-primary">Send Request</button>
+</form>
+
+<script>
+(function(){
+  const form = document.getElementById('contact-form');
+  const errorsBox = document.getElementById('form-errors');
+  function digitsOnly(v){ return (v||'').replace(/\D+/g,''); }
+
+  form.addEventListener('submit', function(e){
+    const errs = [];
+
+    const phone = digitsOnly(form.phone.value);
+    const phone2 = digitsOnly(form.phone2.value);
+    const zip = form.zip.value.trim();
+
+    if (phone.length < 10) errs.push("Please enter a valid phone number (10+ digits).");
+    if (phone !== phone2) errs.push("Phone numbers do not match.");
+    if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid US ZIP code.");
+
+    const checked = form.querySelectorAll('input[name="services[]"]:checked').length;
+    if (checked === 0) errs.push("Please select at least one service (Cleaning, Repair, or Installation).");
+
+    if (errs.length){
+      e.preventDefault();
+      errorsBox.style.display = 'block';
+      errorsBox.innerHTML = errs.map(x => `<div>• ${x}</div>`).join('');
+      return false;
+    }
+
+    form.phone.value = phone;
+    form.phone2.value = phone2;
+  });
+})();
+</script>
+
       <div class="center mt-20">
         <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
