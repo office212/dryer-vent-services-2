@@ -1,31 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <title>Thank You — Dryer Vent Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thanks! • Dryer Vent Services</title>
-  <meta http-equiv="refresh" content="10; url=/">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .ty-wrap{min-height:75vh;display:grid;place-items:center}
-    .ty-card{max-width:720px;margin:20px;padding:28px;background:#fff;border:1px solid #eef0f4;border-radius:16px;box-shadow:0 8px 24px rgba(15,42,82,.10);text-align:center}
-    .ty-card h1{margin:.2em 0 .2em}
-    .ty-card p{color:#475569}
-    .btn{display:inline-block;margin-top:10px;padding:12px 18px;background:#ea6a1a;color:#fff;border-radius:12px;font-weight:700;text-decoration:none}
-  </style>
+  <meta http-equiv="refresh" content="4; url=/">
 </head>
 <body>
-  <main class="ty-wrap">
-    <div class="ty-card">
+  <section class="section center">
+    <div class="container">
       <h1>Thank you!</h1>
-      <p>Your message was sent successfully. We’ll be in touch shortly.</p>
-      <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
-      <a class="btn" href="/">Go to Homepage now</a>
+      <p>Your request was sent successfully. We’ll get back to you shortly.</p>
+      <a href="/" class="btn btn-primary">Back to Home</a>
     </div>
-  </main>
-  <script>
-    let n=10; const el=document.getElementById('sec');
-    const t=setInterval(()=>{ n--; el.textContent=n; if(n<=0){ clearInterval(t); window.location.href='/'; } },1000);
-  </script>
+  </section>
 </body>
 </html>
