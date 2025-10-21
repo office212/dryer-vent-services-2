@@ -1,14 +1,33 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Thanks – Dryer Vent Services</title>
-<link rel="stylesheet" href="assets/css/style.css">
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thanks! | Dryer Vent Services</title>
 <meta http-equiv="refresh" content="10; url=/" />
-</head><body>
-<header><div class="header-inner"><div class="brand-title">Dryer Vent Services</div></div></header>
-<div class="container"><div class="card" style="text-align:center">
-<h1>Thanks! Your request was sent.</h1>
-<p>Returning to the home page in <span id="count">10</span> seconds…</p>
-<div class="actions" style="justify-content:center"><a class="btn accent" href="/">Back to Home now</a></div>
-</div></div>
-<script>let s=10,el=document.getElementById('count');setInterval(()=>{{if(s>0){{s--;el.textContent=s;}}}},1000);</script>
-</body></html>
+<link rel="icon" href="/assets/logo.png">
+<style>
+:root{--bg:#0f2a4f;--accent:#ff6b00}
+html,body{height:100%}
+body{margin:0;display:grid;place-items:center;background:radial-gradient(1200px 600px at 70% -10%,rgba(255,255,255,.07) 0,transparent 60%),linear-gradient(135deg,var(--bg),#0b1f3a);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#fff}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(6px);padding:32px;border-radius:20px;max-width:640px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+h1{font-size:clamp(28px,6vw,44px);margin:0 0 10px;font-weight:800}
+p{opacity:.9;margin:0 0 12px}
+.badge{display:inline-block;background:rgba(255,255,255,.15);padding:8px 14px;border-radius:999px;margin-top:8px}
+.btn{display:inline-block;margin-top:18px;background:#fff;color:#0f2a4f;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none}
+.timer{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Thanks! Your request was sent.</h1>
+    <p>We’ll reach out shortly to confirm details and schedule your service.</p>
+    <p class="badge">You’ll be redirected to the homepage in <span id="sec" class="timer">10</span> seconds.</p>
+    <a class="btn" href="/">Back to Home now</a>
+  </div>
+<script>
+let s=10; setInterval(()=>{ s--; if(s>=0) document.getElementById('sec').textContent=s; },1000);
+</script>
+</body>
+</html>

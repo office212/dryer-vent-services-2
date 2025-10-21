@@ -1,56 +1,238 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Contact Us - Dryer Vent Services</title><link rel="stylesheet" href="assets/css/style.css"></head>
-<body class="contact-page">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Book Dryer Vent Cleaning in Staten Island, NY &amp; NJ</title>
+  <meta name="description" content="Get a fast, friendly quote. Call, email or WhatsApp Dryer Vent Services for expert lint removal, vent repair and new installations.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X77CVTW1CD');
+</script>
+<meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation">
+<link rel="canonical" href="https://dryer-ventservices.com/contact">
+<meta property="og:site_name" content="Dryer Vent Services">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dryer-ventservices.com/contact">
+<meta property="og:title" content="Contact Us | Book Your Dryer Vent Service">
+<meta property="og:description" content="Contact us to book your dryer vent cleaning, repairs or installation. Call, email or WhatsApp. Fast, friendly service.">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "url": "https://dryer-ventservices.com/contact", "email": "office@dryer-ventservices.com", "telephone": "+13472449382", "areaServed": ["Staten Island NY", "New York", "New Jersey"], "sameAs": [], "image": "https://dryer-ventservices.com/assets/logo.png"}</script>
 
-<header>
-  <div class="header-inner">
-    <img src="assets/logo.png" alt="Dryer Vent Services" width="40" height="40" style="border-radius:8px;box-shadow:var(--shadow)">
-    <div>
-      <div class="brand-title">Dryer Vent Services</div>
-      <div class="brand-sub">Cleaning - Repairs - Installations</div>
-    </div>
-  </div>
-</header>
+<style>
+/* Hide any stray WhatsApp floating bubble on Contact page */
+a[href*="wa.me"], a[href*="api.whatsapp"], .whatsapp-float, .floating-whatsapp, .wa-bubble, .whatsapp-bubble {
+  display: none !important;
+}
+/* Polished Contact form card */
+.contact-hero{background:linear-gradient(135deg,#0f2a4f 0%,#0b1f3a 40%,#0f2a4f 100%);padding:56px 0;color:#fff;}
+.contact-card{max-width:920px;margin:-80px auto 40px;background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(3,16,39,.25);padding:28px;}
+.contact-title{font-size:clamp(26px,4vw,40px);font-weight:800;margin:0 0 8px;color:#0f2a4f;}
+.contact-sub{color:#506070;margin:0 0 14px;}
+.grid-2{display:grid;grid-template-columns:1fr;gap:16px;}
+@media(min-width:800px){.grid-2{grid-template-columns:1fr 1fr;}}
+label{font-weight:600;color:#10233f;margin-bottom:6px;display:block;}
+input[type="text"],input[type="email"],textarea{width:100%;padding:14px 16px;border:1px solid #d7deea;border-radius:12px;background:#f7f9fd;}
+textarea{min-height:140px;resize:vertical;}
+.btn-primary{background:#0f2a4f;color:#fff;border:none;border-radius:12px;padding:14px 18px;font-weight:700;transition:transform .15s ease, box-shadow .2s ease;}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(15,42,79,.25);}
+.req{color:#ff6b00;margin-left:4px;}
+</style>
 
-<div class="container">
-  <div class="card">
-    <h1>Send a Message</h1>
-    <form id="contact-form" action="https://formsubmit.co/office@dryer-ventservices.com" method="POST" target="_self" novalidate>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://www.dryer-ventservices.com/thanks.html">
-      <div class="row">
-        <div><label>Full Name *</label><input type="text" name="Full Name" required></div>
-        <div><label>Email *</label><input type="email" name="Email" required></div>
-      </div>
-      <div class="row">
-        <div><label>Phone *</label><input type="tel" id="phone" name="Phone" required placeholder="+1 (___) ___‑____"></div>
-        <div><label>Confirm Phone *</label><input type="tel" id="confirm-phone" name="Confirm Phone" required placeholder="Re-enter phone"></div>
-      </div>
-      <div class="row">
-        <div><label>ZIP code *</label><input type="text" name="ZIP code" inputmode="numeric" pattern="[0-9]{5}" placeholder="e.g. 10314" required></div>
-        <div><label>Which service do you need? (select at least one) *</label>
-          <div class="checkwrap">
-            <label><input type="checkbox" name="service[]" value="Dryer Vent Cleaning"> Dryer Vent Cleaning</label>
-            <label><input type="checkbox" name="service[]" value="Repair"> Repair</label>
-            <label><input type="checkbox" name="service[]" value="New Installation"> New Installation</label>
-          </div>
+</head>
+<body data-page="contact">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <img src="logo.png" alt="Dryer Vent Services logo" class="logo">
+        <div class="brand-text">
+          <strong>Dryer Vent Services</strong>
+          <span>Cleaning - Repairs - Installations</span>
         </div>
-      </div>
-      <div><label>How can we help? (optional)</label><textarea name="Message" placeholder="Tell us a bit about the issue (optional)…"></textarea></div>
-      <div class="actions"><button class="btn" type="submit">Send Request</button></div>
-    </form>
-  </div>
+      </a>
+      <nav id="site-nav" class="site-nav">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="services.html" data-nav="services">Services</a>
+        <a href="gallery.html" data-nav="gallery">Gallery</a>
+        <a href="reviews.html" data-nav="reviews">Reviews</a>
+        <a href="about.html" data-nav="about">About</a>
+        <a href="areas.html" data-nav="areas">Service Areas</a>
+        <a class="cta" href="contact.html" data-nav="contact">Contact Us</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <section class="page-hero fade-in">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>All fields are required.</p>
+    </div>
+  </section>
 
-  <div class="card" style="margin-top:18px">
-    <h2>Other ways to contact us</h2>
-    <div class="other-ways">
-      <a class="btn" href="tel:+13472449382">📞 Call</a>
-      <a class="btn" href="mailto:office@dryer-ventservices.com">✉️ Email</a>
-      <a class="btn" href="https://wa.me/13472449382?text=Hi%20I%27d%20like%20to%20book%20a%20dryer%20vent%20service" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <section class="section container two-col fade-in">
+    <div>
+      <h2>Send a Message</h2>
+      
+<form id="contact-form"
+      action="https://formsubmit.co/office@dryer-ventservices.com"
+      method="POST" novalidate class="contact-form" target="_self">
+
+  <!-- FormSubmit options -->
+  <input type="hidden" name="_subject" value="New Lead from Dryer-Vent Services website">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_redirect" value="https://dryer-ventservices.com/thank-you">
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+  <div class="grid two">
+    <div>
+      <label for="name">Full Name *</label>
+      <input id="name" name="name" type="text" required>
+    </div>
+
+    <div>
+      <label for="email">Email *</label>
+      <input id="email" name="email" type="email" required>
+    </div>
+
+    <div>
+      <label for="phone">Phone *</label>
+      <input id="phone" name="phone" type="tel" inputmode="tel" required placeholder="+1 (___) ___-____">
+    </div>
+
+    <div>
+      <label for="phone2">Confirm Phone *</label>
+      <input id="phone2" name="phone_confirm" type="tel" inputmode="tel" required placeholder="Re-enter phone">
+    </div>
+
+    <div>
+      <label for="zip">ZIP code *</label>
+      <input id="zip" name="zip" type="text" inputmode="numeric" pattern="^\d{5}(-\d{4})?$" required placeholder="e.g. 10314">
     </div>
   </div>
-</div>
-<div class="footer-cta"><a class="btn" href="tel:+13472449382">📞 Call</a><a class="btn accent" href="contact.html">Book Now</a></div>
-<script src="assets/js/main.js"></script></body></html>
+
+  <fieldset class="services-fieldset">
+    <legend>Which service do you need? (select at least one) *</legend>
+    <label class="chk"><input type="checkbox" name="services[]" value="Cleaning"> Dryer Vent Cleaning</label>
+    <label class="chk"><input type="checkbox" name="services[]" value="Repair"> Repair</label>
+    <label class="chk"><input type="checkbox" name="services[]" value="Installation"> New Installation</label>
+  </fieldset>
+
+  <div>
+    <label for="message">How can we help? (optional)</label>
+    <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)…"></textarea>
+  </div>
+
+  <div id="form-errors" class="form-errors" aria-live="polite" style="display:none;"></div>
+
+  <button type="submit" class="btn btn-primary">Send Request</button>
+<input type="hidden" name="_next" value="/thanks.html">
+</form>
+
+<script>
+(function(){
+  const form = document.getElementById('contact-form');
+  const errorsBox = document.getElementById('form-errors');
+  function digitsOnly(v){ return (v||'').replace(/\D+/g,''); }
+
+  form.addEventListener('submit', function(e){
+    const errs = [];
+
+    const phone = digitsOnly(form.phone.value);
+    const phone2 = digitsOnly(form.phone2.value);
+    const zip = form.zip.value.trim();
+
+    if (phone.length < 10) errs.push("Please enter a valid phone number (10+ digits).");
+    if (phone !== phone2) errs.push("Phone numbers do not match.");
+    if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid US ZIP code.");
+
+    const checked = form.querySelectorAll('input[name="services[]"]:checked').length;
+    if (checked === 0) errs.push("Please select at least one service (Cleaning, Repair, or Installation).");
+
+    if (errs.length){
+      e.preventDefault();
+      errorsBox.style.display = 'block';
+      errorsBox.innerHTML = errs.map(x => `<div>• ${x}</div>`).join('');
+      return false;
+    }
+
+    form.phone.value = phone;
+    form.phone2.value = phone2;
+  });
+})();
+</script>
+
+      <div class="center mt-20">
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="card contact-alt">
+      <h3>Other ways to contact us</h3>
+      <div class="contact-buttons">
+        <a class="btn" href="tel:+13472449382">📞 Call</a>
+        <a class="btn" href="mailto:office@dryer-ventservices.com">✉️ Email</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://wa.me/13472449382">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Dryer Vent Services</h4>
+        <p>Dryer Vent Cleaning - Repairs - Installations</p>
+      </div>
+      <div>
+        <ul class="contact-list">
+          <li><a href="tel:+13472449382">347-244-9382</a></li>
+          <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-cta">
+        <a class="btn btn--primary" href="contact.html">Book Now</a>
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
+  </footer>
+  <div class="mobile-cta">
+    <a class="btn" href="tel:+13472449382">📞 Call</a>
+    <a class="btn btn--primary" href="contact.html">Book Now</a>
+  </div>
+  <script src="script.js" defer></script>
+
+<script id="contact-soft-validate">
+(function(){
+  var f = document.querySelector('form[action*="formsubmit"], form[action*="formsubmit.co"], form[action*="office@dryer-ventservices.com"]') || document.querySelector('form');
+  if(!f) return;
+  f.addEventListener('submit', function(e){
+    try{
+      var p1 = (f.querySelector('#phone')||f.querySelector('[name="phone"],[name="Phone"]'))?.value||'';
+      var p2 = (f.querySelector('#phone2')||f.querySelector('#confirmPhone')||f.querySelector('[name*="Confirm"]'))?.value||'';
+      var boxes = f.querySelectorAll('input[type="checkbox"][name*="Service"]');
+      var zip = (f.querySelector('#zip')||f.querySelector('[name*="ZIP"]'))?.value||'';
+      function digits(s){return (s||'').replace(/\D+/g,'');}
+      var errs = [];
+      if(p1 && p2 && digits(p1) !== digits(p2)) errs.push("Phone numbers must match.");
+      var any = false; boxes.forEach(function(b){ if(b.checked) any = true; });
+      if(boxes.length && !any) errs.push("Please select at least one service.");
+      if(zip && !/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP.");
+      if(errs.length){ e.preventDefault(); alert(errs.join("\n")); }
+    }catch(_){}
+  }, false);
+})();
+</script>
+
+</body>
+</html>
