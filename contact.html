@@ -116,6 +116,7 @@
   <div id="form-errors" class="form-errors" aria-live="polite" style="display:none;"></div>
 
   <button type="submit" class="btn btn-primary">Send Request</button>
+<input type="hidden" name="_next" value="https://dryer-ventservices.com/thank-you">
 </form>
 
 <script>
@@ -189,5 +190,28 @@
     <a class="btn btn--primary" href="contact.html">Book Now</a>
   </div>
   <script src="script.js" defer></script>
+
+<script id="contact-soft-validate">
+(function(){
+  var f = document.querySelector('form[action*="formsubmit"], form[action*="formsubmit.co"], form[action*="office@dryer-ventservices.com"]') || document.querySelector('form');
+  if(!f) return;
+  f.addEventListener('submit', function(e){
+    try{
+      var p1 = (f.querySelector('#phone')||f.querySelector('[name="phone"],[name="Phone"]'))?.value||'';
+      var p2 = (f.querySelector('#phone2')||f.querySelector('#confirmPhone')||f.querySelector('[name*="Confirm"]'))?.value||'';
+      var boxes = f.querySelectorAll('input[type="checkbox"][name*="Service"]');
+      var zip = (f.querySelector('#zip')||f.querySelector('[name*="ZIP"]'))?.value||'';
+      function digits(s){return (s||'').replace(/\D+/g,'');}
+      var errs = [];
+      if(p1 && p2 && digits(p1) !== digits(p2)) errs.push("Phone numbers must match.");
+      var any = false; boxes.forEach(function(b){ if(b.checked) any = true; });
+      if(boxes.length && !any) errs.push("Please select at least one service.");
+      if(zip && !/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP.");
+      if(errs.length){ e.preventDefault(); alert(errs.join("\n")); }
+    }catch(_){}
+  }, false);
+})();
+</script>
+
 </body>
 </html>
