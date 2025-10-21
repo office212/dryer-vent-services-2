@@ -1,67 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Thank You – Dryer Vent Services</title>
-<link rel="stylesheet" href="/assets/css/main.css">
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-X77CVTW1CD');
-</script>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thanks! • Dryer Vent Services</title>
+  <meta http-equiv="refresh" content="10; url=/">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .ty-wrap{min-height:75vh;display:grid;place-items:center}
+    .ty-card{max-width:720px;margin:20px;padding:28px;background:#fff;border:1px solid #eef0f4;border-radius:16px;box-shadow:0 8px 24px rgba(15,42,82,.10);text-align:center}
+    .ty-card h1{margin:.2em 0 .2em}
+    .ty-card p{color:#475569}
+    .btn{display:inline-block;margin-top:10px;padding:12px 18px;background:#ea6a1a;color:#fff;border-radius:12px;font-weight:700;text-decoration:none}
+  </style>
 </head>
 <body>
-
-    <div class="navbar">
-      <div class="inner container">
-        <div class="logo-wrap">
-          <div class="logo"></div>
-          <div class="brand">
-            <h1>Dryer Vent Services</h1>
-            <small>Cleaning - Repairs - Installations</small>
-          </div>
-        </div>
-        <div class="nav-links">
-          <a href="/index.html" >Home</a>
-          <a href="/services.html" >Services</a>
-          <a href="/gallery.html" >Gallery</a>
-          <a href="/reviews.html" >Reviews</a>
-          <a href="/about.html" >About</a>
-          <a href="/service-areas.html" >Service Areas</a>
-          <a href="/contact.html" class="cta">Contact Us</a>
-        </div>
-      </div>
+  <main class="ty-wrap">
+    <div class="ty-card">
+      <h1>Thank you!</h1>
+      <p>Your message was sent successfully. We’ll be in touch shortly.</p>
+      <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
+      <a class="btn" href="/">Go to Homepage now</a>
     </div>
-    
-
-<section class="container" style="padding:60px 0 90px;text-align:center">
-  <h2 class="reveal" style="font-size:36px;margin:0 0 6px">Thanks! Your request was sent.</h2>
-  <p class="reveal reveal-slow">We’ll get back to you shortly. Returning to the homepage in <span id="secs">10</span> seconds…</p>
-  <div class="reveal" style="margin-top:18px">
-    <a class="btn accent" href="/index.html">Go to Homepage now</a>
-  </div>
-</section>
-<script>
-  let n=10; const el=document.getElementById('secs');
-  const t=setInterval(()=>{ n--; el.textContent=n; if(n<=0){ clearInterval(t); window.location.href='/index.html'; } },1000);
-</script>
-
-
-    <div class="footer">
-      <div class="container row">
-        <div>© 2025 Dryer Vent Services</div>
-        <div class="cta">
-          <a class="btn" href="tel:+13472449382">Call</a>
-          <a class="btn accent" href="/contact.html">Book Now</a>
-        </div>
-      </div>
-    </div>
-    
-<script src="/assets/js/main.js"></script>
-</body></html>
+  </main>
+  <script>
+    let n=10; const el=document.getElementById('sec');
+    const t=setInterval(()=>{ n--; el.textContent=n; if(n<=0){ clearInterval(t); window.location.href='/'; } },1000);
+  </script>
+</body>
+</html>
