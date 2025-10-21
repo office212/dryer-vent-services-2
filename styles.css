@@ -212,3 +212,6 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
 
 /* kill floating whatsapp bubbles */
 .floating-whatsapp, .whatsapp-fab, .whatsapp-bubble, [data-whatsapp-bubble], .wa-chat-bubble{display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;width:0!important}
+
+/* Kill floating WhatsApp bubbles (minimal, non-visual) */
+.floating-whatsapp, .whatsapp-fab, .whatsapp-bubble, [data-whatsapp-bubble], .wa-chat-bubble, .whatsapp_float, .whatsapp-button{display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;width:0!important}
