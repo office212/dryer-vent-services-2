@@ -1,111 +1,43 @@
-
-/* v6.2.4 — Contact-page only tweaks */
-body.contact-page { background: #f7f8fb; }
-
-body.contact-page .contact-card {
-  max-width: 880px;
-  margin: 32px auto;
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 22px 18px;
-  box-shadow: 0 10px 24px rgba(16,24,40,.06);
+/* Scoped only to the contact page */
+body.contact-page { background: #f7f7fb; }
+.contact-wrap { max-width: 980px; margin: 0 auto; padding: 24px 16px 120px; }
+.contact-card { background: #fff; border-radius: 18px; padding: 20px; box-shadow: 0 6px 22px rgba(16,24,40,.08); }
+.contact-title { font-size: clamp(28px, 4.8vw, 40px); line-height: 1.1; margin: 0 0 14px; font-weight: 800; color: inherit; }
+.grid { display: grid; gap: 14px; }
+.grid-2 { grid-template-columns: 1fr; }
+@media (min-width: 720px) { .grid-2 { grid-template-columns: 1fr 1fr; } .field.full { grid-column: 1 / -1; } }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field > span { font-size: 14px; color: #111827; font-weight: 600; }
+.field input, .field textarea {
+  font: inherit; color: inherit; background: #f9fafb; border: 1px solid #e5e7eb;
+  border-radius: 14px; padding: 14px 16px; outline: none; transition: box-shadow .2s, border-color .2s, background .2s;
 }
-
-/* Inputs */
-body.contact-page .contact-form input[type="text"],
-body.contact-page .contact-form input[type="email"],
-body.contact-page .contact-form input[type="tel"],
-body.contact-page .contact-form input[type="number"],
-body.contact-page .contact-form textarea {
-  width: 100%;
-  font-size: 18px;
-  line-height: 1.4;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid #dde3ea;
-  background: #f6f8fb;
-  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
-  outline: none;
+.field input::placeholder, .field textarea::placeholder { color: #9ca3af; }
+.field input:focus, .field textarea:focus {
+  background:#fff; border-color:#cbd5e1; box-shadow: 0 0 0 4px rgba(99,102,241,.15);
 }
+.services-box { margin: 16px 0; border: 1px solid #e5e7eb; border-radius: 14px; padding: 12px 14px; background:#fff; }
+.services-box legend { padding: 0 6px; font-weight: 700; font-size: 14px; }
+.check { display: flex; gap: 10px; align-items: center; margin: 8px 0; font-weight: 600; }
+.check input { width: 18px; height: 18px; }
 
-body.contact-page .contact-form textarea {
-  min-height: 120px;
-  resize: vertical;
+.btn-send {
+  display: inline-block; width: 100%;
+  background: #f97316; /* orange */
+  color: #fff; border: none; border-radius: 14px;
+  padding: 16px 18px; font-size: 18px; font-weight: 800; letter-spacing:.2px;
+  box-shadow: 0 10px 18px rgba(249,115,22,.22); transform: translateY(0);
+  transition: transform .12s ease, box-shadow .2s ease, background .2s;
 }
+.btn-send:hover { transform: translateY(-1px); box-shadow: 0 14px 24px rgba(249,115,22,.28); }
+.btn-send:active { transform: translateY(0); }
 
-body.contact-page .contact-form input:focus,
-body.contact-page .contact-form textarea:focus {
-  border-color: #2a4a7b;
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(42,74,123,.12);
+.other-ways { background: #fff; border-radius: 18px; margin-top: 18px; padding: 18px; box-shadow: 0 6px 22px rgba(16,24,40,.06); }
+.other-ways h2 { margin: 0 0 12px; font-size: clamp(20px, 3.6vw, 26px); font-weight: 800; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-alt, .btn-wa {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 16px; border-radius:12px; text-decoration:none; font-weight:700;
+  background:#0f2742; color:#fff;
 }
-
-/* Checkbox group */
-body.contact-page .service-group {
-  border: 1px solid #e6ecf2;
-  border-radius: 16px;
-  padding: 16px 18px;
-  background: #fbfcfe;
-}
-
-/* Primary submit button (big & orange) */
-body.contact-page .btn-submit {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 16px 18px;
-  color: #fff;
-  background: #f47b20; /* orange */
-  border: none;
-  border-radius: 14px;
-  box-shadow: 0 8px 18px rgba(244,123,32,.25);
-  transition: transform .06s ease, box-shadow .2s ease, filter .2s ease;
-  cursor: pointer;
-}
-
-body.contact-page .btn-submit:hover { filter: brightness(1.05); }
-body.contact-page .btn-submit:active { transform: translateY(1px); }
-
-/* Hide sticky CTA only on Contact page (works with common selectors) */
-body.contact-page .sticky-cta,
-body.contact-page #sticky-cta,
-body.contact-page .sticky-bar,
-body.contact-page .mobile-sticky-bar { display: none !important; }
-
-/* Other ways box */
-body.contact-page .other-ways {
-  max-width: 880px;
-  margin: 18px auto 32px;
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 10px 24px rgba(16,24,40,.06);
-}
-
-body.contact-page .cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-body.contact-page .cta-btn {
-  flex: 1 1 180px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: #0f2c4f;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  box-shadow: 0 8px 18px rgba(15,44,79,.18);
-}
-
-body.contact-page .cta-btn .emoji { font-size: 20px; }
-body.contact-page .cta-btn.whatsapp { background: #25D366; color: #0b2a1a; }
+.btn-wa { background:#25d366; color:#0a2a17; }

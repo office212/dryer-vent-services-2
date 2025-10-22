@@ -1,70 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact Us – Dryer Vent Services</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us — Dryer Vent Services</title>
+  <!-- keep your site's global CSS links above this comment -->
   <link rel="stylesheet" href="assets/css/contact.css">
 </head>
 <body class="contact-page">
-  <!-- Keep your existing header include if you have one -->
-  <main>
+  <!-- keep your global site header/nav here via server-side include or static markup -->
+  <main class="contact-wrap">
     <section class="contact-card">
-      <h1>Send a Message</h1>
-      <form class="contact-form" action="https://formsubmit.co/office@dryer-ventservices.com" method="POST">
-        <!-- formsubmit controls -->
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://www.dryer-ventservices.com/thank-you.html">
-        <input type="hidden" name="_template" value="box">
+      <h1 class="contact-title">Send a Message</h1>
+      <form id="contactForm" action="https://formsubmit.co/office@dryer-ventservices.com" method="POST" novalidate>
+        <!-- FormSubmit settings -->
+        <input type="hidden" name="_next" value="/thank-you.html">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_autoresponse" value="Thanks! We received your message.">
+        <div class="grid grid-2">
+          <label class="field"><span>Full Name *</span><input name="name" required placeholder="Your full name"></label>
+          <label class="field"><span>Email *</span><input type="email" name="email" required placeholder="you@example.com"></label>
+          <label class="field"><span>Phone *</span><input id="phone" name="phone" required placeholder="+1 (___) ___‑____"></label>
+          <label class="field"><span>Confirm Phone *</span><input id="phone_confirm" required placeholder="Re-enter phone"></label>
+          <label class="field full"><span>ZIP code *</span><input name="zip" required placeholder="e.g. 10314"></label>
+        </div>
 
-        <label>Full Name *<br>
-          <input type="text" name="name" required placeholder="Your full name">
-        </label><br><br>
+        <fieldset class="services-box">
+          <legend>Which service do you need? (select at least one) *</legend>
+          <label class="check"><input type="checkbox" name="service_cleaning" required> Dryer Vent Cleaning</label>
+          <label class="check"><input type="checkbox" name="service_repair"> Repair</label>
+          <label class="check"><input type="checkbox" name="service_install"> New Installation</label>
+          <input type="hidden" id="serviceAtLeastOne" required>
+        </fieldset>
 
-        <label>Email *<br>
-          <input type="email" name="email" required placeholder="you@example.com">
-        </label><br><br>
+        <label class="field full"><span>How can we help? (optional)</span>
+          <textarea name="message" rows="4" placeholder="Tell us a bit about the issue (optional)…"></textarea>
+        </label>
 
-        <div style="display:flex; gap:12px; flex-wrap: wrap;">
-          <label style="flex:1 1 220px;">Phone *<br>
-            <input type="tel" name="phone" required placeholder="+1 (___) ___‑____">
-          </label>
-          <label style="flex:1 1 220px;">Confirm Phone *<br>
-            <input type="tel" name="confirm_phone" required placeholder="Re-enter phone" pattern=".*">
-          </label>
-        </div><br>
-
-        <label>ZIP code *<br>
-          <input type="text" name="zip" required placeholder="e.g. 10314" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?">
-        </label><br><br>
-
-        <div class="service-group">
-          <strong>Which service do you need? (select at least one) *</strong>
-          <div style="display:flex; gap:16px; margin-top:10px; flex-wrap:wrap;">
-            <label><input type="checkbox" name="service[]" value="Dryer Vent Cleaning" required> Dryer Vent Cleaning</label>
-            <label><input type="checkbox" name="service[]" value="Repair"> Repair</label>
-            <label><input type="checkbox" name="service[]" value="New Installation"> New Installation</label>
-          </div>
-        </div><br>
-
-        <label>How can we help? (optional)<br>
-          <textarea name="message" placeholder="Tell us a bit about the issue (optional)…"></textarea>
-        </label><br>
-
-        <button class="btn-submit" type="submit">Send Request</button>
+        <button class="btn-send" type="submit">Send Request</button>
       </form>
     </section>
 
     <section class="other-ways">
       <h2>Other ways to contact us</h2>
-      <div class="cta-row">
-        <a class="cta-btn" href="tel:+13472449382"><span class="emoji">📞</span> Call</a>
-        <a class="cta-btn" href="mailto:office@dryer-ventservices.com"><span class="emoji">✉️</span> Email</a>
-        <a class="cta-btn whatsapp" href="https://wa.me/13472449382" target="_blank" rel="noopener"><span class="emoji">💬</span> WhatsApp</a>
+      <div class="btn-row">
+        <a class="btn-alt" href="tel:13472449382" aria-label="Call us">📞 Call</a>
+        <a class="btn-alt" href="mailto:office@dryer-ventservices.com" aria-label="Email us">✉️ Email</a>
+        <a class="btn-wa" href="https://wa.me/13472449382" target="_blank" rel="noopener">💬 WhatsApp</a>
       </div>
     </section>
   </main>
 
+  <!-- keep your global JS files above this comment -->
   <script src="assets/js/contact.js"></script>
 </body>
 </html>
