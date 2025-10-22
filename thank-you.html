@@ -1,31 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thanks — Dryer Vent Services</title>
-  <link rel="stylesheet" href="assets/css/contact.css">
-  <style>
-    .ty-wrap{max-width:760px;margin:48px auto;padding:24px 16px;text-align:center}
-    .ty-card{background:#fff;border-radius:18px;box-shadow:0 6px 22px rgba(16,24,40,.08);padding:28px}
-    .ty-title{font-size:clamp(26px,5vw,36px);font-weight:800;margin:0 0 8px}
-    .ty-sub{opacity:.8;margin:0 0 16px}
-    .ty-cta{display:inline-block;background:#f97316;color:#fff;text-decoration:none;padding:14px 18px;border-radius:14px;font-weight:800}
-    .ty-count{margin-top:8px;opacity:.7}
-  </style>
+  <title>Thanks! | Dryer Vent Services</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/contact-fixes.css">
+  <style> body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:#f6f8fb;} </style>
 </head>
-<body class="contact-page">
-  <main class="ty-wrap">
-    <div class="ty-card">
-      <h1 class="ty-title">Thanks! Your request was sent.</h1>
-      <p class="ty-sub">We’ll get back to you shortly.</p>
-      <a class="ty-cta" href="/">Back to Home</a>
-      <div class="ty-count">Redirecting in <span id="sec">10</span>…</div>
+<body class="thankyou">
+  <main>
+    <div class="panel">
+      <h1>Thanks! Your request was sent ✅</h1>
+      <p>We’ll get back to you shortly. You’ll be redirected to the homepage in
+        <span class="count" id="count">10</span> seconds.</p>
+      <p><a href="/" class="chip" style="margin-top:8px;background:#0f2a43;color:#fff;text-decoration:none;">Go to Home now</a></p>
     </div>
   </main>
   <script>
-    let n=10; const el=document.getElementById('sec');
-    const t=setInterval(()=>{ n--; el.textContent=n; if(n<=0){ clearInterval(t); location.href='/'; } },1000);
+    var left = 10;
+    var el = document.getElementById('count');
+    var t = setInterval(function(){
+      left--;
+      if(el) el.textContent = left;
+      if(left<=0){ clearInterval(t); window.location.href = '/'; }
+    },1000);
   </script>
 </body>
 </html>

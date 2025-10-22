@@ -1,13 +1,10 @@
-# v6.2.4 Contact Fix (drop-in)
-Files in this zip are SAFE to overwrite existing ones:
-- contact.html
-- thank-you.html
-- assets/css/contact.css
-- assets/js/contact.js
+Drop-in patch for Contact page WITHOUT removing your site header/nav.
 
-What you get:
-- Larger, modern inputs on Contact only
-- Big orange "Send Request" button
-- WhatsApp ghost bubble removed on Contact, but WhatsApp button kept under "Other ways…"
-- Sticky bottom bar hidden on Contact page only
-- Thank-you page with 10s auto-redirect
+1) In your existing contact.html, inside <head> add:
+   <link rel="stylesheet" href="assets/css/contact-fixes.css">
+   <script defer src="assets/js/contact-fixes.js"></script>
+
+2) Ensure your form action still points to FormSubmit. After submit, send users to /thank-you.html.
+   Example: <input type="hidden" name="_next" value="https://www.dryer-ventservices.com/thank-you.html">
+
+3) Upload thank-you.html to your site root.
