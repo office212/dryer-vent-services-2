@@ -27,6 +27,61 @@
 <meta property="og:description" content="Contact us to book your dryer vent cleaning, repairs or installation. Call, email or WhatsApp. Fast, friendly service.">
 <meta name="robots" content="index, follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "url": "https://dryer-ventservices.com/contact", "email": "office@dryer-ventservices.com", "telephone": "+13472449382", "areaServed": ["Staten Island NY", "New York", "New Jersey"], "sameAs": [], "image": "https://dryer-ventservices.com/assets/logo.png"}</script>
+
+<!-- v6.1.6 contact page polish -->
+<style>
+  body[data-page="contact"] .form-section input,
+  body[data-page="contact"] .form-section select,
+  body[data-page="contact"] .form-section textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+    font-size: 16px;
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+  }
+  body[data-page="contact"] .form-section input:focus,
+  body[data-page="contact"] .form-section select:focus,
+  body[data-page="contact"] .form-section textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    background: #fff;
+  }
+  /* Submit button — big and orange */
+  body[data-page="contact"] .form-section button[type="submit"] {
+    display: inline-block;
+    width: 100%;
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 18px;
+    border: 0;
+    border-radius: 14px;
+    background: #f97316; /* orange */
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(249, 115, 22, .35);
+    transition: transform .06s ease, box-shadow .2s ease, background-color .2s ease;
+  }
+  body[data-page="contact"] .form-section button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(249, 115, 22, .45);
+    background: #fb923c;
+  }
+  body[data-page="contact"] .form-section button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 16px rgba(249, 115, 22, .30);
+  }
+  /* Two-column layout for phone/confirm on larger screens */
+  @media (min-width: 768px) {
+    body[data-page="contact"] .row-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+  }
+</style>
+
 </head>
 <body data-page="contact">
   <header class="site-header">
@@ -71,7 +126,7 @@
   <input type="hidden" name="_subject" value="New Lead from Dryer-Vent Services website">
   <input type="hidden" name="_template" value="table">
   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_redirect" value="https://dryer-ventservices.com/thank-you">
+  <input type="hidden" name="_next" value="/thank-you.html">
   <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
   <div class="grid two">
