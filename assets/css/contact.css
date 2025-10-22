@@ -1,0 +1,111 @@
+
+/* v6.2.4 — Contact-page only tweaks */
+body.contact-page { background: #f7f8fb; }
+
+body.contact-page .contact-card {
+  max-width: 880px;
+  margin: 32px auto;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px 18px;
+  box-shadow: 0 10px 24px rgba(16,24,40,.06);
+}
+
+/* Inputs */
+body.contact-page .contact-form input[type="text"],
+body.contact-page .contact-form input[type="email"],
+body.contact-page .contact-form input[type="tel"],
+body.contact-page .contact-form input[type="number"],
+body.contact-page .contact-form textarea {
+  width: 100%;
+  font-size: 18px;
+  line-height: 1.4;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #dde3ea;
+  background: #f6f8fb;
+  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+  outline: none;
+}
+
+body.contact-page .contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+body.contact-page .contact-form input:focus,
+body.contact-page .contact-form textarea:focus {
+  border-color: #2a4a7b;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(42,74,123,.12);
+}
+
+/* Checkbox group */
+body.contact-page .service-group {
+  border: 1px solid #e6ecf2;
+  border-radius: 16px;
+  padding: 16px 18px;
+  background: #fbfcfe;
+}
+
+/* Primary submit button (big & orange) */
+body.contact-page .btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px 18px;
+  color: #fff;
+  background: #f47b20; /* orange */
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(244,123,32,.25);
+  transition: transform .06s ease, box-shadow .2s ease, filter .2s ease;
+  cursor: pointer;
+}
+
+body.contact-page .btn-submit:hover { filter: brightness(1.05); }
+body.contact-page .btn-submit:active { transform: translateY(1px); }
+
+/* Hide sticky CTA only on Contact page (works with common selectors) */
+body.contact-page .sticky-cta,
+body.contact-page #sticky-cta,
+body.contact-page .sticky-bar,
+body.contact-page .mobile-sticky-bar { display: none !important; }
+
+/* Other ways box */
+body.contact-page .other-ways {
+  max-width: 880px;
+  margin: 18px auto 32px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 24px rgba(16,24,40,.06);
+}
+
+body.contact-page .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+body.contact-page .cta-btn {
+  flex: 1 1 180px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #0f2c4f;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(15,44,79,.18);
+}
+
+body.contact-page .cta-btn .emoji { font-size: 20px; }
+body.contact-page .cta-btn.whatsapp { background: #25D366; color: #0b2a1a; }
