@@ -1,37 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thanks! • Dryer Vent Services</title>
-  <meta http-equiv="refresh" content="10; url=/">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .ty-wrap{min-height:75vh;display:grid;place-items:center}
-    .ty-card{max-width:720px;margin:20px;padding:28px;background:#fff;border:1px solid #eef0f4;border-radius:16px;box-shadow:0 8px 24px rgba(15,42,82,.10);text-align:center}
-    .ty-card h1{margin:.2em 0 .2em}
-    .ty-card p{color:#475569}
-    .btn{display:inline-block;margin-top:10px;padding:12px 18px;background:#ea6a1a;color:#fff;border-radius:12px;font-weight:700;text-decoration:none}
-  </style>
-
-    <meta http-equiv="refresh" content="10; url=/">
-    <script>
-      let n=10; setInterval(()=>{ n--; const el=document.getElementById('countdown'); if(el){ el.textContent=n; } },1000);
-    </script>
-    
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thanks — Dryer Vent Services</title>
+<meta http-equiv="refresh" content="10; url=/">
+<style>
+:root{--primary:#0d2a4a;--accent:#f97316}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;display:flex;align-items:center;justify-content:center;background:#f8fafc;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0d2a4a}
+.card{background:#fff;border-radius:20px;padding:28px;width:min(720px,92%);
+  box-shadow:0 18px 50px rgba(20,33,61,.12);text-align:center}
+h1{margin:0 0 8px;font-size: clamp(24px, 3.6vw, 38px)}
+p{margin:8px 0 0;font-size:16px;color:#4a5568}
+.btn{display:inline-block;margin-top:14px;padding:12px 16px;border-radius:12px;background:var(--accent);color:#fff;text-decoration:none;font-weight:800}
+.note{margin-top:8px;color:#64748b}
+.note b{color:var(--accent)}
+</style>
 </head>
 <body>
-  <main class="ty-wrap">
-    <div class="ty-card">
-      <h1>Thank you!</h1>
-      <p>Your message was sent successfully. We’ll be in touch shortly.</p>
-      <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
-      <a class="btn" href="/">Go to Homepage now</a>
-    </div>
+  <main class="card">
+    <h1>Thanks! Your request was sent.</h1>
+    <p>We’ll get back to you shortly.</p>
+    <a class="btn" href="/">Go to Home now</a>
+    <div class="note">Redirecting in <b id="sec">10</b> seconds…</div>
   </main>
-  <script>
-    let n=10; const el=document.getElementById('sec');
-    const t=setInterval(()=>{ n--; el.textContent=n; if(n<=0){ clearInterval(t); window.location.href='/'; } },1000);
-  </script>
+<script>
+let s=10; const el=document.getElementById('sec');
+setInterval(()=>{ s--; if(el) el.textContent=s; },1000);
+</script>
 </body>
 </html>

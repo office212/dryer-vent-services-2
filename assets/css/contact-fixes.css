@@ -1,31 +1,11 @@
-
-/* v6.1.10 contact-focused fixes (scoped) */
-body.page-contact #sticky-cta,
-body.page-contact .sticky-cta,
-body.page-contact .sticky-bar,
-body.page-contact .mobile-sticky-bar { display: none !important; }
-
-body.page-contact .contact-card{
-  background:#fff;border-radius:20px;box-shadow:0 10px 30px rgba(20,33,61,.08);
-  padding: clamp(16px,2.5vw,28px);
+/* v6.2.1 Contact-only fixes (non-destructive) */
+.page-contact #sticky-cta,.page-contact .mobile-cta,.page-contact .sticky-cta{display:none!important}
+.page-contact .lead-form input[type="text"],
+.page-contact .lead-form input[type="email"],
+.page-contact .lead-form input[type="tel"],
+.page-contact .lead-form textarea{
+  width:100%;height:52px;border-radius:14px;border:1px solid #d3d8e0;background:#f7f8fb;
+  padding:14px 16px;font-size:18px;line-height:1.2;box-shadow:0 1px 2px rgba(16,24,40,.06), inset 0 1px 3px rgba(16,24,40,.1)
 }
-body.page-contact input[type="text"],
-body.page-contact input[type="email"],
-body.page-contact input[type="tel"],
-body.page-contact textarea,
-body.page-contact select{
-  width:100%;border:1px solid #e6e8ed;border-radius:14px;padding:16px 18px;
-  font-size:16px;background:#f7f8fb;outline:none;
-  transition: box-shadow .2s ease,border-color .2s ease,background .2s ease;
-}
-body.page-contact textarea{min-height:120px;resize:vertical}
-body.page-contact input:focus,body.page-contact textarea:focus,body.page-contact select:focus{
-  border-color:#ff7a1a;background:#fff;box-shadow:0 0 0 4px rgba(255,122,26,.15);
-}
-body.page-contact .btn-submit{
-  display:inline-block;width:100%;max-width:520px;border:none;border-radius:14px;
-  padding:18px 20px;font-weight:800;font-size:18px;letter-spacing:.2px;
-  background:#ff7a1a;color:#fff;cursor:pointer;box-shadow:0 10px 22px rgba(255,122,26,.32);
-  transition: transform .06s ease, box-shadow .2s ease;
-}
-body.page-contact .btn-submit:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(255,122,26,.38)}
+.page-contact .lead-form textarea{min-height:140px;height:auto;resize:vertical}
+.page-contact .lead-form .actions .btn.btn-primary{background:#f97316;border-color:#f97316;color:#fff;width:100%;max-width:420px;height:56px;border-radius:14px;font-weight:800;font-size:18px}
