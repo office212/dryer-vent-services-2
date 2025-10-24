@@ -1,31 +1,75 @@
+/* v6.2.2 Contact page fixes */
+/* 1) Modern inputs */
+.contact-page form input[type="text"],
+.contact-page form input[type="email"],
+.contact-page form input[type="tel"],
+.contact-page form textarea,
+.contact-page form input[type="number"] {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e6e9ef;
+  border-radius: 14px;
+  background: #f7f9fc;
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+.contact-page form input:focus,
+.contact-page form textarea:focus {
+  border-color: #d1d9f0;
+  box-shadow: 0 0 0 4px rgba(30,64,175,.08);
+  background: #fff;
+}
 
-/* v6.1.10 contact-focused fixes (scoped) */
-body.page-contact #sticky-cta,
-body.page-contact .sticky-cta,
-body.page-contact .sticky-bar,
-body.page-contact .mobile-sticky-bar { display: none !important; }
+/* 2) Larger orange submit button */
+.contact-page .submit-row button,
+.contact-page button[type="submit"],
+.contact-page .submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 16px 22px;
+  border-radius: 14px;
+  border: 0;
+  background: #F37A1F; /* orange */
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(243, 122, 31, .35);
+  transition: transform .05s ease, box-shadow .2s ease, background .2s ease;
+}
+.contact-page button[type="submit"]:hover { box-shadow: 0 10px 28px rgba(243,122,31,.45); }
+.contact-page button[type="submit"]:active { transform: translateY(1px); }
 
-body.page-contact .contact-card{
-  background:#fff;border-radius:20px;box-shadow:0 10px 30px rgba(20,33,61,.08);
-  padding: clamp(16px,2.5vw,28px);
+/* Enforce width so it doesn't look tiny */
+.contact-page .submit-row,
+.contact-page .submit-container { display: flex; }
+.contact-page .submit-row button { min-width: 220px; }
+
+/* 3) Hide sticky CTA ONLY on the contact page */
+.contact-page .sticky-cta,
+.contact-page .sticky-footer,
+.contact-page .bottom-cta { display: none !important; }
+
+/* 4) WhatsApp ghost bubble guard (CSS) */
+.contact-page a[href*="wa.me"],
+.contact-page a[href*="api.whatsapp.com"] {
+  /* only inside explicit "other ways" area will be shown (see JS) */
 }
-body.page-contact input[type="text"],
-body.page-contact input[type="email"],
-body.page-contact input[type="tel"],
-body.page-contact textarea,
-body.page-contact select{
-  width:100%;border:1px solid #e6e8ed;border-radius:14px;padding:16px 18px;
-  font-size:16px;background:#f7f8fb;outline:none;
-  transition: box-shadow .2s ease,border-color .2s ease,background .2s ease;
+.contact-page .floating-whatsapp,
+.contact-page .whatsapp-float,
+.contact-page a[href*="wa.me"][style*="position: fixed"],
+.contact-page a[href*="api.whatsapp.com"][style*="position: fixed"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
-body.page-contact textarea{min-height:120px;resize:vertical}
-body.page-contact input:focus,body.page-contact textarea:focus,body.page-contact select:focus{
-  border-color:#ff7a1a;background:#fff;box-shadow:0 0 0 4px rgba(255,122,26,.15);
+
+/* 5) Section title spacing (nice look) */
+.contact-page .section-title {
+  font-weight: 800;
+  letter-spacing: .3px;
+  margin-bottom: 12px;
 }
-body.page-contact .btn-submit{
-  display:inline-block;width:100%;max-width:520px;border:none;border-radius:14px;
-  padding:18px 20px;font-weight:800;font-size:18px;letter-spacing:.2px;
-  background:#ff7a1a;color:#fff;cursor:pointer;box-shadow:0 10px 22px rgba(255,122,26,.32);
-  transition: transform .06s ease, box-shadow .2s ease;
-}
-body.page-contact .btn-submit:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(255,122,26,.38)}
