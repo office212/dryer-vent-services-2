@@ -212,18 +212,3 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
 
 /* kill floating whatsapp bubbles */
 .floating-whatsapp, .whatsapp-fab, .whatsapp-bubble, [data-whatsapp-bubble], .wa-chat-bubble{display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;width:0!important}
-
-
-/* v6.2-beta minimal styles for injected images */
-.service-img{width:100%;height:auto;border-radius:12px;display:block}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-.gallery-grid img{width:100%;height:auto;border-radius:10px;display:block}
-.ba-slider{position:relative;max-width:100%;border-radius:12px;overflow:hidden}
-.ba-slider .ba-after{position:absolute;top:0;left:0;height:100%;overflow:hidden}
-.ba-slider img{display:block;width:100%;height:auto}
-.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:#fff;border:2px solid #0f2742;border-radius:999px;padding:6px 10px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-@media (prefers-reduced-motion:no-preference){
-  .service-img{transition:transform .25s ease, box-shadow .25s ease}
-  .service-img:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
-}
