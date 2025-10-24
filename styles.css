@@ -212,3 +212,13 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
 
 /* kill floating whatsapp bubbles */
 .floating-whatsapp, .whatsapp-fab, .whatsapp-bubble, [data-whatsapp-bubble], .wa-chat-bubble{display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;width:0!important}
+
+
+/* v6.2.3 image helpers */
+.img-fluid{max-width:100%;height:auto;display:block;border-radius:12px}
+.section-pad{padding-block: clamp(20px, 4vw, 36px)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.ba-wrap{margin:14px 0;border-radius:12px;overflow:hidden;position:relative}
+.ba-wrap img{display:block;width:100%;height:auto}
+.ba-wrap .after{position:absolute;inset:0;overflow:hidden;width:50%}
+.ba-wrap .handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:2px solid #0d2742;border-radius:999px;padding:6px 10px;font-weight:800;box-shadow:0 2px 10px rgba(0,0,0,.25)}
