@@ -1,11 +1,17 @@
-/* v6.2.3 Contact fixes */
+/* v6.2.5 Contact-only fixes */
 .contact-page .sticky-cta,.contact-page .sticky-footer,.contact-page .bottom-cta,.contact-page .sticky-bottom-bar{display:none!important}
-.contact-page button[type="submit"]{background:#f97316!important;color:#fff!important;border:none!important;border-radius:14px!important;padding:14px 22px!important;font-size:18px!important;box-shadow:0 10px 24px rgba(249,115,22,.35)!important;min-width:220px}
-.contact-page input[type="text"],.contact-page input[type="email"],.contact-page input[type="tel"],.contact-page textarea{background:#f7f9fc;border:1px solid #e4e9f2;border-radius:14px;padding:14px 16px;font-size:16px}
-
-/* v6.2.4 additions */
-@media (max-width: 640px){
-  body.contact-page button[type="submit"]{ width:100%!important; display:block!important; }
+.contact-page input[type="text"],.contact-page input[type="email"],.contact-page input[type="tel"],.contact-page textarea,.contact-page select{
+  width:100%; background:#f7f9fc; border:1px solid #e4e9f2; border-radius:14px; padding:14px 16px; font-size:16px;
+  transition: box-shadow .2s ease, border-color .2s ease;
 }
-/* try hide any fixed bottom cta on Contact */
-body.contact-page *[style*="position:fixed"][style*="bottom:0"]{ display:none!important; }
+.contact-page input:focus,.contact-page textarea:focus,.contact-page select:focus{
+  outline:none; border-color:#ff8a3d; box-shadow:0 0 0 4px rgba(255,138,61,.18);
+}
+.contact-page button[type="submit"], .contact-page input[type="submit"]{
+  background:#ff8a3d!important; color:#fff!important; border:none!important; border-radius:16px!important;
+  padding:14px 22px!important; font-size:18px!important; font-weight:800!important; box-shadow:0 10px 25px rgba(255,138,61,.35)!important;
+  min-width:240px;
+}
+@media (max-width:640px){
+  .contact-page button[type="submit"], .contact-page input[type="submit"]{ width:100%!important; display:block!important; }
+}
