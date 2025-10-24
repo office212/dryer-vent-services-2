@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://dryer-ventservices.com/sitemap.xml
+
+Sitemap: https://www.dryer-ventservices.com/sitemap.xml

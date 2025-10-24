@@ -1,34 +1,69 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Thanks! | Dryer Vent Services</title>
-<meta http-equiv="refresh" content="10; url=/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  :root { --brand:#f2791f; --ink:#0b2545; --muted:#6b7280; }
-  *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:#fff;color:var(--ink);}
-  .wrap{min-height:100vh;display:grid;place-items:center;padding:40px}
-  .card{max-width:760px;width:100%;padding:32px 28px;border-radius:18px;border:1px solid #e5e7eb;box-shadow:0 10px 30px rgba(2,6,23,.05)}
-  h1{font-size:clamp(28px,4vw,38px);margin:0 0 10px} p{margin:8px 0;color:var(--muted)}
-  a.btn{display:inline-block;margin-top:18px;padding:14px 22px;border-radius:12px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700}
-  .small{margin-top:12px;color:#9ca3af;font-size:14px}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dryer Vent Services</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<script defer src="assets/js/main.js"></script>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Thanks — your request was sent ✅</h1>
-      <p>We’ll reach out shortly. You’ll be sent back to the homepage automatically.</p>
-      <a class="btn" href="/">Go to homepage now</a>
-      <div class="small">Auto‑redirect in 10 seconds…</div>
+<header class="site-header">
+  <div class="container navbar">
+    <div class="brand">
+      <img src="favicon.ico" alt="logo" style="width:40px;height:40px;border-radius:8px">
+      <div>
+        <h1>Dryer Vent Services</h1>
+        <small>Cleaning - Repairs - Installations</small>
+      </div>
     </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="">Home</a></li>
+        <li><a href="services.html" class="">Services</a></li>
+        <li><a href="gallery.html" class="">Gallery</a></li>
+        <li><a href="reviews.html" class="">Reviews</a></li>
+        <li><a href="about.html" class="">About</a></li>
+        <li><a href="areas.html" class="">Service Areas</a></li>
+        <li><a href="contact.html" class="">Contact</a></li>
+      </ul>
+    </nav>
   </div>
+</header>
+<main class="container">
+
+<div class="ty-wrap">
+  <div class="ty-card">
+    <h1>Thanks! Your request was sent.</h1>
+    <p>We’ll get back to you shortly. Returning to the homepage in <span class="countdown" id="cd">10</span> seconds…</p>
+    <p><a class="btn-primary btn" href="index.html">Go to Homepage now</a></p>
+  </div>
+</div>
 <script>
-  setTimeout(()=>{location.href='/'},10000);
+let s = 10;
+const cd = document.getElementById('cd');
+const timer = setInterval(()=>{
+  s--; cd.textContent = s;
+  if (s <= 0) {{ clearInterval(timer); window.location.href = 'https://www.dryer-ventservices.com/'; }}
+}, 1000);
 </script>
+
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <h3>Dryer Vent Services</h3>
+    <p>Dryer Vent Cleaning - Repairs - Installations</p>
+    <div class="footer-actions">
+      <a class="btn-ghost btn" href="tel:+13472449382">Call</a>
+      <a class="btn-ghost btn" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn-primary btn" href="https://calendly.com/" target="_blank" rel="noopener">Book Now</a>
+    </div>
+    <p style="margin-top:18px;color:#d9e2ef">© 2025 Dryer Vent Services. All rights reserved.</p>
+  </div>
+</footer>
+<div class="mobile-cta">
+  <a class="dark" href="tel:+13472449382">Call</a>
+  <a class="primary" href="https://calendly.com/" target="_blank">Book Now</a>
+</div>
 </body>
 </html>
