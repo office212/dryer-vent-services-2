@@ -214,37 +214,16 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
 .floating-whatsapp, .whatsapp-fab, .whatsapp-bubble, [data-whatsapp-bubble], .wa-chat-bubble{display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;width:0!important}
 
 
-/* === v6.1.10 form refresh === */
-.contact-page main { padding-top: 16px; }
-.contact-card{background:#fff;border-radius:16px;padding:22px;box-shadow:0 8px 30px rgba(17, 24, 39,.08)}
-.contact-grid{display:grid;gap:14px}
-.contact-grid .row-2{display:grid;gap:12px;grid-template-columns:1fr; }
-@media (min-width: 640px){
-  .contact-grid .row-2{grid-template-columns:1fr 1fr;}
+/* v6.2-beta minimal styles for injected images */
+.service-img{width:100%;height:auto;border-radius:12px;display:block}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.gallery-grid img{width:100%;height:auto;border-radius:10px;display:block}
+.ba-slider{position:relative;max-width:100%;border-radius:12px;overflow:hidden}
+.ba-slider .ba-after{position:absolute;top:0;left:0;height:100%;overflow:hidden}
+.ba-slider img{display:block;width:100%;height:auto}
+.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:#fff;border:2px solid #0f2742;border-radius:999px;padding:6px 10px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+@media (prefers-reduced-motion:no-preference){
+  .service-img{transition:transform .25s ease, box-shadow .25s ease}
+  .service-img:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
 }
-input[type="text"],input[type="email"],input[type="tel"],textarea,select{
-  width:100%;
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:14px 16px;
-  font-size:16px;
-  transition:border-color .2s, box-shadow .2s, background .2s;
-}
-input::placeholder,textarea::placeholder{color:#94a3b8}
-input:focus,textarea:focus,select:focus{
-  outline:none;
-  border-color:#2563eb;
-  box-shadow:0 0 0 4px rgba(37,99,235,.15);
-  background:#fff;
-}
-.checkbox-list{display:grid;gap:10px;margin-top:6px}
-.checkbox-list label{display:flex;align-items:center;gap:10px;font-weight:600;color:#0f172a}
-.checkbox-list input[type="checkbox"]{width:20px;height:20px;border-radius:6px;border:1px solid #cbd5e1}
-.btn-lg{font-size:18px;padding:14px 22px;border-radius:14px}
-.btn-primary{background:#f97316;color:#fff;border:none}
-.btn-primary:hover{filter:brightness(0.98)}
-.btn-primary:active{transform:translateY(1px)}
-/* WhatsApp button inside 'Other ways' */
-.btn-whatsapp{background:#22c55e;color:#fff;border:none}
-.btn-whatsapp:hover{filter:brightness(0.97)}
