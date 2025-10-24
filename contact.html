@@ -1,109 +1,121 @@
-<!doctype html>
-<html lang="en" class="no-sticky">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dryer Vent Services</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<script defer src="assets/js/main.js"></script>
-</head>
-<body>
-<header class="site-header">
-  <div class="container navbar">
-    <div class="brand">
-      <img src="favicon.ico" alt="logo" style="width:40px;height:40px;border-radius:8px">
-      <div>
-        <h1>Dryer Vent Services</h1>
-        <small>Cleaning - Repairs - Installations</small>
-      </div>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="">Home</a></li>
-        <li><a href="services.html" class="">Services</a></li>
-        <li><a href="gallery.html" class="">Gallery</a></li>
-        <li><a href="reviews.html" class="">Reviews</a></li>
-        <li><a href="about.html" class="">About</a></li>
-        <li><a href="areas.html" class="">Service Areas</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<link rel="stylesheet" href="assets/css/styles.css">
+<script defer src="assets/js/app.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-X77CVTW1CD');
+</script>
+
+</head><body>
+<header class="site-header"><div class="container header">
+  <a class="brand" href="index.html">
+    <img src="assets/img/logo.png" alt="logo" onerror="this.style.display='none'">
+    <div><h1>Dryer Vent Services</h1><small>Cleaning • Repairs • Installations</small></div>
+  </a>
+  <nav class="nav">
+    <a href="index.html" >Home</a>
+    <a href="services.html" >Services</a>
+    <a href="gallery.html" >Gallery</a>
+    <a href="reviews.html" >Reviews</a>
+    <a href="about.html" >About</a>
+    <a href="areas.html" >Service Areas</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+</div></header>
 <main class="container">
 
-<h2 class="section-title">Send a Message</h2>
-<div class="form-wrap">
-  <form action="https://formsubmit.co/office@dryer-ventservices.com" method="POST" id="contact-form">
-    <input type="hidden" name="_subject" value="New message from Dryer Vent Services">
+<section class="section">
+  <h2>Send a Message</h2>
+  <form id="contactForm" class="form card" action="https://formsubmit.co/office@dryer-ventservices.com" method="POST">
+    <!-- FormSubmit config -->
+    <input type="hidden" name="_next" value="https://www.dryer-ventservices.com/thank-you.html">
+    <input type="hidden" name="_template" value="table">
     <input type="text" name="_honey" style="display:none">
     <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://www.dryer-ventservices.com/thank-you.html">
-    <div>
-      <label>Full Name *</label>
-      <input type="text" name="name" required placeholder="Your full name">
+
+    <label>Full Name *<br><input class="input" type="text" name="name" required placeholder="Your full name"></label>
+    <label>Email *<br><input class="input" type="email" name="email" required placeholder="you@example.com"></label>
+
+    <div class="grid grid-2">
+      <label>Phone *<br><input class="input" type="tel" name="phone" required placeholder="+1 (___) ___-____"></label>
+      <label>Confirm Phone *<br><input class="input" type="tel" name="confirm_phone" required placeholder="Re-enter phone"></label>
     </div>
-    <div>
-      <label>Email *</label>
-      <input type="email" name="email" required placeholder="you@example.com">
-    </div>
-    <div class="form-row">
-      <div>
-        <label>Phone *</label>
-        <input type="tel" name="phone" required placeholder="+1 (___) ___‑____">
+
+    <label>ZIP code *<br><input class="input" type="text" name="zip" required placeholder="e.g. 10314" pattern="^\d{5}(-\d{4})?$"></label>
+
+    <fieldset>
+      <legend>Which service do you need? (select at least one) *</legend>
+      <div class="checkbox-grid">
+        <label><input type="checkbox" name="service[]" value="Cleaning"> Dryer Vent Cleaning</label>
+        <label><input type="checkbox" name="service[]" value="Repair"> Repair</label>
+        <label><input type="checkbox" name="service[]" value="Installation"> New Installation</label>
       </div>
-      <div>
-        <label>Confirm Phone *</label>
-        <input type="text" name="phone_confirm" required placeholder="Re-enter phone">
-      </div>
-    </div>
-    <div>
-      <label>ZIP code *</label>
-      <input type="text" name="zip" required placeholder="e.g. 10314">
-    </div>
+    </fieldset>
 
-    <div class="checkbox-group">
-      <label>Which service do you need? (select at least one) *</label>
-      <div class="checkbox-item"><input type="checkbox" name="service_cleaning" value="Cleaning"> Dryer Vent Cleaning</div>
-      <div class="checkbox-item"><input type="checkbox" name="service_repair" value="Repair"> Repair</div>
-      <div class="checkbox-item"><input type="checkbox" name="service_install" value="New Installation"> New Installation</div>
-    </div>
+    <label>How can we help? (optional)<br><textarea name="message" rows="5" placeholder="Tell us a bit about the issue (optional)…"></textarea></label>
 
-    <div>
-      <label>How can we help? (optional)</label>
-      <textarea name="message" rows="5" placeholder="Tell us a bit about the issue (optional)…"></textarea>
-    </div>
-
-    <div class="submit-bar">
-      <button type="submit" class="btn btn-primary">Send Request</button>
-    </div>
+    <!-- Invisible reCAPTCHA button -->
+    <button class="g-recaptcha btn btn-accent btn-block btn-lg"
+            data-sitekey="6Le6-_UrAAAAAOrEjim9ifToh1bxIihHNO-q9ZdO"
+            data-callback="onCaptcha"
+            data-size="invisible">Send Request</button>
   </form>
-</div>
-
-<section class="card" style="margin-top:20px">
-  <h3>Other ways to contact us</h3>
-  <p class="inline-actions">
-    <a href="tel:+13472449382">📞 Call</a>
-    <a href="mailto:office@dryer-ventservices.com">✉️ Email</a>
-  </p>
 </section>
+
+<section class="section card">
+  <h3>Other ways to contact us</h3>
+  <div class="footer-cta">
+    <a class="btn btn-primary" href="tel:+13472449382">Call</a>
+    <a class="btn btn-primary" href="mailto:office@dryer-ventservices.com">Email</a>
+  </div>
+</section>
+
+<!-- reCAPTCHA v2 Invisible -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function validateForm() {
+  const f = document.getElementById('contactForm');
+  const p1 = f.phone.value.replace(/\D/g,'');
+  const p2 = f.confirm_phone.value.replace(/\D/g,'');
+  if (p1 !== p2) { alert('Phone numbers do not match.'); return false; }
+  const any = Array.from(f.querySelectorAll('input[name="service[]"]')).some(el=>el.checked);
+  if (!any) { alert('Please select at least one service.'); return false; }
+  return true;
+}
+function onCaptcha(token) {
+  document.getElementById('contactForm').submit();
+}
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  if (!validateForm()) { e.preventDefault(); return false; }
+  e.preventDefault();
+  grecaptcha.execute();
+});
+</script>
 
 </main>
 <footer class="site-footer">
   <div class="container">
-    <h3>Dryer Vent Services</h3>
-    <p>Dryer Vent Cleaning - Repairs - Installations</p>
-    <div class="footer-actions">
-      <a class="btn-ghost btn" href="tel:+13472449382">Call</a>
-      <a class="btn-ghost btn" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="btn-primary btn" href="https://calendly.com/" target="_blank" rel="noopener">Book Now</a>
+    <strong>Dryer Vent Services</strong>
+    <div>Serving Staten Island & the greater NY & NJ</div>
+    <div class="footer-cta">
+      <a class="btn btn-primary" href="tel:+13472449382">Call</a>
+      <a class="btn btn-primary" href="mailto:office@dryer-ventservices.com">Email</a>
+      <a class="btn btn-accent" href="https://calendly.com/" target="_blank">Book Now</a>
     </div>
-    <p style="margin-top:18px;color:#d9e2ef">© 2025 Dryer Vent Services. All rights reserved.</p>
+    <div style="margin-top:10px;opacity:.65">© 2025 Dryer Vent Services</div>
+  </div>
+  <div class="stickybar">
+    <div class="sticky-inner">
+      <a class="btn btn-primary" href="tel:+13472449382">Call</a>
+      <a class="btn btn-accent" href="https://calendly.com/" target="_blank">Book Now</a>
+    </div>
   </div>
 </footer>
-<div class="mobile-cta">
-  <a class="dark" href="tel:+13472449382">Call</a>
-  <a class="primary" href="https://calendly.com/" target="_blank">Book Now</a>
-</div>
-</body>
-</html>
+</body></html>
