@@ -18,6 +18,10 @@
       visibility: hidden !important;
       pointer-events: none !important;
     }
+    /* חיזוק תפקודי בלבד – לא משנה מראה */
+    body.contact.page-contact .contact-form .btn-submit {
+      pointer-events: auto !important;
+    }
   </style>
 </head>
 
@@ -57,7 +61,7 @@
     <div>
       <h2>Send a Message</h2>
 
-      <!-- שים לב: action מוגדר לגיבוי בלבד; ברירת המחדל שליחה ב-AJAX -->
+      <!-- action נשאר כגיבוי; AJAX ננסה קודם -->
       <form id="contactForm"
             action="https://formsubmit.co/office%40dryer-ventservices.com"
             method="POST"
@@ -104,10 +108,14 @@
         </div>
 
         <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
-        <button type="submit" class="btn btn-primary btn-submit">Send Request</button>
+        <button type="submit"
+                class="btn btn-primary btn-submit"
+                onclick="this.form.requestSubmit();">
+          Send Request
+        </button>
       </form>
 
-      <!-- שליחה מחוזקת: AJAX -> גרסה מקודדת/לא מקודדת -> נפילה לגיבוי action -->
+      <!-- AJAX מחוזק + נפילה לגיבוי -->
       <script>
       (function() {
         const form = document.getElementById("contactForm");
@@ -158,25 +166,21 @@
             return;
           }
 
-          // 1) AJAX ניסיון ראשון (לא מקודד)
           const fd = new FormData(form);
-          let ok = await tryFetch("https://formsubmit.co/ajax/office@dryer-ventservices.com", fd);
 
-          // 2) אם נכשל, ניסיון שני (מקודד %40)
-          if (!ok) {
-            ok = await tryFetch("https://formsubmit.co/ajax/office%40dryer-ventservices.com", fd);
-          }
+          // 1) AJAX לא מקודד
+          let ok = await tryFetch("https://formsubmit.co/ajax/office@dryer-ventservices.com", fd);
+          // 2) AJAX מקודד
+          if (!ok) ok = await tryFetch("https://formsubmit.co/ajax/office%40dryer-ventservices.com", fd);
 
           if (ok) {
-            // הצליח: הפניה ל-thanks
             window.location.href = "thanks.html";
             return;
           }
 
-          // 3) נפילה לגיבוי — שליחה רגילה דרך action
-          try {
-            form.submit();
-          } catch (e) {
+          // 3) גיבוי – שליחה רגילה דרך action
+          try { form.submit(); }
+          catch (e) {
             alert("There was a problem sending your request.\nPlease call 347-244-9382 or email office@dryer-ventservices.com.");
           }
         });
