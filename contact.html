@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/css/contact-fixes.css" />
   <style>
-    /* Hide sticky only on contact page */
+    /* Hide sticky only on contact page (no visual change elsewhere) */
     body.contact.page-contact .mobile-cta,
     body.contact.page-contact #sticky-bar,
     body.contact.page-contact .sticky-bar,
@@ -18,9 +18,13 @@
       visibility: hidden !important;
       pointer-events: none !important;
     }
-    /* חיזוק תפקודי בלבד – לא משנה מראה */
+    /* Functional hardening only (no visual change) */
+    body.contact.page-contact .contact-form { position: relative; }
     body.contact.page-contact .contact-form .btn-submit {
       pointer-events: auto !important;
+      position: relative;
+      z-index: 9999; /* above any accidental overlays/iframes */
+      touch-action: manipulation; /* improve mobile tap */
     }
   </style>
 </head>
@@ -61,7 +65,7 @@
     <div>
       <h2>Send a Message</h2>
 
-      <!-- action נשאר כגיבוי; AJAX ננסה קודם -->
+      <!-- action serves as final fallback; primary flow uses AJAX -->
       <form id="contactForm"
             action="https://formsubmit.co/office%40dryer-ventservices.com"
             method="POST"
@@ -108,14 +112,16 @@
         </div>
 
         <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
+
+        <!-- Force-submit on tap even if some JS listener failed to attach -->
         <button type="submit"
                 class="btn btn-primary btn-submit"
-                onclick="this.form.requestSubmit();">
+                onclick="this.form && this.form.requestSubmit && this.form.requestSubmit();">
           Send Request
         </button>
       </form>
 
-      <!-- AJAX מחוזק + נפילה לגיבוי -->
+      <!-- Robust submit: AJAX (two URLs) -> fallback to native action -->
       <script>
       (function() {
         const form = document.getElementById("contactForm");
@@ -161,29 +167,23 @@
           e.preventDefault();
 
           const errs = validate();
-          if (errs.length) {
-            alert(errs.join("\n"));
-            return;
-          }
+          if (errs.length) { alert(errs.join("\n")); return; }
 
           const fd = new FormData(form);
 
-          // 1) AJAX לא מקודד
+          // 1) AJAX not-encoded
           let ok = await tryFetch("https://formsubmit.co/ajax/office@dryer-ventservices.com", fd);
-          // 2) AJAX מקודד
+          // 2) AJAX encoded
           if (!ok) ok = await tryFetch("https://formsubmit.co/ajax/office%40dryer-ventservices.com", fd);
 
-          if (ok) {
-            window.location.href = "thanks.html";
-            return;
-          }
+          if (ok) { window.location.href = "thanks.html"; return; }
 
-          // 3) גיבוי – שליחה רגילה דרך action
+          // 3) Native fallback (in case AJAX blocked)
           try { form.submit(); }
           catch (e) {
             alert("There was a problem sending your request.\nPlease call 347-244-9382 or email office@dryer-ventservices.com.");
           }
-        });
+        }, { passive: false }); // ensure preventDefault works on mobile
       })();
       </script>
     </div>
