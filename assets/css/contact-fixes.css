@@ -1,11 +1,75 @@
-/* Contact page – make submit full-width and keep modern look */
+/* Contact page – scoped modern look + behavior (HARD GUARD) */
 
-/* submit: full width on contact */
-body.page-contact .contact-form .btn-submit,
-body.page-contact .contact-form button[type=submit]{
-  width:100% !important;
-  display:block !important;
+/* Hide sticky ONLY on contact */
+body.page-contact .mobile-cta,
+body.page-contact #sticky-bar,
+body.page-contact .sticky-bar,
+body.page-contact .footer-sticky,
+body.page-contact .cta-sticky {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
-/* keep spacing under recaptcha */
-body.page-contact .g-recaptcha{ margin-bottom:12px !important; }
+/* Modern inputs on contact */
+body.page-contact .contact-form input,
+body.page-contact .contact-form textarea,
+body.page-contact .contact-form select {
+  border-radius: 16px !important;
+  background: #f2f6ff !important; /* light blue */
+  border: 1px solid #e3e8f5 !important;
+  padding: 14px 16px !important;
+  font-size: 16px !important;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.02) !important;
+}
+body.page-contact .contact-form input:focus,
+body.page-contact .contact-form textarea:focus,
+body.page-contact .contact-form select:focus {
+  outline: none !important;
+  border-color: #b9c7ff !important;
+  background: #eef3ff !important;
+  box-shadow: 0 0 0 3px rgba(62,106,214,.18) !important;
+}
+
+/* Big orange submit ONLY on contact */
+body.page-contact .contact-form .btn-submit,
+body.page-contact .contact-form button[type=submit],
+body.page-contact .contact-form .btn.btn-primary[type=submit],
+body.page-contact .contact-form .btn-primary,
+body.page-contact .contact-form .button.submit {
+  background: #ff7a00 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 14px 18px !important;
+  font-size: 18px !important;
+  line-height: 1.15 !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 6px 18px rgba(255,122,0,.35) !important;
+  width: 100% !important; /* full width */
+  display: block !important;
+}
+
+/* Force remove dark/primary styles that may leak */
+body.page-contact .contact-form .btn-submit.btn,
+body.page-contact .contact-form .btn-submit.btn-primary,
+body.page-contact .contact-form .btn-submit.button {
+  background-image: none !important;
+  box-shadow: 0 6px 18px rgba(255,122,0,.35) !important;
+}
+
+/* reCAPTCHA visible + spaced */
+body.page-contact .g-recaptcha {
+  display: block !important;
+  margin: 12px 0 16px !important;
+  min-height: 78px;
+}
+
+/* errors box */
+#form-errors.form-errors {
+  background: #fff4f0;
+  color: #b44;
+  padding: .75rem 1rem;
+  border-radius: .75rem;
+  margin: .5rem 0 1rem;
+  display: none;
+}
