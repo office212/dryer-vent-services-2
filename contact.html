@@ -60,7 +60,6 @@
     <div>
       <h2>Send a Message</h2>
 
-      <!-- action=GAS (fallback); ראשי הוא AJAX -->
       <form id="contactForm"
             action="https://script.google.com/macros/s/AKfycbzkG8UpYHv9t3wS0mrt5a7olrxTPL6qD-pJWky1S4XFN0nQ9seV6FJSefA0O0aE_7aT/exec"
             method="POST"
@@ -89,7 +88,9 @@
           </div>
           <div>
             <label for="zip">ZIP code *</label>
-            <input id="zip" name="zip" type="text" inputmode="numeric" required placeholder="e.g. 10314" />
+            <input id="zip" name="zip" type="text"
+                   inputmode="numeric" dir="ltr" autocomplete="postal-code"
+                   required placeholder="e.g. 10314" />
           </div>
         </div>
 
@@ -105,7 +106,7 @@
           <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)..."></textarea>
         </div>
 
-        <!-- reCAPTCHA v2 checkbox (site key שנתת) -->
+        <!-- reCAPTCHA v2 -->
         <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
 
         <button type="submit"
@@ -115,43 +116,43 @@
         </button>
       </form>
 
-      <!-- JS: ולידציה קלה + שליחה ל-GAS + הפניה ל-thanks -->
       <script>
       (function(){
         const form = document.getElementById("contactForm");
 
-        function digitsOnly(v){ return (v||"").replace(/\\D+/g,""); }
+        function digitsOnly(v){ return (v || "").replace(/\D+/g, ""); }
+
         function validate() {
           const phone  = digitsOnly(form.phone.value);
           const phone2 = digitsOnly(form.phone2.value);
-          const zip    = (form.zip.value || "").trim();
+          const zipDigits = digitsOnly(form.zip.value);  // נרמול ZIP
+
           const errs = [];
           if (phone.length < 10) errs.push("Please enter a valid phone number.");
           if (phone !== phone2)  errs.push("Phone numbers do not match.");
-          if (!/^\\d{5}(-\\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP code (5 digits).");
-          if (!form.querySelector('input[name=\"services[]\"]:checked')) errs.push("Select at least one service.");
+          if (!(zipDigits.length === 5 || zipDigits.length === 9))
+            errs.push("Please enter a valid ZIP code (5 digits).");
+          if (!form.querySelector('input[name=\"services[]\"]:checked'))
+            errs.push("Select at least one service.");
           try {
-            if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) {
+            if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0)
               errs.push("Please confirm you're not a robot.");
-            }
           } catch(_) {}
           return errs;
         }
 
         form.addEventListener("submit", async function(e){
-          e.preventDefault(); // AJAX ראשי; אם JS ייפול – ה-action יגבה
+          e.preventDefault();
 
           const errs = validate();
           if (errs.length) { alert(errs.join("\\n")); return; }
 
           const fd = new FormData(form);
-          // append captcha token
           try {
             const token = (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : "";
             if (token) fd.append("g-recaptcha-response", token);
           } catch(_) {}
 
-          // referrer for context
           fd.append("_ref", document.referrer || location.href);
 
           try {
@@ -160,11 +161,9 @@
             if (res.ok && data && data.success) {
               window.location.href = (data.redirect || "thanks.html");
             } else {
-              // fallback לנייטיב
               form.submit();
             }
           } catch (err) {
-            // fallback לנייטיב
             try { form.submit(); }
             catch (e2) {
               alert("There was a problem sending your request.\\nPlease call 347-244-9382 or email office@dryer-ventservices.com.");
