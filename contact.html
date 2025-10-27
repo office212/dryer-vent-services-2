@@ -57,13 +57,7 @@
     <div>
       <h2>Send a Message</h2>
 
-      <form
-        id="contactForm"
-        action="https://formsubmit.co/office%40dryer-ventservices.com"
-        method="POST"
-        class="contact-form"
-        onsubmit="return validateForm(this)"
-      >
+      <form id="contactForm" method="POST" class="contact-form">
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_next" value="https://dryer-ventservices.com/thanks.html" />
@@ -108,28 +102,48 @@
         <button type="submit" class="btn btn-primary btn-submit">Send Request</button>
       </form>
 
+      <!-- ✅ תיקון שליחת הטופס -->
       <script>
-        function validateForm(form) {
+      (function() {
+        const form = document.getElementById("contactForm");
+
+        form.addEventListener("submit", async function(e) {
+          e.preventDefault();
+
           const phone = form.phone.value.replace(/\D+/g, '');
           const phone2 = form.phone2.value.replace(/\D+/g, '');
           const zip = form.zip.value.trim();
           const errs = [];
 
-          // Basic validation logic
-          if (phone.length < 10) errs.push('Please enter a valid phone number.');
-          if (phone !== phone2) errs.push('Phone numbers do not match.');
-          if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push('Please enter a valid ZIP code (5 digits).');
-          if (!form.querySelector('input[name="services[]"]:checked')) errs.push('Select at least one service.');
+          if (phone.length < 10) errs.push("Please enter a valid phone number.");
+          if (phone !== phone2) errs.push("Phone numbers do not match.");
+          if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP code (5 digits).");
+          if (!form.querySelector('input[name=\"services[]\"]:checked')) errs.push("Select at least one service.");
           if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0)
             errs.push("Please confirm you're not a robot.");
 
           if (errs.length) {
-            alert(errs.join("\n"));
-            return false;
+            alert(errs.join("\\n"));
+            return;
           }
-          // Let the form submit normally
-          return true;
-        }
+
+          try {
+            const fd = new FormData(form);
+            const res = await fetch("https://formsubmit.co/ajax/office@dryer-ventservices.com", {
+              method: "POST",
+              body: fd,
+              headers: { "Accept": "application/json" }
+            });
+
+            if (!res.ok) throw new Error("Network error");
+
+            // הפניה לדף תודה
+            window.location.href = "thanks.html";
+          } catch (err) {
+            alert("There was a problem sending your request.\\nPlease call 347-244-9382 or email office@dryer-ventservices.com.");
+          }
+        });
+      })();
       </script>
     </div>
 
