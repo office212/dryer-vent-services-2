@@ -68,6 +68,8 @@
         <!-- Honeypot (anti-bot) -->
         <input type="text" name="botcheck" tabindex="-1" autocomplete="off"
                style="position:absolute;left:-5000px;opacity:0;height:0;width:0;">
+        <!-- זמן התחלה ללוגיקה נגד בוטים -->
+        <input type="hidden" name="_started_at" id="_started_at">
 
         <div class="grid two">
           <div>
@@ -119,20 +121,22 @@
       <script>
       (function(){
         const form = document.getElementById("contactForm");
+        // רושם זמן התחלה (לוגיקת anti-bot בצד השרת)
+        document.getElementById("_started_at").value = Date.now();
 
         function digitsOnly(v){ return (v || "").replace(/\D+/g, ""); }
 
         function validate() {
           const phone  = digitsOnly(form.phone.value);
           const phone2 = digitsOnly(form.phone2.value);
-          const zipDigits = digitsOnly(form.zip.value);  // נרמול ZIP
+          const zipDigits = digitsOnly(form.zip.value);
 
           const errs = [];
           if (phone.length < 10) errs.push("Please enter a valid phone number.");
           if (phone !== phone2)  errs.push("Phone numbers do not match.");
           if (!(zipDigits.length === 5 || zipDigits.length === 9))
             errs.push("Please enter a valid ZIP code (5 digits).");
-          if (!form.querySelector('input[name=\"services[]\"]:checked'))
+          if (!form.querySelector('input[name="services[]"]:checked'))
             errs.push("Select at least one service.");
           try {
             if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0)
