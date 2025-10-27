@@ -16,7 +16,6 @@
     body.contact.page-contact .cta-sticky {
       display: none !important; visibility: hidden !important; pointer-events: none !important;
     }
-    /* Functional hardening only (no visual change) */
     body.contact.page-contact .contact-form { position: relative; }
     body.contact.page-contact .contact-form .btn-submit {
       pointer-events: auto !important; position: relative; z-index: 9999; touch-action: manipulation;
@@ -60,17 +59,18 @@
     <div>
       <h2>Send a Message</h2>
 
-      <!-- action = GAS (fallback). AJAX הוא הזרם הראשי -->
       <form id="contactForm"
             action="https://script.google.com/macros/s/AKfycbwfbbkSymV1D4zLt9RTngC-TiWLsMDHXCy4g1AMFdiND2_QMgIJTjXJMZfpvxpb-qLb/exec"
             method="POST"
             class="contact-form"
             novalidate>
-        <!-- Honeypot נגד בוטים (ה־Code.gs שלך בודק name="company") -->
+        <!-- Honeypot (anti-bot) - field name must be "company" -->
         <input type="text" name="company" tabindex="-1" autocomplete="off"
                style="position:absolute;left:-5000px;opacity:0;height:0;width:0;">
-        <!-- זמן התחלה ללוגיקת anti-bot -->
+        <!-- Hidden meta -->
         <input type="hidden" name="_started_at" id="_started_at">
+        <input type="hidden" name="_ua" id="_ua">
+        <input type="hidden" name="_url" id="_url">
 
         <div class="grid two">
           <div>
@@ -93,7 +93,7 @@
             <label for="zip">ZIP code *</label>
             <input id="zip" name="zip" type="text"
                    inputmode="numeric" dir="ltr" autocomplete="postal-code"
-                   required placeholder="e.g. 10314" />
+                   required placeholder="e.g. 10314 or 10314-5022" />
           </div>
         </div>
 
@@ -109,7 +109,7 @@
           <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)..."></textarea>
         </div>
 
-        <!-- reCAPTCHA v2 checkbox (אופציונלי – אם תרצה להשאיר בדף) -->
+        <!-- reCAPTCHA v2 checkbox (אופציונלי להשאיר) -->
         <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
 
         <button type="submit"
@@ -122,8 +122,10 @@
       <script>
       (function(){
         const form = document.getElementById("contactForm");
-        // רושם זמן התחלה (לוגיקת anti-bot בצד השרת אם תרצה בעתיד)
+        // hidden meta
         document.getElementById("_started_at").value = Date.now();
+        document.getElementById("_ua").value  = navigator.userAgent || "";
+        document.getElementById("_url").value = location.href || "";
 
         function digitsOnly(v){ return (v || "").replace(/\D+/g, ""); }
 
@@ -136,10 +138,9 @@
           if (phone.length < 10) errs.push("Please enter a valid phone number.");
           if (phone !== phone2)  errs.push("Phone numbers do not match.");
           if (!(zipDigits.length === 5 || zipDigits.length === 9))
-            errs.push("Please enter a valid ZIP code (5 digits).");
+            errs.push("Please enter a valid ZIP code (5 or 9 digits).");
           if (!form.querySelector('input[name="services[]"]:checked'))
             errs.push("Select at least one service.");
-          // reCAPTCHA בצד לקוח (אם נשאר): לא חובה כי ה-Code.gs שלך בגרסה הזאת לא מאמת
           try {
             if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0)
               errs.push("Please confirm you're not a robot.");
@@ -154,23 +155,19 @@
           if (errs.length) { alert(errs.join("\\n")); return; }
 
           const fd = new FormData(form);
-          // אם השארת reCAPTCHA בעמוד, נעביר את הטוקן (גם אם Code.gs הנוכחי לא בודק אותו)
           try {
             const token = (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : "";
             if (token) fd.append("g-recaptcha-response", token);
           } catch(_) {}
 
-          // מקור הפנייה (יכול לסייע בלוג שלך בעתיד)
           fd.append("_ref", document.referrer || location.href);
 
           try {
             const res = await fetch(form.action, { method: "POST", body: fd });
-            // בגרסה המינימלית Code.gs מחזיר טקסט; נבדוק הצלחה ע"י סטטוס
             if (res.ok) {
               window.location.href = "thanks.html";
             } else {
-              // fallback לנייטיב
-              form.submit();
+              form.submit(); // graceful fallback
             }
           } catch (err) {
             try { form.submit(); }
