@@ -1,0 +1,11 @@
+/* Contact page – make submit full-width and keep modern look */
+
+/* submit: full width on contact */
+body.page-contact .contact-form .btn-submit,
+body.page-contact .contact-form button[type=submit]{
+  width:100% !important;
+  display:block !important;
+}
+
+/* keep spacing under recaptcha */
+body.page-contact .g-recaptcha{ margin-bottom:12px !important; }
