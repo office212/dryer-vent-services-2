@@ -8,23 +8,18 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/css/contact-fixes.css" />
   <style>
-    /* Hide sticky only on contact page */
+    /* Hide sticky only on contact page (no visual change elsewhere) */
     body.contact.page-contact .mobile-cta,
     body.contact.page-contact #sticky-bar,
     body.contact.page-contact .sticky-bar,
     body.contact.page-contact .footer-sticky,
     body.contact.page-contact .cta-sticky {
-      display: none !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
+      display: none !important; visibility: hidden !important; pointer-events: none !important;
     }
-    /* Functional hardening only – no visual change */
+    /* Functional hardening only (no visual change) */
     body.contact.page-contact .contact-form { position: relative; }
     body.contact.page-contact .contact-form .btn-submit {
-      pointer-events: auto !important;
-      position: relative;
-      z-index: 99999;
-      touch-action: manipulation;
+      pointer-events: auto !important; position: relative; z-index: 9999; touch-action: manipulation;
     }
   </style>
 </head>
@@ -65,16 +60,15 @@
     <div>
       <h2>Send a Message</h2>
 
-      <!-- Native submit as the primary path (no preventDefault) -->
+      <!-- action=GAS (fallback); ראשי הוא AJAX -->
       <form id="contactForm"
-            action="https://formsubmit.co/office%40dryer-ventservices.com"
+            action="https://script.google.com/macros/s/AKfycbzkG8UpYHv9t3wS0mrt5a7olrxTPL6qD-pJWky1S4XFN0nQ9seV6FJSefA0O0aE_7aT/exec"
             method="POST"
             class="contact-form"
-            onsubmit="return safeValidate(this)">
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value="https://dryer-ventservices.com/thanks.html" />
-        <input type="hidden" name="_subject" value="New Dryer Vent Services Request" />
+            novalidate>
+        <!-- Honeypot (anti-bot) -->
+        <input type="text" name="botcheck" tabindex="-1" autocomplete="off"
+               style="position:absolute;left:-5000px;opacity:0;height:0;width:0;">
 
         <div class="grid two">
           <div>
@@ -111,9 +105,9 @@
           <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)..."></textarea>
         </div>
 
+        <!-- reCAPTCHA v2 checkbox (site key שנתת) -->
         <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
 
-        <!-- Force-submit even if some listeners failed -->
         <button type="submit"
                 class="btn btn-primary btn-submit"
                 onclick="this.form && this.form.requestSubmit && this.form.requestSubmit();">
@@ -121,36 +115,63 @@
         </button>
       </form>
 
-      <!-- Minimal, bulletproof validation. Never prevents submission due to JS errors. -->
+      <!-- JS: ולידציה קלה + שליחה ל-GAS + הפניה ל-thanks -->
       <script>
-        function safeValidate(form) {
+      (function(){
+        const form = document.getElementById("contactForm");
+
+        function digitsOnly(v){ return (v||"").replace(/\\D+/g,""); }
+        function validate() {
+          const phone  = digitsOnly(form.phone.value);
+          const phone2 = digitsOnly(form.phone2.value);
+          const zip    = (form.zip.value || "").trim();
+          const errs = [];
+          if (phone.length < 10) errs.push("Please enter a valid phone number.");
+          if (phone !== phone2)  errs.push("Phone numbers do not match.");
+          if (!/^\\d{5}(-\\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP code (5 digits).");
+          if (!form.querySelector('input[name=\"services[]\"]:checked')) errs.push("Select at least one service.");
           try {
-            const digitsOnly = v => (v || "").replace(/\D+/g, "");
-            const phone  = digitsOnly(form.phone.value);
-            const phone2 = digitsOnly(form.phone2.value);
-            const zip    = (form.zip.value || "").trim();
-
-            const errs = [];
-            if (phone.length < 10) errs.push("Please enter a valid phone number.");
-            if (phone !== phone2)  errs.push("Phone numbers do not match.");
-            if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP code (5 digits).");
-            if (!form.querySelector('input[name="services[]"]:checked')) errs.push("Select at least one service.");
-            try {
-              if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) {
-                errs.push("Please confirm you're not a robot.");
-              }
-            } catch (_) {}
-
-            if (errs.length) {
-              alert(errs.join("\n"));
-              return false; // block only on real validation issues
+            if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) {
+              errs.push("Please confirm you're not a robot.");
             }
-          } catch (e) {
-            // In case any JS error happens, do NOT block submission
-            return true;
-          }
-          return true; // allow native submit
+          } catch(_) {}
+          return errs;
         }
+
+        form.addEventListener("submit", async function(e){
+          e.preventDefault(); // AJAX ראשי; אם JS ייפול – ה-action יגבה
+
+          const errs = validate();
+          if (errs.length) { alert(errs.join("\\n")); return; }
+
+          const fd = new FormData(form);
+          // append captcha token
+          try {
+            const token = (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : "";
+            if (token) fd.append("g-recaptcha-response", token);
+          } catch(_) {}
+
+          // referrer for context
+          fd.append("_ref", document.referrer || location.href);
+
+          try {
+            const res = await fetch(form.action, { method: "POST", body: fd });
+            const data = await res.json().catch(()=>({}));
+            if (res.ok && data && data.success) {
+              window.location.href = (data.redirect || "thanks.html");
+            } else {
+              // fallback לנייטיב
+              form.submit();
+            }
+          } catch (err) {
+            // fallback לנייטיב
+            try { form.submit(); }
+            catch (e2) {
+              alert("There was a problem sending your request.\\nPlease call 347-244-9382 or email office@dryer-ventservices.com.");
+            }
+          }
+        }, { passive: false });
+      })();
       </script>
     </div>
 
