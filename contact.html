@@ -115,6 +115,7 @@
           const zip = form.zip.value.trim();
           const errs = [];
 
+          // Basic validation logic
           if (phone.length < 10) errs.push('Please enter a valid phone number.');
           if (phone !== phone2) errs.push('Phone numbers do not match.');
           if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push('Please enter a valid ZIP code (5 digits).');
@@ -123,10 +124,10 @@
             errs.push("Please confirm you're not a robot.");
 
           if (errs.length) {
-            alert(errs.join("\\n"));
+            alert(errs.join("\n"));
             return false;
           }
-          // allow normal submission
+          // Let the form submit normally
           return true;
         }
       </script>
