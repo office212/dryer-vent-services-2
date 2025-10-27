@@ -40,7 +40,7 @@
     <h2>Send a Message</h2>
 
     <form id="contactForm"
-          action="https://script.google.com/macros/s/AKfycbxcT7kuq1bILMFxxauumlI49FDRnkKntbS0ja4sMvWSjjY9j71OAmXcvj7E7cxFnt1X/exec?v=v8"
+          action="https://script.google.com/macros/s/AKfycbxtO2NHureKA-aTdFzaKnDgJq-nLK8YOZZsj-U5MNVmpWeeD7FapZV8x8Y8rj-vPE9z/exec?v=v9"
           method="POST" class="contact-form" novalidate>
       <!-- Honeypot -->
       <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px;opacity:0;height:0;width:0;">
@@ -130,8 +130,7 @@
 
           try {
             const res = await fetch(form.action, { method: "POST", body: fd, redirect: "follow" });
-            if (res.ok) { window.location.href = "thanks.html"; }
-            else { window.location.href = "thanks.html"; } // fallback UX
+            window.location.href = "thanks.html";
           } catch (_) {
             window.location.href = "thanks.html";
           }
