@@ -4,96 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact Us | Dryer Vent Services</title>
-  <meta name="description" content="Get a fast, friendly quote. Contact Dryer Vent Services for lint removal, vent repair and new installations." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="assets/css/contact-fixes.css" />
+  <meta name="description" content="Get a fast, friendly quote. Contact Dryer Vent Services for lint removal, vent repair and new installations.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/css/contact-fixes.css">
   <style>
     body.contact.page-contact .mobile-cta,
     body.contact.page-contact #sticky-bar,
     body.contact.page-contact .sticky-bar,
     body.contact.page-contact .footer-sticky,
     body.contact.page-contact .cta-sticky { display:none!important;visibility:hidden!important;pointer-events:none!important; }
-    body.contact.page-contact .contact-form .btn-submit { pointer-events:auto!important; position:relative; z-index:9999; touch-action:manipulation; }
+    .btn-submit[disabled]{opacity:.65;cursor:not-allowed}
   </style>
 </head>
 <body class="contact page-contact" data-page="contact">
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="Dryer Vent Services logo" class="logo" />
-        <div class="brand-text">
-          <strong>Dryer Vent Services</strong>
-          <span>Cleaning - Repairs - Installations</span>
-        </div>
-      </a>
-      <nav id="site-nav" class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="reviews.html">Reviews</a>
-        <a href="about.html">About</a>
-        <a href="areas.html">Service Areas</a>
-        <a class="cta" href="contact.html">Contact Us</a>
-      </nav>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    </div>
-  </header>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Dryer Vent Services logo" class="logo">
+      <div class="brand-text"><strong>Dryer Vent Services</strong><span>Cleaning - Repairs - Installations</span></div>
+    </a>
+    <nav id="site-nav" class="site-nav">
+      <a href="index.html">Home</a><a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a><a href="reviews.html">Reviews</a>
+      <a href="about.html">About</a><a href="areas.html">Service Areas</a>
+      <a class="cta" href="contact.html">Contact Us</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <section class="page-hero">
-    <div class="container">
-      <h1>Contact Us</h1>
-      <p>All fields are required.</p>
-    </div>
-  </section>
+<section class="page-hero"><div class="container"><h1>Contact Us</h1><p>All fields are required.</p></div></section>
 
-  <section class="section container two-col">
-    <div>
-      <h2>Send a Message</h2>
+<section class="section container two-col">
+  <div>
+    <h2>Send a Message</h2>
 
-      <form id="contactForm"
-            action="https://script.google.com/macros/s/AKfycbxcT7kuq1bILMFxxauumlI49FDRnkKntbS0ja4sMvWSjjY9j71OAmXcvj7E7cxFnt1X/exec?v=v7"
-            method="POST"
-            class="contact-form"
-            novalidate>
-        <!-- Honeypot -->
-        <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px;opacity:0;height:0;width:0;">
-        <!-- hidden meta -->
-        <input type="hidden" name="_started_at" id="_started_at">
-        <input type="hidden" name="_ua" id="_ua">
-        <input type="hidden" name="_url" id="_url">
-        <input type="hidden" name="_ip" id="_ip">
+    <form id="contactForm"
+          action="https://script.google.com/macros/s/AKfycbxcT7kuq1bILMFxxauumlI49FDRnkKntbS0ja4sMvWSjjY9j71OAmXcvj7E7cxFnt1X/exec?v=v8"
+          method="POST" class="contact-form" novalidate>
+      <!-- Honeypot -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px;opacity:0;height:0;width:0;">
+      <!-- Hidden meta -->
+      <input type="hidden" name="_started_at" id="_started_at">
+      <input type="hidden" name="_ua" id="_ua">
+      <input type="hidden" name="_url" id="_url">
+      <input type="hidden" name="_ip" id="_ip">
+      <input type="hidden" name="_tz" id="_tz">
+      <input type="hidden" name="_lang" id="_lang">
+      <input type="hidden" name="_token" id="_token">
 
-        <div class="grid two">
-          <div><label for="name">Full Name *</label><input id="name" name="name" type="text" required /></div>
-          <div><label for="email">Email *</label><input id="email" name="email" type="email" required /></div>
-          <div><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" inputmode="tel" required placeholder="+1 (___) ___-____" /></div>
-          <div><label for="phone2">Confirm Phone *</label><input id="phone2" name="phone_confirm" type="tel" inputmode="tel" required placeholder="Re-enter phone" /></div>
-          <div><label for="zip">ZIP code *</label><input id="zip" name="zip" type="text" inputmode="numeric" dir="ltr" autocomplete="postal-code" required placeholder="e.g. 10314 or 10314-5022" /></div>
-        </div>
+      <div class="grid two">
+        <div><label for="name">Full Name *</label><input id="name" name="name" type="text" required></div>
+        <div><label for="email">Email *</label><input id="email" name="email" type="email" required></div>
+        <div><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" inputmode="tel" required placeholder="+1 (___) ___-____"></div>
+        <div><label for="phone2">Confirm Phone *</label><input id="phone2" name="phone_confirm" type="tel" inputmode="tel" required placeholder="Re-enter phone"></div>
+        <div><label for="zip">ZIP code *</label><input id="zip" name="zip" type="text" inputmode="numeric" dir="ltr" autocomplete="postal-code" required placeholder="e.g. 10314 or 10314-5022"></div>
+      </div>
 
-        <fieldset class="services-fieldset">
-          <legend>Which service do you need? (select at least one) *</legend>
-          <label class="chk"><input type="checkbox" name="services[]" value="Cleaning" /> Dryer Vent Cleaning</label>
-          <label class="chk"><input type="checkbox" name="services[]" value="Repair" /> Repair</label>
-          <label class="chk"><input type="checkbox" name="services[]" value="Installation" /> New Installation</label>
-        </fieldset>
+      <fieldset class="services-fieldset">
+        <legend>Which service do you need? (select at least one) *</legend>
+        <label class="chk"><input type="checkbox" name="services[]" value="Cleaning"> Dryer Vent Cleaning</label>
+        <label class="chk"><input type="checkbox" name="services[]" value="Repair"> Repair</label>
+        <label class="chk"><input type="checkbox" name="services[]" value="Installation"> New Installation</label>
+      </fieldset>
 
-        <div><label for="message">How can we help? (optional)</label><textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)..."></textarea></div>
+      <div><label for="message">How can we help? (optional)</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)..."></textarea>
+      </div>
 
-        <!-- reCAPTCHA -->
-        <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
+      <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
 
-        <button type="submit" class="btn btn-primary btn-submit" onclick="this.form && this.form.requestSubmit && this.form.requestSubmit();">Send Request</button>
-      </form>
+      <button type="submit" class="btn btn-primary btn-submit">Send Request</button>
+    </form>
 
-      <script>
+    <script>
       (function(){
         const form = document.getElementById("contactForm");
+        const btn  = form.querySelector(".btn-submit");
+
+        // meta
         document.getElementById("_started_at").value = Date.now();
         document.getElementById("_ua").value  = navigator.userAgent || "";
         document.getElementById("_url").value = location.href || "";
+        document.getElementById("_tz").value  = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        document.getElementById("_lang").value = navigator.language || "";
 
-        // capture client public IP (for reliable geo on Apps Script)
+        // unique token for de-dup on server
+        const token = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2,10);
+        document.getElementById("_token").value = token;
+
+        // client IP for reliable geo
         fetch("https://api.ipify.org?format=json")
           .then(r => r.json()).then(d => { document.getElementById("_ip").value = d.ip || ""; })
           .catch(()=>{});
@@ -107,57 +107,61 @@
           if (phone.length < 10) errs.push("Please enter a valid phone number.");
           if (phone !== phone2)  errs.push("Phone numbers do not match.");
           if (!(zipDigits.length === 5 || zipDigits.length === 9)) errs.push("Please enter a valid ZIP code (5 or 9 digits).");
-          if (!form.querySelector('input[name=\"services[]\"]:checked')) errs.push("Select at least one service.");
+          if (!form.querySelector('input[name="services[]"]:checked')) errs.push("Select at least one service.");
           try { if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) errs.push("Please confirm you're not a robot."); } catch(_) {}
           return errs;
         }
 
+        // prevent double submit by locking button
+        let sending = false;
         form.addEventListener("submit", async function(e){
           e.preventDefault();
+          if (sending) return;
           const errs = validate();
-          if (errs.length) { alert(errs.join("\\n")); return; }
+          if (errs.length){ alert(errs.join("\n")); return; }
+
+          sending = true;
+          btn.setAttribute("disabled","disabled");
+          btn.textContent = "Sending…";
+
           const fd = new FormData(form);
           try { const token = (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : ""; if (token) fd.append("g-recaptcha-response", token); } catch(_) {}
           fd.append("_ref", document.referrer || location.href);
+
           try {
-            const res = await fetch(form.action, { method: "POST", body: fd });
+            const res = await fetch(form.action, { method: "POST", body: fd, redirect: "follow" });
             if (res.ok) { window.location.href = "thanks.html"; }
-            else { form.submit(); }
-          } catch (err) { try { form.submit(); } catch (e2) { alert("There was a problem sending your request.\\nPlease call 347-244-9382 or email office@dryer-ventservices.com."); } }
-        }, { passive: false });
+            else { window.location.href = "thanks.html"; } // fallback UX
+          } catch (_) {
+            window.location.href = "thanks.html";
+          }
+        }, { passive:false });
       })();
-      </script>
-    </div>
+    </script>
+  </div>
 
-    <div class="card contact-alt">
-      <h3>Other ways to contact us</h3>
-      <div class="contact-buttons">
-        <a class="btn" href="tel:+13472449382">Call</a>
-        <a class="btn" href="mailto:office@dryer-ventservices.com">Email</a>
-      </div>
+  <div class="card contact-alt">
+    <h3>Other ways to contact us</h3>
+    <div class="contact-buttons">
+      <a class="btn" href="tel:+13472449382">Call</a>
+      <a class="btn" href="mailto:office@dryer-ventservices.com">Email</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <h4>Dryer Vent Services</h4>
-        <p>Dryer Vent Cleaning - Repairs - Installations</p>
-      </div>
-      <div>
-        <ul class="contact-list">
-          <li><a href="tel:+13472449382">347-244-9382</a></li>
-          <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
-        </ul>
-      </div>
-      <div class="footer-cta">
-        <a class="btn btn--primary" href="contact.html">Book Now</a>
-      </div>
-    </div>
-    <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
-  </footer>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div><h4>Dryer Vent Services</h4><p>Dryer Vent Cleaning - Repairs - Installations</p></div>
+    <div><ul class="contact-list">
+      <li><a href="tel:+13472449382">347-244-9382</a></li>
+      <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
+    </ul></div>
+    <div class="footer-cta"><a class="btn btn--primary" href="contact.html">Book Now</a></div>
+  </div>
+  <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
+</footer>
 
-  <script src="script.js" defer></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="script.js" defer></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
