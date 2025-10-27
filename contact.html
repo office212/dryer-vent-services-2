@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="assets/css/contact-fixes.css" />
   <style>
-    /* Hide sticky only on contact page (no visual change elsewhere) */
+    /* Hide sticky only on contact page */
     body.contact.page-contact .mobile-cta,
     body.contact.page-contact #sticky-bar,
     body.contact.page-contact .sticky-bar,
@@ -18,13 +18,13 @@
       visibility: hidden !important;
       pointer-events: none !important;
     }
-    /* Functional hardening only (no visual change) */
+    /* Functional hardening only – no visual change */
     body.contact.page-contact .contact-form { position: relative; }
     body.contact.page-contact .contact-form .btn-submit {
       pointer-events: auto !important;
       position: relative;
-      z-index: 9999; /* above any accidental overlays/iframes */
-      touch-action: manipulation; /* improve mobile tap */
+      z-index: 99999;
+      touch-action: manipulation;
     }
   </style>
 </head>
@@ -65,12 +65,12 @@
     <div>
       <h2>Send a Message</h2>
 
-      <!-- action serves as final fallback; primary flow uses AJAX -->
+      <!-- Native submit as the primary path (no preventDefault) -->
       <form id="contactForm"
             action="https://formsubmit.co/office%40dryer-ventservices.com"
             method="POST"
             class="contact-form"
-            novalidate>
+            onsubmit="return safeValidate(this)">
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_next" value="https://dryer-ventservices.com/thanks.html" />
@@ -113,7 +113,7 @@
 
         <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
 
-        <!-- Force-submit on tap even if some JS listener failed to attach -->
+        <!-- Force-submit even if some listeners failed -->
         <button type="submit"
                 class="btn btn-primary btn-submit"
                 onclick="this.form && this.form.requestSubmit && this.form.requestSubmit();">
@@ -121,70 +121,36 @@
         </button>
       </form>
 
-      <!-- Robust submit: AJAX (two URLs) -> fallback to native action -->
+      <!-- Minimal, bulletproof validation. Never prevents submission due to JS errors. -->
       <script>
-      (function() {
-        const form = document.getElementById("contactForm");
-
-        function digitsOnly(v){ return (v||"").replace(/\D+/g,""); }
-        function validate() {
-          const phone  = digitsOnly(form.phone.value);
-          const phone2 = digitsOnly(form.phone2.value);
-          const zip    = (form.zip.value || "").trim();
-          const errs = [];
-          if (phone.length < 10) errs.push("Please enter a valid phone number.");
-          if (phone !== phone2)  errs.push("Phone numbers do not match.");
-          if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP code (5 digits).");
-          if (!form.querySelector('input[name="services[]"]:checked')) errs.push("Select at least one service.");
+        function safeValidate(form) {
           try {
-            if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) {
-              errs.push("Please confirm you're not a robot.");
+            const digitsOnly = v => (v || "").replace(/\D+/g, "");
+            const phone  = digitsOnly(form.phone.value);
+            const phone2 = digitsOnly(form.phone2.value);
+            const zip    = (form.zip.value || "").trim();
+
+            const errs = [];
+            if (phone.length < 10) errs.push("Please enter a valid phone number.");
+            if (phone !== phone2)  errs.push("Phone numbers do not match.");
+            if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP code (5 digits).");
+            if (!form.querySelector('input[name="services[]"]:checked')) errs.push("Select at least one service.");
+            try {
+              if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) {
+                errs.push("Please confirm you're not a robot.");
+              }
+            } catch (_) {}
+
+            if (errs.length) {
+              alert(errs.join("\n"));
+              return false; // block only on real validation issues
             }
-          } catch(_) {}
-          return errs;
-        }
-
-        async function tryFetch(url, fd, timeoutMs = 12000) {
-          const ctrl = new AbortController();
-          const to = setTimeout(() => ctrl.abort(), timeoutMs);
-          try {
-            const res = await fetch(url, {
-              method: "POST",
-              body: fd,
-              headers: { "Accept": "application/json" },
-              signal: ctrl.signal
-            });
-            clearTimeout(to);
-            if (!res.ok) throw new Error("Bad status " + res.status);
-            return true;
           } catch (e) {
-            clearTimeout(to);
-            return false;
+            // In case any JS error happens, do NOT block submission
+            return true;
           }
+          return true; // allow native submit
         }
-
-        form.addEventListener("submit", async function(e) {
-          e.preventDefault();
-
-          const errs = validate();
-          if (errs.length) { alert(errs.join("\n")); return; }
-
-          const fd = new FormData(form);
-
-          // 1) AJAX not-encoded
-          let ok = await tryFetch("https://formsubmit.co/ajax/office@dryer-ventservices.com", fd);
-          // 2) AJAX encoded
-          if (!ok) ok = await tryFetch("https://formsubmit.co/ajax/office%40dryer-ventservices.com", fd);
-
-          if (ok) { window.location.href = "thanks.html"; return; }
-
-          // 3) Native fallback (in case AJAX blocked)
-          try { form.submit(); }
-          catch (e) {
-            alert("There was a problem sending your request.\nPlease call 347-244-9382 or email office@dryer-ventservices.com.");
-          }
-        }, { passive: false }); // ensure preventDefault works on mobile
-      })();
       </script>
     </div>
 
