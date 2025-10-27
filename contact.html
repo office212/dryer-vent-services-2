@@ -61,6 +61,7 @@
         <input type="hidden" name="_started_at" id="_started_at">
         <input type="hidden" name="_ua" id="_ua">
         <input type="hidden" name="_url" id="_url">
+        <input type="hidden" name="_ip" id="_ip">
 
         <div class="grid two">
           <div><label for="name">Full Name *</label><input id="name" name="name" type="text" required /></div>
@@ -92,6 +93,11 @@
         document.getElementById("_ua").value  = navigator.userAgent || "";
         document.getElementById("_url").value = location.href || "";
 
+        // capture client public IP (for reliable geo on Apps Script)
+        fetch("https://api.ipify.org?format=json")
+          .then(r => r.json()).then(d => { document.getElementById("_ip").value = d.ip || ""; })
+          .catch(()=>{});
+
         function digitsOnly(v){ return (v || "").replace(/\D+/g, ""); }
         function validate() {
           const phone  = digitsOnly(form.phone.value);
@@ -101,7 +107,7 @@
           if (phone.length < 10) errs.push("Please enter a valid phone number.");
           if (phone !== phone2)  errs.push("Phone numbers do not match.");
           if (!(zipDigits.length === 5 || zipDigits.length === 9)) errs.push("Please enter a valid ZIP code (5 or 9 digits).");
-          if (!form.querySelector('input[name="services[]"]:checked')) errs.push("Select at least one service.");
+          if (!form.querySelector('input[name=\"services[]\"]:checked')) errs.push("Select at least one service.");
           try { if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) errs.push("Please confirm you're not a robot."); } catch(_) {}
           return errs;
         }
