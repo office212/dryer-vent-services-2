@@ -57,7 +57,12 @@
     <div>
       <h2>Send a Message</h2>
 
-      <form id="contactForm" method="POST" class="contact-form">
+      <!-- שים לב: action מוגדר לגיבוי בלבד; ברירת המחדל שליחה ב-AJAX -->
+      <form id="contactForm"
+            action="https://formsubmit.co/office%40dryer-ventservices.com"
+            method="POST"
+            class="contact-form"
+            novalidate>
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_next" value="https://dryer-ventservices.com/thanks.html" />
@@ -102,45 +107,77 @@
         <button type="submit" class="btn btn-primary btn-submit">Send Request</button>
       </form>
 
-      <!-- ✅ תיקון שליחת הטופס -->
+      <!-- שליחה מחוזקת: AJAX -> גרסה מקודדת/לא מקודדת -> נפילה לגיבוי action -->
       <script>
       (function() {
         const form = document.getElementById("contactForm");
 
+        function digitsOnly(v){ return (v||"").replace(/\D+/g,""); }
+        function validate() {
+          const phone  = digitsOnly(form.phone.value);
+          const phone2 = digitsOnly(form.phone2.value);
+          const zip    = (form.zip.value || "").trim();
+          const errs = [];
+          if (phone.length < 10) errs.push("Please enter a valid phone number.");
+          if (phone !== phone2)  errs.push("Phone numbers do not match.");
+          if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP code (5 digits).");
+          if (!form.querySelector('input[name="services[]"]:checked')) errs.push("Select at least one service.");
+          try {
+            if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) {
+              errs.push("Please confirm you're not a robot.");
+            }
+          } catch(_) {}
+          return errs;
+        }
+
+        async function tryFetch(url, fd, timeoutMs = 12000) {
+          const ctrl = new AbortController();
+          const to = setTimeout(() => ctrl.abort(), timeoutMs);
+          try {
+            const res = await fetch(url, {
+              method: "POST",
+              body: fd,
+              headers: { "Accept": "application/json" },
+              signal: ctrl.signal
+            });
+            clearTimeout(to);
+            if (!res.ok) throw new Error("Bad status " + res.status);
+            return true;
+          } catch (e) {
+            clearTimeout(to);
+            return false;
+          }
+        }
+
         form.addEventListener("submit", async function(e) {
           e.preventDefault();
 
-          const phone = form.phone.value.replace(/\D+/g, '');
-          const phone2 = form.phone2.value.replace(/\D+/g, '');
-          const zip = form.zip.value.trim();
-          const errs = [];
-
-          if (phone.length < 10) errs.push("Please enter a valid phone number.");
-          if (phone !== phone2) errs.push("Phone numbers do not match.");
-          if (!/^\d{5}(-\d{4})?$/.test(zip)) errs.push("Please enter a valid ZIP code (5 digits).");
-          if (!form.querySelector('input[name=\"services[]\"]:checked')) errs.push("Select at least one service.");
-          if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0)
-            errs.push("Please confirm you're not a robot.");
-
+          const errs = validate();
           if (errs.length) {
-            alert(errs.join("\\n"));
+            alert(errs.join("\n"));
             return;
           }
 
-          try {
-            const fd = new FormData(form);
-            const res = await fetch("https://formsubmit.co/ajax/office@dryer-ventservices.com", {
-              method: "POST",
-              body: fd,
-              headers: { "Accept": "application/json" }
-            });
+          // 1) AJAX ניסיון ראשון (לא מקודד)
+          const fd = new FormData(form);
+          let ok = await tryFetch("https://formsubmit.co/ajax/office@dryer-ventservices.com", fd);
 
-            if (!res.ok) throw new Error("Network error");
+          // 2) אם נכשל, ניסיון שני (מקודד %40)
+          if (!ok) {
+            ok = await tryFetch("https://formsubmit.co/ajax/office%40dryer-ventservices.com", fd);
+          }
 
-            // הפניה לדף תודה
+          if (ok) {
+            // הצליח: הפניה ל-thanks
             window.location.href = "thanks.html";
-          } catch (err) {
-            alert("There was a problem sending your request.\\nPlease call 347-244-9382 or email office@dryer-ventservices.com.");
+            return;
+          }
+
+          // 3) נפילה לגיבוי — שליחה רגילה דרך action
+          try {
+            form.submit();
+          } catch (e) {
+            alert("There was a problem sending your request.\nPlease call 347-244-9382 or email office@dryer-ventservices.com.");
           }
         });
       })();
