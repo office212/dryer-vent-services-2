@@ -27,6 +27,47 @@
 <meta property="og:description" content="Professional dryer vent cleaning, repairs and new installations. Serving Staten Island and the greater New York &amp; New Jersey area. Call 347-244-9382.">
 <meta name="robots" content="index, follow">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "url": "https://dryer-ventservices.com/", "email": "office@dryer-ventservices.com", "telephone": "+13472449382", "areaServed": ["Staten Island NY", "New York", "New Jersey"], "sameAs": [], "image": "https://dryer-ventservices.com/assets/logo.png"}</script>
+  <link rel="stylesheet" href="assets/css/cards-override-200.css">
+  <link rel="stylesheet" href="assets/css/before-after.css">
+<style>
+/* === Before/After Carousel (portrait 2:3, transparent controls) === */
+.ba-carousel { position: relative; max-width: 720px; margin: 0 auto; }
+.ba-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow: hidden; scroll-snap-type: x mandatory; }
+.ba-slide { scroll-snap-align: center; padding: 0.5rem; }
+.ba-compare { position: relative; width: 100%; aspect-ratio: 2 / 3; border-radius: 18px; overflow: hidden; background: #f4f6f8; }
+.ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.after-wrap { position: absolute; inset: 0; overflow: hidden; }
+.ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+.ba-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: transparent; border: none; cursor: pointer; }
+.ba-nav.prev { left: 6px; }
+.ba-nav.next { right: 6px; }
+/* arrows using CSS only, no background */
+.ba-nav::before { content: ""; display: block; width: 0.6em; height: 0.6em; border-top: 3px solid #0e3352; border-right: 3px solid #0e3352; margin: auto; transform: rotate(45deg); }
+.ba-nav.prev::before { transform: rotate(-135deg); }
+.ba-nav.next::before { transform: rotate(45deg); }
+/* thin center divider line */
+.ba-compare::after { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,0.9); pointer-events:none; }
+@media (min-width: 768px) { .ba-carousel { max-width: 860px; } }
+</style>
+<style>
+/* === DVS beta 1.6: Before/After slider overrides === */
+.ba-gallery { position: relative; }
+.ba-gallery .ba-frame { position: relative; width: 100%; aspect-ratio: 2 / 3; border-radius: 18px; overflow: hidden; background:#f7f9fc; }
+@media (min-width: 768px){ .ba-gallery .ba-frame { aspect-ratio: 2 / 3; } }
+.ba-gallery .ba-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; transform: none !important; }
+.ba-gallery .ba-before { clip-path: inset(0 50% 0 0); }
+.ba-gallery .ba-after  { clip-path: inset(0 0 0 50%); }
+.ba-gallery .ba-handle { position:absolute; top:50%; left:50%; width:56px; height:56px; margin:-28px 0 0 -28px;
+  border:3px solid rgba(255,255,255,0.95); background: rgba(255,255,255,0.08); border-radius:50%; backdrop-filter: blur(2px); z-index:5; }
+.ba-gallery .ba-track  { position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,0.9); transform: translateX(-1px); z-index:4; }
+.ba-gallery .ba-arrow { position:absolute; top:50%; transform:translateY(-50%); width:56px; height:56px; border-radius:50%;
+  border:3px solid rgba(255,255,255,0.95); background: rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; z-index:6; }
+.ba-gallery .ba-arrow svg { width:22px; height:22px; fill:#0E2A44; }
+.ba-gallery .ba-prev { left: -18px; }  /* nudge to the outside rim */
+.ba-gallery .ba-next { right: -18px; }
+.ba-gallery .ba-labels { display:flex; justify-content:space-between; padding:12px 18px 0; font-weight:700; color:#0E2A44; }
+</style>
+  <link rel="stylesheet" href="assets/css/ba17.css">
 </head>
 <body data-page="home">
   <header class="site-header">
@@ -68,9 +109,8 @@
     <div class="cards-3">
       <div class="card media">
         <picture class="svc-picture">
-          <source srcset="https://images.unsplash.com/photo-1581093531379-1da63b3e31f0?q=80&w=1600&auto=format&fit=crop">
-          <img src="assets/photo-06.png" alt="Dryer vent cleaning" class="svc-img" loading="lazy" onerror="this.src='assets/photo-06.png'">
-        </picture>
+  <img src="assets/images/services/cards/card-cleaning.jpg?v=200" alt="Dryer vent cleaning" loading="eager" decoding="async">
+</picture>
         <div class="inner">
           <h3>Dryer Vent Cleaning</h3>
           <p>Remove lint buildup and restore safe airflow for better performance.</p>
@@ -78,9 +118,8 @@
       </div>
       <div class="card media">
         <picture class="svc-picture">
-          <source srcset="https://images.unsplash.com/photo-1603484477732-d8e3b4e66a3b?q=80&w=1600&auto=format&fit=crop">
-          <img src="assets/photo-07.png" alt="Dryer vent repairs" class="svc-img" loading="lazy" onerror="this.src='assets/photo-07.png'">
-        </picture>
+  <img src="assets/images/services/cards/card-repairs.jpg?v=200" alt="Dryer vent repairs" loading="eager" decoding="async">
+</picture>
         <div class="inner">
           <h3>Repairs and Replacements</h3>
           <p>Fix crushed/disconnected ducts and replace damaged exterior hoods.</p>
@@ -88,9 +127,8 @@
       </div>
       <div class="card media">
         <picture class="svc-picture">
-          <source srcset="https://images.unsplash.com/photo-1603484477973-3f5d3a6f5e9d?q=80&w=1600&auto=format&fit=crop">
-          <img src="assets/photo-08.png" alt="Dryer vent installation" class="svc-img" loading="lazy" onerror="this.src='assets/photo-08.png'">
-        </picture>
+  <img src="assets/images/services/cards/card-installations.jpg?v=200" alt="Dryer vent installations" loading="eager" decoding="async">
+</picture>
         <div class="inner">
           <h3>New Installations</h3>
           <p>Code-compliant routing and professional setups for homes and multi-family.</p>
@@ -102,9 +140,32 @@
 
   <section class="section section-alt fade-in">
     <div class="container">
-      <h2 class="center">Before and After</h2>
-      <p class="center muted">We will showcase real before/after from your jobs here once you upload the images.</p>
+      
+
+
+<section id="before-after" class="section">
+  <div class="container ba17">
+    <h2>Before and After</h2>
+    <div class="stage">
+      <button class="nav prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="nav next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="pair">
+        <img class="before" alt="Before">
+        <div class="afterWrap"><img class="after" alt="After"></div>
+      </div>
+      <div class="handle" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"></div>
+      <div class="knob" aria-hidden="true"></div>
     </div>
+    <div class="labels"><span>Before</span><span>After</span></div>
+    <div class="center" style="margin-top:14px">
+      <a href="gallery.html" class="btn">See more photos</a>
+    </div>
+  </div>
+</section>
+<script>window.__DVS_BA__ = [["assets/img/before-after/ba01-before.jpg", "assets/img/before-after/ba01-after.jpg"], ["assets/img/before-after/ba02-before.jpg", "assets/img/before-after/ba02-after.jpg"], ["assets/img/before-after/ba03-before.jpg", "assets/img/before-after/ba03-after.jpg"], ["assets/img/before-after/ba04-before.jpg", "assets/img/before-after/ba04-after.jpg"], ["assets/img/before-after/ba05-before.jpg", "assets/img/before-after/ba05-after.jpg"]];</script>
+
+
+
   </section>
 
   <section class="section container fade-in">
@@ -156,5 +217,83 @@
   </div>
   <script src="script.js" defer></script>
 <script src="beforeafter.js"></script>
+  <script src="assets/js/before-after.js"></script>
+<script>
+(function(){
+  function initCompare(root){
+    const range=root.querySelector('.ba-range');
+    const wrap=root.querySelector('.after-wrap');
+    range.addEventListener('input', e=>{
+      const v = Number(range.value);
+      wrap.style.width = v + '%';
+      root.style.setProperty('--pos', v + '%');
+    }, {passive: true});
+  }
+  document.querySelectorAll('.ba-compare').forEach(initCompare);
+
+  const carousels = document.querySelectorAll('.ba-carousel');
+  carousels.forEach(car => {
+    let idx = 0;
+    const track = car.querySelector('.ba-track');
+    function go(n){
+      const slides = track.children.length;
+      idx = (n + slides) % slides;
+      track.scrollTo({left: idx * track.clientWidth, behavior: 'smooth'});
+    }
+    car.querySelector('.prev').addEventListener('click', ()=>go(idx-1));
+    car.querySelector('.next').addEventListener('click', ()=>go(idx+1));
+  });
+})();
+</script>
+<script>
+// === DVS beta 1.6: BA slider ===
+(function(){
+  const wrap = document.getElementById('ba-gallery'); if(!wrap) return;
+  const frame = wrap.querySelector('.ba-frame');
+  const beforeImg = frame.querySelector('.ba-before');
+  const afterImg  = frame.querySelector('.ba-after');
+  const track  = frame.querySelector('.ba-track');
+  const handle = frame.querySelector('.ba-handle');
+  const prev   = frame.querySelector('.ba-prev');
+  const next   = frame.querySelector('.ba-next');
+  const pairs = (window.__DVS_BA_PAIRS || [
+    ['assets/before-after/ba1_before.jpg','assets/before-after/ba1_after.jpg'],
+    ['assets/before-after/ba2_before.jpg','assets/before-after/ba2_after.jpg'],
+    ['assets/before-after/ba3_before.jpg','assets/before-after/ba3_after.jpg'],
+    ['assets/before-after/ba4_before.jpg','assets/before-after/ba4_after.jpg'],
+    ['assets/before-after/ba5_before.jpg','assets/before-after/ba5_after.jpg']
+  ]);
+  let idx = 0;
+  function setPair(i){
+    idx = (i + pairs.length) % pairs.length;
+    beforeImg.src = pairs[idx][0];
+    afterImg.src  = pairs[idx][1];
+    setSplit(0.5);
+  }
+  function setSplit(p){
+    p = Math.max(0.05, Math.min(0.95, p));
+    beforeImg.style.clipPath = `inset(0 ${(1-p)*100}% 0 0)`;
+    afterImg.style.clipPath  = `inset(0 0 0 ${p*100}%)`;
+    const x = (p*100);
+    track.style.left = `${x}%`;
+    handle.style.left = `${x}%`;
+  }
+  let dragging = false;
+  function onPos(clientX){
+    const r = frame.getBoundingClientRect();
+    const p = (clientX - r.left) / r.width;
+    setSplit(p);
+  }
+  handle.addEventListener('pointerdown', e => { dragging = true; handle.setPointerCapture(e.pointerId); e.preventDefault(); });
+  window.addEventListener('pointermove', e => { if(dragging) onPos(e.clientX); });
+  window.addEventListener('pointerup',   e => { dragging = false; });
+  frame.addEventListener('click', e => { onPos(e.clientX); });
+  prev.addEventListener('click', () => setPair(idx - 1));
+  next.addEventListener('click', () => setPair(idx + 1));
+  // Initialize
+  setPair(0);
+})();
+</script>
+  <script src="assets/js/ba17.js" defer></script>
 </body>
 </html>

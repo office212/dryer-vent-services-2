@@ -1,0 +1,20 @@
+
+/* DVS 1.7 – Before/After slider */
+#before-after{padding-top:24px}
+.ba17{max-width:980px;margin:0 auto}
+.ba17 .stage{position:relative;border-radius:18px;overflow:hidden;background:#f4f6f8;aspect-ratio:2/3}
+.ba17 .pair{position:absolute;inset:0}
+.ba17 img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;image-orientation:from-image}
+.ba17 .afterWrap{position:absolute;inset:0;width:50%;overflow:hidden}
+.ba17 .afterWrap img{object-fit:contain}
+/* divider is the slider itself (no extra line) */
+.ba17 .handle{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.18);cursor:ew-resize;z-index:5}
+.ba17 .knob{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:999px;background:transparent;border:2px solid rgba(255,255,255,.92);z-index:6}
+/* arrows – transparent circles on sides */
+.ba17 .nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:999px;background:transparent;border:2px solid rgba(255,255,255,.9);box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:7;display:flex;align-items:center;justify-content:center}
+.ba17 .prev{left:8px}
+.ba17 .next{right:8px}
+.ba17 .nav svg{width:22px;height:22px;fill:none;stroke:#0d2239;stroke-width:3}
+/* labels under image, left/right */
+.ba17 .labels{display:flex;justify-content:space-between;color:#0d2239;font-weight:700;margin-top:8px}
+.ba17 .labels span{opacity:.9}
