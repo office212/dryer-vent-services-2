@@ -32,6 +32,22 @@
 
     // Keyboard support
     input.addEventListener('input', ()=> setPos(parseFloat(input.value)));
+    
+    // create nav arrows
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'ba-nav ba-prev';
+    prevBtn.setAttribute('aria-label','Previous photo');
+    prevBtn.innerHTML = '&#10094;';
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'ba-nav ba-next';
+    nextBtn.setAttribute('aria-label','Next photo');
+    nextBtn.innerHTML = '&#10095;';
+    root.appendChild(prevBtn);
+    root.appendChild(nextBtn);
+    // position default
+    prevBtn.addEventListener('click', ()=> setPos(parseFloat(input.value) - 15));
+    nextBtn.addEventListener('click', ()=> setPos(parseFloat(input.value) + 15));
+
     input.addEventListener('keydown', (e)=>{
       const step = (e.shiftKey? 10 : 2);
       if(e.key === 'ArrowLeft') setPos(parseFloat(input.value) - step);

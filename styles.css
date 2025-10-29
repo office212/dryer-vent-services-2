@@ -212,3 +212,34 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
 
 /* kill floating whatsapp bubbles */
 .floating-whatsapp, .whatsapp-fab, .whatsapp-bubble, [data-whatsapp-bubble], .wa-chat-bubble{display:none!important;visibility:hidden!important;opacity:0!important;height:0!important;width:0!important}
+
+
+/* === BA transparent controls & portrait sizing (v5) === */
+.before-after{ aspect-ratio: 2 / 3; }
+.before-after .ba-handle{
+  background: transparent !important;
+  border: 2px solid rgba(255,255,255,.8);
+  box-shadow: none !important;
+  width: 48px; height: 48px;
+  transform: translate(-50%,-50%);
+  transition: left .25s ease, top .25s ease, background .2s ease;
+}
+.before-after .ba-handle::after{ display:none; }
+.before-after .ba-divider{ width:2px; background: rgba(255,255,255,.85); }
+
+.before-after .ba-nav{
+  position: absolute;
+  top: 50%;
+  width: 54px; height: 54px;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0) !important;
+  border: 2px solid rgba(255,255,255,.85);
+  color: rgba(255,255,255,.95);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.before-after .ba-prev{ left: 18px; }
+.before-after .ba-next{ right: 18px; }
+.before-after .ba-nav:hover{ transform: translateY(-50%) scale(1.05); }
