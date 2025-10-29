@@ -49,6 +49,7 @@
 .ba-compare::after { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,0.9); pointer-events:none; }
 @media (min-width: 768px) { .ba-carousel { max-width: 860px; } }
 </style>
+  <link rel="stylesheet" href="assets/css/ba.css">
 </head>
 <body data-page="home">
   <header class="site-header">
@@ -123,74 +124,25 @@
     <div class="container">
       
 
-<section id="before-after" class="home-section">
-  <div class="container">
-    <h2 class="section-title">Before and After</h2>
-    <div class="ba-carousel" data-index="0">
-      <button class="ba-nav prev" aria-label="Previous"></button>
-      <div class="ba-track">
-        
-    <div class="ba-slide" role="group" aria-roledescription="slide">
-      <div class="ba-compare" data-pos="50">
-        <img class="ba-img before" alt="Before" src="assets/img/before-after/ba01-before.jpg">
-        <div class="after-wrap" style="width:50%">
-          <img class="ba-img after" alt="After" src="assets/img/before-after/ba01-after.jpg">
-        </div>
-        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+<section class="ba-section ba-wrap" data-items='[{"before": "assets/img/before-after/ba-01-before.jpg", "after": "assets/img/before-after/ba-01-after.jpg"}, {"before": "assets/img/before-after/ba-02-before.jpg", "after": "assets/img/before-after/ba-02-after.jpg"}, {"before": "assets/img/before-after/ba-03-before.jpg", "after": "assets/img/before-after/ba-03-after.jpg"}, {"before": "assets/img/before-after/ba-04-before.jpg", "after": "assets/img/before-after/ba-04-after.jpg"}, {"before": "assets/img/before-after/ba-05-before.jpg", "after": "assets/img/before-after/ba-05-after.jpg"}]'>
+  <div class="ba-card">
+    <div class="ba-viewport">
+      <img class="ba-img before" src="" alt="Before photo">
+      <div class="ba-afterClip">
+        <img class="ba-img after" src="" alt="After photo">
+      </div>
+      <div class="ba-divider"></div>
+      <div class="ba-knob" aria-hidden="true"></div>
+      <div class="ba-arrow left" aria-label="Previous">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </div>
+      <div class="ba-arrow right" aria-label="Next">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
       </div>
     </div>
-    
-
-    <div class="ba-slide" role="group" aria-roledescription="slide">
-      <div class="ba-compare" data-pos="50">
-        <img class="ba-img before" alt="Before" src="assets/img/before-after/ba02-before.jpg">
-        <div class="after-wrap" style="width:50%">
-          <img class="ba-img after" alt="After" src="assets/img/before-after/ba02-after.jpg">
-        </div>
-        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
-      </div>
-    </div>
-    
-
-    <div class="ba-slide" role="group" aria-roledescription="slide">
-      <div class="ba-compare" data-pos="50">
-        <img class="ba-img before" alt="Before" src="assets/img/before-after/ba03-before.jpg">
-        <div class="after-wrap" style="width:50%">
-          <img class="ba-img after" alt="After" src="assets/img/before-after/ba03-after.jpg">
-        </div>
-        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
-      </div>
-    </div>
-    
-
-    <div class="ba-slide" role="group" aria-roledescription="slide">
-      <div class="ba-compare" data-pos="50">
-        <img class="ba-img before" alt="Before" src="assets/img/before-after/ba04-before.jpg">
-        <div class="after-wrap" style="width:50%">
-          <img class="ba-img after" alt="After" src="assets/img/before-after/ba04-after.jpg">
-        </div>
-        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
-      </div>
-    </div>
-    
-
-    <div class="ba-slide" role="group" aria-roledescription="slide">
-      <div class="ba-compare" data-pos="50">
-        <img class="ba-img before" alt="Before" src="assets/img/before-after/ba05-before.jpg">
-        <div class="after-wrap" style="width:50%">
-          <img class="ba-img after" alt="After" src="assets/img/before-after/ba05-after.jpg">
-        </div>
-        <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
-      </div>
-    </div>
-    
-      </div>
-      <button class="ba-nav next" aria-label="Next"></button>
-    </div>
-    <div class="ba-cta">
-      <a class="btn btn-primary" href="gallery.html">See more photos</a>
-    </div>
+    <div class="ba-labels"><div>Before</div><div>After</div></div>
   </div>
+  <div class="ba-cta"><a class="btn" href="gallery.html">See more photos</a></div>
 </section>
 
 
@@ -273,5 +225,6 @@
   });
 })();
 </script>
+  <script src="assets/js/ba.js" defer></script>
 </body>
 </html>

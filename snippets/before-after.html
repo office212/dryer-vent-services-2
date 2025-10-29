@@ -1,35 +1,20 @@
-
-<!-- === Before & After (Drop‑in) === -->
-<link rel="stylesheet" href="assets/css/ba.css">
-<section class="ba-section" id="before-after">
+<section class="ba-section ba-wrap" data-items='[{"before": "assets/img/before-after/ba-01-before.jpg", "after": "assets/img/before-after/ba-01-after.jpg"}, {"before": "assets/img/before-after/ba-02-before.jpg", "after": "assets/img/before-after/ba-02-after.jpg"}, {"before": "assets/img/before-after/ba-03-before.jpg", "after": "assets/img/before-after/ba-03-after.jpg"}, {"before": "assets/img/before-after/ba-04-before.jpg", "after": "assets/img/before-after/ba-04-after.jpg"}, {"before": "assets/img/before-after/ba-05-before.jpg", "after": "assets/img/before-after/ba-05-after.jpg"}]'>
   <div class="ba-card">
-    <div class="ba-stage"
-         data-items='[
-           {"before":"assets/img/before-after/ba-01-before.jpg","after":"assets/img/before-after/ba-01-after.jpg"},
-           {"before":"assets/img/before-after/ba-02-before.jpg","after":"assets/img/before-after/ba-02-after.jpg"},
-           {"before":"assets/img/before-after/ba-03-before.jpg","after":"assets/img/before-after/ba-03-after.jpg"},
-           {"before":"assets/img/before-after/ba-04-before.jpg","after":"assets/img/before-after/ba-04-after.jpg"},
-           {"before":"assets/img/before-after/ba-05-before.jpg","after":"assets/img/before-after/ba-05-after.jpg"}
-         ]'>
-      <img class="ba-after"  alt="After">
-      <img class="ba-before" alt="Before">
+    <div class="ba-viewport">
+      <img class="ba-img before" src="" alt="Before photo">
+      <div class="ba-afterClip">
+        <img class="ba-img after" src="" alt="After photo">
+      </div>
       <div class="ba-divider"></div>
-      <button class="ba-nav ba-prev" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-      </button>
-      <button class="ba-nav ba-next" aria-label="Next">
-        <svg viewBox="0 0 24 24"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
-      </button>
-      <div class="ba-handle" aria-hidden="true"></div>
+      <div class="ba-knob" aria-hidden="true"></div>
+      <div class="ba-arrow left" aria-label="Previous">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </div>
+      <div class="ba-arrow right" aria-label="Next">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+      </div>
     </div>
-    <div class="ba-labels">
-      <div>Before</div>
-      <div>After</div>
-    </div>
-    <div class="ba-cta">
-      <a class="button" href="gallery.html">See more photos</a>
-    </div>
+    <div class="ba-labels"><div>Before</div><div>After</div></div>
   </div>
+  <div class="ba-cta"><a class="btn" href="gallery.html">See more photos</a></div>
 </section>
-<script src="assets/js/ba.js"></script>
-<!-- === /Before & After === -->
