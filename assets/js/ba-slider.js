@@ -1,81 +1,63 @@
-/* Before/After slider – mobile-smooth, non-blocking scroll */
+/* === DVS Before/After – JS מלא, חלק במובייל, בלי התנגשויות === */
 (() => {
-  const comps = document.querySelectorAll('.ba-comparison');
-  if (!comps.length) return;
+  const sliders = document.querySelectorAll('.dvs-ba');
+  if (!sliders.length) return;
 
-  comps.forEach((root) => {
-    const before = root.querySelector('.ba-before img, .ba-before');
-    const after  = root.querySelector('.ba-after  img, .ba-after');
-    const handle = root.querySelector('.ba-handle');     // הקו האנכי
-    const knob   = root.querySelector('.ba-knob');       // העיגול במרכז
-
-    if (!before || !after || !handle || !knob) return;
+  sliders.forEach((el) => {
+    const after  = el.querySelector('.dvs-after');
+    const handle = el.querySelector('.dvs-handle');
+    const knob   = el.querySelector('.dvs-knob');
+    const prev   = el.querySelector('.dvs-prev');
+    const next   = el.querySelector('.dvs-next');
+    if (!after || !handle || !knob) return;
 
     let dragging = false;
-    let rect = null;
+    let rect = el.getBoundingClientRect();
 
-    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-    const percentToLeft = (p) => `${p}%`;
-
-    const setPos = (p) => {
-      const pct = clamp(p, 0, 100);
-      after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-      handle.style.left = percentToLeft(pct);
-      knob.style.left   = percentToLeft(pct);
-      root.dataset.position = pct.toFixed(1);
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+    const setPos = (pct) => {
+      const p = clamp(pct, 0, 100);
+      after.style.clipPath = `inset(0 ${100 - p}% 0 0)`;
+      handle.style.left = `${p}%`;
+      knob.style.left = `${p}%`;
+      el.dataset.position = p.toFixed(1);
     };
-
-    const posFromEvent = (e) => {
+    const fromEvent = (e) => {
       const x = (e.clientX ?? (e.touches && e.touches[0]?.clientX));
       return clamp(((x - rect.left) / rect.width) * 100, 0, 100);
     };
 
-    const onPointerMove = (e) => {
+    const onDown = (e) => {
+      rect = el.getBoundingClientRect();
+      dragging = true;
+      el.classList.add('is-dragging');
+      // בזמן גרירה – לנטרל גלילת דף (רק באזור הסליידר)
+      el.style.touchAction = 'none';
+      if (e.target.setPointerCapture) { try { e.target.setPointerCapture(e.pointerId); } catch{} }
+      setPos(fromEvent(e));
+    };
+    const onMove = (e) => {
       if (!dragging) return;
-      setPos(posFromEvent(e));
-      // בזמן גרירה בטאץ' – מניעת גלילה אנכית
+      setPos(fromEvent(e));
       if (e.pointerType === 'touch') e.preventDefault();
     };
-
-    const onPointerDown = (e) => {
-      rect = root.getBoundingClientRect();
-      dragging = true;
-      root.classList.add('is-dragging');
-      // לאפשר לכידת מצביע כדי לשמור על גרירה רציפה
-      if (e.target.setPointerCapture) {
-        try { e.target.setPointerCapture(e.pointerId); } catch {}
-      }
-      setPos(posFromEvent(e));
-    };
-
-    const onPointerUp = () => {
+    const onUp = () => {
       dragging = false;
-      root.classList.remove('is-dragging');
+      el.classList.remove('is-dragging');
+      el.style.touchAction = 'pan-y'; // להחזיר גלילה
     };
 
-    // מאזינים
-    [root, knob, handle].forEach(el => {
-      el.addEventListener('pointerdown', onPointerDown, { passive: true });
-    });
-    window.addEventListener('pointermove', onPointerMove, { passive: false });
-    window.addEventListener('pointerup',   onPointerUp,   { passive: true });
-    window.addEventListener('pointercancel', onPointerUp, { passive: true });
+    [el, knob, handle].forEach(n => n.addEventListener('pointerdown', onDown, { passive:true }));
+    window.addEventListener('pointermove', onMove, { passive:false });
+    window.addEventListener('pointerup', onUp, { passive:true });
+    window.addEventListener('pointercancel', onUp, { passive:true });
 
-    // קליקים מהירים להזזה ב-10% בעזרת החיצים (אם קיימים)
-    const prevBtn = root.querySelector('.ba-prev');
-    const nextBtn = root.querySelector('.ba-next');
-    const nudge = (delta) => {
-      const cur = parseFloat(root.dataset.position || '50');
-      setPos(cur + delta);
-    };
-    if (prevBtn) prevBtn.addEventListener('click', () => nudge(-10), { passive: true });
-    if (nextBtn) nextBtn.addEventListener('click', () => nudge(+10), { passive: true });
+    // חיצים – קפיצה 10%
+    const nudge = d => setPos(parseFloat(el.dataset.position || '50') + d);
+    if (prev) prev.addEventListener('click', () => nudge(-10), { passive:true });
+    if (next) next.addEventListener('click', () => nudge( 10), { passive:true });
 
-    // התחלה באמצע
     setPos(50);
-
-    // רסייז שומר פרופורציה
-    const ro = new ResizeObserver(() => { rect = root.getBoundingClientRect(); });
-    ro.observe(root);
+    new ResizeObserver(() => { rect = el.getBoundingClientRect(); }).observe(el);
   });
 })();
