@@ -31,201 +31,47 @@
 <link href="assets/css/cards-override-200.css" rel="stylesheet"/>
 <link href="assets/css/before-after.css" rel="stylesheet"/>
 <style>
-<!-- === BEFORE & AFTER (DVS – מבודד, להדבקה 1:1) === -->
-<section class="section section-alt fade-in" id="before-after">
-  <div class="container" id="dvs-ba-block">
-    <h2 class="section-title">Before and After</h2>
-
-    <!-- תיבה ראשית – סליידר זוגי + חיצים -->
-    <div class="dvs-ba" id="dvsBA" aria-roledescription="slider" aria-label="Before and after comparison">
-      <div class="dvs-pane dvs-before"><img id="baImgBefore" src="assets/img/ba/before-01.jpg" alt="Before"></div>
-      <div class="dvs-pane dvs-after"><img id="baImgAfter"  src="assets/img/ba/after-01.jpg"  alt="After"></div>
-
-      <div class="dvs-divider" aria-hidden="true"></div>
-      <button class="dvs-knob" id="baKnob" aria-label="Drag to compare"></button>
-
-      <button class="dvs-arrow dvs-prev" id="baPrev" aria-label="Previous"></button>
-      <button class="dvs-arrow dvs-next" id="baNext" aria-label="Next"></button>
-    </div>
-
-    <!-- כיתובי Before/After קטנים מתחת -->
-    <div class="dvs-labels" aria-hidden="true">
-      <span>Before</span>
-      <span>After</span>
-    </div>
-
-    <!-- כפתור “See more photos” -->
-    <div class="dvs-ba-cta">
-      <a href="gallery.html" class="btn">See more photos</a>
-    </div>
-
-    <!-- ===== CSS ממוקף לבלוק ===== -->
-    <style>
-      #dvs-ba-block{ max-width:860px; margin:0 auto; }
-      #dvs-ba-block .section-title{ margin-bottom:18px; }
-
-      /* קונטיינר הסליידר – תמונות אנכיות 2:3 */
-      #dvs-ba-block .dvs-ba{
-        position:relative; width:100%; aspect-ratio:2/3;
-        border-radius:22px; overflow:hidden; background:#f5f7fb;
-        box-shadow:0 8px 24px rgba(15,43,74,.15);
-        user-select:none; -webkit-tap-highlight-color:transparent;
-        touch-action: pan-y; /* ברירת מחדל – גלילה אנכית של הדף */
-      }
-      #dvs-ba-block .dvs-pane{ position:absolute; inset:0; }
-      #dvs-ba-block .dvs-pane img{
-        width:100%; height:100%; object-fit:cover; object-position:center;
-        display:block; pointer-events:none; -webkit-user-drag:none;
-      }
-
-      /* “אחרי” נחשף לפי חתך */
-      #dvs-ba-block .dvs-after{ clip-path: inset(0 0 0 var(--cut,50%)); will-change: clip-path; }
-
-      /* קו אנכי (מרכז) */
-      #dvs-ba-block .dvs-divider{
-        position:absolute; top:0; bottom:0; left:var(--cut,50%);
-        transform: translateX(-1px);
-        width:2px; background: rgba(255,255,255,.92);
-        box-shadow: 0 0 0 1px rgba(0,0,0,.08); pointer-events:none;
-      }
-
-      /* ידית עגולה שקופה */
-      #dvs-ba-block .dvs-knob{
-        position:absolute; left:var(--cut,50%); top:50%;
-        transform: translate(-50%,-50%);
-        width:64px; height:64px; border-radius:50%; border:2px solid rgba(255,255,255,.95);
-        background: radial-gradient(transparent 52%, rgba(255,255,255,.96) 53%);
-        box-shadow: 0 6px 18px rgba(0,0,0,.18);
-        display:grid; place-items:center; cursor: ew-resize;
-      }
-      #dvs-ba-block .dvs-knob::before{ content:"⇆"; font-size:20px; color:#213549; opacity:.85; }
-
-      /* חיצים שקופים בצדדים */
-      #dvs-ba-block .dvs-arrow{
-        position:absolute; top:50%; transform:translateY(-50%);
-        width:64px; height:64px; border-radius:50%; border:none;
-        background: rgba(255,255,255,.9);
-        box-shadow: 0 8px 22px rgba(15,43,74,.18);
-        display:grid; place-items:center; cursor:pointer; z-index:3;
-      }
-      #dvs-ba-block .dvs-prev{ left:-6px; }
-      #dvs-ba-block .dvs-next{ right:-6px; }
-      #dvs-ba-block .dvs-arrow::before{
-        content:""; width:12px; height:12px;
-        border-right:3px solid #1a3550; border-top:3px solid #1a3550;
-      }
-      #dvs-ba-block .dvs-prev::before{ transform: rotate(225deg); margin-left:6px; }
-      #dvs-ba-block .dvs-next::before{ transform: rotate(45deg);  margin-right:6px; }
-
-      /* תוויות BEFORE/AFTER קטנות */
-      #dvs-ba-block .dvs-labels{
-        display:flex; justify-content:space-between; margin:10px 4px 0;
-        font-weight:800; color:#122334; letter-spacing:.3px;
-      }
-
-      #dvs-ba-block .dvs-ba-cta{ text-align:center; margin-top:14px; }
-    </style>
-
-    <!-- ===== JS ממוקף לבלוק (חלק במובייל) ===== -->
-    <script>
-      (function(){
-        // עדכן כאן את הזוגות לפי שמות הקבצים אצלך:
-        const PAIRS = [
-          { before: "assets/img/ba/before-01.jpg", after: "assets/img/ba/after-01.jpg" },
-          { before: "assets/img/ba/before-02.jpg", after: "assets/img/ba/after-02.jpg" },
-          { before: "assets/img/ba/before-03.jpg", after: "assets/img/ba/after-03.jpg" },
-          { before: "assets/img/ba/before-04.jpg", after: "assets/img/ba/after-04.jpg" },
-          { before: "assets/img/ba/before-05.jpg", after: "assets/img/ba/after-05.jpg" }
-        ];
-
-        const root = document.getElementById('dvsBA');
-        const imgB = document.getElementById('baImgBefore');
-        const imgA = document.getElementById('baImgAfter');
-        const knob = document.getElementById('baKnob');
-        const prev = document.getElementById('baPrev');
-        const next = document.getElementById('baNext');
-        const divider = root.querySelector('.dvs-divider');
-
-        let idx = 0;
-        let dragging = false;
-        let startX = 0, startY = 0, decidedAxis = null;
-        const AXIS_THRESHOLD = 8;
-
-        function setPair(i){
-          idx = (i + PAIRS.length) % PAIRS.length;
-          imgB.src = PAIRS[idx].before;
-          imgA.src = PAIRS[idx].after;
-          // איפוס חתך למרכז בכל מעבר
-          setCutPct(50);
-        }
-        function setCutPct(pct){
-          const p = Math.max(0, Math.min(100, pct));
-          root.style.setProperty('--cut', p + '%');
-          divider.style.left = 'calc(' + p + '% - 1px)';
-          knob.style.left = p + '%';
-        }
-        function applyCutFromClientX(clientX){
-          const rect = root.getBoundingClientRect();
-          const x = Math.min(Math.max(clientX - rect.left, 0), rect.width);
-          setCutPct((x / rect.width) * 100);
-        }
-
-        // התחלה/סיום גרירה
-        function onPointerDown(e){
-          const t = e.touches ? e.touches[0] : e;
-          dragging = true; decidedAxis = null;
-          startX = t.clientX; startY = t.clientY;
-          if (e.target.setPointerCapture && e.pointerId != null) { try{ e.target.setPointerCapture(e.pointerId); }catch{} }
-          applyCutFromClientX(t.clientX);
-        }
-        function onPointerMove(e){
-          if(!dragging) return;
-          const t = e.touches ? e.touches[0] : e;
-          const dx = Math.abs(t.clientX - startX);
-          const dy = Math.abs(t.clientY - startY);
-          if(!decidedAxis && (dx > AXIS_THRESHOLD || dy > AXIS_THRESHOLD)){
-            decidedAxis = dx > dy ? 'x' : 'y';
-          }
-          if(decidedAxis === 'x'){
-            if (e.cancelable) e.preventDefault(); // נועל גלילת דף רק במחווה אופקית
-            applyCutFromClientX(t.clientX);
-          }
-        }
-        function onPointerUp(){ dragging = false; decidedAxis = null; }
-
-        // מאזינים לידית (Pointer + Touch)
-        knob.addEventListener('pointerdown', onPointerDown, {passive:true});
-        window.addEventListener('pointermove', onPointerMove, {passive:false});
-        window.addEventListener('pointerup',   onPointerUp,   {passive:true});
-        window.addEventListener('pointercancel', onPointerUp, {passive:true});
-        knob.addEventListener('touchstart', onPointerDown, {passive:true});
-        window.addEventListener('touchmove', onPointerMove, {passive:false});
-        window.addEventListener('touchend',  onPointerUp,   {passive:true});
-        window.addEventListener('touchcancel', onPointerUp, {passive:true});
-
-        // חצים – מעבר בין זוגות
-        prev.addEventListener('click', () => setPair(idx-1), {passive:true});
-        next.addEventListener('click', () => setPair(idx+1), {passive:true});
-
-        // קליק בשטח הסליידר – מזיז את החיתוך לנקודה
-        root.addEventListener('click', (e) => {
-          if (e.target === knob || e.target === prev || e.target === next) return;
-          applyCutFromClientX(e.clientX);
-        });
-
-        // התחלה
-        setPair(0);
-
-        // התאמות רספונסיביות – שמירת מרכז
-        window.addEventListener('resize', () => {
-          const rect = root.getBoundingClientRect();
-          applyCutFromClientX(rect.left + rect.width/2);
-        }, {passive:true});
-      })();
-    </script>
-  </div>
-</section>
-<!-- === /BEFORE & AFTER === -->
+/* === Before/After Carousel (portrait 2:3, transparent controls) === */
+.ba-carousel { position: relative; max-width: 720px; margin: 0 auto; }
+.ba-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow: hidden; scroll-snap-type: x mandatory; }
+.ba-slide { scroll-snap-align: center; padding: 0.5rem; }
+.ba-compare { position: relative; width: 100%; aspect-ratio: 2 / 3; border-radius: 18px; overflow: hidden; background: #f4f6f8; }
+.ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.after-wrap { position: absolute; inset: 0; overflow: hidden; }
+.ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+.ba-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: transparent; border: none; cursor: pointer; }
+.ba-nav.prev { left: 6px; }
+.ba-nav.next { right: 6px; }
+/* arrows using CSS only, no background */
+.ba-nav::before { content: ""; display: block; width: 0.6em; height: 0.6em; border-top: 3px solid #0e3352; border-right: 3px solid #0e3352; margin: auto; transform: rotate(45deg); }
+.ba-nav.prev::before { transform: rotate(-135deg); }
+.ba-nav.next::before { transform: rotate(45deg); }
+/* thin center divider line */
+.ba-compare::after { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,0.9); pointer-events:none; }
+@media (min-width: 768px) { .ba-carousel { max-width: 860px; } }
+</style>
+<style>
+/* Before/After Carousel */
+#before-after { padding: 32px 0; }
+#before-after .ba-carousel { position: relative; overflow: hidden; }
+#before-after .ba-slide { width: 100%; display: none; }
+#before-after .ba-slide.active { display: block; }
+.ba-compare { position: relative; width: 100%; max-width: 700px; margin: 0 auto; border-radius: 18px; overflow: hidden; }
+.ba-img { width: 100%; height: auto; display: block; }
+.ba-img.before { position: absolute; inset: 0; clip-path: polygon(0 0, calc(var(--pos,50)*1%) 0, calc(var(--pos,50)*1%) 100%, 0 100%); }
+.ba-handle { position: absolute; top: 0; bottom: 0; left: calc(var(--pos,50)*1%); width: 0; border-left: 3px solid rgba(255,255,255,0.9); cursor: ew-resize; }
+.ba-handle::after { content:""; position:absolute; top:50%; transform:translate(-50%,-50%); width:56px; height:56px; border-radius:50%; border:2px solid rgba(255,255,255,0.9); background:transparent; }
+.ba-controls { display:flex; justify-content:center; gap:18px; margin: 14px 0 4px; }
+.ba-nav { width:56px; height:56px; border-radius:50%; background:transparent; border:2px solid rgba(0,0,0,0.2); position:relative; }
+.ba-nav::before { content:""; position:absolute; inset:0; margin:auto; width:10px; height:10px; border-right:3px solid #0b2945; border-top:3px solid #0b2945; transform: rotate(45deg); }
+.ba-nav.prev::before { transform: rotate(225deg); }
+.ba-more { display:inline-block; margin: 12px auto 0; padding: 12px 22px; border-radius:14px; background:#12324F; color:#fff; text-decoration:none; box-shadow: 0 10px 24px rgba(0,0,0,.12); }
+@media (min-width: 760px){ .ba-compare{ max-width: 520px; } }
+</style>
+<!-- BEGIN BEFORE-AFTER ASSETS -->
+<link rel="stylesheet" href="assets/css/ba-slider.css">
+<script defer src="assets/js/ba-slider.js"></script>
+<!-- END BEFORE-AFTER ASSETS -->
 
 </head>
 <body data-page="home">
