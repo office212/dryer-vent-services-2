@@ -1,124 +1,81 @@
+/* Before/After slider – mobile-smooth, non-blocking scroll */
+(() => {
+  const comps = document.querySelectorAll('.ba-comparison');
+  if (!comps.length) return;
 
-/* Beta 1.9 mobile drag fix */
-(function(){
-  const root = document;
-  const addListener = (el, type, fn, opts) => {
-    try { el.addEventListener(type, fn, Object.assign({passive:false}, opts||{})); }
-    catch(err){ el.addEventListener(type, fn, false); }
-  };
-  function enhanceSlider(slider){
+  comps.forEach((root) => {
+    const before = root.querySelector('.ba-before img, .ba-before');
+    const after  = root.querySelector('.ba-after  img, .ba-after');
+    const handle = root.querySelector('.ba-handle');     // הקו האנכי
+    const knob   = root.querySelector('.ba-knob');       // העיגול במרכז
+
+    if (!before || !after || !handle || !knob) return;
+
     let dragging = false;
-    const handle = slider.querySelector('.ba-handle, .handle, .twentytwenty-handle, .icv__controller');
-    const track  = slider;
-    if(!handle) return;
-    const start = (ev) => {
+    let rect = null;
+
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+    const percentToLeft = (p) => `${p}%`;
+
+    const setPos = (p) => {
+      const pct = clamp(p, 0, 100);
+      after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      handle.style.left = percentToLeft(pct);
+      knob.style.left   = percentToLeft(pct);
+      root.dataset.position = pct.toFixed(1);
+    };
+
+    const posFromEvent = (e) => {
+      const x = (e.clientX ?? (e.touches && e.touches[0]?.clientX));
+      return clamp(((x - rect.left) / rect.width) * 100, 0, 100);
+    };
+
+    const onPointerMove = (e) => {
+      if (!dragging) return;
+      setPos(posFromEvent(e));
+      // בזמן גרירה בטאץ' – מניעת גלילה אנכית
+      if (e.pointerType === 'touch') e.preventDefault();
+    };
+
+    const onPointerDown = (e) => {
+      rect = root.getBoundingClientRect();
       dragging = true;
-      ev.preventDefault();
-      slider.classList.add('ba-dragging');
+      root.classList.add('is-dragging');
+      // לאפשר לכידת מצביע כדי לשמור על גרירה רציפה
+      if (e.target.setPointerCapture) {
+        try { e.target.setPointerCapture(e.pointerId); } catch {}
+      }
+      setPos(posFromEvent(e));
     };
-    const move = (ev) => {
-      if(!dragging) return;
-      ev.preventDefault();
+
+    const onPointerUp = () => {
+      dragging = false;
+      root.classList.remove('is-dragging');
     };
-    const end = () => { dragging = false; slider.classList.remove('ba-dragging'); };
-    [handle, track].forEach(el=>{
-      if(!el) return;
-      addListener(el,'pointerdown',start);
-      addListener(root,'pointermove',move);
-      addListener(root,'pointerup',end);
-      addListener(el,'touchstart',start);
-      addListener(root,'touchmove',move);
-      addListener(root,'touchend',end);
-      addListener(el,'mousedown',start);
-      addListener(root,'mousemove',move);
-      addListener(root,'mouseup',end);
+
+    // מאזינים
+    [root, knob, handle].forEach(el => {
+      el.addEventListener('pointerdown', onPointerDown, { passive: true });
     });
-  }
-  root.addEventListener('DOMContentLoaded',()=>{
-    document.querySelectorAll('.ba-slider, .before-after, .twentytwenty-container, .icv').forEach(enhanceSlider);
+    window.addEventListener('pointermove', onPointerMove, { passive: false });
+    window.addEventListener('pointerup',   onPointerUp,   { passive: true });
+    window.addEventListener('pointercancel', onPointerUp, { passive: true });
+
+    // קליקים מהירים להזזה ב-10% בעזרת החיצים (אם קיימים)
+    const prevBtn = root.querySelector('.ba-prev');
+    const nextBtn = root.querySelector('.ba-next');
+    const nudge = (delta) => {
+      const cur = parseFloat(root.dataset.position || '50');
+      setPos(cur + delta);
+    };
+    if (prevBtn) prevBtn.addEventListener('click', () => nudge(-10), { passive: true });
+    if (nextBtn) nextBtn.addEventListener('click', () => nudge(+10), { passive: true });
+
+    // התחלה באמצע
+    setPos(50);
+
+    // רסייז שומר פרופורציה
+    const ro = new ResizeObserver(() => { rect = root.getBoundingClientRect(); });
+    ro.observe(root);
   });
-})();
-
-
-// Build slides from filenames.json then attach slider behavior
-(async function(){
-  try{
-    const resp = await fetch('assets/img/before-after/filenames.json');
-    const data = await resp.json();
-    const slides = (data && data.slides) || [];
-    const root = document.getElementById('ba-carousel');
-    if(!root || !slides.length) return;
-
-    let index = 0;
-    const wrap = document.createElement('div');
-    wrap.className = 'ba-wrap';
-    root.prepend(wrap);
-
-    function applyEXIF(img){
-      // Render respecting EXIF orientation by drawing to canvas and replacing src (mobile-friendly)
-      return new Promise(resolve=>{
-        const _img = new Image();
-        _img.onload = ()=>{
-          // draw to canvas same size so orientation respected in tag
-          const canvas = document.createElement('canvas');
-          canvas.width = _img.naturalWidth;
-          canvas.height = _img.naturalHeight;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(_img,0,0);
-          img.src = canvas.toDataURL('image/jpeg', 0.92);
-          resolve();
-        };
-        _img.src = img.src;
-      });
-    }
-
-    const imgBefore = document.createElement('img');
-    const imgAfter  = document.createElement('img');
-    imgBefore.className = 'ba-img ba-before';
-    imgAfter.className  = 'ba-img ba-after';
-
-    const handle = document.createElement('div');
-    handle.className = 'ba-handle';
-    const thumb = document.createElement('button');
-    thumb.className = 'ba-thumb';
-    thumb.setAttribute('aria-label','Drag to compare');
-    thumb.type = 'button';
-
-    wrap.append(imgBefore, imgAfter, handle, thumb);
-
-    function setSlide(i){
-      index = (i+slides.length)%slides.length;
-      const s = slides[index];
-      imgBefore.src = 'assets/img/before-after/' + s.before;
-      imgAfter.src  = 'assets/img/before-after/' + s.after;
-      // force portrait containment
-      imgBefore.style.objectFit = 'contain';
-      imgAfter.style.objectFit  = 'contain';
-      // kick EXIF normalization (non-blocking)
-      applyEXIF(imgBefore); applyEXIF(imgAfter);
-      setSplit(50);
-    }
-
-    function setSplit(pct){
-      pct = Math.max(0, Math.min(100, pct));
-      wrap.style.setProperty('--split', pct + '%');
-    }
-
-    let dragging = false;
-    function posToPct(clientX){
-      const rect = wrap.getBoundingClientRect();
-      return ((clientX - rect.left) / rect.width) * 100;
-    }
-    thumb.addEventListener('pointerdown', e=>{ dragging=true; thumb.setPointerCapture(e.pointerId); e.preventDefault(); });
-    window.addEventListener('pointermove', e=>{ if(dragging) setSplit(posToPct(e.clientX)); });
-    window.addEventListener('pointerup',   e=>{ dragging=false; });
-
-    // Arrows
-    const prev = root.querySelector('.ba-arrow.prev');
-    const next = root.querySelector('.ba-arrow.next');
-    prev.addEventListener('click', ()=>setSlide(index-1));
-    next.addEventListener('click', ()=>setSlide(index+1));
-
-    setSlide(0);
-  }catch(e){ console.error(e); }
 })();
