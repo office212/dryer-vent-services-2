@@ -1,73 +1,57 @@
-/* Container */
-.ba-comparison{
-  position:relative;
-  width:100%;
-  aspect-ratio: 2 / 3;      /* נשאר בדיוק כמו אצלך: אנכי 2:3 */
-  overflow:hidden;
-  border-radius:24px;
-  background:#f5f7fb;
-  /* גלילה רגילה של העמוד כברירת מחדל */
-  touch-action: pan-y;
+/* === DVS Before/After – CSS מלא, מבודד בקלאסים dvs-* === */
+
+/* סקשן */
+.dvs-ba-section{margin:48px auto;max-width:900px;padding:0 16px}
+.dvs-ba-title{font-weight:800;font-size:34px;margin:0 0 18px}
+
+/* המכולה של הסליידר */
+.dvs-ba{
+  position:relative;width:100%;
+  aspect-ratio:2/3;                  /* יחס אנכי 2:3 */
+  border-radius:24px;overflow:hidden;background:#f5f7fb;
+  -webkit-user-select:none;user-select:none;touch-action:pan-y; /* גלילה באצבע כברירת מחדל */
 }
 
-/* Images fill */
-.ba-comparison img,
-.ba-before, .ba-after{
-  position:absolute;
-  inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  user-select:none;
-  -webkit-user-drag:none;
-  pointer-events:none;
-}
+/* התמונות ממלאות הכל */
+.dvs-ba img,.dvs-ba-pane{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.dvs-after{clip-path:inset(0 50% 0 0);will-change:clip-path}
 
-/* Reveal mask for AFTER */
-.ba-after{
-  clip-path: inset(0 50% 0 0);
-  will-change: clip-path;
-}
+/* קו אנכי */
+.dvs-handle{position:absolute;top:0;bottom:0;left:50%;border-left:2px solid rgba(255,255,255,.95);pointer-events:none}
 
-/* Vertical handle line */
-.ba-handle{
-  position:absolute;
-  top:0; bottom:0;
-  width:0;
-  border-left:2px solid rgba(255,255,255,.9);
-  left:50%;
-  pointer-events:none;
+/* כפתור גרירה (שקוף/זכוכיתי) */
+.dvs-knob{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:48px;height:48px;border-radius:999px;border:0;cursor:ew-resize;z-index:3;
+  background:rgba(255,255,255,.65);backdrop-filter:blur(6px);
+  box-shadow:0 8px 20px rgba(0,0,0,.15),inset 0 0 0 2px rgba(255,255,255,.95)
 }
+.dvs-ba.is-dragging .dvs-knob{touch-action:none}
 
-/* Knob (draggable) */
-.ba-knob{
-  position:absolute;
-  top:50%;
-  transform:translate(-50%,-50%);
-  width:48px; height:48px;
-  border-radius:999px;
-  background:rgba(255,255,255,.6);
-  backdrop-filter: blur(6px);
-  box-shadow:0 8px 20px rgba(0,0,0,.15), inset 0 0 0 2px rgba(255,255,255,.9);
-  cursor:ew-resize;
-  z-index:2;
-  /* בזמן גרירה נבטל pan כדי למנוע קפיצות */
+/* חיצים עגולים שקופים בצדדים */
+.dvs-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:64px;height:64px;border-radius:999px;border:0;z-index:3;cursor:pointer;
+  background:rgba(255,255,255,.7);backdrop-filter:blur(8px);
+  box-shadow:0 12px 24px rgba(0,0,0,.18),inset 0 0 0 2px rgba(255,255,255,.95)
 }
-.ba-comparison.is-dragging .ba-knob{ touch-action:none; }
+.dvs-prev{left:-16px}
+.dvs-next{right:-16px}
+.dvs-arrow::before{
+  content:"";display:block;width:22px;height:22px;margin:21px auto;
+  mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="black" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>') no-repeat center/contain;
+  background:#0f2a44;opacity:.85
+}
+.dvs-next::before{transform:scaleX(-1)}
 
-/* Side arrows (אם קיימים) */
-.ba-prev, .ba-next{
-  position:absolute; top:50%;
-  transform:translateY(-50%);
-  width:64px; height:64px;
-  border-radius:999px;
-  background:rgba(255,255,255,.7);
-  backdrop-filter: blur(8px);
-  box-shadow:0 12px 24px rgba(0,0,0,.18), inset 0 0 0 2px rgba(255,255,255,.9);
-  display:grid; place-items:center;
-  z-index:3;
-  cursor:pointer;
-  user-select:none;
+/* תוויות לפני/אחרי */
+.dvs-label{
+  position:absolute;bottom:10px;font-weight:800;font-size:18px;color:#0f2a44;
+  text-shadow:0 2px 6px rgba(0,0,0,.3);background:rgba(255,255,255,.7);
+  padding:6px 10px;border-radius:12px
 }
-.ba-prev{ left:-16px; }
-.ba-next{ right:-16px; }
-.ba-prev svg, .ba-next svg{ width:22px; height:22px; fill:#0f2a44; opacity:.85; }
+.dvs-label-left{left:12px}
+.dvs-label-right{right:12px}
+
+/* מרווח לכפתור CTA מתחת לסליידר */
+.dvs-ba-cta{text-align:center;margin-top:16px}
