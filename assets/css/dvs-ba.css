@@ -1,0 +1,21 @@
+/* DVS Before/After 2.0.2 */
+#dvs-ba-block{ max-width:860px; margin:0 auto; }
+#dvs-ba-block .dvs-ba{
+  position:relative; width:100%; aspect-ratio:2/3;
+  border-radius:22px; overflow:hidden; background:#f5f7fb;
+  box-shadow:0 8px 24px rgba(15,43,74,.15);
+  user-select:none; -webkit-tap-highlight-color:transparent;
+  touch-action: pan-y;
+}
+#dvs-ba-block .dvs-pane{ position:absolute; inset:0; }
+#dvs-ba-block .dvs-pane img{ width:100%; height:100%; object-fit:cover; object-position:center; display:block; -webkit-user-drag:none; }
+#dvs-ba-block .dvs-after{ clip-path: inset(0 0 0 var(--cut,50%)); will-change: clip-path; }
+#dvs-ba-block .dvs-divider{ position:absolute; top:0; bottom:0; left:var(--cut,50%); transform: translateX(-1px); width:2px; background:rgba(255,255,255,.92); pointer-events:none; }
+#dvs-ba-block .dvs-knob{ position:absolute; left:var(--cut,50%); top:50%; transform: translate(-50%,-50%); width:64px; height:64px; border-radius:50%; border:2px solid rgba(255,255,255,.95); background: radial-gradient(transparent 52%, rgba(255,255,255,.96) 53%); box-shadow: 0 6px 18px rgba(0,0,0,.18); display:grid; place-items:center; cursor: ew-resize; z-index:2; }
+#dvs-ba-block .dvs-knob::before{ content:"⇆"; font-size:20px; color:#213549; opacity:.85; }
+#dvs-ba-block .dvs-arrow{ position:absolute; top:50%; transform:translateY(-50%); width:64px; height:64px; border-radius:50%; border:none; background: rgba(255,255,255,.9); box-shadow: 0 8px 22px rgba(15,43,74,.18); display:grid; place-items:center; cursor:pointer; z-index:1; }
+#dvs-ba-block .dvs-prev{ left:-6px; } #dvs-ba-block .dvs-next{ right:-6px; }
+#dvs-ba-block .dvs-arrow::before{ content:""; width:12px; height:12px; border-right:3px solid #1a3550; border-top:3px solid #1a3550; }
+#dvs-ba-block .dvs-prev::before{ transform: rotate(225deg); margin-left:6px; } #dvs-ba-block .dvs-next::before{ transform: rotate(45deg); margin-right:6px; }
+#dvs-ba-block .dvs-labels{ display:flex; justify-content:space-between; margin:10px 4px 0; font-weight:800; color:#122334; }
+#dvs-ba-block .dvs-ba-cta{ text-align:center; margin-top:14px; }
