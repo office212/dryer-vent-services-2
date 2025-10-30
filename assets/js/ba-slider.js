@@ -1,63 +1,83 @@
-/* === DVS Before/After – JS מלא, חלק במובייל, בלי התנגשויות === */
-(() => {
-  const sliders = document.querySelectorAll('.dvs-ba');
-  if (!sliders.length) return;
 
-  sliders.forEach((el) => {
-    const after  = el.querySelector('.dvs-after');
-    const handle = el.querySelector('.dvs-handle');
-    const knob   = el.querySelector('.dvs-knob');
-    const prev   = el.querySelector('.dvs-prev');
-    const next   = el.querySelector('.dvs-next');
-    if (!after || !handle || !knob) return;
+// Build slides from filenames.json then attach slider behavior
+(async function(){
+  try{
+    const resp = await fetch('assets/img/before-after/filenames.json');
+    const data = await resp.json();
+    const slides = (data && data.slides) || [];
+    const root = document.getElementById('ba-carousel');
+    if(!root || !slides.length) return;
+
+    let index = 0;
+    const wrap = document.createElement('div');
+    wrap.className = 'ba-wrap';
+    root.prepend(wrap);
+
+    function applyEXIF(img){
+      // Render respecting EXIF orientation by drawing to canvas and replacing src (mobile-friendly)
+      return new Promise(resolve=>{
+        const _img = new Image();
+        _img.onload = ()=>{
+          // draw to canvas same size so orientation respected in tag
+          const canvas = document.createElement('canvas');
+          canvas.width = _img.naturalWidth;
+          canvas.height = _img.naturalHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(_img,0,0);
+          img.src = canvas.toDataURL('image/jpeg', 0.92);
+          resolve();
+        };
+        _img.src = img.src;
+      });
+    }
+
+    const imgBefore = document.createElement('img');
+    const imgAfter  = document.createElement('img');
+    imgBefore.className = 'ba-img ba-before';
+    imgAfter.className  = 'ba-img ba-after';
+
+    const handle = document.createElement('div');
+    handle.className = 'ba-handle';
+    const thumb = document.createElement('button');
+    thumb.className = 'ba-thumb';
+    thumb.setAttribute('aria-label','Drag to compare');
+    thumb.type = 'button';
+
+    wrap.append(imgBefore, imgAfter, handle, thumb);
+
+    function setSlide(i){
+      index = (i+slides.length)%slides.length;
+      const s = slides[index];
+      imgBefore.src = 'assets/img/before-after/' + s.before;
+      imgAfter.src  = 'assets/img/before-after/' + s.after;
+      // force portrait containment
+      imgBefore.style.objectFit = 'contain';
+      imgAfter.style.objectFit  = 'contain';
+      // kick EXIF normalization (non-blocking)
+      applyEXIF(imgBefore); applyEXIF(imgAfter);
+      setSplit(50);
+    }
+
+    function setSplit(pct){
+      pct = Math.max(0, Math.min(100, pct));
+      wrap.style.setProperty('--split', pct + '%');
+    }
 
     let dragging = false;
-    let rect = el.getBoundingClientRect();
+    function posToPct(clientX){
+      const rect = wrap.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+    thumb.addEventListener('pointerdown', e=>{ dragging=true; thumb.setPointerCapture(e.pointerId); e.preventDefault(); });
+    window.addEventListener('pointermove', e=>{ if(dragging) setSplit(posToPct(e.clientX)); });
+    window.addEventListener('pointerup',   e=>{ dragging=false; });
 
-    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-    const setPos = (pct) => {
-      const p = clamp(pct, 0, 100);
-      after.style.clipPath = `inset(0 ${100 - p}% 0 0)`;
-      handle.style.left = `${p}%`;
-      knob.style.left = `${p}%`;
-      el.dataset.position = p.toFixed(1);
-    };
-    const fromEvent = (e) => {
-      const x = (e.clientX ?? (e.touches && e.touches[0]?.clientX));
-      return clamp(((x - rect.left) / rect.width) * 100, 0, 100);
-    };
+    // Arrows
+    const prev = root.querySelector('.ba-arrow.prev');
+    const next = root.querySelector('.ba-arrow.next');
+    prev.addEventListener('click', ()=>setSlide(index-1));
+    next.addEventListener('click', ()=>setSlide(index+1));
 
-    const onDown = (e) => {
-      rect = el.getBoundingClientRect();
-      dragging = true;
-      el.classList.add('is-dragging');
-      // בזמן גרירה – לנטרל גלילת דף (רק באזור הסליידר)
-      el.style.touchAction = 'none';
-      if (e.target.setPointerCapture) { try { e.target.setPointerCapture(e.pointerId); } catch{} }
-      setPos(fromEvent(e));
-    };
-    const onMove = (e) => {
-      if (!dragging) return;
-      setPos(fromEvent(e));
-      if (e.pointerType === 'touch') e.preventDefault();
-    };
-    const onUp = () => {
-      dragging = false;
-      el.classList.remove('is-dragging');
-      el.style.touchAction = 'pan-y'; // להחזיר גלילה
-    };
-
-    [el, knob, handle].forEach(n => n.addEventListener('pointerdown', onDown, { passive:true }));
-    window.addEventListener('pointermove', onMove, { passive:false });
-    window.addEventListener('pointerup', onUp, { passive:true });
-    window.addEventListener('pointercancel', onUp, { passive:true });
-
-    // חיצים – קפיצה 10%
-    const nudge = d => setPos(parseFloat(el.dataset.position || '50') + d);
-    if (prev) prev.addEventListener('click', () => nudge(-10), { passive:true });
-    if (next) next.addEventListener('click', () => nudge( 10), { passive:true });
-
-    setPos(50);
-    new ResizeObserver(() => { rect = el.getBoundingClientRect(); }).observe(el);
-  });
+    setSlide(0);
+  }catch(e){ console.error(e); }
 })();

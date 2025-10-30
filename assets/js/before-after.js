@@ -1,45 +1,4 @@
 
-/* Beta 1.9 mobile drag fix */
-(function(){
-  const root = document;
-  const addListener = (el, type, fn, opts) => {
-    try { el.addEventListener(type, fn, Object.assign({passive:false}, opts||{})); }
-    catch(err){ el.addEventListener(type, fn, false); }
-  };
-  function enhanceSlider(slider){
-    let dragging = false;
-    const handle = slider.querySelector('.ba-handle, .handle, .twentytwenty-handle, .icv__controller');
-    const track  = slider;
-    if(!handle) return;
-    const start = (ev) => {
-      dragging = true;
-      ev.preventDefault();
-      slider.classList.add('ba-dragging');
-    };
-    const move = (ev) => {
-      if(!dragging) return;
-      ev.preventDefault();
-    };
-    const end = () => { dragging = false; slider.classList.remove('ba-dragging'); };
-    [handle, track].forEach(el=>{
-      if(!el) return;
-      addListener(el,'pointerdown',start);
-      addListener(root,'pointermove',move);
-      addListener(root,'pointerup',end);
-      addListener(el,'touchstart',start);
-      addListener(root,'touchmove',move);
-      addListener(root,'touchend',end);
-      addListener(el,'mousedown',start);
-      addListener(root,'mousemove',move);
-      addListener(root,'mouseup',end);
-    });
-  }
-  root.addEventListener('DOMContentLoaded',()=>{
-    document.querySelectorAll('.ba-slider, .before-after, .twentytwenty-container, .icv').forEach(enhanceSlider);
-  });
-})();
-
-
 (function(){
   const root = document.querySelector('[data-ba-root]');
   if(!root) return;
