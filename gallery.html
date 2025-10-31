@@ -58,9 +58,59 @@
     </div>
   </section>
 
-  <section class="section container center fade-in">
-    <a class="btn btn--primary" href="contact.html">Book Your Service</a>
+  <main>
+  <section class="container" style="padding:24px 0 40px">
+    <h2 class="section-title">Gallery</h2>
+    <p class="muted">Our work gallery.</p>
+
+    <!-- גריד קטן לתמונות בלבד (לא משנה את העיצוב הכללי) -->
+    <style>
+      .gallery-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+        gap:16px;
+        margin:18px 0 8px;
+      }
+      .gallery-grid figure{margin:0;border-radius:16px;overflow:hidden;background:#f4f7fb}
+      .gallery-grid img{display:block;width:100%;height:auto}
+    </style>
+
+    <div id="gallery" class="gallery-grid" aria-live="polite"></div>
+
+    <!-- כפתור ה-Book בסוף התמונות (משתמש במחלקות הקיימות שלך אם יש) -->
+    <div style="text-align:center;margin-top:20px">
+      <a href="contact.html" class="cta">Book Your Service</a>
+    </div>
   </section>
+</main>
+
+<!-- סקריפט שמשרשר את כל הקבצים שבתיקייה images/gallery/
+     שים את שמות הקבצים בתוך המערך FILES (שורה אחת לכל שם קובץ).
+     אין המרות/יישור — נטען בדיוק כפי שהם. -->
+<script>
+  // הדבק כאן את כל שמות הקבצים מהתיקייה images/gallery (ללא הנתיב), למשל:
+  // ["IMG_001.jpg","job-12.png","lint-vent-03.webp"]
+  const FILES = [
+    /* הדבק כאן את שמות הקבצים שלך */
+  ];
+
+  // מצייר את הגלריה
+  function render(files){
+    const root = document.getElementById('gallery');
+    root.innerHTML = '';
+    files.forEach(name=>{
+      const fig = document.createElement('figure');
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.alt = 'Gallery image';
+      img.src = 'images/gallery/' + name;  // AS IS
+      fig.appendChild(img);
+      root.appendChild(fig);
+    });
+  }
+
+  render(FILES);
+</script>
 
   <footer class="site-footer">
     <div class="container footer-grid">
