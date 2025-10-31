@@ -3,104 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dryer Vent Cleaning Photos &amp; Real Results | Staten Island, NY/NJ</title>
-  <meta name="description" content="Before &amp; after dryer vent cleaning and repair photos from local homes &amp; businesses in Staten Island and the greater New York &amp; New Jersey area.">
+  <title>Gallery | Dryer Vent Services</title>
+
+  <!-- האתר שלך -->
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-X77CVTW1CD');
-</script>
-<meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation">
-<link rel="canonical" href="https://dryer-ventservices.com/gallery">
-<meta property="og:site_name" content="Dryer Vent Services">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://dryer-ventservices.com/gallery">
-<meta property="og:title" content="Gallery | Real Dryer Vent Jobs &amp; Results">
-<meta property="og:description" content="See real dryer vent cleaning photos and project snapshots from homes and businesses.">
-<meta name="robots" content="index, follow">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "url": "https://dryer-ventservices.com/gallery", "email": "office@dryer-ventservices.com", "telephone": "+13472449382", "areaServed": ["Staten Island NY", "New York", "New Jersey"], "sameAs": [], "image": "https://dryer-ventservices.com/assets/logo.png"}</script>
+
+  <!-- Grid קטן ועדין לגלריה (לא משנה את העיצוב הכללי שלך) -->
+  <style>
+    /* ===== beta3.0 gallery grid ===== */
+    .gallery-wrap{ padding: 24px 0 40px; }
+    .section-title{ margin: 0 0 6px; }
+    .muted{ color: #667085; margin: 0 0 16px; }
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+      margin:18px 0 8px
+    }
+    .gallery-grid figure{
+      margin:0;border-radius:16px;overflow:hidden;
+      background:#f4f7fb;box-shadow:0 6px 18px rgba(0,0,0,.06)
+    }
+    .gallery-grid img{ display:block;width:100%;height:auto }
+    .gallery-grid figcaption{ display:none }
+  </style>
 </head>
+
 <body data-page="gallery">
+  <!-- ===== Site header (נשאר כמו בשאר הדפים) ===== -->
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="index.html">
-        <img src="logo.png" alt="Dryer Vent Services logo" class="logo">
+        <img src="logo.png" class="logo" alt="Dryer Vent Services logo">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
           <span>Cleaning - Repairs - Installations</span>
         </div>
       </a>
-      <nav id="site-nav" class="site-nav">
-        <a href="index.html" data-nav="home">Home</a>
-        <a href="services.html" data-nav="services">Services</a>
-        <a href="gallery.html" data-nav="gallery">Gallery</a>
-        <a href="reviews.html" data-nav="reviews">Reviews</a>
-        <a href="about.html" data-nav="about">About</a>
-        <a href="areas.html" data-nav="areas">Service Areas</a>
-        <a class="cta" href="contact.html" data-nav="contact">Contact Us</a>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html">Home</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a class="cta" href="contact.html">Book Now</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
-  <section class="page-hero fade-in">
-    <div class="container">
-      
-    </div>
-  </section>
 
-  <section class="section container center fade-in">
-    <a class="btn btn--primary" href="contact.html">Book Your Service</a>
-  </section>
+  <!-- ===== Gallery Section ===== -->
+  <main>
+    <section class="container gallery-wrap">
+      <h2 class="section-title">Gallery</h2>
+      <p class="muted">Our work gallery.</p>
 
+      <div id="gallery" class="gallery-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- ===== Footer (כמו בשאר הדפים) ===== -->
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <h4>Dryer Vent Services</h4>
-        <p>Dryer Vent Cleaning - Repairs - Installations</p>
-      </div>
-      <div>
-        <ul class="contact-list">
-          <li><a href="tel:+13472449382">347-244-9382</a></li>
-          <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
-        </ul>
-      </div>
-      <div class="footer-cta">
-        <a class="btn btn--primary" href="contact.html">Book Now</a>
+    <div class="container">
+      <h3>Dryer Vent Services</h3>
+      <p>Dryer Vent Cleaning - Repairs - Installations</p>
+      <p>347-244-9382<br>office@dryer-ventservices.com</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="contact.html">Book Now</a>
         <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
       </div>
+      <p class="legal">© 2025 Dryer Vent Services. All rights reserved.</p>
     </div>
-    <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
-  
-<style>
-/* beta3.0 gallery grid */
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:18px 0 8px}
-.gallery-grid figure{margin:0;border-radius:16px;overflow:hidden;background:#f4f7fb;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-.gallery-grid img{display:block;width:100%;height:auto}
-.gallery-grid figcaption{display:none}
-</style>
+  </footer>
 
-<section class="container">
-  <h2 class="section-title">Gallery</h2>
-  <p class="muted">Our work gallery.</p>
-  <div class="gallery-grid">
-    <figure><img src="images/gallery/Gallery-32.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-41.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-23.jpeg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-45.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-24.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-44.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-36.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-33.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-34.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-40.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-29.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-38.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-42.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-35.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-28.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-39.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-18.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-31.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-21.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-37.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-19.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-43.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-26.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-25.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-16.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-27.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-30.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-46.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-17.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-20.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-15.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-14.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-11.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-7.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-8.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-3.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-5.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-6.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-1.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-10.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-22.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-9.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-4.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-12.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-2.jpg" loading="lazy" alt="Gallery image"></figure>\n<figure><img src="images/gallery/Gallery-13.jpg" loading="lazy" alt="Gallery image"></figure>
-  </div>
-</section>
-\n</footer>
-  <div class="mobile-cta">
-    <a class="btn" href="tel:+13472449382">Call</a>
-    <a class="btn btn--primary" href="contact.html">Book Now</a>
-  </div>
-  <script src="script.js" defer></script>
+  <!-- ===== Loader: בונה את הגלריה מהקבצים שב-images/gallery ===== -->
+  <script>
+    // 1) אם יש לכם רשימת קבצים — מלאו כאן. שמות בדיוק כמו בתיקיית images/gallery/
+    // דוגמה: const FILES = ["IMG_0012.jpg","job-23.png","vent-clean-5.webp"];
+    const FILES = [
+      // ← הדביקו כאן את שמות הקבצים שלכם (ללא "images/gallery/"). משאירים ריק? ננסה manifest.json.
+    ];
+
+    // 2) אם FILES ריק, ננסה לטעון מ-manifest.json (מערך שמות קבצים), למשל:
+    // ["IMG_0012.jpg","job-23.png","vent-clean-5.webp"]
+    async function loadFromManifest() {
+      try {
+        const resp = await fetch('images/gallery/manifest.json', {cache: 'no-store'});
+        if (!resp.ok) return [];
+        return await resp.json();
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function render(files) {
+      const root = document.getElementById('gallery');
+      root.innerHTML = '';
+      files.forEach(name => {
+        const fig = document.createElement('figure');
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.alt = 'Gallery image';
+        img.src = 'images/gallery/' + name; // AS IS – בלי לשנות/לסובב
+        fig.appendChild(img);
+        root.appendChild(fig);
+      });
+    }
+
+    (async function init(){
+      let files = FILES.slice();
+      if (!files.length) files = await loadFromManifest();
+      render(files);
+    })();
+  </script>
 </body>
 </html>
