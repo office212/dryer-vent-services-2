@@ -15,70 +15,77 @@
   gtag('config', 'G-X77CVTW1CD');
 </script>
 
-<!-- 🔒 סטייל מקומי לכרטיס, תואם להום, לא פוגע בכלום -->
+<!-- Scoped card styles (לא משפיע על שאר האתר) -->
 <style>
   #sa-card.card.media{
-    background:#fff; border-radius:24px; overflow:hidden;
-    box-shadow:0 12px 30px rgba(0,0,0,.08); margin-top:24px;
+    background:#fff;border-radius:24px;overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);margin-top:24px
   }
-  #sa-card .svc-picture{ display:block; }
-  #sa-card .svc-picture img{ display:block; width:100%; height:auto; border-radius:0; }
-  #sa-card .inner{ padding:18px 20px 20px; }
-  #sa-card .inner h3{ margin:0 0 8px; font-weight:800; }
-  #sa-card .inner p{ margin:0; color:#475569; }
+  #sa-card .svc-picture{display:block;position:relative}
+  #sa-card .svc-picture img{
+    display:block;width:100%;height:auto;object-fit:cover;
+    opacity:1!important;transform:none!important /* מבטל הסתרות מאנימציה */
+  }
+  #sa-card .inner{padding:18px 20px 20px}
+  #sa-card .inner h3{margin:0 0 8px;font-weight:800}
+  #sa-card .inner p{margin:0;color:#475569}
 </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <div class="inner container">
-      <div class="logo-wrap">
-        <div class="logo"></div>
-        <div class="brand">
-          <h1>Dryer Vent Services</h1>
-          <small>Cleaning - Repairs - Installations</small>
-        </div>
+<div class="navbar">
+  <div class="inner container">
+    <div class="logo-wrap">
+      <div class="logo"></div>
+      <div class="brand">
+        <h1>Dryer Vent Services</h1>
+        <small>Cleaning - Repairs - Installations</small>
       </div>
-      <div class="nav-links">
-        <a href="/index.html">Home</a>
-        <a href="/services.html">Services</a>
-        <a href="/gallery.html">Gallery</a>
-        <a href="/reviews.html">Reviews</a>
-        <a href="/about.html">About</a>
-        <a href="/service-areas.html" style="font-weight:800;color:var(--primary)">Service Areas</a>
-        <a href="/contact.html" class="cta">Contact Us</a>
-      </div>
+    </div>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/services.html">Services</a>
+      <a href="/gallery.html">Gallery</a>
+      <a href="/reviews.html">Reviews</a>
+      <a href="/about.html">About</a>
+      <a href="/service-areas.html" style="font-weight:800;color:var(--primary)">Service Areas</a>
+      <a href="/contact.html" class="cta">Contact Us</a>
     </div>
   </div>
+</div>
 
-  <section class="container">
-    <h3 class="h2 reveal">Service Areas</h3>
-    <p class="reveal"><strong>Staten Island</strong>, and the greater New York & New Jersey area.</p>
+<section class="container">
+  <h3 class="h2 reveal">Service Areas</h3>
+  <p class="reveal"><strong>Staten Island</strong>, and the greater New York & New Jersey area.</p>
 
-    <!-- ⭐ הכרטיס התחתון בסגנון ההום -->
-    <div id="sa-card" class="card media">
-      <picture class="svc-picture">
-        <!-- ודא שהקובץ קיים ב- images/gallery/ בשם work-car.png -->
-        <img src="images/gallery/work-car.png"
-             alt="Service vehicle Dryer Vent Services"
-             class="svc-img" loading="lazy">
-      </picture>
-      <div class="inner">
-        <h3>Easy scheduling</h3>
-        <p>We work around your availability across all listed service areas.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="footer">
-    <div class="container row">
-      <div>© 2025 Dryer Vent Services</div>
-      <div class="cta">
-        <a class="btn" href="tel:+13472449382">Call</a>
-        <a class="btn accent" href="/contact.html">Book Now</a>
-      </div>
+  <!-- הכרטיס בסגנון ההום -->
+  <div id="sa-card" class="card media">
+    <picture class="svc-picture">
+      <!-- נסה PNG; אם אין — עובר ל-JPG ואז JPEG -->
+      <img
+        src="/images/gallery/work-car.png"
+        alt="Service vehicle Dryer Vent Services"
+        class="svc-img"
+        loading="lazy"
+        onerror="if(this.src.indexOf('.png')>-1){this.src='/images/gallery/work-car.jpg';}else if(this.src.indexOf('.jpg')>-1){this.src='/images/gallery/work-car.jpeg';}"
+      >
+    </picture>
+    <div class="inner">
+      <h3>Easy scheduling</h3>
+      <p>We work around your availability across all listed service areas.</p>
     </div>
   </div>
+</section>
+
+<div class="footer">
+  <div class="container row">
+    <div>© 2025 Dryer Vent Services</div>
+    <div class="cta">
+      <a class="btn" href="tel:+13472449382">Call</a>
+      <a class="btn accent" href="/contact.html">Book Now</a>
+    </div>
+  </div>
+</div>
 
 <script src="/assets/js/main.js"></script>
 </body>
