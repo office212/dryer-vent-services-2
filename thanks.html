@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Thanks! • Dryer Vent Services</title>
   <meta http-equiv="refresh" content="10; url=/">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
   <style>
     .ty-wrap{min-height:75vh;display:grid;place-items:center}
     .ty-card{max-width:720px;margin:20px;padding:28px;background:#fff;border:1px solid #eef0f4;border-radius:16px;box-shadow:0 8px 24px rgba(15,42,82,.10);text-align:center}
@@ -13,6 +13,25 @@
     .ty-card p{color:#475569}
     .btn{display:inline-block;margin-top:10px;padding:12px 18px;background:#ea6a1a;color:#fff;border-radius:12px;font-weight:700;text-decoration:none}
   </style>
+
+<meta property="og:title" content="Dryer Vent Cleaning in Staten Island | Repairs & Installations | NY & NJ"/>
+<meta property="og:description" content="Trusted dryer vent cleaning, repairs, and installations across NY & NJ. Fast service, safety-focused, great reviews."/>
+<meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.dryer-ventservices.com/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="canonical" href="https://www.dryer-ventservices.com/thanks"/>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "image": "/assets/img/og-image.png", "url": "https://www.dryer-ventservices.com/thanks/", "telephone": "+1-347-244-9382", "areaServed": [{"@type": "Place", "name": "Staten Island, NY"}, {"@type": "Place", "name": "New York, NY"}, {"@type": "Place", "name": "New Jersey"}], "address": {"@type": "PostalAddress", "addressLocality": "Staten Island", "addressRegion": "NY", "addressCountry": "US"}, "priceRange": "$$", "sameAs": ["https://www.dryer-ventservices.com"], "description": "Professional dryer vent cleaning, repairs, and installations across NY & NJ."}
+</script>
+<script>
+// Remove index.html from URL if present
+if (location.pathname.endsWith('/index.html')) {
+  history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
+}
+</script>
+
 </head>
 <body>
   <main class="ty-wrap">
@@ -27,5 +46,36 @@
     let n=10; const el=document.getElementById('sec');
     const t=setInterval(()=>{ n--; el.textContent=n; if(n<=0){ clearInterval(t); window.location.href='/'; } },1000);
   </script>
+
+<div id="ba-helper" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:9999;background:#0b4a72;color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.2);font-family:Inter,sans-serif;display:none;">
+  Drag the handle to see <strong>Before/After</strong>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const helper = document.getElementById('ba-helper');
+  // show helper once if a before/after slider exists
+  const hasBA = document.querySelector('.ba-slider, .before-after, .twentytwenty-container');
+  if (hasBA && helper){{
+    helper.style.display='block';
+    helper.style.opacity=0;
+    helper.animate([{opacity:0},{opacity:1}],{{duration:300,fill:'forwards'}});
+    setTimeout(()=>{{
+      helper.animate([{opacity:1},{opacity:0}],{{duration:600,fill:'forwards'}}).onfinish=()=>helper.remove();
+    }}, 4200);
+  }
+  // simple reveal on scroll
+  const obs = new IntersectionObserver((entries)=>{{
+    entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
+  }},{{threshold:.12}});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
+</script>
+<style>
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease;}
+.reveal-in{opacity:1 !important; transform:translateY(0) !important;}
+a.button, .btn, button{transition:transform .08s ease, box-shadow .2s ease;}
+a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
+</style>
+
 </body>
 </html>

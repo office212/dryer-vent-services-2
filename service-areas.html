@@ -46,6 +46,25 @@
     color:#475569;
   }
 </style>
+
+<meta property="og:title" content="Dryer Vent Cleaning in Staten Island | Repairs & Installations | NY & NJ"/>
+<meta property="og:description" content="Trusted dryer vent cleaning, repairs, and installations across NY & NJ. Fast service, safety-focused, great reviews."/>
+<meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.dryer-ventservices.com/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="canonical" href="https://www.dryer-ventservices.com/service-areas"/>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "image": "/assets/img/og-image.png", "url": "https://www.dryer-ventservices.com/service-areas/", "telephone": "+1-347-244-9382", "areaServed": [{"@type": "Place", "name": "Staten Island, NY"}, {"@type": "Place", "name": "New York, NY"}, {"@type": "Place", "name": "New Jersey"}], "address": {"@type": "PostalAddress", "addressLocality": "Staten Island", "addressRegion": "NY", "addressCountry": "US"}, "priceRange": "$$", "sameAs": ["https://www.dryer-ventservices.com"], "description": "Professional dryer vent cleaning, repairs, and installations across NY & NJ."}
+</script>
+<script>
+// Remove index.html from URL if present
+if (location.pathname.endsWith('/index.html')) {
+  history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
+}
+</script>
+
 </head>
 <body>
 
@@ -59,24 +78,24 @@
       </div>
     </div>
     <div class="nav-links">
-      <a href="/index.html">Home</a>
-      <a href="/services.html">Services</a>
-      <a href="/gallery.html">Gallery</a>
-      <a href="/reviews.html">Reviews</a>
-      <a href="/about.html">About</a>
-      <a href="/service-areas.html" style="font-weight:800;color:var(--primary)">Service Areas</a>
-      <a href="/contact.html" class="cta">Contact Us</a>
+      <a href="/index/">Home</a>
+      <a href="/services/">Services</a>
+      <a href="/gallery/">Gallery</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/about/">About</a>
+      <a href="/service-areas/" style="font-weight:800;color:var(--primary)">Service Areas</a>
+      <a href="/contact/" class="cta">Contact Us</a>
     </div>
   </div>
 </div>
 
-<section class="container">
+<section class="reveal" class="container">
   <h3 class="h2 reveal">Service Areas</h3>
   <p class="reveal"><strong>Staten Island</strong>, and the greater New York &amp; New Jersey area.</p>
 
   <!-- Card -->
   <div class="svc-card">
-    <img src="/images/gallery/work-car.png" alt="Service vehicle Dryer Vent Services" loading="eager" onerror="this.src='/images/gallery/work-car.jpg'">
+    <img src="/images/gallery/work-car.jpg" alt="Service vehicle Dryer Vent Services" loading="eager" onerror="this.src='/images/gallery/work-car.jpg'">
     <div class="inner">
       <h3>Easy scheduling</h3>
       <p>We work around your availability across all listed service areas.</p>
@@ -89,11 +108,42 @@
     <div>© 2025 Dryer Vent Services</div>
     <div class="cta">
       <a class="btn" href="tel:+13472449382">Call</a>
-      <a class="btn accent" href="/contact.html">Book Now</a>
+      <a class="btn accent" href="/contact/">Book Now</a>
     </div>
   </div>
 </div>
 
 <script src="/assets/js/main.js"></script>
+
+<div id="ba-helper" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:9999;background:#0b4a72;color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.2);font-family:Inter,sans-serif;display:none;">
+  Drag the handle to see <strong>Before/After</strong>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const helper = document.getElementById('ba-helper');
+  // show helper once if a before/after slider exists
+  const hasBA = document.querySelector('.ba-slider, .before-after, .twentytwenty-container');
+  if (hasBA && helper){{
+    helper.style.display='block';
+    helper.style.opacity=0;
+    helper.animate([{opacity:0},{opacity:1}],{{duration:300,fill:'forwards'}});
+    setTimeout(()=>{{
+      helper.animate([{opacity:1},{opacity:0}],{{duration:600,fill:'forwards'}}).onfinish=()=>helper.remove();
+    }}, 4200);
+  }
+  // simple reveal on scroll
+  const obs = new IntersectionObserver((entries)=>{{
+    entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
+  }},{{threshold:.12}});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
+</script>
+<style>
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease;}
+.reveal-in{opacity:1 !important; transform:translateY(0) !important;}
+a.button, .btn, button{transition:transform .08s ease, box-shadow .2s ease;}
+a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
+</style>
+
 </body>
 </html>
