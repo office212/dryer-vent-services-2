@@ -15,27 +15,46 @@
     body.contact.page-contact .cta-sticky { display:none!important;visibility:hidden!important;pointer-events:none!important; }
     .btn-submit[disabled]{opacity:.65;cursor:not-allowed}
   </style>
+
+<meta property="og:title" content="Dryer Vent Cleaning in Staten Island | Repairs & Installations | NY & NJ"/>
+<meta property="og:description" content="Trusted dryer vent cleaning, repairs, and installations across NY & NJ. Fast service, safety-focused, great reviews."/>
+<meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.dryer-ventservices.com/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="canonical" href="https://www.dryer-ventservices.com/contact"/>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "image": "/assets/img/og-image.png", "url": "https://www.dryer-ventservices.com/contact/", "telephone": "+1-347-244-9382", "areaServed": [{"@type": "Place", "name": "Staten Island, NY"}, {"@type": "Place", "name": "New York, NY"}, {"@type": "Place", "name": "New Jersey"}], "address": {"@type": "PostalAddress", "addressLocality": "Staten Island", "addressRegion": "NY", "addressCountry": "US"}, "priceRange": "$$", "sameAs": ["https://www.dryer-ventservices.com"], "description": "Professional dryer vent cleaning, repairs, and installations across NY & NJ."}
+</script>
+<script>
+// Remove index.html from URL if present
+if (location.pathname.endsWith('/index.html')) {
+  history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
+}
+</script>
+
 </head>
 <body class="contact page-contact" data-page="contact">
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="index.html">
-      <img src="logo.png" alt="Dryer Vent Services logo" class="logo">
+    <a class="brand" href="/index/">
+      <img loading="lazy" src="logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
       <div class="brand-text"><strong>Dryer Vent Services</strong><span>Cleaning - Repairs - Installations</span></div>
     </a>
     <nav id="site-nav" class="site-nav">
-      <a href="index.html">Home</a><a href="services.html">Services</a>
-      <a href="gallery.html">Gallery</a><a href="reviews.html">Reviews</a>
-      <a href="about.html">About</a><a href="areas.html">Service Areas</a>
-      <a class="cta" href="contact.html">Contact Us</a>
+      <a href="/index/">Home</a><a href="/services/">Services</a>
+      <a href="/gallery/">Gallery</a><a href="/reviews/">Reviews</a>
+      <a href="/about/">About</a><a href="/areas/">Service Areas</a>
+      <a class="cta" href="/contact/">Contact Us</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<section class="page-hero"><div class="container"><h1>Contact Us</h1><p>All fields are required.</p></div></section>
+<section class="reveal" class="page-hero"><div class="container"><h1>Contact Us</h1><p>All fields are required.</p></div></section>
 
-<section class="section container two-col">
+<section class="reveal" class="section container two-col">
   <div>
     <h2>Send a Message</h2>
 
@@ -155,12 +174,43 @@
       <li><a href="tel:+13472449382">347-244-9382</a></li>
       <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
     </ul></div>
-    <div class="footer-cta"><a class="btn btn--primary" href="contact.html">Book Now</a></div>
+    <div class="footer-cta"><a class="btn btn--primary" href="/contact/">Book Now</a></div>
   </div>
   <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
 </footer>
 
 <script src="script.js" defer></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<div id="ba-helper" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:9999;background:#0b4a72;color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.2);font-family:Inter,sans-serif;display:none;">
+  Drag the handle to see <strong>Before/After</strong>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const helper = document.getElementById('ba-helper');
+  // show helper once if a before/after slider exists
+  const hasBA = document.querySelector('.ba-slider, .before-after, .twentytwenty-container');
+  if (hasBA && helper){{
+    helper.style.display='block';
+    helper.style.opacity=0;
+    helper.animate([{opacity:0},{opacity:1}],{{duration:300,fill:'forwards'}});
+    setTimeout(()=>{{
+      helper.animate([{opacity:1},{opacity:0}],{{duration:600,fill:'forwards'}}).onfinish=()=>helper.remove();
+    }}, 4200);
+  }
+  // simple reveal on scroll
+  const obs = new IntersectionObserver((entries)=>{{
+    entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
+  }},{{threshold:.12}});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
+</script>
+<style>
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease;}
+.reveal-in{opacity:1 !important; transform:translateY(0) !important;}
+a.button, .btn, button{transition:transform .08s ease, box-shadow .2s ease;}
+a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
+</style>
+
 </body>
 </html>
