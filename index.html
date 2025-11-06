@@ -310,11 +310,29 @@ if (location.pathname.endsWith('/index.html')) {
 document.addEventListener('DOMContentLoaded', function(){
   const helper = document.getElementById('ba-helper');
   // show helper once if a before/after slider exists
-  const hasBA = document.querySelector('.ba-slider, .before-after, .twentytwenty-container');
-  if (hasBA && helper){{
-    helper.style.display='block';
-    helper.style.opacity=0;
-    helper.animate([{opacity:0},{opacity:1}],{{duration:300,fill:'forwards'}});
+  
+  const target = document.querySelector('.ba-slider, .before-after, .twentytwenty-container');
+  if (helper && target){
+    if (!('IntersectionObserver' in window)) { helper.style.display='block'; }
+    else {
+      const io = new IntersectionObserver((ents)=>{
+        ents.forEach(en=>{
+          if (en.isIntersecting){
+            helper.style.display='block';
+            helper.style.opacity=0;
+            helper.animate([{opacity:0},{opacity:1}],{duration:300,fill:'forwards'});
+            setTimeout(()=>{
+              helper.animate([{opacity:1},{opacity:0}],{duration:600,fill:'forwards'})
+                    .onfinish=()=>helper.remove();
+            }, 4200);
+            io.disconnect();
+          }
+        });
+      },{threshold:.2});
+      io.observe(target);
+    }
+  }
+
     setTimeout(()=>{{
       helper.animate([{opacity:1},{opacity:0}],{{duration:600,fill:'forwards'}}).onfinish=()=>helper.remove();
     }}, 4200);
@@ -332,33 +350,6 @@ document.addEventListener('DOMContentLoaded', function(){
 a.button, .btn, button{transition:transform .08s ease, box-shadow .2s ease;}
 a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
 </style>
-
-
-<!-- BA Help (beta4.6) -->
-<div id="baHelpModal" role="dialog" aria-modal="true" aria-labelledby="baHelpTitle" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);z-index:1000;">
-  <div style="background:#fff;border-radius:14px;max-width:520px;width:92%;padding:20px;box-shadow:0 12px 30px rgba(0,0,0,.18)">
-    <h3 id="baHelpTitle" style="margin:0 0 8px;font-size:20px;color:#0f1b2d">Tip: Drag the bar to compare</h3>
-    <p style="margin:0 0 14px;color:#334155">On the <strong>Before/After</strong> photos, press and drag the center bar left or right. On mobile, swipe across the photo.</p>
-    <div style="display:flex;justify-content:flex-end"><button id="baHelpDismiss" style="border:0;border-radius:10px;padding:10px 14px;cursor:pointer;background:#e2e8f0;color:#0f1b2d">Got it</button></div>
-  </div>
-</div>
-<script>(function(){try{
-  var KEY='baHelpShown_beta46_session';
-  if(sessionStorage.getItem(KEY)) return;
-  function show(){var m=document.getElementById('baHelpModal'); if(m) m.style.display='flex';}
-  function hide(){var m=document.getElementById('baHelpModal'); if(m){ m.style.display='none'; sessionStorage.setItem(KEY,'1'); }}
-  document.addEventListener('click', function(e){ if(e.target && (e.target.id==='baHelpDismiss' || e.target.id==='baHelpModal')) hide(); });
-  function ready(fn){ if(document.readyState!='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
-  ready(function(){ 
-    var target = document.querySelector('.ba-compare, .ba-range, .before-after, #before-after, [data-ba], .ba-slider');
-    if(!target) return;
-    if(!('IntersectionObserver' in window)) { show(); return; }
-    var io=new IntersectionObserver(function(ents){ 
-      ents.forEach(function(en){ if(en.isIntersecting){ show(); io.disconnect(); } }); 
-    }, {threshold:0.2});
-    io.observe(target);
-  });
-}catch(e){} })();</script>
 
 </body>
 </html>
