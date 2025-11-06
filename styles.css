@@ -247,13 +247,7 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
   -ms-touch-action: none;
 }
 
-/* beta48-hero-fallback */
-.home .hero, .home .hero-modern, .home header.hero, .home .site-hero{
-  background: #0f77cc !important;
-  background-image: none !important;
-}
-
-/* beta48-static-handle */
-.twentytwenty-handle, .twentytwenty-handle:before, .twentytwenty-handle:after{ pointer-events:none !important; }
-.twentytwenty-handle{ top:50% !important; transform:translate(-50%, -50%) !important; }
-.twentytwenty-handle:active{ top:50% !important; transform:translate(-50%, -50%) !important; }
+/* beta49-hero-fallback */
+body[data-page="home"] .hero.hero-bg.hero-modern,
+body[data-page="home"] .hero.hero-modern,
+body[data-page="home"] .hero-bg { background:#0f77cc !important; background-image:none !important; }

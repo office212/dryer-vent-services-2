@@ -17,3 +17,9 @@
 @media (min-width:1024px){
   .ba-viewport{height:520px}
 }
+
+/* beta49-static-knob */
+.ba-divider, .ba-knob { pointer-events: none !important; }
+.ba-knob { top: 50% !important; transform: translate(-50%, -50%) !important; }
+/* keep arrows clickable */
+.ba-arrow { pointer-events: auto !important; }

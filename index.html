@@ -334,7 +334,7 @@ a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
 </style>
 
 
-<!-- BA Help (beta4.8) -->
+<!-- BA Help (beta4.9) -->
 <div id="baHelpModal" role="dialog" aria-modal="true" aria-labelledby="baHelpTitle" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);z-index:1000;">
   <div style="background:#fff;border-radius:14px;max-width:520px;width:92%;padding:20px;box-shadow:0 12px 30px rgba(0,0,0,.18)">
     <h3 id="baHelpTitle" style="margin:0 0 8px;font-size:20px;color:#0f1b2d">Tip: Drag the bar to compare</h3>
@@ -343,18 +343,18 @@ a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
   </div>
 </div>
 <script>(function(){try{
-  var KEY='baHelpShown_beta48_session'; if(sessionStorage.getItem(KEY)) return;
+  var KEY='baHelpShown_beta49'; if(sessionStorage.getItem(KEY)) return;
   function show(){var m=document.getElementById('baHelpModal'); if(m) m.style.display='flex';}
   function hide(){var m=document.getElementById('baHelpModal'); if(m){ m.style.display='none'; sessionStorage.setItem(KEY,'1'); }}
   document.addEventListener('click', function(e){ if(e.target && (e.target.id==='baHelpDismiss' || e.target.id==='baHelpModal')) hide(); });
   function ready(fn){ if(document.readyState!='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
   ready(function(){ 
-    var target = document.querySelector('.twentytwenty-container, .before-after, .ba-slider, #before-after, .cocoen, .juxtapose');
+    var target = document.getElementById('ba-carousel');
     if(!target) return;
     if(!('IntersectionObserver' in window)) { show(); return; }
     var io=new IntersectionObserver(function(ents){ 
       ents.forEach(function(en){ if(en.isIntersecting){ show(); io.disconnect(); } }); 
-    }, {threshold:0.18});
+    }, {threshold:0.22});
     io.observe(target);
   });
 }catch(e){} })();</script>
