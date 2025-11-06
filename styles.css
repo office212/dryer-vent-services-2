@@ -246,3 +246,20 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
   touch-action: none;
   -ms-touch-action: none;
 }
+
+
+/* === fix4: image sizing for feature/service cards === */
+.feature-img,
+.svc-picture .svc-img,
+.card.media img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:12px;
+}
+@media (min-width: 900px){
+  .feature-img{ max-height: 380px; width:100%; object-fit: cover; }
+  .card.media .svc-picture .svc-img{ height: 260px; width:100%; object-fit: cover; }
+}
+/* ensure picture elements expand */
+picture.svc-picture, picture{ display:block; width:100%; }
