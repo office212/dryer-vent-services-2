@@ -248,18 +248,9 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
 }
 
 
-/* === fix4: image sizing for feature/service cards === */
-.feature-img,
-.svc-picture .svc-img,
-.card.media img{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:12px;
-}
+/* fix6: ensure about/areas images render fully */
+.feature-img{ display:block; width:100%; height:auto; border-radius:12px; }
 @media (min-width: 900px){
-  .feature-img{ max-height: 380px; width:100%; object-fit: cover; }
-  .card.media .svc-picture .svc-img{ height: 260px; width:100%; object-fit: cover; }
+  .feature-img{ max-height: 420px; object-fit: cover; }
 }
-/* ensure picture elements expand */
-picture.svc-picture, picture{ display:block; width:100%; }
+picture, .svc-picture{ display:block; width:100%; }
