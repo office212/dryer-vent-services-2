@@ -129,7 +129,7 @@ if (location.pathname.endsWith('/index.html')) {
 <div class="cards-3">
 <div class="card media">
 <picture class="svc-picture">
-<img alt="Dryer vent cleaning" decoding="async" loading="eager" src="/assets/hero.png">
+<img alt="Dryer vent cleaning" decoding="async" loading="eager" src="/assets/images/services/cards/card-cleaning.jpg?v=200">
 </img></picture>
 <div class="inner">
 <h3>Dryer Vent Cleaning</h3>
@@ -138,7 +138,7 @@ if (location.pathname.endsWith('/index.html')) {
 </div>
 <div class="card media">
 <picture class="svc-picture">
-<img alt="Dryer vent repairs" decoding="async" loading="eager" src="/assets/hero.png"/>
+<img alt="Dryer vent repairs" decoding="async" loading="eager" src="/assets/images/services/cards/card-repairs.jpg?v=200"/>
 </picture>
 <div class="inner">
 <h3>Repairs and Replacements</h3>
@@ -147,7 +147,7 @@ if (location.pathname.endsWith('/index.html')) {
 </div>
 <div class="card media">
 <picture class="svc-picture">
-<img alt="Dryer vent installations" decoding="async" loading="eager" src="/assets/hero.png"/>
+<img alt="Dryer vent installations" decoding="async" loading="eager" src="/assets/images/services/cards/card-installations.jpg?v=200"/>
 </picture>
 <div class="inner">
 <h3>New Installations</h3>
@@ -328,7 +328,7 @@ a.button, .btn, button{transition:transform .08s ease, box-shadow .2s ease;}
 a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
 </style>
 
-<!-- BA Slider Help Modal (v2) -->
+<!-- BA Slider Help Modal (v3) -->
 <style>
 #baHelpModal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);z-index:1000;}
 #baHelpModal .inner{background:#fff;border-radius:14px;max-width:520px;width:92%;padding:20px;box-shadow:0 12px 30px rgba(0,0,0,.18);}
@@ -350,19 +350,29 @@ a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
 <script>
 (function(){
   try{
-    var key = 'baHelpShown_v2';
-    var hasSlider = document.querySelector('.ba-compare, .ba-range');
-    if(!localStorage.getItem(key) && hasSlider){
-      var m = document.getElementById('baHelpModal');
-      if(m){ m.style.display='flex'; }
-      var d = document.getElementById('baHelpDismiss');
-      if(d){ d.addEventListener('click', function(){ 
-        localStorage.setItem(key,'1'); 
-        m.style.display='none';
-      });}
-      if(m){ m.addEventListener('click', function(e){ if(e.target===m){ m.style.display='none'; localStorage.setItem(key,'1'); } }); }
-    }
-  }catch(e){ /* no-op */ }
+    var KEY='baHelpShown_v3';
+    var sliderSel='.ba-compare, .ba-range';
+    var modal=document.getElementById('baHelpModal');
+    if(!modal){return;}
+    var close=function(){ modal.style.display='none'; localStorage.setItem(KEY,'1'); };
+    var seen=localStorage.getItem(KEY);
+    if(seen){ return; }
+    var target=document.querySelector(sliderSel);
+    if(!target){ return; }
+    // Show when slider enters viewport (40% visible)
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          modal.style.display='flex';
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    obs.observe(target);
+    var btn=document.getElementById('baHelpDismiss');
+    if(btn){ btn.addEventListener('click', close); }
+    modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+  }catch(e){}
 })();
 </script>
 
