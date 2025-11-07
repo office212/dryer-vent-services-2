@@ -117,7 +117,7 @@ if (location.pathname.endsWith('/index.html')) {
 </button>
 </div>
 </header>
-<section class="reveal" class="hero hero-bg hero-modern">
+<section class="reveal" class="hero hero-bg hero-modern" style="background:#1B365D;background-image:none;">
 <div class="container hero-inner">
 <h1 class="hero-title">Professional Dryer Vent Cleaning, Repairs and Installations</h1>
 <p class="hero-sub">Serving <strong>Staten Island</strong> and the greater <strong>New York</strong> and <strong>New Jersey</strong>.</p>
@@ -332,41 +332,6 @@ document.addEventListener('DOMContentLoaded', function(){
 a.button, .btn, button{transition:transform .08s ease, box-shadow .2s ease;}
 a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
 </style>
-
-
-<!-- BA Help (beta5.3) -->
-<div id="baHelpModal" role="dialog" aria-modal="true" aria-labelledby="baHelpTitle" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);z-index:1000;">
-  <div style="background:#fff;border-radius:14px;max-width:520px;width:92%;padding:20px;box-shadow:0 12px 30px rgba(0,0,0,.18)">
-    <h3 id="baHelpTitle" style="margin:0 0 8px;font-size:20px;color:#0f1b2d">Tip: Drag the bar to compare</h3>
-    <p style="margin:0 0 14px;color:#334155">On the <strong>Before/After</strong> photos, press and drag the center bar left or right. On mobile, swipe across the photo.</p>
-    <div style="display:flex;justify-content:flex-end"><button id="baHelpDismiss" style="border:0;border-radius:10px;padding:10px 14px;cursor:pointer;background:#e2e8f0;color:#0f1b2d">Got it</button></div>
-  </div>
-</div>
-<script>(function(){try{
-  var KEY='baHelpShown_beta53'; if(sessionStorage.getItem(KEY)) return;
-  function shown(){ return !!document.body.dataset.baHelpShown; }
-  function show(){ if(shown()) return; var m=document.getElementById('baHelpModal'); if(m){ m.style.display='flex'; document.body.dataset.baHelpShown='1'; } }
-  function hide(){ var m=document.getElementById('baHelpModal'); if(m){ m.style.display='none'; sessionStorage.setItem(KEY,'1'); } }
-  document.addEventListener('click', function(e){ if(e.target && (e.target.id==='baHelpDismiss' || e.target.id==='baHelpModal')) hide(); });
-  function ready(fn){ if(document.readyState!='loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
-  ready(function(){
-    var targets = document.querySelectorAll('#before-after, .twentytwenty-container, .ba-carousel, .ba-range, .cocoen, .juxtapose');
-    if(targets.length && 'IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(ents){
-        ents.forEach(function(en){ if(en.isIntersecting){ show(); io.disconnect(); } });
-      }, {threshold:0.2});
-      targets.forEach(function(t){ io.observe(t); });
-    }
-    // Fallback: show if user scrolled 30% of page
-    window.addEventListener('scroll', function(){
-      var sc=(window.scrollY||document.documentElement.scrollTop);
-      var h=document.documentElement.scrollHeight - window.innerHeight;
-      if(h>0 && sc/h>0.3) show();
-    }, {passive:true});
-    // Ultimate fallback after 12s (without stealing focus)
-    setTimeout(function(){ if(!shown()) show(); }, 12000);
-  });
-}catch(e){} })();</script>
 
 </body>
 </html>
