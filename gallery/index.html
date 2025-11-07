@@ -22,19 +22,18 @@
   </style>
 
   <script>
-    // helper: set src to webp first, fallback to jpg on 404
+    // נטען קודם JPG (שומר EXIF) ורק אם חסר – ננסה WebP
     function setSmartSrc(img){
       if(img.dataset.loaded) return;
-      const base = img.dataset.base; // e.g. /images/gallery/Gallery-32
-      const webp = base + '.webp';
+      const base = img.dataset.base; // /images/gallery/Gallery-32
       const jpg  = base + '.jpg';
+      const webp = base + '.webp';
       img.loading = 'lazy'; img.decoding = 'async';
-      img.src = webp;
-      img.onerror = () => { if(img.src.endsWith('.webp')) img.src = jpg; };
+      img.src = jpg;
+      img.onerror = () => { if (img.src.endsWith('.jpg')) img.src = webp; };
       img.dataset.loaded = '1';
     }
 
-    // reveal next N figures and load their images
     function loadMore(n){
       const hidden = Array.from(document.querySelectorAll('.gallery-grid figure.hidden'));
       hidden.slice(0, n).forEach(fig => {
@@ -49,11 +48,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // initial 3
-      loadMore(3);
-      // bind button for +6 each click
+      loadMore(3); // first batch
       const btn = document.getElementById('load-more-btn');
-      if(btn) btn.addEventListener('click', () => loadMore(6));
+      if(btn) btn.addEventListener('click', () => loadMore(6)); // +6 each click
     });
   </script>
 </head>
@@ -88,7 +85,7 @@
     <p class="muted">Our work gallery.</p>
 
     <div class="gallery-grid">
-      <!-- שים רק data-base; הסקריפט ינסה .webp ואז .jpg כאשר התמונה נגלית -->
+      <!-- שמים data-base בלבד; הסקריפט ינסה .jpg ואז .webp -->
       <figure class="hidden"><img data-base="/images/gallery/Gallery-32" alt="Gallery image"></figure>
       <figure class="hidden"><img data-base="/images/gallery/Gallery-41" alt="Gallery image"></figure>
       <figure class="hidden"><img data-base="/images/gallery/Gallery-23" alt="Gallery image"></figure>
