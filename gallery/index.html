@@ -19,7 +19,7 @@
     gtag('js', new Date()); gtag('config', 'G-X77CVTW1CD');
   </script>
 
-  <!-- OG/SEO (תואם אתר) -->
+  <!-- SEO/OG -->
   <meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation">
   <link rel="canonical" href="https://dryer-ventservices.com/gallery">
   <meta property="og:site_name" content="Dryer Vent Services">
@@ -32,14 +32,13 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 
   <script>
-    // Remove index.html from URL if present
     if (location.pathname.endsWith('/index.html')) {
       history.replaceState(null,'',location.pathname.replace('/index.html','/')+location.search+location.hash);
     }
   </script>
 
   <style>
-    /* --- Gallery layout --- */
+    /* Layout כמו שהיה כשהכול היה ישר */
     .gallery-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -52,23 +51,16 @@
       overflow:hidden;
       background:#f4f7fb;
       box-shadow:0 6px 18px rgba(0,0,0,.06);
-      aspect-ratio:4/3;     /* מרובע-מלבני נקי; התמונה תיחתך יפה פנימה */
-      position:relative;
     }
-    .gallery-grid picture,
     .gallery-grid img{
-      width:100%;
-      height:100%;
       display:block;
-    }
-    .gallery-grid img{
-      object-fit:cover;
-      image-orientation:from-image;    /* ✅ שומר על כיוון מה-EXIF כדי שלא “ישכב” */
+      width:100%;
+      height:auto;            /* ✅ אין כפיית יחס ממדים – מכבד את הכיוון הטבעי */
       opacity:1 !important;
       transform:none !important;
     }
 
-    /* כפתור טעינה */
+    /* כפתור כתום כמו באתר */
     #load-more-btn{
       display:inline-block;
       margin-top:16px;
@@ -77,7 +69,7 @@
       border:0;
       cursor:pointer;
       font-weight:600;
-      background:#0f77cc;   /* כחול האתר כמו שביקשת */
+      background:#f5821f;     /* כתום */
       color:#fff;
       box-shadow:0 6px 18px rgba(0,0,0,.08);
     }
@@ -116,7 +108,7 @@
 
   <section class="section container center" style="padding-bottom:32px">
     <h2 class="section-title">Gallery</h2>
-    <p class="muted">Our work gallery.</p> <!-- ✅ נשאר בדיוק כפי שביקשת -->
+    <p class="muted">Our work gallery.</p>
 
     <div class="gallery-grid" id="galleryGrid"></div>
 
@@ -153,7 +145,7 @@
   <script defer src="/script.js"></script>
 
   <script>
-    // אותה רשימת קבצים שהייתה לך (ללא סיומת) – ודא שקיימים .webp (ועדיף גם .jpg/.jpeg)
+    // שמות הקבצים בלי סיומת – כמו שהיו אצלך
     const IMAGES = [
       "Gallery-32","Gallery-41","Gallery-23","Gallery-45","Gallery-24","Gallery-44",
       "Gallery-36","Gallery-33","Gallery-34","Gallery-40","Gallery-29","Gallery-38",
@@ -166,34 +158,23 @@
     ];
 
     const grid = document.getElementById('galleryGrid');
-    const BATCH_FIRST = 3;   // מציג 3 בהתחלה
-    const BATCH_NEXT  = 6;   // ואז 6 בכל לחיצה
+    const BATCH_FIRST = 3;   // בהתחלה
+    const BATCH_NEXT  = 6;   // בכל לחיצה
     let shown = 0;
 
-    // בונה <figure><picture><source webp><img jpg></figure>
+    // יוצר IMG שמנסה קודם WEBP ואז נופל ל-JPG/ JPEG אם צריך
     function makeFigure(base){
       const fig = document.createElement('figure');
-      const pic = document.createElement('picture');
-
-      // ✅ WebP קודם
-      const srcWebp = document.createElement('source');
-      srcWebp.type = 'image/webp';
-      srcWebp.srcset = `/images/gallery/${base}.webp`;
-      pic.appendChild(srcWebp);
-
-      // Fallback -> JPG/JPEG -> לבסוף WebP אם צריך
       const img = document.createElement('img');
       img.alt = 'Gallery image';
       img.loading = 'lazy';
       img.decoding = 'async';
-      img.src = `/images/gallery/${base}.jpg`;
+      img.src = `/images/gallery/${base}.webp`; // ✅ קודם webp
       img.onerror = () => {
-        if (img.src.endsWith('.jpg'))       { img.src = `/images/gallery/${base}.jpeg`; }
-        else if (img.src.endsWith('.jpeg')) { img.src = `/images/gallery/${base}.webp`; }
+        if (img.src.endsWith('.webp'))      { img.src = `/images/gallery/${base}.jpg`; }
+        else if (img.src.endsWith('.jpg'))  { img.src = `/images/gallery/${base}.jpeg`; }
       };
-
-      pic.appendChild(img);
-      fig.appendChild(pic);
+      fig.appendChild(img);
       return fig;
     }
 
@@ -204,17 +185,16 @@
 
       const btn = document.getElementById('load-more-btn');
       if (shown >= IMAGES.length) {
-        // נגמרו התמונות → הכפתור הופך ל־Book Now
         btn.textContent = 'Book Now';
         btn.onclick = () => { window.location.href = '/contact/'; };
-        btn.style.backgroundColor = '#f5821f';
+        btn.style.backgroundColor = '#f5821f'; // נשאר כתום
       }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       addBatch(BATCH_FIRST);
-      const btn = document.getElementById('load-more-btn');
-      if (btn) btn.addEventListener('click', () => addBatch(BATCH_NEXT));
+      document.getElementById('load-more-btn')
+        .addEventListener('click', () => addBatch(BATCH_NEXT));
     });
   </script>
 </body>
