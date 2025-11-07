@@ -14,7 +14,8 @@
   <style>
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:18px 0 8px}
     .gallery-grid figure{margin:0;border-radius:16px;overflow:hidden;background:#f4f7fb;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-    .gallery-grid img{display:block;width:100%;height:260px;object-fit:cover;object-position:center}
+    /* חשוב: כיבוד כיוון התמונה מהקובץ */
+    .gallery-grid img{display:block;width:100%;height:260px;object-fit:cover;object-position:center;image-orientation:from-image}
     @media(min-width:900px){.gallery-grid img{height:300px}}
     .hidden{display:none}
     .load-more-wrap{display:flex;justify-content:center;margin-top:20px}
@@ -22,24 +23,35 @@
   </style>
 
   <script>
-    // נטען קודם JPG (שומר EXIF) ורק אם חסר – ננסה WebP
-    function setSmartSrc(img){
-      if(img.dataset.loaded) return;
-      const base = img.dataset.base; // /images/gallery/Gallery-32
-      const jpg  = base + '.jpg';
-      const webp = base + '.webp';
+    // יוצר <picture> שמעדיף webp עם נפילה ל-jpg
+    function mountPicture(container, base, alt){
+      const pic = document.createElement('picture');
+
+      const srcWebp = document.createElement('source');
+      srcWebp.setAttribute('type','image/webp');
+      srcWebp.setAttribute('srcset', base + '.webp');
+      pic.appendChild(srcWebp);
+
+      const img = document.createElement('img');
+      img.setAttribute('alt', alt || 'Gallery image');
       img.loading = 'lazy'; img.decoding = 'async';
-      img.src = jpg;
-      img.onerror = () => { if (img.src.endsWith('.jpg')) img.src = webp; };
-      img.dataset.loaded = '1';
+      // fallback ל-JPG (אם אין JPG נשארים עם ה-WebP מה-<source>)
+      img.src = base + '.jpg';
+      img.onerror = () => { if (img.src.endsWith('.jpg')) img.src = base + '.webp'; };
+      pic.appendChild(img);
+
+      container.innerHTML = '';
+      container.appendChild(pic);
+      container.dataset.mounted = '1';
     }
 
     function loadMore(n){
       const hidden = Array.from(document.querySelectorAll('.gallery-grid figure.hidden'));
       hidden.slice(0, n).forEach(fig => {
         fig.classList.remove('hidden');
-        const img = fig.querySelector('img[data-base]');
-        if(img) setSmartSrc(img);
+        if(!fig.dataset.mounted){
+          mountPicture(fig, fig.dataset.base, 'Gallery image');
+        }
       });
       if(document.querySelectorAll('.gallery-grid figure.hidden').length === 0){
         const btn = document.getElementById('load-more-btn');
@@ -48,9 +60,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      loadMore(3); // first batch
+      loadMore(3); // מציג 3 בהתחלה
       const btn = document.getElementById('load-more-btn');
-      if(btn) btn.addEventListener('click', () => loadMore(6)); // +6 each click
+      if(btn) btn.addEventListener('click', () => loadMore(6)); // +6 בכל לחיצה
     });
   </script>
 </head>
@@ -85,53 +97,53 @@
     <p class="muted">Our work gallery.</p>
 
     <div class="gallery-grid">
-      <!-- שמים data-base בלבד; הסקריפט ינסה .jpg ואז .webp -->
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-32" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-41" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-23" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-45" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-24" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-44" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-36" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-33" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-34" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-40" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-29" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-38" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-42" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-35" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-28" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-39" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-18" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-31" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-21" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-37" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-19" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-43" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-26" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-25" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-16" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-27" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-30" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-46" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-17" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-20" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-15" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-14" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-11" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-7"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-8"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-3"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-5"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-6"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-1"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-10" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-22" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-9"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-4"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-12" alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-2"  alt="Gallery image"></figure>
-      <figure class="hidden"><img data-base="/images/gallery/Gallery-13" alt="Gallery image"></figure>
+      <!-- רק data-base; הסקריפט יבנה picture עם webp קודם -->
+      <figure class="hidden" data-base="/images/gallery/Gallery-32"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-41"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-23"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-45"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-24"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-44"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-36"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-33"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-34"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-40"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-29"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-38"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-42"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-35"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-28"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-39"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-18"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-31"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-21"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-37"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-19"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-43"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-26"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-25"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-16"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-27"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-30"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-46"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-17"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-20"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-15"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-14"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-11"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-7"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-8"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-3"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-5"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-6"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-1"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-10"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-22"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-9"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-4"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-12"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-2"></figure>
+      <figure class="hidden" data-base="/images/gallery/Gallery-13"></figure>
     </div>
 
     <div class="load-more-wrap">
