@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dryer Vent Cleaning Photos &amp; Real Results | Staten Island, NY/NJ</title>
-  <meta name="description" content="Before &amp; after dryer vent cleaning and repair photos from local homes &amp; businesses in Staten Island and the greater New York &amp; New Jersey area.">
+  <title>Dryer Vent Cleaning Photos & Real Results | Staten Island, NY/NJ</title>
+  <meta name="description" content="Before & after dryer vent cleaning and repair photos from local homes & businesses in Staten Island and the greater New York & New Jersey area.">
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,16 +15,30 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
 
+  <!-- SEO -->
   <link rel="canonical" href="https://www.dryer-ventservices.com/gallery"/>
+  <meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation">
+  <meta property="og:site_name" content="Dryer Vent Services">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.dryer-ventservices.com/gallery">
+  <meta property="og:title" content="Gallery | Real Dryer Vent Jobs & Results">
+  <meta property="og:description" content="See real dryer vent cleaning photos and project snapshots from homes and businesses.">
+  <meta property="og:image" content="/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
 
   <style>
-    /* --- Gallery layout --- */
-    .gallery-wrap{max-width:1100px;margin:0 auto}
+    /* Grid */
     .gallery-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:18px;
+      grid-template-columns:1fr;
+      gap:16px;
       margin:18px 0 8px;
+    }
+    @media(min-width:768px){
+      .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(min-width:1100px){
+      .gallery-grid{grid-template-columns:repeat(3,1fr);}
     }
     .gallery-grid figure{
       margin:0;
@@ -37,28 +51,43 @@
       display:block;
       width:100%;
       height:auto;
-      /* ✅ מבקש מהדפדפן ליישם EXIF rotation במקור */
+      /* מבטיח שהתמונה נשארת ישרה לפי EXIF אם יש */
       image-orientation: from-image;
       transform:none !important;
+      object-fit:contain;
     }
 
-    /* --- Load more button (כתום) --- */
-    .load-more{
-      appearance:none;border:0;cursor:pointer;
-      background:#f58220; /* כתום המותג */
-      color:#fff;border-radius:999px;padding:12px 22px;
-      font-weight:700; box-shadow:0 8px 22px rgba(245,130,32,.28);
-      transition:transform .06s ease, box-shadow .2s ease;
+    /* Load more button (כתום) */
+    .loadmore-wrap{display:flex;justify-content:center;margin:22px 0 8px}
+    #loadMore{
+      background:#f58823; /* כתום המותג */
+      color:#fff;
+      border:0;
+      border-radius:999px;
+      padding:14px 22px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 8px 20px rgba(245,136,35,.25);
+      transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
     }
-    .load-more:hover{transform:translateY(-1px)}
-    .load-more[disabled]{opacity:.6;cursor:default}
+    #loadMore:hover{transform:translateY(-1px)}
+    #loadMore[disabled]{opacity:.6;cursor:default}
 
-    .center{text-align:center}
-    .muted{color:#687385}
+    /* כאשר סיימנו – נחליף לקישור Book Now */
+    a.loadmore-link{
+      display:inline-block;
+      background:#f58823;
+      color:#fff;
+      text-decoration:none;
+      border-radius:999px;
+      padding:14px 22px;
+      font-weight:700;
+      box-shadow:0 8px 20px rgba(245,136,35,.25);
+    }
   </style>
 
   <script>
-    // Remove index.html from URL if present
+    // הסרה אוטומטית של index.html מה־URL אם יופיע
     if (location.pathname.endsWith('/index.html')) {
       history.replaceState(null,'',location.pathname.replace('/index.html','/')+location.search+location.hash);
     }
@@ -94,14 +123,14 @@
   <div class="container"></div>
 </section>
 
-<section class="section container center gallery-wrap" style="padding-bottom:32px">
+<section class="section container center" style="padding-bottom:32px">
   <h2 class="section-title">Gallery</h2>
   <p class="muted">Our work gallery.</p>
 
   <div id="grid" class="gallery-grid"></div>
 
-  <div class="center" style="margin-top:18px">
-    <button id="moreBtn" class="load-more">Load more</button>
+  <div class="loadmore-wrap" id="ctaWrap">
+    <button id="loadMore" type="button">Load more</button>
   </div>
 </section>
 
@@ -130,68 +159,78 @@
   <a class="btn btn--primary" href="/contact/">Book Now</a>
 </div>
 
-<script>
-/** כל שמות הקבצים – בלי סיומת. נשתמש ב-webp קודם ואז jpg fallback */
-const names = [
-  "Gallery-32","Gallery-41","Gallery-23","Gallery-45","Gallery-24","Gallery-44",
-  "Gallery-36","Gallery-33","Gallery-34","Gallery-40","Gallery-29","Gallery-38",
-  "Gallery-42","Gallery-35","Gallery-28","Gallery-39","Gallery-18","Gallery-31",
-  "Gallery-21","Gallery-37","Gallery-19","Gallery-43","Gallery-26","Gallery-25",
-  "Gallery-16","Gallery-27","Gallery-30","Gallery-46","Gallery-17","Gallery-20",
-  "Gallery-15","Gallery-14","Gallery-11","Gallery-7","Gallery-8","Gallery-3",
-  "Gallery-5","Gallery-6","Gallery-1","Gallery-10","Gallery-22","Gallery-9",
-  "Gallery-4","Gallery-12","Gallery-2","Gallery-13"
-];
-
-// כמה להציג כל פעם
-const BATCH = 6;
-let idx = 0;
-
-function makeFigure(name){
-  const fig = document.createElement('figure');
-
-  const picture = document.createElement('picture');
-
-  // ✅ webp קודם
-  const srcWebp = document.createElement('source');
-  srcWebp.type = 'image/webp';
-  srcWebp.srcset = `/images/gallery/${name}.webp`;
-
-  // ✅ jpg fallback
-  const img = document.createElement('img');
-  img.loading = 'lazy';
-  img.alt = 'Gallery image';
-  img.src = `/images/gallery/${name}.jpg`;
-  img.onerror = function(){
-    // אם אין jpg, נסה jpeg → ואז png
-    if (this.src.endsWith('.jpg')) this.src = `/images/gallery/${name}.jpeg`;
-    else if (this.src.endsWith('.jpeg')) this.src = `/images/gallery/${name}.png`;
-  };
-
-  picture.appendChild(srcWebp);
-  picture.appendChild(img);
-  fig.appendChild(picture);
-  return fig;
-}
-
-function renderNextBatch(){
-  const grid = document.getElementById('grid');
-  const end = Math.min(idx + BATCH, names.length);
-  for(; idx < end; idx++){
-    grid.appendChild(makeFigure(names[idx]));
-  }
-  if (idx >= names.length){
-    // נגמר – שנה את הכפתור ל-Book Now
-    const btn = document.getElementById('moreBtn');
-    btn.textContent = 'Book Now';
-    btn.onclick = () => location.href = '/contact/';
-  }
-}
-
-document.getElementById('moreBtn').addEventListener('click', renderNextBatch);
-renderNextBatch(); // טעינה ראשונה
-</script>
-
 <script src="/script.js" defer></script>
+
+<script>
+  // ---------------------------
+  // GALLERY DATA (שמות קבצים ללא סיומת)
+  // ---------------------------
+  const NAMES = [
+    "Gallery-32","Gallery-41","Gallery-23","Gallery-45","Gallery-24","Gallery-44",
+    "Gallery-36","Gallery-33","Gallery-34","Gallery-40","Gallery-29","Gallery-38",
+    "Gallery-42","Gallery-35","Gallery-28","Gallery-39","Gallery-18","Gallery-31",
+    "Gallery-21","Gallery-37","Gallery-19","Gallery-43","Gallery-26","Gallery-25",
+    "Gallery-16","Gallery-27","Gallery-30","Gallery-46","Gallery-17","Gallery-20",
+    "Gallery-15","Gallery-14","Gallery-11","Gallery-7","Gallery-8","Gallery-3",
+    "Gallery-5","Gallery-6","Gallery-1","Gallery-10","Gallery-22","Gallery-9",
+    "Gallery-4","Gallery-12","Gallery-2","Gallery-13"
+  ];
+
+  const grid = document.getElementById('grid');
+  const loadMoreBtn = document.getElementById('loadMore');
+  const ctaWrap = document.getElementById('ctaWrap');
+
+  let idx = 0;
+  const CHUNK = 3; // 3 תמונות בכל קליק
+
+  function makeFigure(base){
+    const fig = document.createElement('figure');
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.alt = 'Gallery image';
+    img.decoding = 'async';
+    // עדיפות ל-JPG
+    img.src = `/images/gallery/${base}.jpg`;
+    img.dataset.try = 'jpg';
+
+    img.onerror = function(){
+      if (this.dataset.try === 'jpg') {
+        this.dataset.try = 'jpeg';
+        this.src = `/images/gallery/${base}.jpeg`;
+      } else if (this.dataset.try === 'jpeg') {
+        this.dataset.try = 'webp';
+        this.src = `/images/gallery/${base}.webp`;
+      } else {
+        this.onerror = null;
+        this.src = '/images/gallery/placeholder.jpg';
+      }
+    };
+    fig.appendChild(img);
+    return fig;
+  }
+
+  function loadNext(n = CHUNK){
+    const end = Math.min(idx + n, NAMES.length);
+    for (let i = idx; i < end; i++){
+      grid.appendChild(makeFigure(NAMES[i]));
+    }
+    idx = end;
+
+    if (idx >= NAMES.length){
+      // אין עוד תמונות – להפוך לכפתור Book Now כתום
+      const link = document.createElement('a');
+      link.href = '/contact/';
+      link.className = 'loadmore-link';
+      link.textContent = 'Book Now';
+      ctaWrap.replaceChildren(link);
+    }
+  }
+
+  // טעינה ראשונית – 3 תמונות
+  document.addEventListener('DOMContentLoaded', () => {
+    loadNext(CHUNK);
+    loadMoreBtn.addEventListener('click', () => loadNext(CHUNK));
+  });
+</script>
 </body>
 </html>
