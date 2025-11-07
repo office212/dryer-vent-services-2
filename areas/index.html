@@ -4,15 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Service Areas - Dryer Vent Services</title>
-  <meta name="description" content="Staten Island and New York & New Jersey area.">
+  <meta name="description" content="Dryer vent cleaning, repairs, and installations across Staten Island, NY & NJ.">
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
 </head>
+
 <body data-page="areas">
   <header class="site-header">
     <div class="container nav-wrap">
@@ -29,7 +28,7 @@
         <a href="/gallery/" data-nav="gallery">Gallery</a>
         <a href="/reviews/" data-nav="reviews">Reviews</a>
         <a href="/about/" data-nav="about">About</a>
-        <a href="/areas/" data-nav="areas">Service Areas</a>
+        <a href="/areas/" data-nav="areas" class="active">Service Areas</a>
         <a class="cta" href="/contact/" data-nav="contact">Contact Us</a>
       </nav>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
@@ -41,7 +40,7 @@
   <section class="page-hero fade-in">
     <div class="container">
       <h1>Service Areas</h1>
-      <p>Staten Island and New York & New Jersey.</p>
+      <p>Staten Island and the greater New York & New Jersey area.</p>
     </div>
   </section>
 
@@ -54,23 +53,16 @@
       </ul>
       <p>Not sure if we cover your area? <a href="/contact/">Send us a message</a>.</p>
       <div class="map-embed" style="aspect-ratio:16/9; background:#eef1f5; border-radius:12px; overflow:hidden; margin-top:10px;">
-        <iframe title="Service Area Map" width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        <iframe title="Service Area Map" width="100%" height="100%" style="border:0;" loading="lazy"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96757.10615346765!2d-74.23974454138323!3d40.58059303919933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24a0936bcb77f%3A0x2b66f0cc8e2e6f0a!2sStaten%20Island%2C%20NY!5e0!3m2!1sen!2sus!4v1710000000000">
         </iframe>
       </div>
     </div>
 
-    <!-- Fixed Image Card -->
     <div class="card media">
-      <div class="media-frame" style="aspect-ratio:4/3;overflow:hidden;border-radius:12px;">
-        <img
-          src="/images/gallery/work-car.png?v=10"
-          alt="Dryer Vent Services work van"
-          loading="lazy" decoding="async"
-          style="width:100%;height:100%;object-fit:cover;display:block;"
-          onerror="this.onerror=null;this.src='/images/gallery/work-car.jpg?v=10';"
-        >
-      </div>
+      <picture class="svc-picture">
+        <img src="/images/gallery/work-car.png" alt="Dryer Vent Services work van" loading="lazy" class="svc-img">
+      </picture>
       <div class="inner">
         <h3>Easy scheduling</h3>
         <p>We work around your availability.</p>
@@ -102,6 +94,7 @@
     <a class="btn" href="tel:+13472449382">Call</a>
     <a class="btn btn--primary" href="/contact/">Book Now</a>
   </div>
+
   <script src="/script.js" defer></script>
 </body>
 </html>
