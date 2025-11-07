@@ -18,6 +18,6 @@
   .ba-viewport{height:520px}
 }
 
-/* beta50-knob */
-.ba-knob, .ba-divider { pointer-events:none !important; }
-.ba-knob { top:50% !important; transform:translate(-50%,-50%) !important; }
+/* beta51-knob */
+.ba .ba-knob, .ba .ba-divider { pointer-events:none !important; }
+.ba .ba-knob { top:50% !important; transform:translate(-50%,-50%) !important; }
