@@ -246,8 +246,3 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
   touch-action: none;
   -ms-touch-action: none;
 }
-
-/* beta49-hero-fallback */
-body[data-page="home"] .hero.hero-bg.hero-modern,
-body[data-page="home"] .hero.hero-modern,
-body[data-page="home"] .hero-bg { background:#0f77cc !important; background-image:none !important; }
