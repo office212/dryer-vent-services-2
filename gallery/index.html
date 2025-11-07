@@ -3,68 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dryer Vent Cleaning Photos & Real Results | Staten Island, NY/NJ</title>
-  <meta name="description" content="Before & after dryer vent cleaning and repair photos from local homes & businesses in Staten Island and the greater New York & New Jersey area.">
+  <title>Gallery | Dryer Vent Services NY & NJ</title>
+  <meta name="description" content="Real before and after dryer vent cleaning and installation projects in Staten Island, NY and New Jersey." />
   <link rel="stylesheet" href="/styles.css" />
-  <link rel="icon" href="/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <link rel="icon" href="/favicon.ico" />
   <style>
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:18px 0 8px}
-    .gallery-grid figure{margin:0;border-radius:16px;overflow:hidden;background:#f4f7fb;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-    /* חשוב: כיבוד כיוון התמונה מהקובץ */
-    .gallery-grid img{display:block;width:100%;height:260px;object-fit:cover;object-position:center;image-orientation:from-image}
-    @media(min-width:900px){.gallery-grid img{height:300px}}
-    .hidden{display:none}
-    .load-more-wrap{display:flex;justify-content:center;margin-top:20px}
-    .load-more{cursor:pointer;border:0;border-radius:10px;padding:12px 18px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 18px 0 8px;
+    }
+    .gallery-grid figure {
+      margin: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f4f7fb;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+    .gallery-grid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transform: rotate(0deg);
+      transition: transform 0.2s ease-in-out;
+    }
+    #loadMore {
+      background: #f5821f;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      margin: 20px auto;
+      display: block;
+    }
+    #loadMore:hover { background: #d96e12; }
   </style>
-
-  <script>
-    // יוצר <picture> שמעדיף webp עם נפילה ל-jpg
-    function mountPicture(container, base, alt){
-      const pic = document.createElement('picture');
-
-      const srcWebp = document.createElement('source');
-      srcWebp.setAttribute('type','image/webp');
-      srcWebp.setAttribute('srcset', base + '.webp');
-      pic.appendChild(srcWebp);
-
-      const img = document.createElement('img');
-      img.setAttribute('alt', alt || 'Gallery image');
-      img.loading = 'lazy'; img.decoding = 'async';
-      // fallback ל-JPG (אם אין JPG נשארים עם ה-WebP מה-<source>)
-      img.src = base + '.jpg';
-      img.onerror = () => { if (img.src.endsWith('.jpg')) img.src = base + '.webp'; };
-      pic.appendChild(img);
-
-      container.innerHTML = '';
-      container.appendChild(pic);
-      container.dataset.mounted = '1';
-    }
-
-    function loadMore(n){
-      const hidden = Array.from(document.querySelectorAll('.gallery-grid figure.hidden'));
-      hidden.slice(0, n).forEach(fig => {
-        fig.classList.remove('hidden');
-        if(!fig.dataset.mounted){
-          mountPicture(fig, fig.dataset.base, 'Gallery image');
-        }
-      });
-      if(document.querySelectorAll('.gallery-grid figure.hidden').length === 0){
-        const btn = document.getElementById('load-more-btn');
-        if(btn) btn.style.display = 'none';
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadMore(3); // מציג 3 בהתחלה
-      const btn = document.getElementById('load-more-btn');
-      if(btn) btn.addEventListener('click', () => loadMore(6)); // +6 בכל לחיצה
-    });
-  </script>
 </head>
 
 <body data-page="gallery">
@@ -80,75 +56,35 @@
       <nav id="site-nav" class="site-nav">
         <a href="/" data-nav="home">Home</a>
         <a href="/services/" data-nav="services">Services</a>
-        <a href="/gallery/" data-nav="gallery" aria-current="page">Gallery</a>
+        <a href="/gallery/" data-nav="gallery" class="active">Gallery</a>
         <a href="/reviews/" data-nav="reviews">Reviews</a>
         <a href="/about/" data-nav="about">About</a>
         <a href="/areas/" data-nav="areas">Service Areas</a>
         <a class="cta" href="/contact/" data-nav="contact">Contact Us</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <section class="page-hero fade-in"><div class="container"></div></section>
-
-  <section class="section container center" style="padding-bottom:32px">
+  <section class="section container center">
     <h2 class="section-title">Gallery</h2>
-    <p class="muted">Our work gallery.</p>
+    <p class="muted">See real Dryer Vent Services jobs from NY & NJ.</p>
 
-    <div class="gallery-grid">
-      <!-- רק data-base; הסקריפט יבנה picture עם webp קודם -->
-      <figure class="hidden" data-base="/images/gallery/Gallery-32"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-41"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-23"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-45"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-24"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-44"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-36"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-33"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-34"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-40"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-29"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-38"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-42"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-35"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-28"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-39"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-18"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-31"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-21"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-37"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-19"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-43"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-26"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-25"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-16"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-27"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-30"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-46"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-17"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-20"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-15"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-14"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-11"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-7"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-8"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-3"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-5"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-6"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-1"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-10"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-22"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-9"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-4"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-12"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-2"></figure>
-      <figure class="hidden" data-base="/images/gallery/Gallery-13"></figure>
+    <div class="gallery-grid" id="galleryGrid">
+      <figure><img src="/images/gallery/Gallery-1.webp" onerror="this.src='/images/gallery/Gallery-1.jpg'" alt="Dryer vent job"></figure>
+      <figure><img src="/images/gallery/Gallery-2.webp" onerror="this.src='/images/gallery/Gallery-2.jpg'" alt="Dryer vent job"></figure>
+      <figure><img src="/images/gallery/Gallery-3.webp" onerror="this.src='/images/gallery/Gallery-3.jpg'" alt="Dryer vent job"></figure>
+      <figure><img src="/images/gallery/Gallery-4.webp" onerror="this.src='/images/gallery/Gallery-4.jpg'" alt="Dryer vent job"></figure>
+      <figure><img src="/images/gallery/Gallery-5.webp" onerror="this.src='/images/gallery/Gallery-5.jpg'" alt="Dryer vent job"></figure>
+      <figure><img src="/images/gallery/Gallery-6.webp" onerror="this.src='/images/gallery/Gallery-6.jpg'" alt="Dryer vent job"></figure>
+      <figure><img src="/images/gallery/Gallery-7.webp" onerror="this.src='/images/gallery/Gallery-7.jpg'" alt="Dryer vent job"></figure>
+      <figure><img src="/images/gallery/Gallery-8.webp" onerror="this.src='/images/gallery/Gallery-8.jpg'" alt="Dryer vent job"></figure>
+      <figure><img src="/images/gallery/Gallery-9.webp" onerror="this.src='/images/gallery/Gallery-9.jpg'" alt="Dryer vent job"></figure>
     </div>
 
-    <div class="load-more-wrap">
-      <button id="load-more-btn" class="btn btn--primary load-more">Load more</button>
-    </div>
+    <button id="loadMore">Load more</button>
   </section>
 
   <footer class="site-footer">
@@ -165,7 +101,7 @@
       </div>
       <div class="footer-cta">
         <a class="btn btn--primary" href="/contact/">Book Now</a>
-        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank">WhatsApp</a>
       </div>
     </div>
     <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
@@ -176,6 +112,26 @@
     <a class="btn btn--primary" href="/contact/">Book Now</a>
   </div>
 
-  <script src="/script.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll("#galleryGrid figure");
+      const loadMore = document.getElementById("loadMore");
+      let visible = 3;
+
+      images.forEach((img, i) => {
+        if (i >= visible) img.style.display = "none";
+      });
+
+      loadMore.addEventListener("click", () => {
+        const hidden = Array.from(images).filter(i => i.style.display === "none");
+        hidden.slice(0, 3).forEach(i => i.style.display = "block");
+
+        if (hidden.length <= 3) {
+          loadMore.textContent = "Book Now";
+          loadMore.onclick = () => window.location.href = "/contact/";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
