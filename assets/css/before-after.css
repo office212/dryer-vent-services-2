@@ -18,6 +18,6 @@
   .ba-viewport{height:520px}
 }
 
-/* beta51-knob */
+/* enforce centered knob */
 .ba .ba-knob, .ba .ba-divider { pointer-events:none !important; }
 .ba .ba-knob { top:50% !important; transform:translate(-50%,-50%) !important; }
