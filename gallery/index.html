@@ -2,44 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | Dryer Vent Services NY & NJ</title>
-  <meta name="description" content="Real before and after dryer vent cleaning and installation projects in Staten Island, NY and New Jersey." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dryer Vent Cleaning Photos & Real Results | Staten Island, NY/NJ</title>
+  <meta name="description" content="Before & after dryer vent cleaning and repair photos from local homes & businesses in Staten Island and the greater New York & New Jersey area.">
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-X77CVTW1CD');
+  </script>
+
+  <!-- OG/SEO (תואם אתר) -->
+  <meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation">
+  <link rel="canonical" href="https://dryer-ventservices.com/gallery">
+  <meta property="og:site_name" content="Dryer Vent Services">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dryer-ventservices.com/gallery">
+  <meta property="og:title" content="Gallery | Real Dryer Vent Jobs & Results">
+  <meta property="og:description" content="See real dryer vent cleaning photos and project snapshots from homes and businesses.">
+  <meta property="og:image" content="/assets/img/og-image.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+  <script>
+    // Remove index.html from URL if present
+    if (location.pathname.endsWith('/index.html')) {
+      history.replaceState(null,'',location.pathname.replace('/index.html','/')+location.search+location.hash);
+    }
+  </script>
+
   <style>
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin: 18px 0 8px;
+    /* --- Gallery layout --- */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+      margin:18px 0 8px;
     }
-    .gallery-grid figure {
-      margin: 0;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #f4f7fb;
-      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    .gallery-grid figure{
+      margin:0;
+      border-radius:16px;
+      overflow:hidden;
+      background:#f4f7fb;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+      aspect-ratio:4/3;     /* מרובע-מלבני נקי; התמונה תיחתך יפה פנימה */
+      position:relative;
     }
-    .gallery-grid img {
-      display: block;
-      width: 100%;
-      height: auto;
-      transform: rotate(0deg);
-      transition: transform 0.2s ease-in-out;
+    .gallery-grid picture,
+    .gallery-grid img{
+      width:100%;
+      height:100%;
+      display:block;
     }
-    #loadMore {
-      background: #f5821f;
-      color: #fff;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      margin: 20px auto;
-      display: block;
+    .gallery-grid img{
+      object-fit:cover;
+      image-orientation:from-image;    /* ✅ שומר על כיוון מה-EXIF כדי שלא “ישכב” */
+      opacity:1 !important;
+      transform:none !important;
     }
-    #loadMore:hover { background: #d96e12; }
+
+    /* כפתור טעינה */
+    #load-more-btn{
+      display:inline-block;
+      margin-top:16px;
+      padding:12px 20px;
+      border-radius:999px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      background:#0f77cc;   /* כחול האתר כמו שביקשת */
+      color:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+    #load-more-btn:active{ transform:translateY(1px); }
   </style>
 </head>
 
@@ -68,23 +110,19 @@
     </div>
   </header>
 
-  <section class="section container center">
+  <section class="page-hero fade-in">
+    <div class="container"></div>
+  </section>
+
+  <section class="section container center" style="padding-bottom:32px">
     <h2 class="section-title">Gallery</h2>
-    <p class="muted">See real Dryer Vent Services jobs from NY & NJ.</p>
+    <p class="muted">Our work gallery.</p> <!-- ✅ נשאר בדיוק כפי שביקשת -->
 
-    <div class="gallery-grid" id="galleryGrid">
-      <figure><img src="/images/gallery/Gallery-1.webp" onerror="this.src='/images/gallery/Gallery-1.jpg'" alt="Dryer vent job"></figure>
-      <figure><img src="/images/gallery/Gallery-2.webp" onerror="this.src='/images/gallery/Gallery-2.jpg'" alt="Dryer vent job"></figure>
-      <figure><img src="/images/gallery/Gallery-3.webp" onerror="this.src='/images/gallery/Gallery-3.jpg'" alt="Dryer vent job"></figure>
-      <figure><img src="/images/gallery/Gallery-4.webp" onerror="this.src='/images/gallery/Gallery-4.jpg'" alt="Dryer vent job"></figure>
-      <figure><img src="/images/gallery/Gallery-5.webp" onerror="this.src='/images/gallery/Gallery-5.jpg'" alt="Dryer vent job"></figure>
-      <figure><img src="/images/gallery/Gallery-6.webp" onerror="this.src='/images/gallery/Gallery-6.jpg'" alt="Dryer vent job"></figure>
-      <figure><img src="/images/gallery/Gallery-7.webp" onerror="this.src='/images/gallery/Gallery-7.jpg'" alt="Dryer vent job"></figure>
-      <figure><img src="/images/gallery/Gallery-8.webp" onerror="this.src='/images/gallery/Gallery-8.jpg'" alt="Dryer vent job"></figure>
-      <figure><img src="/images/gallery/Gallery-9.webp" onerror="this.src='/images/gallery/Gallery-9.jpg'" alt="Dryer vent job"></figure>
+    <div class="gallery-grid" id="galleryGrid"></div>
+
+    <div style="text-align:center;margin-top:20px">
+      <button id="load-more-btn" type="button">Load more</button>
     </div>
-
-    <button id="loadMore">Load more</button>
   </section>
 
   <footer class="site-footer">
@@ -101,7 +139,7 @@
       </div>
       <div class="footer-cta">
         <a class="btn btn--primary" href="/contact/">Book Now</a>
-        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank">WhatsApp</a>
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
@@ -112,25 +150,71 @@
     <a class="btn btn--primary" href="/contact/">Book Now</a>
   </div>
 
+  <script defer src="/script.js"></script>
+
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const images = document.querySelectorAll("#galleryGrid figure");
-      const loadMore = document.getElementById("loadMore");
-      let visible = 3;
+    // אותה רשימת קבצים שהייתה לך (ללא סיומת) – ודא שקיימים .webp (ועדיף גם .jpg/.jpeg)
+    const IMAGES = [
+      "Gallery-32","Gallery-41","Gallery-23","Gallery-45","Gallery-24","Gallery-44",
+      "Gallery-36","Gallery-33","Gallery-34","Gallery-40","Gallery-29","Gallery-38",
+      "Gallery-42","Gallery-35","Gallery-28","Gallery-39","Gallery-18","Gallery-31",
+      "Gallery-21","Gallery-37","Gallery-19","Gallery-43","Gallery-26","Gallery-25",
+      "Gallery-16","Gallery-27","Gallery-30","Gallery-46","Gallery-17","Gallery-20",
+      "Gallery-15","Gallery-14","Gallery-11","Gallery-7","Gallery-8","Gallery-3",
+      "Gallery-5","Gallery-6","Gallery-1","Gallery-10","Gallery-22","Gallery-9",
+      "Gallery-4","Gallery-12","Gallery-2","Gallery-13"
+    ];
 
-      images.forEach((img, i) => {
-        if (i >= visible) img.style.display = "none";
-      });
+    const grid = document.getElementById('galleryGrid');
+    const BATCH_FIRST = 3;   // מציג 3 בהתחלה
+    const BATCH_NEXT  = 6;   // ואז 6 בכל לחיצה
+    let shown = 0;
 
-      loadMore.addEventListener("click", () => {
-        const hidden = Array.from(images).filter(i => i.style.display === "none");
-        hidden.slice(0, 3).forEach(i => i.style.display = "block");
+    // בונה <figure><picture><source webp><img jpg></figure>
+    function makeFigure(base){
+      const fig = document.createElement('figure');
+      const pic = document.createElement('picture');
 
-        if (hidden.length <= 3) {
-          loadMore.textContent = "Book Now";
-          loadMore.onclick = () => window.location.href = "/contact/";
-        }
-      });
+      // ✅ WebP קודם
+      const srcWebp = document.createElement('source');
+      srcWebp.type = 'image/webp';
+      srcWebp.srcset = `/images/gallery/${base}.webp`;
+      pic.appendChild(srcWebp);
+
+      // Fallback -> JPG/JPEG -> לבסוף WebP אם צריך
+      const img = document.createElement('img');
+      img.alt = 'Gallery image';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.src = `/images/gallery/${base}.jpg`;
+      img.onerror = () => {
+        if (img.src.endsWith('.jpg'))       { img.src = `/images/gallery/${base}.jpeg`; }
+        else if (img.src.endsWith('.jpeg')) { img.src = `/images/gallery/${base}.webp`; }
+      };
+
+      pic.appendChild(img);
+      fig.appendChild(pic);
+      return fig;
+    }
+
+    function addBatch(n){
+      const slice = IMAGES.slice(shown, shown + n);
+      slice.forEach(base => grid.appendChild(makeFigure(base)));
+      shown += slice.length;
+
+      const btn = document.getElementById('load-more-btn');
+      if (shown >= IMAGES.length) {
+        // נגמרו התמונות → הכפתור הופך ל־Book Now
+        btn.textContent = 'Book Now';
+        btn.onclick = () => { window.location.href = '/contact/'; };
+        btn.style.backgroundColor = '#f5821f';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      addBatch(BATCH_FIRST);
+      const btn = document.getElementById('load-more-btn');
+      if (btn) btn.addEventListener('click', () => addBatch(BATCH_NEXT));
     });
   </script>
 </body>
