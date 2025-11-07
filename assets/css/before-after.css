@@ -17,7 +17,3 @@
 @media (min-width:1024px){
   .ba-viewport{height:520px}
 }
-
-/* enforce centered knob */
-.ba .ba-knob, .ba .ba-divider { pointer-events:none !important; }
-.ba .ba-knob { top:50% !important; transform:translate(-50%,-50%) !important; }
