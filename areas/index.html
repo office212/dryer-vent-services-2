@@ -21,7 +21,7 @@
 
 <meta property="og:title" content="Dryer Vent Cleaning in Staten Island | Repairs & Installations | NY & NJ"/>
 <meta property="og:description" content="Trusted dryer vent cleaning, repairs, and installations across NY & NJ. Fast service, safety-focused, great reviews."/>
-<meta property="og:image" content="/assets/img/og-image.png"/>
+<meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.dryer-ventservices.com/"/>
 <meta name="twitter:card" content="summary_large_image"/>
@@ -31,7 +31,6 @@
 {"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Dryer Vent Services", "image": "/assets/img/og-image.png", "url": "https://www.dryer-ventservices.com/areas/", "telephone": "+1-347-244-9382", "areaServed": [{"@type": "Place", "name": "Staten Island, NY"}, {"@type": "Place", "name": "New York, NY"}, {"@type": "Place", "name": "New Jersey"}], "address": {"@type": "PostalAddress", "addressLocality": "Staten Island", "addressRegion": "NY", "addressCountry": "US"}, "priceRange": "$$", "sameAs": ["https://www.dryer-ventservices.com"], "description": "Professional dryer vent cleaning, repairs, and installations across NY & NJ."}
 </script>
 <script>
-// Remove index.html from URL if present
 if (location.pathname.endsWith('/index.html')) {
   history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
 }
@@ -42,7 +41,7 @@ if (location.pathname.endsWith('/index.html')) {
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
+        <img loading="lazy" src="/images/gallery/work-car-about.png" alt="Dryer Vent Services logo" class="logo"  style="display:block;width:100%;height:100%;object-fit:cover;border-radius:12px">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
           <span>Cleaning - Repairs - Installations</span>
@@ -63,14 +62,14 @@ if (location.pathname.endsWith('/index.html')) {
     </div>
   </header>
 
-  <section class="page-hero fade-in">
+  <section class="reveal" class="page-hero fade-in">
     <div class="container">
       <h1>Service Areas</h1>
       <p>Staten Island and New York & New Jersey.</p>
     </div>
   </section>
 
-  <section class="section container two-col fade-in">
+  <section class="reveal" class="section container two-col fade-in">
     <div>
       <h2>Where We Work</h2>
       <ul class="checklist">
@@ -89,19 +88,22 @@ if (location.pathname.endsWith('/index.html')) {
       </div>
     </div>
 
-    <!-- הכרטיס: בלי <source>, עם התמונה שלך מהגלריה -->
-    <div class="card media" style="aspect-ratio:4/3; overflow:hidden; border-radius:12px;">
-  <img
-    src="/images/gallery/work-car.png?v=7"
-    alt="Dryer Vent Services work van"
-    loading="lazy"
-    style="width:100%; height:100%; object-fit:cover; display:block;"
-  >
-  <div class="inner">
-    <h3>Easy scheduling</h3>
-    <p>We work around your availability.</p>
-  </div>
-</div>
+    <div class="card media">
+      <img id="areasHero" src="/images/gallery/work-car-about.png" alt="Work vehicle Dryer Vent Services" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:12px">
+      <div class="inner">
+        <h3>Easy scheduling</h3>
+        <p>We work around your availability.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Dryer Vent Services</h4>
+        <p>Dryer Vent Cleaning - Repairs - Installations</p>
+      </div>
+      <div>
         <ul class="contact-list">
           <li><a href="tel:+13472449382">347-244-9382</a></li>
           <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
@@ -128,21 +130,39 @@ if (location.pathname.endsWith('/index.html')) {
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   const helper = document.getElementById('ba-helper');
-  // show helper once if a before/after slider exists
   const hasBA = document.querySelector('.ba-slider, .before-after, .twentytwenty-container');
-  if (hasBA && helper){{
+  if (hasBA && helper){
     helper.style.display='block';
     helper.style.opacity=0;
-    helper.animate([{opacity:0},{opacity:1}],{{duration:300,fill:'forwards'}});
-    setTimeout(()=>{{
-      helper.animate([{opacity:1},{opacity:0}],{{duration:600,fill:'forwards'}}).onfinish=()=>helper.remove();
-    }}, 4200);
+    helper.animate([{opacity:0},{opacity:1}],{duration:300,fill:'forwards'});
+    setTimeout(()=>{
+      helper.animate([{opacity:1},{opacity:0}],{duration:600,fill:'forwards'}).onfinish=()=>helper.remove();
+    }, 4200);
   }
   // simple reveal on scroll
-  const obs = new IntersectionObserver((entries)=>{{
+  const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
-  }},{{threshold:.12}});
+  },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // --- robust image fallback ONLY for the hero card ---
+  const hero = document.getElementById('areasHero');
+  if (hero) {
+    const tryLoad = (src) => new Promise(res => {
+      const i = new Image();
+      i.onload = () => res(true);
+      i.onerror = () => res(false);
+      i.src = src;
+    });
+    (async () => {
+      if (!(await tryLoad(hero.src))) {
+        const encoded = '/images/gallery/Work%20car%20for%20about%20page%20and%20service%20area.png';
+        const alt1 = '/images/gallery/work-car.png';
+        if (await tryLoad(encoded)) hero.src = encoded;
+        else if (await tryLoad(alt1)) hero.src = alt1;
+      }
+    })();
+  }
 });
 </script>
 <style>
