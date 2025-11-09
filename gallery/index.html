@@ -11,23 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
-
-  <!-- SEO -->
-  <link rel="canonical" href="https://www.dryer-ventservices.com/gallery"/>
-  <meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation">
-  <meta property="og:site_name" content="Dryer Vent Services">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.dryer-ventservices.com/gallery">
-  <meta property="og:title" content="Gallery | Real Dryer Vent Jobs & Results">
-  <meta property="og:description" content="See real dryer vent cleaning photos and project snapshots from homes and businesses.">
-  <meta property="og:image" content="/assets/img/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-
   <style>
-    /* --- GRID --- */
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -41,18 +25,16 @@
       .gallery-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
-    /* --- IMAGE WRAPPER --- */
     .gallery-grid figure {
       margin: 0;
       border-radius: 18px;
       overflow: hidden;
       background: #f4f7fb;
       box-shadow: 0 6px 18px rgba(0,0,0,.06);
-      aspect-ratio: 4/3; /* 🔼 יותר גבוה מבעבר */
-      max-height: clamp(330px, 52vh, 640px); /* 🔼 מוגדל משמעותית */
+      aspect-ratio: 5/4; /* גבוה יותר */
+      max-height: clamp(380px, 58vh, 680px);
     }
 
-    /* --- IMAGE STYLE --- */
     .gallery-grid img {
       display: block;
       width: 100%;
@@ -66,11 +48,10 @@
     @media (min-width: 1200px) {
       .gallery-grid figure {
         aspect-ratio: 16/12;
-        max-height: 580px;
+        max-height: 640px;
       }
     }
 
-    /* --- LOAD MORE BUTTON --- */
     .loadmore-wrap { display: flex; justify-content: center; margin: 22px 0 8px; }
     #loadMore {
       background: #f58823;
@@ -86,7 +67,6 @@
     #loadMore:hover { transform: translateY(-1px); }
     #loadMore[disabled] { opacity: .6; cursor: default; }
 
-    /* --- BOOK NOW LINK --- */
     a.loadmore-link {
       display: inline-block;
       background: #f58823;
@@ -98,12 +78,6 @@
       box-shadow: 0 8px 20px rgba(245,136,35,.25);
     }
   </style>
-
-  <script>
-    if (location.pathname.endsWith('/index.html')) {
-      history.replaceState(null, '', location.pathname.replace('/index.html', '/') + location.search + location.hash);
-    }
-  </script>
 </head>
 
 <body data-page="gallery">
@@ -130,10 +104,6 @@
     </button>
   </div>
 </header>
-
-<section class="page-hero fade-in">
-  <div class="container"></div>
-</section>
 
 <section class="section container center" style="padding-bottom:32px">
   <h2 class="section-title">Gallery</h2>
@@ -170,8 +140,6 @@
   <a class="btn" href="tel:+13472449382">Call</a>
   <a class="btn btn--primary" href="/contact/">Book Now</a>
 </div>
-
-<script src="/script.js" defer></script>
 
 <script>
 const NAMES=[
