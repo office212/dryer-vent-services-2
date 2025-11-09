@@ -27,67 +27,79 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <style>
-    /* Grid */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-      margin:18px 0 8px;
+    /* --- GRID --- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 18px 0 8px;
     }
-    @media(min-width:768px){
-      .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media(min-width:1100px){
-      .gallery-grid{grid-template-columns:repeat(3,1fr);}
+    @media (min-width: 1100px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
     }
-    .gallery-grid figure{
-      margin:0;
-      border-radius:18px;
-      overflow:hidden;
-      background:#f4f7fb;
-      box-shadow:0 6px 18px rgba(0,0,0,.06);
+
+    /* --- IMAGE CONTAINER --- */
+    .gallery-grid figure {
+      margin: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #f4f7fb;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+      aspect-ratio: 4/3;
+      max-height: clamp(200px, 34vh, 420px);
     }
-    .gallery-grid img{
-      display:block;
-      width:100%;
-      height:auto;
-      /* מבטיח שהתמונה נשארת ישרה לפי EXIF אם יש */
+
+    /* --- IMAGE STYLING --- */
+    .gallery-grid img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       image-orientation: from-image;
-      transform:none !important;
-      object-fit:contain;
+      transform: none !important;
     }
 
-    /* Load more button (כתום) */
-    .loadmore-wrap{display:flex;justify-content:center;margin:22px 0 8px}
-    #loadMore{
-      background:#f58823; /* כתום המותג */
-      color:#fff;
-      border:0;
-      border-radius:999px;
-      padding:14px 22px;
-      font-weight:700;
-      cursor:pointer;
-      box-shadow:0 8px 20px rgba(245,136,35,.25);
-      transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
+    @media (min-width: 1200px) {
+      .gallery-grid figure {
+        aspect-ratio: 16/10;
+        max-height: 360px;
+      }
     }
-    #loadMore:hover{transform:translateY(-1px)}
-    #loadMore[disabled]{opacity:.6;cursor:default}
 
-    /* כאשר סיימנו – נחליף לקישור Book Now */
-    a.loadmore-link{
-      display:inline-block;
-      background:#f58823;
-      color:#fff;
-      text-decoration:none;
-      border-radius:999px;
-      padding:14px 22px;
-      font-weight:700;
-      box-shadow:0 8px 20px rgba(245,136,35,.25);
+    /* --- LOAD MORE BUTTON (Orange brand color) --- */
+    .loadmore-wrap { display: flex; justify-content: center; margin: 22px 0 8px; }
+    #loadMore {
+      background: #f58823;
+      color: #fff;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(245,136,35,.25);
+      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+    }
+    #loadMore:hover { transform: translateY(-1px); }
+    #loadMore[disabled] { opacity: .6; cursor: default; }
+
+    /* --- "Book Now" when finished --- */
+    a.loadmore-link {
+      display: inline-block;
+      background: #f58823;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(245,136,35,.25);
     }
   </style>
 
   <script>
-    // הסרה אוטומטית של index.html מה־URL אם יופיע
+    // remove index.html from URL if present
     if (location.pathname.endsWith('/index.html')) {
       history.replaceState(null,'',location.pathname.replace('/index.html','/')+location.search+location.hash);
     }
@@ -119,9 +131,7 @@
   </div>
 </header>
 
-<section class="page-hero fade-in">
-  <div class="container"></div>
-</section>
+<section class="page-hero fade-in"><div class="container"></div></section>
 
 <section class="section container center" style="padding-bottom:32px">
   <h2 class="section-title">Gallery</h2>
@@ -162,9 +172,7 @@
 <script src="/script.js" defer></script>
 
 <script>
-  // ---------------------------
-  // GALLERY DATA (שמות קבצים ללא סיומת)
-  // ---------------------------
+  // ----- GALLERY CONFIG -----
   const NAMES = [
     "Gallery-32","Gallery-41","Gallery-23","Gallery-45","Gallery-24","Gallery-44",
     "Gallery-36","Gallery-33","Gallery-34","Gallery-40","Gallery-29","Gallery-38",
@@ -179,9 +187,8 @@
   const grid = document.getElementById('grid');
   const loadMoreBtn = document.getElementById('loadMore');
   const ctaWrap = document.getElementById('ctaWrap');
-
   let idx = 0;
-  const CHUNK = 3; // 3 תמונות בכל קליק
+  const CHUNK = 3; // 3 photos per click
 
   function makeFigure(base){
     const fig = document.createElement('figure');
@@ -189,15 +196,13 @@
     img.loading = 'lazy';
     img.alt = 'Gallery image';
     img.decoding = 'async';
-    // עדיפות ל-JPG
-    img.src = `/images/gallery/${base}.jpg`;
+    img.src = `/images/gallery/${base}.jpg`; // JPG priority
     img.dataset.try = 'jpg';
-
     img.onerror = function(){
-      if (this.dataset.try === 'jpg') {
+      if (this.dataset.try === 'jpg'){
         this.dataset.try = 'jpeg';
         this.src = `/images/gallery/${base}.jpeg`;
-      } else if (this.dataset.try === 'jpeg') {
+      } else if (this.dataset.try === 'jpeg'){
         this.dataset.try = 'webp';
         this.src = `/images/gallery/${base}.webp`;
       } else {
@@ -217,7 +222,6 @@
     idx = end;
 
     if (idx >= NAMES.length){
-      // אין עוד תמונות – להפוך לכפתור Book Now כתום
       const link = document.createElement('a');
       link.href = '/contact/';
       link.className = 'loadmore-link';
@@ -226,7 +230,6 @@
     }
   }
 
-  // טעינה ראשונית – 3 תמונות
   document.addEventListener('DOMContentLoaded', () => {
     loadNext(CHUNK);
     loadMoreBtn.addEventListener('click', () => loadNext(CHUNK));
