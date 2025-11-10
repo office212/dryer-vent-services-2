@@ -4,71 +4,122 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Thanks! • Dryer Vent Services</title>
-  <meta http-equiv="refresh" content="10; url=/">
-  <link rel="stylesheet" href="/styles.css">
-  <style>
-    body{font-family:Inter,system-ui,-apple-system,sans-serif;background:#f8fafc;margin:0;padding:0;color:#1e293b;}
-    header{background:#fff;border-bottom:1px solid #e2e8f0;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 6px rgba(0,0,0,.04);}
-    header .brand{display:flex;align-items:center;text-decoration:none;color:#0f172a;}
-    header img{height:40px;margin-right:10px;}
-    header .brand-text strong{font-size:1.05rem;}
-    header .brand-text span{display:block;font-size:.85rem;color:#64748b;}
 
-    main{min-height:80vh;display:grid;place-items:center;padding:20px;}
-    .ty-card{max-width:720px;margin:20px;padding:28px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;
-             box-shadow:0 8px 24px rgba(15,42,82,.10);text-align:center;}
-    .ty-card h1{margin:.3em 0;}
-    .ty-card p{color:#475569;margin:.3em 0;}
-    .btn{display:inline-block;margin-top:10px;padding:12px 20px;background:#ea6a1a;color:#fff;border-radius:12px;
-         font-weight:700;text-decoration:none;}
-    .contact-box{margin-top:24px;padding:20px;background:#f8fafc;border-radius:16px;border:1px solid #e2e8f0;}
-    .contact-box h2{font-size:1.1rem;margin-bottom:8px;}
-    .contact-box p{color:#475569;margin-bottom:16px;}
-    .contact-buttons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
-    .contact-buttons a{background:#0f4a72;color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;text-decoration:none;flex:1 1 auto;text-align:center;min-width:100px;}
-    @media (max-width:480px){
-      .contact-buttons{flex-wrap:nowrap;gap:8px;}
-      .contact-buttons a{flex:1 1 30%;padding:10px 8px;}
+  <link rel="stylesheet" href="/styles.css">
+
+  <style>
+    /* שמירה שההדר יישב מעל הכל ויעבוד בכל הדפים */
+    .site-header{position:sticky; top:0; z-index:1005; background:#fff;}
+    .site-header .nav-wrap{position:relative; z-index:1006;}
+    .burger{display:block !important; position:relative; z-index:1007;}
+
+    /* כרטיס תודה */
+    .ty-wrap{min-height:70vh; display:grid; place-items:center; padding:24px;}
+    .ty-card{
+      max-width:760px; width:100%;
+      background:#fff; border:1px solid #eef0f4; border-radius:18px;
+      box-shadow:0 10px 30px rgba(15,42,82,.10);
+      padding:28px 24px; text-align:center;
     }
+    .brand-inline{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px}
+    .brand-inline img{width:34px; height:auto; border-radius:8px}
+    .brand-inline .name{font-weight:800; font-size:20px}
+    .ty-card h1{font-size:40px; line-height:1.1; margin:.2em 0 .25em}
+    .ty-card p{color:#475569; font-size:18px; margin:.5em 0}
+    .btn-primary-big{
+      display:inline-block; margin:14px auto 8px; padding:14px 22px;
+      background:#ea6a1a; color:#fff; border-radius:14px; font-weight:800; text-decoration:none;
+      box-shadow:0 12px 28px rgba(234,106,26,.25);
+    }
+
+    /* בלוק הדרכים הנוספות */
+    .alt-box{
+      max-width:760px; width:100%; margin:18px auto 0;
+      background:#f7fafc; border:1px solid #e9eef5; border-radius:18px;
+      padding:18px 16px; text-align:center; box-shadow:inset 0 1px 0 rgba(255,255,255,.6);
+    }
+    .alt-box h3{margin:.2em 0 .2em}
+    .alt-actions{
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px;
+    }
+    .alt-actions .btn{
+      padding:12px 18px; border-radius:14px; background:#0b3d5c; color:#fff; font-weight:800; text-decoration:none;
+      min-width:120px; text-align:center;
+    }
+
+    /* מרווח כללי */
+    main{padding:18px 0 32px}
   </style>
+
+  <script>
+    // סופרת 10 שניות ומחזירה לדף הבית
+    document.addEventListener('DOMContentLoaded', () => {
+      let n = 10;
+      const el = document.getElementById('sec');
+      const t = setInterval(() => {
+        n--; el.textContent = n;
+        if (n <= 0) { clearInterval(t); window.location.href = '/'; }
+      }, 1000);
+    });
+    // הסרת index.html אם יופיע בטעות
+    if (location.pathname.endsWith('/index.html')) {
+      history.replaceState(null,'',location.pathname.replace('/index.html','/')+location.search+location.hash);
+    }
+  </script>
 </head>
-<body>
-  <header>
-    <a class="brand" href="/">
-      <img src="/logo.webp" alt="Dryer Vent Services logo" onerror="this.src='/logo.png'">
-      <div class="brand-text">
-        <strong>Dryer Vent Services</strong>
-        <span>Cleaning - Repairs - Installations</span>
-      </div>
-    </a>
-    <div class="menu-icon"><span style="display:block;width:22px;height:2px;background:#1e293b;margin:4px 0;"></span>
-      <span style="display:block;width:22px;height:2px;background:#1e293b;margin:4px 0;"></span>
-      <span style="display:block;width:22px;height:2px;background:#1e293b;margin:4px 0;"></span>
+
+<body data-page="thanks">
+  <!-- HEADER זהה לכל האתר -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">
+        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo"
+             onerror="this.onerror=null;this.src='logo.png';">
+        <div class="brand-text">
+          <strong>Dryer Vent Services</strong>
+          <span>Cleaning - Repairs - Installations</span>
+        </div>
+      </a>
+      <nav id="site-nav" class="site-nav">
+        <a href="/" data-nav="home">Home</a>
+        <a href="/services/" data-nav="services">Services</a>
+        <a href="/gallery/" data-nav="gallery">Gallery</a>
+        <a href="/reviews/" data-nav="reviews">Reviews</a>
+        <a href="/about/" data-nav="about">About</a>
+        <a href="/areas/" data-nav="areas">Service Areas</a>
+        <a class="cta" href="/contact/" data-nav="contact">Contact Us</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main>
+  <main class="container ty-wrap">
     <div class="ty-card">
+      <div class="brand-inline">
+        <img src="/logo.webp" alt="Dryer Vent Services" onerror="this.onerror=null;this.src='logo.png';">
+        <div class="name">Dryer Vent Services</div>
+      </div>
+
       <h1>Thank you!</h1>
       <p>Your message was sent successfully. We’ll be in touch shortly.</p>
       <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
-      <a class="btn" href="/">Go to Homepage now</a>
+      <a class="btn-primary-big" href="/">Go to Homepage now</a>
 
-      <div class="contact-box">
-        <h2>Other ways to contact us</h2>
+      <div class="alt-box">
+        <h3>Other ways to contact us</h3>
         <p>Prefer a faster response? Reach us directly by phone or WhatsApp during business hours.</p>
-        <div class="contact-buttons">
-          <a href="tel:+13472449382">Call</a>
-          <a href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="mailto:office@dryer-ventservices.com">Email</a>
+        <div class="alt-actions">
+          <a class="btn" href="tel:+13472449382">Call</a>
+          <a class="btn" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="mailto:office@dryer-ventservices.com">Email</a>
         </div>
       </div>
     </div>
   </main>
 
-  <script>
-    let n=10; const el=document.getElementById('sec');
-    const t=setInterval(()=>{ n--; el.textContent=n; if(n<=0){ clearInterval(t); window.location.href='/'; } },1000);
-  </script>
+  <!-- חשוב: זה מה שמפעיל את המבורגר כמו בשאר האתר -->
+  <script src="/script.js" defer></script>
 </body>
 </html>
