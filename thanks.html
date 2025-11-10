@@ -8,10 +8,13 @@
   <link rel="stylesheet" href="/styles.css">
 
   <style>
-    /* שמירה שההדר יישב מעל הכל ויעבוד בכל הדפים */
+    /* header זהה לשאר האתר + ודאות ל-3 פסים */
     .site-header{position:sticky; top:0; z-index:1005; background:#fff;}
     .site-header .nav-wrap{position:relative; z-index:1006;}
     .burger{display:block !important; position:relative; z-index:1007;}
+    /* ודא שמופיעים 3 קווים גם אם יש חוקים אחרים בקובץ הראשי */
+    .burger span{display:block; width:26px; height:2px; background:#0f172a; border-radius:2px;}
+    .burger span + span{margin-top:6px;}
 
     /* כרטיס תודה */
     .ty-wrap{min-height:70vh; display:grid; place-items:center; padding:24px;}
@@ -21,9 +24,6 @@
       box-shadow:0 10px 30px rgba(15,42,82,.10);
       padding:28px 24px; text-align:center;
     }
-    .brand-inline{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px}
-    .brand-inline img{width:34px; height:auto; border-radius:8px}
-    .brand-inline .name{font-weight:800; font-size:20px}
     .ty-card h1{font-size:40px; line-height:1.1; margin:.2em 0 .25em}
     .ty-card p{color:#475569; font-size:18px; margin:.5em 0}
     .btn-primary-big{
@@ -40,19 +40,21 @@
     }
     .alt-box h3{margin:.2em 0 .2em}
     .alt-actions{
-      display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:10px;
+      display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap;
+      margin-top:10px;
     }
+    /* עוקף width:100% גלובלי לכפתורים כדי שיופיעו זה לצד זה גם במובייל */
     .alt-actions .btn{
+      display:inline-flex !important; width:auto !important;
       padding:12px 18px; border-radius:14px; background:#0b3d5c; color:#fff; font-weight:800; text-decoration:none;
-      min-width:120px; text-align:center;
+      min-width:120px; justify-content:center;
     }
 
-    /* מרווח כללי */
     main{padding:18px 0 32px}
   </style>
 
   <script>
-    // סופרת 10 שניות ומחזירה לדף הבית
+    // ספירה ל-10 שניות וחזרה לדף הבית
     document.addEventListener('DOMContentLoaded', () => {
       let n = 10;
       const el = document.getElementById('sec');
@@ -61,7 +63,7 @@
         if (n <= 0) { clearInterval(t); window.location.href = '/'; }
       }, 1000);
     });
-    // הסרת index.html אם יופיע בטעות
+    // להסיר index.html אם מופיע
     if (location.pathname.endsWith('/index.html')) {
       history.replaceState(null,'',location.pathname.replace('/index.html','/')+location.search+location.hash);
     }
@@ -69,7 +71,7 @@
 </head>
 
 <body data-page="thanks">
-  <!-- HEADER זהה לכל האתר -->
+  <!-- HEADER זהה לאתר -->
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
@@ -97,11 +99,6 @@
 
   <main class="container ty-wrap">
     <div class="ty-card">
-      <div class="brand-inline">
-        <img src="/logo.webp" alt="Dryer Vent Services" onerror="this.onerror=null;this.src='logo.png';">
-        <div class="name">Dryer Vent Services</div>
-      </div>
-
       <h1>Thank you!</h1>
       <p>Your message was sent successfully. We’ll be in touch shortly.</p>
       <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
@@ -119,7 +116,6 @@
     </div>
   </main>
 
-  <!-- חשוב: זה מה שמפעיל את המבורגר כמו בשאר האתר -->
   <script src="/script.js" defer></script>
 </body>
 </html>
