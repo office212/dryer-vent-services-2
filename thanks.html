@@ -3,120 +3,154 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thanks! • Dryer Vent Services</title>
-
-  <!-- Redirect after 10s as a fallback to JS -->
+  <title>Thank You • Dryer Vent Services</title>
   <meta http-equiv="refresh" content="10; url=/">
-
   <link rel="stylesheet" href="/styles.css">
   <style>
-    :root{
-      --navy:#0d2f4f;    /* כהה לכפתורים */
-      --orange:#f58823;  /* כתום מותג */
-      --ink:#0f1e2e;
-      --muted:#4b5b6b;
-      --card:#ffffff;
-      --cardShadow:0 10px 30px rgba(15,42,82,.12);
-      --soft:#f6f8fb;
-      --radius:22px;
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      margin: 0;
+      padding: 0;
+    }
+    .ty-wrap {
+      min-height: 90vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+    .ty-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      padding: 30px 24px;
+    }
+    .ty-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .ty-logo img {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,.1);
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin: 0.4em 0;
+    }
+    p {
+      margin: 0.5em 0;
+      color: #475569;
+    }
+    .btn-main {
+      display: inline-block;
+      margin-top: 16px;
+      background: #f58823;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      padding: 14px 22px;
+      box-shadow: 0 6px 20px rgba(245,136,35,0.25);
+      transition: transform .08s ease, box-shadow .2s ease;
+    }
+    .btn-main:hover { transform: translateY(-1px); }
+
+    /* מסגרת נפרדת ל-other ways */
+    .contact-box {
+      margin-top: 28px;
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid #e2e8f0;
+    }
+    .contact-box h2 {
+      font-size: 1.05rem;
+      margin: 0 0 4px;
+    }
+    .contact-box p {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
     }
 
-    body{background:var(--soft);}
-
-    .ty-wrap{min-height:88vh;display:grid;place-items:center;padding:24px;}
-    .ty-card{
-      width:100%;max-width:820px;margin:auto;padding:28px 22px 26px;
-      background:var(--card);border:1px solid #edf1f6;border-radius:var(--radius);
-      box-shadow:var(--cardShadow);text-align:center;
+    /* יישור הכפתורים זה לצד זה גם במובייל */
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
     }
 
-    /* שורת לוגו + שם מותג */
-    .brand-row{
-      display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:8px;
-      color:var(--ink);font-weight:800;font-size:22px;letter-spacing:.2px;
+    .btn-row .btn {
+      display: inline-block;
+      background: #0f3d63;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      min-width: 100px;
+      text-align: center;
+      flex: 1 1 120px;
+      transition: transform .08s ease, box-shadow .2s ease;
     }
-    .logo-wrap{
-      width:42px;height:42px;border-radius:10px;overflow:hidden;
-      box-shadow:0 2px 6px rgba(0,0,0,.10); /* צל עדין מתחת ללוגו */
-      display:grid;place-items:center;background:#fff;
+
+    .btn-row .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
     }
-    .brand-row img{width:36px;height:36px;object-fit:contain;} /* ~15% גדול יותר */
 
-    .ty-card h1{margin:.2em 0 .4em;font-size:40px;line-height:1.05;color:var(--ink);}
-    .ty-card p{color:var(--muted);font-size:20px;line-height:1.45;margin:.25em 0;}
-
-    /* כפתור כתום */
-    .btn-primary{
-      display:inline-block;margin:16px 0 14px;padding:14px 22px;border-radius:14px;
-      background:var(--orange);color:#fff;font-weight:800;text-decoration:none;
-      box-shadow:0 10px 24px rgba(245,136,35,.28);
-      transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .btn-primary:hover{transform:translateY(-1px)}
-
-    /* קופסת "Other ways…" */
-    .extras{
-      margin-top:14px; /* קטןנו רווח כדי "לחבר" ויזואלית */
-      background:linear-gradient(#f9fbff,#f3f6fb);
-      border:1px solid #e8eef6;border-radius:18px;padding:16px 16px 18px;
-      max-width:680px;margin-left:auto;margin-right:auto;
-      box-shadow:0 8px 22px rgba(13,47,79,.06) inset;
-    }
-    .extras h2{font-size:24px;margin:0 0 6px;color:var(--ink)}
-    .extras p{margin:0 0 14px;color:var(--muted);font-size:16px}
-
-    /* שלושת הכפתורים הכחולים */
-    .btn-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-    .btn{
-      display:inline-block;background:var(--navy);color:#fff;text-decoration:none;
-      padding:12px 22px;border-radius:16px;font-weight:800;min-width:140px;
-      text-align:center;box-shadow:0 8px 18px rgba(13,47,79,.20);
-      transition:transform .08s ease, box-shadow .2s ease;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .btn:active{transform:translateY(0)}
-
-    @media (max-width:480px){
-      .ty-card h1{font-size:34px}
-      .ty-card p{font-size:18px}
-      .brand-row{font-size:20px}
+    @media (max-width: 400px) {
+      .btn-row { flex-direction: row; }
     }
   </style>
 </head>
+
 <body>
   <main class="ty-wrap">
-    <div class="ty-card" role="status" aria-live="polite">
-      <div class="brand-row" aria-label="Dryer Vent Services">
-        <span class="logo-wrap">
-          <img src="/logo.webp" alt="Dryer Vent Services" onerror="this.onerror=null;this.src='/logo.png'">
-        </span>
-        Dryer Vent Services
+    <div class="ty-card">
+      <div class="ty-logo">
+        <img src="/logo.webp" alt="Dryer Vent Services logo" onerror="this.src='/logo.png'">
+        <strong>Dryer Vent Services</strong>
       </div>
 
       <h1>Thank you!</h1>
-      <p>Your message was sent successfully. We’ll be in touch shortly.</p>
+      <p>Your message was sent successfully.<br>We’ll be in touch shortly.</p>
       <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
+      <a href="/" class="btn-main">Go to Homepage now</a>
 
-      <a class="btn-primary" href="/">Go to Homepage now</a>
-
-      <section class="extras" aria-labelledby="extras-title">
-        <h2 id="extras-title">Other ways to contact us</h2>
+      <div class="contact-box">
+        <h2>Other ways to contact us</h2>
         <p>Prefer a faster response? Reach us directly by phone or WhatsApp during business hours.</p>
         <div class="btn-row">
           <a class="btn" href="tel:+13472449382">Call</a>
-          <a class="btn" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="https://wa.me/13472449382?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20dryer%20vent%20cleaning." target="_blank" rel="noopener">WhatsApp</a>
           <a class="btn" href="mailto:office@dryer-ventservices.com">Email</a>
         </div>
-      </section>
+      </div>
     </div>
   </main>
 
   <script>
-    // ספירה לאחור + ניתוב אחרי 10 שניות
-    let n = 10; const el = document.getElementById('sec');
-    const t = setInterval(()=>{
-      n--; el.textContent = n;
-      if(n <= 0){ clearInterval(t); window.location.href = '/'; }
+    let n = 10;
+    const el = document.getElementById('sec');
+    const t = setInterval(() => {
+      n--;
+      el.textContent = n;
+      if (n <= 0) {
+        clearInterval(t);
+        window.location.href = '/';
+      }
     }, 1000);
   </script>
 </body>
