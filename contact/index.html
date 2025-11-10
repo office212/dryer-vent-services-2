@@ -149,9 +149,11 @@ if (location.pathname.endsWith('/index.html')) {
 
           try {
             const res = await fetch(form.action, { method: "POST", body: fd, redirect: "follow" });
-            window.location.href = "thanks.html";
+            // ✅ תיקון 404: הפניה לנתיב מוחלט בשורש
+            window.location.href = "/thanks.html";
           } catch (_) {
-            window.location.href = "thanks.html";
+            // ✅ גם כאן — לשורש
+            window.location.href = "/thanks.html";
           }
         }, { passive:false });
       })();
@@ -190,18 +192,18 @@ document.addEventListener('DOMContentLoaded', function(){
   const helper = document.getElementById('ba-helper');
   // show helper once if a before/after slider exists
   const hasBA = document.querySelector('.ba-slider, .before-after, .twentytwenty-container');
-  if (hasBA && helper){{
+  if (hasBA && helper){
     helper.style.display='block';
     helper.style.opacity=0;
-    helper.animate([{opacity:0},{opacity:1}],{{duration:300,fill:'forwards'}});
-    setTimeout(()=>{{
-      helper.animate([{opacity:1},{opacity:0}],{{duration:600,fill:'forwards'}}).onfinish=()=>helper.remove();
-    }}, 4200);
+    helper.animate([{opacity:0},{opacity:1}],{duration:300,fill:'forwards'});
+    setTimeout(()=>{
+      helper.animate([{opacity:1},{opacity:0}],{duration:600,fill:'forwards'}).onfinish=()=>helper.remove();
+    }, 4200);
   }
   // simple reveal on scroll
-  const obs = new IntersectionObserver((entries)=>{{
+  const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
-  }},{{threshold:.12}});
+  },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 });
 </script>
