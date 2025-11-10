@@ -13,13 +13,48 @@
       color: #1e293b;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
+
+    /* כותרת עליונה כמו באתר הראשי */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      animation: fadeInDown 0.8s ease;
+    }
+    header img {
+      height: 42px;
+      width: auto;
+    }
+    header .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    header .brand-text strong {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #0f3d63;
+    }
+    header .brand-text span {
+      color: #475569;
+      font-size: 0.83rem;
+      letter-spacing: 0.02em;
+    }
+
     .ty-wrap {
-      min-height: 90vh;
+      min-height: 85vh;
       display: grid;
       place-items: center;
       padding: 20px;
     }
+
     .ty-card {
       background: #fff;
       border: 1px solid #e2e8f0;
@@ -28,29 +63,20 @@
       max-width: 480px;
       width: 100%;
       text-align: center;
-      padding: 30px 24px;
+      padding: 32px 24px;
+      animation: fadeInUp 1s ease;
     }
-    .ty-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .ty-logo img {
-      width: 42px;
-      height: 42px;
-      border-radius: 8px;
-      box-shadow: 0 3px 6px rgba(0,0,0,.1);
-    }
+
     h1 {
       font-size: 1.8rem;
       margin: 0.4em 0;
+      animation: fadeIn 1s ease;
     }
     p {
       margin: 0.5em 0;
       color: #475569;
     }
+
     .btn-main {
       display: inline-block;
       margin-top: 16px;
@@ -62,16 +88,18 @@
       padding: 14px 22px;
       box-shadow: 0 6px 20px rgba(245,136,35,0.25);
       transition: transform .08s ease, box-shadow .2s ease;
+      animation: fadeInUp 1.1s ease;
     }
     .btn-main:hover { transform: translateY(-1px); }
 
-    /* מסגרת נפרדת ל-other ways */
+    /* מסגרת נפרדת ל־other ways */
     .contact-box {
       margin-top: 28px;
       background: #f8fafc;
       border-radius: 16px;
       padding: 18px;
       border: 1px solid #e2e8f0;
+      animation: fadeInUp 1.4s ease;
     }
     .contact-box h2 {
       font-size: 1.05rem;
@@ -82,15 +110,15 @@
       margin-bottom: 10px;
     }
 
-    /* יישור הכפתורים זה לצד זה גם במובייל */
+    /* כפתורים */
     .btn-row {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 10px;
+      animation: fadeInUp 1.6s ease;
     }
-
     .btn-row .btn {
       display: inline-block;
       background: #0f3d63;
@@ -104,26 +132,37 @@
       flex: 1 1 120px;
       transition: transform .08s ease, box-shadow .2s ease;
     }
-
     .btn-row .btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 6px 14px rgba(0,0,0,0.1);
     }
 
-    @media (max-width: 400px) {
-      .btn-row { flex-direction: row; }
+    /* אנימציות */
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <img src="/logo.webp" alt="Dryer Vent Services logo" onerror="this.src='/logo.png'">
+    <div class="brand-text">
+      <strong>Dryer Vent Services</strong>
+      <span>Cleaning • Repairs • Installations</span>
+    </div>
+  </header>
+
   <main class="ty-wrap">
     <div class="ty-card">
-      <div class="ty-logo">
-        <img src="/logo.webp" alt="Dryer Vent Services logo" onerror="this.src='/logo.png'">
-        <strong>Dryer Vent Services</strong>
-      </div>
-
       <h1>Thank you!</h1>
       <p>Your message was sent successfully.<br>We’ll be in touch shortly.</p>
       <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
