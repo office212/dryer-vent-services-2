@@ -1,82 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thanks! • Dryer Vent Services</title>
 
-  <link rel="stylesheet" href="/styles.css">
+  <!-- Base site styles -->
+  <link rel="stylesheet" href="/styles.css" />
 
+  <!-- Simple page-local tweaks (no wave, responsive button row) -->
   <style>
-    /* header זהה לשאר האתר + ודאות ל-3 פסים */
-    .site-header{position:sticky; top:0; z-index:1005; background:#fff;}
-    .site-header .nav-wrap{position:relative; z-index:1006;}
-    .burger{display:block !important; position:relative; z-index:1007;}
-    /* ודא שמופיעים 3 קווים גם אם יש חוקים אחרים בקובץ הראשי */
-    .burger span{display:block; width:26px; height:2px; background:#0f172a; border-radius:2px;}
-    .burger span + span{margin-top:6px;}
+    /* Card layout */
+    .ty-wrap{min-height:calc(100dvh - 120px);display:grid;place-items:center;padding:24px}
+    .ty-card{max-width:760px;width:100%;background:#fff;border:1px solid #eef0f4;border-radius:18px;
+             box-shadow:0 10px 28px rgba(15,42,82,.10);padding:28px 22px;margin:0 auto 18px;text-align:center}
+    .ty-card h1{font-size:clamp(28px,6.2vw,44px);margin:.2em 0 .4em}
+    .ty-card p.lead{font-size:clamp(16px,3.8vw,20px);color:#475569;margin:.4em 0 1.2em}
+    .btn-primary{display:inline-block;background:#ea6a1a;color:#fff;padding:14px 22px;border-radius:14px;
+                 font-weight:800;text-decoration:none;box-shadow:0 10px 26px rgba(234,106,26,.30)}
+    .btn-primary:active{transform:translateY(1px)}
 
-    /* כרטיס תודה */
-    .ty-wrap{min-height:70vh; display:grid; place-items:center; padding:24px;}
-    .ty-card{
-      max-width:760px; width:100%;
-      background:#fff; border:1px solid #eef0f4; border-radius:18px;
-      box-shadow:0 10px 30px rgba(15,42,82,.10);
-      padding:28px 24px; text-align:center;
-    }
-    .ty-card h1{font-size:40px; line-height:1.1; margin:.2em 0 .25em}
-    .ty-card p{color:#475569; font-size:18px; margin:.5em 0}
-    .btn-primary-big{
-      display:inline-block; margin:14px auto 8px; padding:14px 22px;
-      background:#ea6a1a; color:#fff; border-radius:14px; font-weight:800; text-decoration:none;
-      box-shadow:0 12px 28px rgba(234,106,26,.25);
-    }
+    /* “Other ways” panel */
+    .ty-panel{max-width:760px;width:100%;background:#f8fbff;border:1px solid #e6eef7;border-radius:18px;
+              box-shadow:0 8px 24px rgba(15,42,82,.06);padding:20px;margin:0 auto}
+    .ty-panel h2{font-size:clamp(18px,4vw,24px);margin:0 0 .35em;text-align:center}
+    .ty-panel p{color:#475569;text-align:center;margin:0 0 14px}
 
-    /* בלוק הדרכים הנוספות */
-    .alt-box{
-      max-width:760px; width:100%; margin:18px auto 0;
-      background:#f7fafc; border:1px solid #e9eef5; border-radius:18px;
-      padding:18px 16px; text-align:center; box-shadow:inset 0 1px 0 rgba(255,255,255,.6);
+    /* Button row – side-by-side on phones too */
+    .btn-row{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(110px,1fr));
+      gap:12px;
+      align-items:center;
+      justify-items:center;
     }
-    .alt-box h3{margin:.2em 0 .2em}
-    .alt-actions{
-      display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap;
-      margin-top:10px;
+    @media (max-width:480px){
+      .btn-row{ grid-template-columns: repeat(3, 1fr); }
     }
-    /* עוקף width:100% גלובלי לכפתורים כדי שיופיעו זה לצד זה גם במובייל */
-    .alt-actions .btn{
-      display:inline-flex !important; width:auto !important;
-      padding:12px 18px; border-radius:14px; background:#0b3d5c; color:#fff; font-weight:800; text-decoration:none;
-      min-width:120px; justify-content:center;
+    .chip{
+      display:inline-block; width:100%; text-align:center;
+      background:#0b3960; color:#fff; padding:12px 16px; border-radius:14px;
+      font-weight:800; text-decoration:none;
     }
 
-    main{padding:18px 0 32px}
+    /* Hide mobile sticky CTA on this page so it לא יתנגש בכפתורים כאן */
+    .mobile-cta, #sticky-bar, .sticky-bar, .footer-sticky, .cta-sticky { display:none !important; }
   </style>
 
-  <script>
-    // ספירה ל-10 שניות וחזרה לדף הבית
-    document.addEventListener('DOMContentLoaded', () => {
-      let n = 10;
-      const el = document.getElementById('sec');
-      const t = setInterval(() => {
-        n--; el.textContent = n;
-        if (n <= 0) { clearInterval(t); window.location.href = '/'; }
-      }, 1000);
-    });
-    // להסיר index.html אם מופיע
-    if (location.pathname.endsWith('/index.html')) {
-      history.replaceState(null,'',location.pathname.replace('/index.html','/')+location.search+location.hash);
-    }
-  </script>
+  <!-- 10s meta refresh as backup -->
+  <meta http-equiv="refresh" content="10; url=/" />
+  <link rel="canonical" href="https://www.dryer-ventservices.com/thanks.html" />
 </head>
 
 <body data-page="thanks">
-  <!-- HEADER זהה לאתר -->
+  <!-- SAME HEADER AS THE REST OF THE SITE -->
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
         <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo"
-             onerror="this.onerror=null;this.src='logo.png';">
+             onerror="this.onerror=null;this.src='/logo.png';">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
           <span>Cleaning - Repairs - Installations</span>
@@ -97,25 +79,57 @@
     </div>
   </header>
 
-  <main class="container ty-wrap">
-    <div class="ty-card">
+  <main class="ty-wrap">
+    <section class="ty-card">
       <h1>Thank you!</h1>
-      <p>Your message was sent successfully. We’ll be in touch shortly.</p>
-      <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
-      <a class="btn-primary-big" href="/">Go to Homepage now</a>
+      <p class="lead">Your message was sent successfully. We’ll be in touch shortly.</p>
+      <p class="lead">Returning to the homepage in <span id="sec">10</span> seconds…</p>
+      <a class="btn-primary" href="/">Go to Homepage now</a>
+    </section>
 
-      <div class="alt-box">
-        <h3>Other ways to contact us</h3>
-        <p>Prefer a faster response? Reach us directly by phone or WhatsApp during business hours.</p>
-        <div class="alt-actions">
-          <a class="btn" href="tel:+13472449382">Call</a>
-          <a class="btn" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn" href="mailto:office@dryer-ventservices.com">Email</a>
-        </div>
+    <section class="ty-panel">
+      <h2>Other ways to contact us</h2>
+      <p>Prefer a faster response? Reach us directly by phone or WhatsApp during business hours.</p>
+      <div class="btn-row">
+        <a class="chip" href="tel:+13472449382">Call</a>
+        <a class="chip" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="chip" href="mailto:office@dryer-ventservices.com">Email</a>
       </div>
-    </div>
+    </section>
   </main>
 
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Dryer Vent Services</h4>
+        <p>Dryer Vent Cleaning - Repairs - Installations</p>
+      </div>
+      <div>
+        <ul class="contact-list">
+          <li><a href="tel:+13472449382">347-244-9382</a></li>
+          <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-cta">
+        <a class="btn btn--primary" href="/contact/">Book Now</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
+  </footer>
+
+  <!-- Site script enables the burger menu just like other pages -->
   <script src="/script.js" defer></script>
+
+  <!-- Countdown (10s) with hard redirect as primary path -->
+  <script>
+    (function(){
+      var n = 10, el = document.getElementById('sec');
+      var t = setInterval(function(){
+        n--; if(n < 0){ n = 0; }
+        el.textContent = n;
+        if(n <= 0){ clearInterval(t); window.location.href = '/'; }
+      }, 1000);
+    })();
+  </script>
 </body>
 </html>
