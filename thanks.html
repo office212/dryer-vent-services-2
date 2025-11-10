@@ -4,144 +4,99 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Thank You • Dryer Vent Services</title>
-  <meta name="description" content="Thank you for contacting Dryer Vent Services. We'll be in touch shortly.">
-  <meta http-equiv="refresh" content="10; url=/" />
-  <link rel="icon" href="/favicon.ico">
+  <meta http-equiv="refresh" content="10; url=/">
   <link rel="stylesheet" href="/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
-      background:#f8fafc;
-      margin:0;
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #0f172a;
     }
-
-    header {
-      text-align:center;
-      margin-top:32px;
+    .ty-wrap {
+      text-align: center;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(15,42,82,.08);
+      padding: 40px 30px;
+      max-width: 420px;
+      width: 90%;
     }
-
-    header img {
-      width:120px;
-      height:auto;
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 0.4em;
+      color: #0f172a;
     }
-
-    main.ty-wrap {
-      flex:1;
-      display:grid;
-      place-items:center;
-      padding:20px;
+    p {
+      color: #475569;
+      line-height: 1.5;
+      margin: 0.6em 0;
     }
-
-    .ty-card {
-      max-width:720px;
-      width:100%;
-      margin:0 auto;
-      padding:36px 28px;
-      background:#fff;
-      border:1px solid #eef0f4;
-      border-radius:16px;
-      box-shadow:0 8px 24px rgba(15,42,82,.10);
-      text-align:center;
-      animation:pop .5s ease;
+    .btn-main {
+      display: inline-block;
+      background: #ea6a1a;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 14px;
+      transition: all .2s ease;
     }
+    .btn-main:hover { transform: translateY(-1px); }
 
-    .ty-card h1 {
-      margin-top:0;
-      margin-bottom:8px;
-      font-size:2em;
-      color:#0b4a72;
+    .alt-contacts {
+      margin-top: 28px;
     }
-
-    .ty-card p {
-      color:#475569;
-      margin:8px 0;
-      line-height:1.6;
+    .alt-contacts h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: #0f172a;
     }
-
-    .btn {
-      display:inline-block;
-      margin:6px 6px;
-      padding:12px 22px;
-      border-radius:999px;
-      font-weight:700;
-      text-decoration:none;
-      color:#fff;
-      background:#0b4a72;
-      box-shadow:0 6px 16px rgba(11,74,114,.15);
-      transition:transform .08s ease, box-shadow .2s ease;
+    .contact-buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-
-    .btn:hover {
-      transform:translateY(-1px);
-      box-shadow:0 6px 20px rgba(11,74,114,.25);
+    .contact-buttons a {
+      background: #0f4a72;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      min-width: 90px;
+      text-align: center;
+      transition: all .2s ease;
     }
-
-    .btn-primary {
-      background:#f58823;
-      box-shadow:0 6px 16px rgba(245,136,35,.25);
-    }
-
-    .btn-primary:hover {
-      box-shadow:0 6px 20px rgba(245,136,35,.35);
-    }
-
-    @keyframes pop {
-      from {opacity:0; transform:scale(0.96);}
-      to {opacity:1; transform:scale(1);}
-    }
-
-    footer {
-      text-align:center;
-      font-size:.85em;
-      color:#94a3b8;
-      padding:16px;
-    }
-
-    .divider {
-      border-top:1px solid #e2e8f0;
-      margin:24px auto 18px;
-      width:80%;
-    }
-
-    .contact-options p {
-      font-weight:600;
-      color:#0b4a72;
-      margin-bottom:8px;
+    .contact-buttons a:hover {
+      transform: translateY(-1px);
+      background: #125d91;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="/logo.webp" alt="Dryer Vent Services" onerror="this.onerror=null;this.src='/logo.png';">
-  </header>
-
   <main class="ty-wrap">
-    <div class="ty-card">
-      <h1>Thank you!</h1>
-      <p>Your message was sent successfully. We’ll be in touch shortly.</p>
-      <p>We appreciate your trust in Dryer Vent Services — your home’s safety and efficiency are our priority.</p>
-      <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
+    <h1>Thank you!</h1>
+    <p>Your message was sent successfully.<br>We’ll be in touch shortly.</p>
+    <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
+    <a class="btn-main" href="/">Go to Homepage now</a>
 
-      <div style="margin-top:16px;">
-        <a class="btn btn-primary" href="/">Go to Homepage now</a>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="contact-options">
-        <p>Other ways to contact us</p>
-        <a class="btn" href="tel:+13472449382">Call</a>
-        <a class="btn" href="mailto:office@dryer-ventservices.com">Email</a>
-        <a class="btn" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+    <div class="alt-contacts">
+      <h3>Other ways to contact us</h3>
+      <div class="contact-buttons">
+        <a href="tel:+13472449382">Call</a>
+        <a href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:office@dryer-ventservices.com">Email</a>
       </div>
     </div>
   </main>
-
-  <footer>© 2025 Dryer Vent Services. All rights reserved.</footer>
 
   <script>
     let n = 10;
