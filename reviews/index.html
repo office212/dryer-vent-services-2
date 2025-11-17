@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dryer Vent Cleaning Reviews | Staten Island, NY & NJ</title>
-  <meta name="description" content="Live Google reviews for Dryer Vent Services serving Staten Island, New York and New Jersey.">
-  <link rel="stylesheet" href="/styles.css" />
-  <link rel="icon" href="/favicon.ico">
+  <title>Dryer Vent Cleaning Reviews | Staten Island, NY &amp; NJ</title>
+  <meta name="description" content="Live Google reviews for Dryer Vent Services in Staten Island, New York & New Jersey. See what real customers say about our dryer vent cleaning, repairs and installations.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
@@ -20,14 +21,20 @@
     gtag('js', new Date());
     gtag('config', 'G-X77CVTW1CD');
   </script>
+
+  <script>
+    // אם מישהו מגיע ל /reviews/index.html – ננקה את index.html מהכתובת
+    if (location.pathname.endsWith('/index.html')) {
+      history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
+    }
+  </script>
 </head>
 
 <body data-page="reviews">
-
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services" class="logo"
+        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo"
              onerror="this.onerror=null;this.src='logo.png';">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
@@ -45,7 +52,7 @@
         <a class="cta" href="/contact/" data-nav="contact">Contact Us</a>
       </nav>
 
-      <button class="burger" id="burger" aria-label="Menu">
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -54,26 +61,26 @@
   <section class="page-hero fade-in">
     <div class="container">
       <h1>Reviews</h1>
-      <p>What customers say about Dryer Vent Services</p>
+      <p>Live Google reviews from our customers in Staten Island, NY &amp; New Jersey.</p>
     </div>
   </section>
 
   <section class="section container fade-in reveal">
     <h2 class="center">Live Google Reviews</h2>
 
-    <div id="reviews-list" class="reviews-grid-pro">
-      <!-- Live Google reviews will load here -->
+    <div id="reviews-list-live">
+      <!-- ימולא אוטומטית ע"י reviews-live.js -->
     </div>
 
     <div class="center mt-20">
-      <button class="btn" id="loadMoreReviews">Load more reviews</button>
+      <button class="btn" id="reviewsLoadMoreLive" type="button">
+        Load more reviews
+      </button>
     </div>
 
-    <div class="review-rate-card">
-      <h3>Happy with our work?</h3>
-      <p>Tap below to rate us on Google.</p>
-      <button class="btn btn-secondary" id="rateGoogleBtn">
-        Leave a Rating
+    <div class="center mt-20">
+      <button class="btn btn-outline js-rate-google-live" type="button">
+        Leave your own rating on Google
       </button>
     </div>
   </section>
@@ -92,10 +99,12 @@
       </div>
       <div class="footer-cta">
         <a class="btn btn--primary" href="/contact/">Book Now</a>
-        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank">WhatsApp</a>
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
-    <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
+    <div class="copyright">
+      © 2025 Dryer Vent Services. All rights reserved.
+    </div>
   </footer>
 
   <div class="mobile-cta">
@@ -105,15 +114,5 @@
 
   <script src="/script.js" defer></script>
   <script src="/assets/js/reviews-live.js" defer></script>
-
-  <script>
-    document.getElementById("rateGoogleBtn").onclick = () => {
-      window.open(
-        "https://search.google.com/local/writereview?placeid=ChIJq81LRSoVi4wRJvvg97db1FU",
-        "_blank"
-      );
-    };
-  </script>
-
 </body>
 </html>
