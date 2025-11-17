@@ -1,7 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const ENDPOINT = "https://dryer-vent-services.office-d16.workers.dev/";
-  const GOOGLE_PLACE_URL =
-    "https://www.google.com/maps/place/?q=place_id:ChIJq81LRSoVi4wRJvvg97db1FU";
+  const PLACE_ID = "ChIJq81LRSoVi4wRJvvg97db1FU";
+
+  // דף העסק בגוגל מפות (כל הביקורות)
+  const GOOGLE_BUSINESS_URL =
+    "https://www.google.com/maps/search/?api=1&query_place_id=" + PLACE_ID;
+
+  // דף השארת ביקורת
+  const GOOGLE_REVIEW_URL =
+    "https://search.google.com/local/writereview?placeid=" + PLACE_ID;
 
   let allReviews = [];
   let cursor = 0;
@@ -10,82 +17,105 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch(ENDPOINT, { cache: "no-store" });
       const data = await res.json();
-      allReviews = data.reviews || [];
+      allReviews = Array.isArray(data.reviews) ? data.reviews : [];
     } catch (err) {
-      console.error("Reviews failed to load", err);
+      console.error("Failed to load Google reviews:", err);
       allReviews = [];
     }
   }
 
-  function createCard(r) {
-    const card = document.createElement("article");
-    card.className = "review-card-pro";
+  function createReviewElement(review) {
+    const author = review.author || "Google user";
+    const rating = Number(review.rating || 5);
+    const time = review.relativeTime || review.relativeTimeDescription || "";
+    const text = review.text || "";
 
-    card.onclick = () => {
-      window.open(GOOGLE_PLACE_URL, "_blank");
-    };
+    const starsFull = "★".repeat(Math.max(0, Math.min(5, rating)));
+    const starsEmpty = "☆".repeat(5 - starsFull.length);
 
-    const rating = Number(r.rating || 5);
+    const div = document.createElement("div");
+    div.className = "review";
+    div.style.cursor = "pointer";
 
-    card.innerHTML = `
-      <div class="review-card-header">
-        <div class="review-avatar-circle review-avatar-circle--google">
-          ${(r.author || "?").charAt(0).toUpperCase()}
-        </div>
-        <div class="review-meta">
-          <div class="review-author-name">${r.author || "Google user"}</div>
-          <div class="review-stars-row">
-            <span class="review-stars">
-              ${"★".repeat(rating)}${"☆".repeat(5 - rating)}
-            </span>
-            <span class="review-rating-number">${rating}/5</span>
-          </div>
-          <div class="review-time">${r.relativeTime || ""}</div>
-        </div>
-      </div>
+    // קליק על כל review → פותח דף העסק בגוגל
+    div.addEventListener("click", () => {
+      window.open(GOOGLE_BUSINESS_URL, "_blank", "noopener");
+    });
 
-      <p class="review-body">${r.text || ""}</p>
+    div.innerHTML = `
+      <p>
+        ${text ? "“" + text + "”" : ""}
+        <br>
+        <span class="review-stars">${starsFull}${starsEmpty}</span>
+        <span class="review-rating-number"> ${rating}/5</span>
+      </p>
+      <strong>- ${author}${time ? ", " + time : ""}</strong>
     `;
 
-    return card;
+    return div;
   }
 
-  function showNext(container, count) {
-    container.innerHTML = ""; // מחליף במקום להוסיף
+  function showNextBatch(container, count) {
+    if (!container) return;
+    if (!allReviews.length) {
+      container.innerHTML = "<p>No reviews found yet.</p>";
+      return;
+    }
+
+    // מחליף 3 בבום, לא מוסיף
+    container.innerHTML = "";
+
     for (let i = 0; i < count; i++) {
       const review = allReviews[(cursor + i) % allReviews.length];
-      container.appendChild(createCard(review));
+      container.appendChild(createReviewElement(review));
     }
+
     cursor = (cursor + count) % allReviews.length;
+  }
+
+  function setupRateButtons() {
+    const btns = document.querySelectorAll(".js-rate-google-live");
+    btns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.open(GOOGLE_REVIEW_URL, "_blank", "noopener");
+      });
+    });
   }
 
   (async () => {
     await loadReviews();
 
-    const homeList = document.querySelector("#home-reviews");
-    const homeMore = document.querySelector("#homeReviewsMore");
+    // דף הבית
+    const homeContainer = document.getElementById("home-reviews-live");
+    const homeMoreBtn = document.getElementById("homeReviewsMoreLive");
 
-    if (homeList) {
+    if (homeContainer) {
       cursor = 0;
-      showNext(homeList, 3);
-    }
+      showNextBatch(homeContainer, 3);
 
-    if (homeMore) {
-      homeMore.onclick = () => {
-        window.location.href = "/reviews/";
-      };
-    }
-
-    const pageList = document.querySelector("#reviews-list");
-    const pageMore = document.querySelector("#loadMoreReviews");
-
-    if (pageList) {
-      cursor = 0;
-      showNext(pageList, 3);
-
-      if (pageMore) {
-        pageMore.onclick = () => showNext(pageList, 3);
+      if (homeMoreBtn) {
+        homeMoreBtn.addEventListener("click", () => {
+          window.location.href = "/reviews/";
+        });
       }
     }
+
+    // דף הביקורות
+    const reviewsContainer = document.getElementById("reviews-list-live");
+    const reviewsMoreBtn = document.getElementById("reviewsLoadMoreLive");
+
+    if (reviewsContainer) {
+      cursor = 0;
+      showNextBatch(reviewsContainer, 3);
+
+      if (reviewsMoreBtn) {
+        reviewsMoreBtn.addEventListener("click", () => {
+          showNextBatch(reviewsContainer, 3);
+        });
+      }
+    }
+
+    setupRateButtons();
   })();
 });
