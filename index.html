@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional Dryer Vent Cleaning in Staten Island | Repairs & Installations</title>
-  <meta name="description" content="Dryer Vent Services provides expert dryer vent cleaning, repairs, and installations in Staten Island, NY and NJ. Improve safety, airflow, and efficiency.">
+  <title>Professional Dryer Vent Cleaning | Staten Island, NY & NJ</title>
+  <meta name="description" content="Professional dryer vent cleaning, repairs and installations in Staten Island, New York and New Jersey. Improve airflow, safety, and dryer efficiency.">
 
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -25,11 +24,10 @@
 
 <body data-page="home">
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo"
+        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services" class="logo"
              onerror="this.onerror=null;this.src='logo.png';">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
@@ -47,13 +45,12 @@
         <a class="cta" href="/contact/" data-nav="contact">Contact Us</a>
       </nav>
 
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <button class="burger" id="burger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="home-hero fade-in">
     <div class="container">
       <h1>Professional Dryer Vent Cleaning</h1>
@@ -62,41 +59,39 @@
     </div>
   </section>
 
-  <!-- SERVICES PREVIEW -->
   <section class="section container fade-in reveal">
     <h2 class="center">Our Services</h2>
 
     <div class="services-grid">
       <a href="/services/" class="service-card">
-        <img src="/assets/img/cleaning.webp" alt="Dryer Vent Cleaning" loading="lazy">
+        <img src="/assets/img/cleaning.webp" loading="lazy">
         <h3>Dryer Vent Cleaning</h3>
-        <p>Remove lint buildup and restore proper airflow.</p>
+        <p>Remove lint buildup and restore safe airflow.</p>
       </a>
 
       <a href="/services/" class="service-card">
-        <img src="/assets/img/repairs.webp" alt="Dryer Vent Repairs" loading="lazy">
+        <img src="/assets/img/repairs.webp" loading="lazy">
         <h3>Repairs & Replacements</h3>
-        <p>Fix crushed or disconnected ducts and damaged vents.</p>
+        <p>Fix crushed, disconnected or damaged vents.</p>
       </a>
 
       <a href="/services/" class="service-card">
-        <img src="/assets/img/installations.webp" alt="Dryer Vent Installations" loading="lazy">
+        <img src="/assets/img/installations.webp" loading="lazy">
         <h3>Installations</h3>
         <p>Professional, code-compliant vent installations.</p>
       </a>
     </div>
   </section>
 
-  <!-- BEFORE/AFTER -->
   <section class="section container fade-in reveal">
     <h2 class="center">Before & After</h2>
 
     <div class="before-after-block">
-      <img src="/assets/img/before.webp" class="ba-before" alt="Before cleaning">
-      <img src="/assets/img/after.webp" class="ba-after" alt="After cleaning">
+      <img src="/assets/img/before.webp" class="ba-before">
+      <img src="/assets/img/after.webp" class="ba-after">
     </div>
 
-    <div class="center">
+    <div class="center mt-20">
       <a href="/gallery/" class="btn">See More</a>
     </div>
   </section>
@@ -106,7 +101,7 @@
     <h2 class="center">What Customers Say</h2>
 
     <div id="home-reviews" class="reviews-grid-pro">
-      <!-- auto-filled by reviews-live.js -->
+      <!-- Reviews from Google load here -->
     </div>
 
     <div class="center mt-20">
@@ -114,17 +109,14 @@
     </div>
 
     <div class="review-rate-card">
-      <h3>Happy with your dryer vent cleaning?</h3>
-      <p>
-        Tap below to rate Dryer Vent Services on Google and help other families in NY & NJ.
-      </p>
-      <button class="btn btn-secondary js-open-review-modal">
-        Rate Dryer Vent Services
+      <h3>Happy with the service?</h3>
+      <p>Tap below to leave your rating on Google.</p>
+      <button class="btn btn-secondary" id="rateGoogleBtn">
+        Leave a Rating
       </button>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
@@ -141,7 +133,7 @@
 
       <div class="footer-cta">
         <a class="btn btn--primary" href="/contact/">Book Now</a>
-        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank">WhatsApp</a>
       </div>
     </div>
 
@@ -150,7 +142,6 @@
     </div>
   </footer>
 
-  <!-- MOBILE CTA -->
   <div class="mobile-cta">
     <a class="btn" href="tel:+13472449382">Call</a>
     <a class="btn btn--primary" href="/contact/">Book Now</a>
@@ -158,5 +149,19 @@
 
   <script src="/script.js" defer></script>
   <script src="/assets/js/reviews-live.js" defer></script>
+
+  <script>
+    document.getElementById("homeReviewsMore").onclick = () => {
+      window.location.href = "/reviews/";
+    };
+
+    document.getElementById("rateGoogleBtn").onclick = () => {
+      window.open(
+        "https://search.google.com/local/writereview?placeid=ChIJq81LRSoVi4wRJvvg97db1FU",
+        "_blank"
+      );
+    };
+  </script>
+
 </body>
 </html>
