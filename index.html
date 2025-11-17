@@ -184,28 +184,24 @@ if (location.pathname.endsWith('/index.html')) {
 </section>
 <!-- END BEFORE-AFTER -->
 
-</div></section>
-<section class="reveal" class="section container fade-in">
-<h2 class="center">What Customers Say</h2>
-<div class="cards-3">
-<div class="card"><p>“They were quick, honest and left the area spotless. Dryer works like new.”</p><strong>- Rachel, Staten Island, NY</strong></div>
-<div class="card"><p>“Explained the issue and fixed a crushed duct the same visit.”</p><strong>- David, Brooklyn, NY</strong></div>
-<div class="card"><p>“Great service and fair price. Airflow improved a lot.”</p><strong>- Maya, Queens, NY</strong></div>
-</div>
-<div class="center mt-20">
-<a class="btn" href="/reviews/">See more reviews</a>
-</div>
-</section>
-<section class="reveal" class="cta-bar">
-<div class="container cta-bar-wrap">
-<div>
-<h3>Ready to improve your dryer performance</h3>
-<p>Book your vent service today - quick, clean and professional.</p>
-</div>
-<div class="cta-actions">
-<a class="btn btn--primary" href="/contact/">Book Now</a>
-</div>
-</div>
+<section class="section container fade-in reveal">
+  <h2 class="center">What Customers Say</h2>
+
+  <div id="home-reviews" class="cards-3 reviews-grid-pro"></div>
+
+  <div class="center mt-20">
+    <button class="btn" id="homeReviewsMore" type="button">
+      Load more reviews
+    </button>
+  </div>
+
+  <div class="review-rate-card">
+    <h3>Happy with your dryer vent cleaning?</h3>
+    <p>Tap below to rate Dryer Vent Services on Google.</p>
+    <button class="btn btn-secondary js-open-review-modal" type="button">
+      Rate Dryer Vent Services
+    </button>
+  </div>
 </section>
 <footer class="site-footer">
 <div class="container footer-grid">
@@ -364,5 +360,7 @@ a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
   });
 }catch(e){} })();</script>
 
+
+<script src="/assets/js/reviews-live.js" defer></script>
 </body>
 </html>

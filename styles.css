@@ -246,3 +246,355 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
   touch-action: none;
   -ms-touch-action: none;
 }
+
+/* Live Google reviews cards */
+.review-card {
+  min-height: 170px;
+}
+
+.review-text {
+  margin-bottom: 8px;
+}
+
+.review-author {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.review-time {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.review-stars {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--orange-dark);
+}
+
+.review-card.highlight {
+  border: 2px solid var(--blue-2);
+}
+
+/* Google review modal */
+#google-review-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#google-review-modal.visible {
+  display: flex;
+}
+
+#google-review-modal .modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 27, 45, 0.55);
+}
+
+#google-review-modal .modal-content {
+  position: relative;
+  background: #ffffff;
+  max-width: 900px;
+  width: 92%;
+  max-height: 90vh;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15, 27, 45, 0.4);
+}
+
+#google-review-modal iframe {
+  display: block;
+  width: 100%;
+  height: 70vh;
+  border: 0;
+}
+
+#google-review-modal .modal-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: transparent;
+  border: 0;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #1f2933;
+}
+
+
+/* Live reviews cards */
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.review-author {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.review-time {
+  font-weight: 400;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.review-stars {
+  font-size: 0.9rem;
+}
+
+.review-rate-card {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid #dde3ea;
+  background: #f6f8fb;
+  text-align: center;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.review-rate-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+.review-rate-card p {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+/* Rating modal */
+.review-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.review-modal {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px 20px 20px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 18px 45px rgba(15, 38, 71, 0.25);
+  position: relative;
+  text-align: center;
+}
+.review-modal h2 {
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+.review-modal p {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+.review-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.review-stars-picker {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 10px 0 8px;
+}
+.review-stars-picker button {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  opacity: 0.45;
+}
+.review-stars-picker button.active {
+  opacity: 1;
+}
+.review-modal-hint {
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+  opacity: 0.85;
+}
+body.modal-open {
+  overflow: hidden;
+}
+
+
+
+/* Pro review cards */
+.reviews-grid-pro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 18px;
+}
+
+.review-card-pro {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 8px 22px rgba(15, 119, 204, 0.08);
+  border: 1px solid rgba(15,119,204,0.06);
+}
+
+.review-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.review-avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(135deg,#ff9f4a,#ff6a3d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.review-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.review-author-name {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.review-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.review-rating-number {
+  font-weight: 500;
+  color: #555;
+}
+
+.review-time {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.review-body {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* star display */
+.star {
+  font-size: 1rem;
+}
+.star--full {
+  color: #f7b500;
+}
+.star--empty {
+  color: #d0d7e2;
+}
+
+/* rating modal */
+.review-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.46);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.review-modal-backdrop[hidden] {
+  display: none;
+}
+
+.review-modal {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 420px;
+  width: 90%;
+  padding: 22px 22px 20px;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.18);
+  position: relative;
+}
+
+.review-modal-close {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.review-modal h2 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+}
+
+.review-modal-sub {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 0 12px;
+}
+
+.review-modal-stars {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.review-modal-stars button {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #d0d7e2;
+  transition: transform 0.08s ease, color 0.12s ease;
+}
+
+.review-modal-stars button.active {
+  color: #f7b500;
+  transform: translateY(-1px);
+}
+
+.review-modal-hint {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.review-modal .btn {
+  width: 100%;
+}
+
+.review-modal-open {
+  overflow: hidden;
+}
