@@ -184,13 +184,11 @@ if (location.pathname.endsWith('/index.html')) {
 </section>
 <!-- END BEFORE-AFTER -->
 
-</div></section>
-<section class="reveal" class="section container fade-in">
+<section class="section container fade-in reveal">
   <h2 class="center">What Customers Say</h2>
 
-  <div class="cards-3" id="home-reviews">
-    <!-- Live Google reviews will be loaded here -->
-  </div>
+  <!-- LIVE GOOGLE REVIEWS -->
+  <div id="home-reviews" class="cards-3"></div>
 
   <div class="center mt-20">
     <button class="btn" id="homeReviewsMore" type="button">
@@ -198,11 +196,13 @@ if (location.pathname.endsWith('/index.html')) {
     </button>
   </div>
 
+  <!-- RATE INTERNAL MODAL OPENER -->
   <div class="review-rate-card">
     <h3>Happy with your dryer vent cleaning?</h3>
-    <p>Share your experience and help other homeowners in NY &amp; NJ find safe, professional dryer vent service.</p>
+    <p>Tap below to rate us on Google.</p>
+
     <button class="btn btn-secondary js-open-review-modal" type="button">
-      Rate Dryer Vent Services on Google
+      Rate Dryer Vent Services
     </button>
   </div>
 </section>
