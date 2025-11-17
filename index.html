@@ -187,14 +187,13 @@ if (location.pathname.endsWith('/index.html')) {
 </div></section>
 <section class="reveal" class="section container fade-in">
 <h2 class="center">What Customers Say</h2>
-<div class="cards-3" id="home-reviews">
-  <!-- Live Google reviews will be loaded here -->
+<div class="cards-3">
+<div class="card"><p>“They were quick, honest and left the area spotless. Dryer works like new.”</p><strong>- Rachel, Staten Island, NY</strong></div>
+<div class="card"><p>“Explained the issue and fixed a crushed duct the same visit.”</p><strong>- David, Brooklyn, NY</strong></div>
+<div class="card"><p>“Great service and fair price. Airflow improved a lot.”</p><strong>- Maya, Queens, NY</strong></div>
 </div>
 <div class="center mt-20">
-  <button class="btn" id="homeReviewsMore" type="button">Load more reviews</button>
-</div>
-<div class="center mt-10">
-  <a class="btn" href="/reviews/">See more reviews</a>
+<a class="btn" href="/reviews/">See more reviews</a>
 </div>
 </section>
 <section class="reveal" class="cta-bar">
@@ -364,8 +363,6 @@ a.button:hover, .btn:hover, button:hover{transform:translateY(-1px)}
     setTimeout(function(){ if(!shown()) show(); }, 12000);
   });
 }catch(e){} })();</script>
-
-<script src="/assets/js/reviews-live.js" defer></script>
 
 </body>
 </html>

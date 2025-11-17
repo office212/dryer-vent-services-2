@@ -246,15 +246,3 @@ div:has(> img:only-child:empty), .mobile-cta a:only-child:empty, .mobile-cta:emp
   touch-action: none;
   -ms-touch-action: none;
 }
-
-
-/* Live Google reviews extras */
-.review-stars{
-  margin-top:6px;
-  font-weight:600;
-  font-size:0.9rem;
-}
-.review-time{
-  font-weight:400;
-  font-size:0.85rem;
-}
