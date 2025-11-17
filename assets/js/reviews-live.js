@@ -1,202 +1,206 @@
+// /assets/js/reviews-live.js
 
-// Live Google Reviews + rating modal using Cloudflare Worker
-const REVIEWS_API_URL = "https://dryer-vent-services.office-d16.workers.dev/";
-const REVIEWS_BATCH = 3;
-const PLACE_ID = "ChIJq81LRSoVi4wRJvvg97db1FU";
+document.addEventListener('DOMContentLoaded', () => {
+  const ENDPOINT = 'https://dryer-vent-services.office-d16.workers.dev/';
+  const PLACE_URL =
+    'https://www.google.com/maps/place/?q=place_id:ChIJq81LRSoVi4wRJvvg97db1FU';
 
-let allReviews = [];
-let homeIndex = 0;
-let pageIndex = 0;
+  let allReviews = [];
+  let cursor = 0;
 
-function buildStars(rating) {
-  const full = Math.round(rating || 5);
-  let html = "";
-  for (let i = 1; i <= 5; i++) {
-    html += `<span class="star ${i <= full ? "star--full" : "star--empty"}">★</span>`;
+  async function fetchReviews() {
+    if (allReviews.length) return;
+    try {
+      const res = await fetch(ENDPOINT, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Bad response from worker');
+      const data = await res.json();
+      allReviews = Array.isArray(data.reviews) ? data.reviews : [];
+    } catch (e) {
+      console.error('Failed to load reviews', e);
+      allReviews = [];
+    }
   }
-  return html;
-}
 
-function createReviewCard(r) {
-  const text = (r.text || "").replace(/"/g, "&quot;");
-  const author = r.author || "Google user";
-  const time = r.relativeTime || "";
-  const rating = r.rating || 5;
+  function createReviewCard(review) {
+    const card = document.createElement('article');
+    card.className = 'review-card-pro';
 
-  return `
-    <article class="review-card-pro">
-      <div class="review-card-top">
-        <div class="review-avatar-circle">
-          <span>${author.trim().charAt(0).toUpperCase()}</span>
-        </div>
-        <div class="review-meta">
-          <div class="review-author-name">${author}</div>
-          <div class="review-stars-row">
-            ${buildStars(rating)}<span class="review-rating-number">${rating.toFixed ? rating.toFixed(1) : rating}/5</span>
-          </div>
-          ${time ? `<div class="review-time">${time}</div>` : ""}
-        </div>
-      </div>
-      <p class="review-body">“${text}”</p>
-    </article>
-  `;
-}
+    // כשילחצו על הכרטיס – נפתח את העסק בגוגל
+    card.addEventListener('click', () => {
+      window.open(PLACE_URL, '_blank', 'noopener');
+    });
 
-function renderThreeInto(container, startIndex) {
-  if (!container) return;
-  if (!allReviews.length) {
-    container.innerHTML = '<p class="center">Reviews will appear here soon.</p>';
-    return;
-  }
-  let html = "";
-  for (let i = 0; i < REVIEWS_BATCH; i++) {
-    const r = allReviews[(startIndex + i) % allReviews.length];
-    if (!r) continue;
-    html += createReviewCard(r);
-  }
-  container.innerHTML = html;
-}
+    const header = document.createElement('div');
+    header.className = 'review-card-header';
 
-async function loadReviewsData() {
-  try {
-    const res = await fetch(REVIEWS_API_URL, { cache: "no-store" });
-    const data = await res.json();
-    allReviews = data.reviews || [];
+    const avatar = document.createElement('div');
+    avatar.className = 'review-avatar-circle review-avatar-circle--google';
+    const firstLetter = (review.author || '?').trim().charAt(0).toUpperCase();
+    avatar.textContent = firstLetter || 'G';
 
-    // Home section
-    const homeBox = document.getElementById("home-reviews");
-    const homeBtn = document.getElementById("homeReviewsMore");
-    if (homeBox) {
-      renderThreeInto(homeBox, homeIndex);
-      if (homeBtn && allReviews.length > REVIEWS_BATCH) {
-        homeBtn.addEventListener("click", () => {
-          homeIndex = (homeIndex + REVIEWS_BATCH) % allReviews.length;
-          renderThreeInto(homeBox, homeIndex);
-        });
-      } else if (homeBtn) {
-        homeBtn.style.display = "none";
-      }
+    const meta = document.createElement('div');
+    meta.className = 'review-meta';
+
+    const name = document.createElement('div');
+    name.className = 'review-author-name';
+    name.textContent = review.author || 'Google user';
+
+    const row = document.createElement('div');
+    row.className = 'review-stars-row';
+
+    const stars = document.createElement('span');
+    stars.className = 'review-stars';
+    const rating = Number(review.rating) || 5;
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('span');
+      star.className = 'star ' + (i <= rating ? 'star--full' : 'star--empty');
+      star.textContent = '★';
+      stars.appendChild(star);
     }
 
-    // Reviews page
-    const pageBox = document.getElementById("reviews-list");
-    const pageBtn = document.getElementById("loadMoreReviews");
-    if (pageBox) {
-      // initial render
-      let initialCount = Math.min(REVIEWS_BATCH, allReviews.length);
-      let html = "";
-      for (let i = 0; i < initialCount; i++) {
-        html += createReviewCard(allReviews[i]);
-      }
-      pageBox.innerHTML = html;
-      pageIndex = initialCount;
+    const ratingNumber = document.createElement('span');
+    ratingNumber.className = 'review-rating-number';
+    ratingNumber.textContent = `${rating.toFixed(1)}/5`;
 
-      if (pageBtn && allReviews.length > initialCount) {
-        pageBtn.addEventListener("click", () => {
-          let added = 0;
-          let extra = "";
-          while (added < REVIEWS_BATCH && allReviews.length) {
-            extra += createReviewCard(allReviews[pageIndex % allReviews.length]);
-            pageIndex++;
-            added++;
-            if (pageIndex >= allReviews.length) pageIndex = 0;
-          }
-          pageBox.insertAdjacentHTML("beforeend", extra);
-        });
-      } else if (pageBtn) {
-        pageBtn.style.display = "none";
-      }
-    }
-  } catch (e) {
-    console.error("Failed to load live reviews", e);
+    row.appendChild(stars);
+    row.appendChild(ratingNumber);
+
+    const time = document.createElement('div');
+    time.className = 'review-time';
+    time.textContent = review.relativeTime || review.relativeTimeDescription || '';
+
+    meta.appendChild(name);
+    meta.appendChild(row);
+    meta.appendChild(time);
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+
+    const body = document.createElement('p');
+    body.className = 'review-body';
+    body.textContent = review.text || '';
+
+    card.appendChild(header);
+    card.appendChild(body);
+
+    return card;
   }
-}
 
-function initRatingModal() {
-  // build modal once
-  const existing = document.getElementById("reviewModalBackdrop");
-  if (existing) return;
+  function renderNext(container, count) {
+    if (!allReviews.length || !container) return;
+    for (let i = 0; i < count; i++) {
+      if (!allReviews.length) break;
+      const review = allReviews[cursor % allReviews.length];
+      const card = createReviewCard(review);
+      container.appendChild(card);
+      cursor++;
+    }
+  }
 
-  const wrapper = document.createElement("div");
-  wrapper.innerHTML = `
-    <div class="review-modal-backdrop" id="reviewModalBackdrop" hidden>
-      <div class="review-modal" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">
-        <button class="review-modal-close" type="button" id="closeReviewModal" aria-label="Close">&times;</button>
-        <h2 id="reviewModalTitle">Rate Dryer Vent Services</h2>
-        <p class="review-modal-sub">Select a rating from 1–5 stars, then continue to Google to publish your review.</p>
-        <div class="review-modal-stars" id="reviewModalStars">
-          <button type="button" data-rating="1">★</button>
-          <button type="button" data-rating="2">★</button>
-          <button type="button" data-rating="3">★</button>
-          <button type="button" data-rating="4">★</button>
-          <button type="button" data-rating="5">★</button>
+  // מודאל דירוג
+  function setupRatingModal() {
+    const triggers = document.querySelectorAll('.js-open-review-modal');
+    if (!triggers.length) return;
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'review-modal-backdrop';
+    backdrop.innerHTML = `
+      <div class="review-modal" role="dialog" aria-modal="true">
+        <button class="review-modal-close" aria-label="Close">&times;</button>
+        <h3>Rate Dryer Vent Services</h3>
+        <p>Select a rating from 1–5 stars, then continue to Google to publish your review.</p>
+        <div class="review-modal-stars" data-selected="0">
+          <button type="button" data-value="1">★</button>
+          <button type="button" data-value="2">★</button>
+          <button type="button" data-value="3">★</button>
+          <button type="button" data-value="4">★</button>
+          <button type="button" data-value="5">★</button>
         </div>
-        <p class="review-modal-hint" id="reviewModalHint">Choose your rating to continue.</p>
-        <button class="btn btn--primary" type="button" id="reviewModalContinue" disabled>
+        <button type="button" class="btn btn-primary review-modal-cta" disabled>
           Continue on Google
         </button>
       </div>
-    </div>
-  `;
-  document.body.appendChild(wrapper.firstElementChild);
+    `;
+    document.body.appendChild(backdrop);
+    backdrop.style.display = 'none';
 
-  const backdrop = document.getElementById("reviewModalBackdrop");
-  const closeBtn = document.getElementById("closeReviewModal");
-  const starsWrap = document.getElementById("reviewModalStars");
-  const hint = document.getElementById("reviewModalHint");
-  const continueBtn = document.getElementById("reviewModalContinue");
-  let selected = 0;
+    const modal = backdrop.querySelector('.review-modal');
+    const closeBtn = backdrop.querySelector('.review-modal-close');
+    const starsRow = backdrop.querySelector('.review-modal-stars');
+    const cta = backdrop.querySelector('.review-modal-cta');
 
-  function openModal() {
-    backdrop.hidden = false;
-    document.body.classList.add("review-modal-open");
-  }
-  function closeModal() {
-    backdrop.hidden = true;
-    document.body.classList.remove("review-modal-open");
-  }
+    function openModal() {
+      backdrop.style.display = 'flex';
+      document.body.classList.add('modal-open');
+    }
 
-  document.querySelectorAll(".js-open-review-modal").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      openModal();
+    function closeModal() {
+      backdrop.style.display = 'none';
+      document.body.classList.remove('modal-open');
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeModal();
     });
-  });
 
-  closeBtn.addEventListener("click", closeModal);
-  backdrop.addEventListener("click", (e) => {
-    if (e.target === backdrop) closeModal();
-  });
+    starsRow.addEventListener('click', (e) => {
+      if (!(e.target instanceof HTMLElement)) return;
+      const value = e.target.getAttribute('data-value');
+      if (!value) return;
+      starsRow.setAttribute('data-selected', value);
+      starsRow.querySelectorAll('button').forEach((btn) => {
+        const v = btn.getAttribute('data-value');
+        btn.classList.toggle('active', v === value);
+      });
+      cta.disabled = false;
+    });
 
-  starsWrap.addEventListener("click", (e) => {
-    const target = e.target;
-    if (!(target instanceof HTMLElement)) return;
-    const rating = Number(target.dataset.rating || "0");
-    if (!rating) return;
-    selected = rating;
-    starsWrap.querySelectorAll("button").forEach(btn => {
-      const r = Number(btn.dataset.rating || "0");
-      if (r <= rating) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
+    cta.addEventListener('click', () => {
+      // לא משנה איזה דירוג בחר – בגוגל הוא יבחר שוב, זה רק לפתוח את הדף
+      window.open(
+        'https://search.google.com/local/writereview?placeid=ChIJq81LRSoVi4wRJvvg97db1FU',
+        '_blank',
+        'noopener'
+      );
+      closeModal();
+    });
+
+    triggers.forEach((btn) => {
+      btn.addEventListener('click', openModal);
+    });
+  }
+
+  // הפעלה
+  (async () => {
+    await fetchReviews();
+
+    const homeContainer = document.getElementById('home-reviews');
+    const homeMoreBtn = document.getElementById('homeReviewsMore');
+
+    if (homeContainer) {
+      cursor = 0;
+      renderNext(homeContainer, 3);
+      if (homeMoreBtn) {
+        homeMoreBtn.addEventListener('click', () => {
+          window.location.href = '/reviews/';
+        });
       }
-    });
-    continueBtn.disabled = false;
-    hint.textContent = `You selected ${rating} star${rating > 1 ? "s" : ""}. Click continue to post on Google.`;
-  });
+    }
 
-  continueBtn.addEventListener("click", () => {
-    window.open(
-      "https://search.google.com/local/writereview?placeid=" + PLACE_ID,
-      "_blank",
-      "noopener"
-    );
-    closeModal();
-  });
-}
+    const reviewsContainer = document.getElementById('reviews-list');
+    const reviewsMoreBtn = document.getElementById('loadMoreReviews');
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadReviewsData();
-  initRatingModal();
+    if (reviewsContainer) {
+      cursor = 0;
+      renderNext(reviewsContainer, 3);
+      if (reviewsMoreBtn) {
+        reviewsMoreBtn.addEventListener('click', () => {
+          renderNext(reviewsContainer, 3);
+        });
+      }
+    }
+
+    setupRatingModal();
+  })();
 });
