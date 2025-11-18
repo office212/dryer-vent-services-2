@@ -3,16 +3,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   const ENDPOINT = 'https://dryer-vent-services.office-d16.workers.dev/';
 
-  // עמוד הביקורות/דירוג בגוגל (כתובת טובה ותקינה)
-  const GOOGLE_REVIEW_URL =
-    'https://g.page/r/CSb74Pe3W9RVEBE/review';
+  // כרטיסי ביקורות (גם בדף הבית וגם בדף הביקורות)
+  // יפתחו את דף העסק במפות (כפי שביקשת):
+  const PLACE_URL = 'https://maps.app.goo.gl/Uo5r9arA4kM7GPWX6';
+
+  // כפתורי "Rate on Google" (בדף הבית + בדף הביקורות)
+  // יפתחו את מסך כתיבת הביקורת:
+  const GOOGLE_REVIEW_URL = 'https://g.page/r/CSb74Pe3W9RVEBE/review';
 
   let allReviews = [];
-  const cursors = {
-    home: 0,
-    reviews: 0,
-  };
-  const PAGE_SIZE = 3;
+  let cursor = 0;
 
   async function fetchReviews() {
     if (allReviews.length) return;
@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = document.createElement('article');
     card.className = 'review-card-pro';
 
-    // לחיצה על כרטיס → עמוד הביקורות בגוגל
+    // לחיצה על כרטיס => דף העסק במפות
     card.addEventListener('click', () => {
-      window.open(GOOGLE_REVIEW_URL, '_blank', 'noopener');
+      window.open(PLACE_URL, '_blank', 'noopener');
     });
 
     const header = document.createElement('div');
@@ -73,8 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const time = document.createElement('div');
     time.className = 'review-time';
-    time.textContent =
-      review.relativeTime || review.relativeTimeDescription || '';
+    time.textContent = review.relativeTime || review.relativeTimeDescription || '';
 
     meta.appendChild(name);
     meta.appendChild(row);
@@ -93,58 +92,58 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  // מציג 3 ביקורות ומחליף אותן בסט הבא (קרוסלה), לא מוסיף למטה
-  function renderPage(container, key) {
+  // count ביקורות בכל פעם, עם אפשרות reset שמחליף ולא מוסיף
+  function renderNext(container, count, { reset = false } = {}) {
     if (!allReviews.length || !container) return;
 
-    container.innerHTML = '';
-    for (let i = 0; i < PAGE_SIZE; i++) {
+    if (reset) {
+      container.innerHTML = '';
+    }
+
+    for (let i = 0; i < count; i++) {
       if (!allReviews.length) break;
-      const index = cursors[key] % allReviews.length;
-      const review = allReviews[index];
+      const review = allReviews[cursor % allReviews.length];
       const card = createReviewCard(review);
       container.appendChild(card);
-      cursors[key]++;
+      cursor++;
     }
   }
 
   (async () => {
     await fetchReviews();
 
-    // --- HOME PAGE ---
+    // HOME
     const homeContainer = document.getElementById('home-reviews');
     const homeMoreBtn = document.getElementById('homeReviewsMoreLink');
 
     if (homeContainer) {
-      cursors.home = 0;
-      renderPage(homeContainer, 'home');
-
-      // בדף הבית – הכפתור מוביל לדף הביקורות
+      cursor = 0;
+      renderNext(homeContainer, 3, { reset: true });
       if (homeMoreBtn) {
-        homeMoreBtn.addEventListener('click', (e) => {
-          e.preventDefault();
+        homeMoreBtn.addEventListener('click', () => {
+          // בדף הבית – לעבור לדף הביקורות
           window.location.href = '/reviews/';
         });
       }
     }
 
-    // --- REVIEWS PAGE ---
+    // REVIEWS PAGE
     const reviewsContainer = document.getElementById('reviews-list');
     const reviewsMoreBtn = document.getElementById('loadMoreReviews');
 
     if (reviewsContainer) {
-      cursors.reviews = 0;
-      renderPage(reviewsContainer, 'reviews');
+      cursor = 0;
+      renderNext(reviewsContainer, 3, { reset: true });
 
       if (reviewsMoreBtn) {
-        reviewsMoreBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          renderPage(reviewsContainer, 'reviews');
+        reviewsMoreBtn.addEventListener('click', () => {
+          // כל לחיצה מחליפה לשלישייה הבאה
+          renderNext(reviewsContainer, 3, { reset: true });
         });
       }
     }
 
-    // --- כפתורי דירוג ישירים לגוגל (אין מודאל) ---
+    // כפתורי דירוג ישיר בגוגל (הום + ביקורות)
     ['rateOnGoogleHome', 'rateOnGoogleReviews'].forEach((id) => {
       const btn = document.getElementById(id);
       if (!btn) return;
