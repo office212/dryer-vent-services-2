@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dryer Vent Cleaning FAQ | Dryer Vent Services | Staten Island, NY &amp; NJ</title>
-  <meta name="description" content="Frequently asked questions about dryer vent cleaning, repairs and installations in Staten Island, New York and New Jersey. Learn how often to clean, how long it takes, pricing and more." />
+  <title>Dryer Vent Cleaning FAQ | Staten Island, NY &amp; NJ</title>
+  <meta name="description" content="Frequently asked questions about dryer vent cleaning, pricing, safety and scheduling with Dryer Vent Services in Staten Island, NY &amp; NJ.">
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
@@ -20,47 +20,130 @@
     gtag('config', 'G-X77CVTW1CD');
   </script>
 
-  <meta name="keywords" content="dryer vent cleaning FAQ, dryer vent questions, dryer vent pricing, staten island, new york, new jersey" />
   <link rel="canonical" href="https://www.dryer-ventservices.com/faq/" />
   <meta property="og:site_name" content="Dryer Vent Services" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.dryer-ventservices.com/faq/" />
   <meta property="og:title" content="Dryer Vent Cleaning FAQ | Dryer Vent Services" />
-  <meta property="og:description" content="Answers to common questions about dryer vent cleaning, pricing, safety and scheduling in Staten Island, NY and across New York & New Jersey." />
-  <meta property="og:image" content="/assets/img/og-image.png" />
+  <meta property="og:description" content="Answers to common questions about dryer vent cleaning, pricing, safety and performance from Dryer Vent Services." />
+  <meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Dryer Vent Services",
-    "image": "/assets/img/og-image.png",
-    "url": "https://www.dryer-ventservices.com/faq/",
-    "telephone": "+1-347-244-9382",
-    "areaServed": [
-      {"@type": "Place", "name": "Staten Island, NY"},
-      {"@type": "Place", "name": "New York, NY"},
-      {"@type": "Place", "name": "New Jersey"}
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Staten Island",
-      "addressRegion": "NY",
-      "addressCountry": "US"
-    },
-    "priceRange": "$$",
-    "sameAs": ["https://www.dryer-ventservices.com"],
-    "description": "Professional dryer vent cleaning, repairs, and installations across NY & NJ."
+    "@type": "FAQPage",
+    "mainEntity": []
   }
   </script>
 
   <script>
-  // Remove index.html from URL if present
-  if (location.pathname.endsWith('/index.html')) {
-    history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
-  }
+    // Remove index.html from URL if present
+    if (location.pathname.endsWith('/index.html')) {
+      history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
+    }
   </script>
+
+  <style>
+    .faq-page {
+      padding: 32px 0 40px;
+    }
+    .faq-page h1 {
+      margin-bottom: 8px;
+    }
+    .faq-page-intro {
+      color: #4b5563;
+      max-width: 640px;
+    }
+
+    .faq-tabs {
+      margin-top: 28px;
+    }
+    .faq-tab-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .faq-tab {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: #f9fafb;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #374151;
+      transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .faq-tab.is-active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+      box-shadow: 0 8px 20px rgba(15,23,42,0.25);
+    }
+
+    .faq-panels {
+      margin-top: 8px;
+    }
+    .faq-panel {
+      display: none;
+    }
+    .faq-panel.is-active {
+      display: block;
+    }
+
+    .faq-item-card {
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 16px 18px 14px;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      border: 1px solid rgba(226,232,240,0.9);
+    }
+    .faq-item-card h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: #111827;
+    }
+    .faq-item-card p {
+      margin: 0 0 4px;
+      color: #4b5563;
+      font-size: 0.96rem;
+    }
+    .faq-item-card ul {
+      margin: 4px 0 0 18px;
+      color: #4b5563;
+      font-size: 0.96rem;
+      list-style: disc;
+    }
+
+    .faq-page-cta {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(226,232,240,0.9);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .faq-page-cta p {
+      margin: 0;
+      color: #374151;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 640px) {
+      .faq-page-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .faq-page-cta .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body data-page="faq">
@@ -73,12 +156,12 @@
           <span>Cleaning - Repairs - Installations</span>
         </div>
       </a>
-      <nav id="site-nav" class="site-nav">
+      <nav class="site-nav" id="site-nav">
         <a href="/" data-nav="home">Home</a>
         <a href="/services/" data-nav="services">Services</a>
         <a href="/gallery/" data-nav="gallery">Gallery</a>
         <a href="/reviews/" data-nav="reviews">Reviews</a>
-        <a href="/faq/" data-nav="faq" class="active">FAQ</a>
+        <a href="/faq/" data-nav="faq">FAQ</a>
         <a href="/about/" data-nav="about">About</a>
         <a href="/areas/" data-nav="areas">Service Areas</a>
         <a class="cta" href="/contact/" data-nav="contact">Contact Us</a>
@@ -92,115 +175,119 @@
   <section class="page-hero fade-in">
     <div class="container">
       <h1>Frequently Asked Questions</h1>
-      <p>Dryer vent cleaning, repairs and installations – clear answers before we arrive.</p>
+      <p>Answers about cleaning schedules, pricing, safety and what to expect on the day of service.</p>
     </div>
   </section>
 
-  <section class="section container fade-in">
-    <div class="faq-layout">
-      <div class="faq-main">
-        <h2>Dryer Vent Cleaning • Repairs • Installations</h2>
-
-        <div class="faq-group">
-          <h3>General cleaning questions</h3>
-
-          <details open>
-            <summary>How often should I clean my dryer vent?</summary>
-            <p>Most homes need a full dryer vent cleaning once a year. If you do a lot of laundry (large family, many loads each week), every 6–9 months is recommended.</p>
-          </details>
-
-          <details>
-            <summary>How long does a standard cleaning take?</summary>
-            <p>A normal dryer vent cleaning takes about 30–45 minutes. If the vent is very long, partially blocked, or exits from a higher floor, it can take longer – we stay until airflow is truly improved.</p>
-          </details>
-
-          <details>
-            <summary>Will my house get dirty during the cleaning?</summary>
-            <p>No. We use a sealed vacuum system and professional brushes designed for dryer vents. Lint and dust are collected directly into our equipment, not into your laundry room.</p>
-          </details>
-
-          <details>
-            <summary>What are the signs that I need a cleaning?</summary>
-            <ul>
-              <li>Clothes take more than one cycle to dry</li>
-              <li>The laundry room or dryer feels unusually hot</li>
-              <li>You notice a burning or hot smell while the dryer runs</li>
-              <li>The exterior vent flap barely opens or has lint around it</li>
-              <li>It has been more than a year since your last cleaning</li>
-            </ul>
-          </details>
-
-          <details>
-            <summary>Do you clean the dryer itself or only the vent?</summary>
-            <p>We focus on the vent system – from the back of the dryer to the exterior hood. We do not repair or open the dryer appliance itself. If we see an issue with the dryer, we will let you know.</p>
-          </details>
+  <main class="faq-page">
+    <div class="container">
+      <section class="faq-tabs">
+        <div class="faq-tab-list">
+          <button class="faq-tab is-active" data-tab="cleaning">General cleaning questions</button>
+          <button class="faq-tab" data-tab="pricing">Pricing &amp; scheduling</button>
+          <button class="faq-tab" data-tab="safety">Safety &amp; performance</button>
         </div>
 
-        <div class="faq-group">
-          <h3>Pricing &amp; scheduling</h3>
+        <div class="faq-panels">
+          <!-- Cleaning -->
+          <div class="faq-panel is-active" data-tab="cleaning">
+            <article class="faq-item-card">
+              <h3>How often should I clean my dryer vent?</h3>
+              <p>Most homes need a full dryer vent cleaning once a year. If you have a large family or run many loads each week, every 6-9 months is recommended.</p>
+            </article>
 
-          <details>
-            <summary>What do you charge for dryer vent cleaning?</summary>
-            <p>We use clear, flat pricing with no surprises at the door. The price depends mainly on where your vent exits:</p>
-            <ul>
-              <li><strong>Basement / 1st floor exit:</strong> $150</li>
-              <li><strong>2nd floor exit:</strong> $200</li>
-              <li><strong>3rd floor / roof exit:</strong> $250</li>
-            </ul>
-            <p>Bird nests, heavy lint and very clogged vents are included in these prices. You will only pay more if you choose additional repairs or a new installation.</p>
-          </details>
+            <article class="faq-item-card">
+              <h3>How long does a standard cleaning take?</h3>
+              <p>A typical dryer vent cleaning takes about 30-45 minutes. Longer runs, roof exits or damaged vents can take more time, but most visits are under an hour.</p>
+            </article>
 
-          <details>
-            <summary>Do you charge extra for bird nests or heavy lint?</summary>
-            <p>No. Bird nests, lint buildup and difficult clogs are already included in our flat cleaning prices. We do not raise the price on-site just because the vent is very dirty.</p>
-          </details>
+            <article class="faq-item-card">
+              <h3>Will my home get dirty during the cleaning?</h3>
+              <p>No. We use a sealed vacuum system and professional brushing tools that keep lint and dust contained. The work area is left neat and clean when we finish.</p>
+            </article>
 
-          <details>
-            <summary>How are repairs and new vent installations priced?</summary>
-            <p>Repairs (replacing damaged ducts, elbows, or exterior vents) and new vent installations are priced individually after we see the setup. We will explain your options and give a clear estimate before starting any repair work.</p>
-          </details>
+            <article class="faq-item-card">
+              <h3>What are the signs that I need a cleaning?</h3>
+              <p>You may need a cleaning if you notice:</p>
+              <ul>
+                <li>Clothes taking longer than one cycle to dry</li>
+                <li>The laundry room feels hotter than usual</li>
+                <li>A burning or hot smell when the dryer runs</li>
+                <li>The dryer shuts off mid-cycle</li>
+                <li>It has been more than a year since your last cleaning</li>
+              </ul>
+            </article>
 
-          <details>
-            <summary>Do I need to be home during the service?</summary>
-            <p>Yes. Someone needs to be home to give us access to the dryer and laundry area, and to confirm that the dryer is venting properly after the cleaning or repair.</p>
-          </details>
+            <article class="faq-item-card">
+              <h3>Do you clean the dryer itself or only the vent?</h3>
+              <p>We clean the entire vent route from the back of the dryer to the outside termination, including the exhaust hood. We do not repair dryers themselves - we focus on ducts, vents and airflow.</p>
+            </article>
+          </div>
+
+          <!-- Pricing -->
+          <div class="faq-panel" data-tab="pricing">
+            <article class="faq-item-card">
+              <h3>What do you charge for dryer vent cleaning?</h3>
+              <p>We use honest, flat pricing with no surprises at the door. Pricing depends mainly on the floor and where the vent exits:</p>
+              <ul>
+                <li><strong>Basement / 1st Floor:</strong> $150</li>
+                <li><strong>2nd Floor:</strong> $200</li>
+                <li><strong>3rd Floor or Roof Exit:</strong> $250</li>
+              </ul>
+              <p>This covers a full cleaning of the vent. If we discover broken parts or unsafe venting, we will explain the options before doing any repair work.</p>
+            </article>
+
+            <article class="faq-item-card">
+              <h3>Do you charge extra for bird nests or heavy lint?</h3>
+              <p>No. If the vent is just very clogged with lint or even has a bird nest blocking the hood, the price stays the same as the flat cleaning rate for that floor.</p>
+            </article>
+
+            <article class="faq-item-card">
+              <h3>How are repairs and new vent installations priced?</h3>
+              <p>Repairs and new vent installations are priced by estimate, based on what we find on site. Things like replacing crushed ducts, re-routing vents or installing a brand new outside hood are quoted clearly before we start.</p>
+            </article>
+
+            <article class="faq-item-card">
+              <h3>Do I need to be home during the service?</h3>
+              <p>Yes. Someone needs to be home to give us access to the dryer, confirm the location of the vent exit and test the airflow together when we are done.</p>
+            </article>
+          </div>
+
+          <!-- Safety -->
+          <div class="faq-panel" data-tab="safety">
+            <article class="faq-item-card">
+              <h3>Can a clogged dryer vent really cause a fire?</h3>
+              <p>Yes. Lint is extremely flammable. A clogged vent traps heat and prevents the dryer from exhausting properly, which can overheat the system and create a fire risk. Regular cleaning greatly reduces that risk.</p>
+            </article>
+
+            <article class="faq-item-card">
+              <h3>Will cleaning the vent help my dryer work better?</h3>
+              <p>In most homes, yes. A clean vent improves airflow so the dryer does not need to run as long or work as hard. This usually means faster dry times, less wear on the machine and lower energy use.</p>
+            </article>
+
+            <article class="faq-item-card">
+              <h3>Why choose Dryer Vent Services?</h3>
+              <p>We are fully focused on dryer vent work, not a side service. Our customers choose us because we offer:</p>
+              <ul>
+                <li>Professional, vent-specific equipment</li>
+                <li>Flat, honest pricing by floor</li>
+                <li>Neat and respectful work inside your home</li>
+                <li>Clear explanations of any issues we find</li>
+                <li>Service across Staten Island, New York and New Jersey</li>
+              </ul>
+            </article>
+          </div>
         </div>
 
-        <div class="faq-group">
-          <h3>Safety &amp; performance</h3>
-
-          <details>
-            <summary>Can a clogged dryer vent really cause a fire?</summary>
-            <p>Yes. Lint is extremely flammable. A clogged vent traps heat, which can overheat the dryer and increase the risk of a fire. Regular cleaning greatly reduces that risk and keeps the system running safely.</p>
-          </details>
-
-          <details>
-            <summary>Will cleaning the vent help my dryer work better?</summary>
-            <p>In most cases, yes. When the vent is blocked, hot air cannot escape, so clothes stay wet, cycles run longer, and the dryer works harder. After cleaning, many customers see shorter drying times and better performance.</p>
-          </details>
-
-          <details>
-            <summary>Why choose Dryer Vent Services?</summary>
-            <ul>
-              <li>We focus only on dryer vents – cleaning, repairs and installations</li>
-              <li>Flat, honest pricing – no surprise add-ons for lint or nests</li>
-              <li>Neat, respectful work in your home</li>
-              <li>Professional tools and methods built for dryer vents</li>
-            </ul>
-          </details>
+        <div class="faq-page-cta">
+          <p>Still have a question? We are happy to help you decide what your vent needs.</p>
+          <div>
+            <a class="btn btn--primary" href="/contact/">Ask a question</a>
+          </div>
         </div>
-      </div>
-
-      <aside class="faq-aside">
-        <div class="card">
-          <h3>Still have questions?</h3>
-          <p>Send us a message or call and we will be happy to help before booking.</p>
-          <a class="btn btn--primary" href="/contact/">Contact Us</a>
-          <a class="btn btn-outline" href="tel:+13472449382">Call 347-244-9382</a>
-        </div>
-      </aside>
+      </section>
     </div>
-  </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -227,6 +314,29 @@
     <a class="btn btn--primary" href="/contact/">Book Now</a>
   </div>
 
-  <script src="/script.js" defer></script>
+  <script defer src="/script.js"></script>
+
+  <script>
+    // FAQ tabs behavior
+    document.addEventListener('DOMContentLoaded', function(){
+      const tabs = document.querySelectorAll('.faq-tab');
+      const panels = document.querySelectorAll('.faq-panel');
+
+      function activate(tabName){
+        tabs.forEach(t => {
+          t.classList.toggle('is-active', t.dataset.tab === tabName);
+        });
+        panels.forEach(p => {
+          p.classList.toggle('is-active', p.dataset.tab === tabName);
+        });
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          activate(tab.dataset.tab);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
