@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const ENDPOINT = 'https://dryer-vent-services.office-d16.workers.dev/';
 
-  // דף העסק/דירוג בגוגל
+  // עמוד הביקורות/דירוג בגוגל (כתובת טובה ותקינה)
   const GOOGLE_REVIEW_URL =
     'https://g.page/r/CSb74Pe3W9RVEBE/review';
 
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  // מציג 3 ביקורות, מחליף את הקודמות (לא מוסיף למטה)
+  // מציג 3 ביקורות ומחליף אותן בסט הבא (קרוסלה), לא מוסיף למטה
   function renderPage(container, key) {
     if (!allReviews.length || !container) return;
 
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cursors.home = 0;
       renderPage(homeContainer, 'home');
 
-      // בדף הבית – הכפתור מוביל לדף הביקורות (לא טוען עוד)
+      // בדף הבית – הכפתור מוביל לדף הביקורות
       if (homeMoreBtn) {
         homeMoreBtn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // --- DIRECT "RATE ON GOOGLE" BUTTONS (בלי מודאל) ---
+    // --- כפתורי דירוג ישירים לגוגל (אין מודאל) ---
     ['rateOnGoogleHome', 'rateOnGoogleReviews'].forEach((id) => {
       const btn = document.getElementById(id);
       if (!btn) return;
