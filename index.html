@@ -9,13 +9,13 @@
   <link rel="icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-X77CVTW1CD');
   </script>
@@ -46,8 +46,8 @@
   <link rel="stylesheet" href="/assets/css/cards-override-200.css" />
   <link rel="stylesheet" href="/assets/css/before-after.css" />
 
-  <!-- === Before/After Carousel styles === -->
   <style>
+    /* === Before/After Carousel (portrait 2:3, transparent controls) === */
     .ba-carousel { position: relative; max-width: 720px; margin: 0 auto; }
     .ba-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow: hidden; scroll-snap-type: x mandatory; }
     .ba-slide { scroll-snap-align: center; padding: 0.5rem; }
@@ -66,30 +66,79 @@
   </style>
 
   <style>
+    /* Before/After Carousel wrapper */
     #before-after { padding: 32px 0; }
     #before-after .ba-carousel { position: relative; overflow: hidden; }
     #before-after .ba-slide { width: 100%; display: none; }
     #before-after .ba-slide.active { display: block; }
     .ba-compare { position: relative; width: 100%; max-width: 700px; margin: 0 auto; border-radius: 18px; overflow: hidden; }
     .ba-img { width: 100%; height: auto; display: block; }
-    .ba-img.before { position: absolute; inset: 0; clip-path: polygon(0 0, calc(var(--pos,50)*1%) 0, calc(var(--pos,50)*1%) 100%, 0 100%); }
-    .ba-handle { position: absolute; top: 0; bottom: 0; left: calc(var(--pos,50)*1%); width: 0; border-left: 3px solid rgba(255,255,255,0.9); cursor: ew-resize; }
-    .ba-handle::after { content:""; position:absolute; top:50%; transform:translate(-50%,-50%); width:56px; height:56px; border-radius:50%; border:2px solid rgba(255,255,255,0.9); background:transparent; }
+    .ba-img.before {
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0 0, calc(var(--pos,50)*1%) 0, calc(var(--pos,50)*1%) 100%, 0 100%);
+    }
+    .ba-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(var(--pos,50)*1%);
+      width: 0;
+      border-left: 3px solid rgba(255,255,255,0.9);
+      cursor: ew-resize;
+    }
+    .ba-handle::after {
+      content:"";
+      position:absolute;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      border:2px solid rgba(255,255,255,0.9);
+      background:transparent;
+    }
     .ba-controls { display:flex; justify-content:center; gap:18px; margin: 14px 0 4px; }
-    .ba-nav { width:56px; height:56px; border-radius:50%; background:transparent; border:2px solid rgba(0,0,0,0.2); position:relative; }
-    .ba-nav::before { content:""; position:absolute; inset:0; margin:auto; width:10px; height:10px; border-right:3px solid #0b2945; border-top:3px solid #0b2945; transform: rotate(45deg); }
+    .ba-nav {
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:transparent;
+      border:2px solid rgba(0,0,0,0.2);
+      position:relative;
+    }
+    .ba-nav::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      margin:auto;
+      width:10px;
+      height:10px;
+      border-right:3px solid #0b2945;
+      border-top:3px solid #0b2945;
+      transform: rotate(45deg);
+    }
     .ba-nav.prev::before { transform: rotate(225deg); }
-    .ba-more { display:inline-block; margin: 12px auto 0; padding: 12px 22px; border-radius:14px; background:#12324F; color:#fff; text-decoration:none; box-shadow: 0 10px 24px rgba(0,0,0,.12); }
+    .ba-more {
+      display:inline-block;
+      margin: 12px auto 0;
+      padding: 12px 22px;
+      border-radius:14px;
+      background:#12324F;
+      color:#fff;
+      text-decoration:none;
+      box-shadow: 0 10px 24px rgba(0,0,0,.12);
+    }
     @media (min-width: 760px){ .ba-compare{ max-width: 520px; } }
   </style>
 
   <!-- BEGIN BEFORE-AFTER ASSETS -->
-  <link rel="stylesheet" href="/assets/css/ba-slider.css">
+  <link rel="stylesheet" href="/assets/css/ba-slider.css" />
   <script defer src="/assets/js/ba-slider.js"></script>
   <!-- END BEFORE-AFTER ASSETS -->
 
   <meta property="og:title" content="Dryer Vent Cleaning in Staten Island | Repairs & Installations | NY & NJ" />
-  <meta property="og:description" content="Trusted dryer vent cleaning, repairs, and installations across NY & NJ. Fast service, safety-focused, great reviews." />
+  <meta property="og:description" content="Trusted dryer vent cleaning, repairs, and installations across NY & NY. Fast service, safety-focused, great reviews." />
   <meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.dryer-ventservices.com/" />
@@ -128,6 +177,28 @@
       history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
     }
   </script>
+
+  <!-- Bubble helper styling (new, orange, centered) -->
+  <style>
+    #ba-helper {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 120px; /* מעל ה-Call / Book Now */
+      z-index: 9999;
+      background: #f97316; /* כתום מותג */
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+      font-family: Inter, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      display: none;
+      text-align: center;
+      white-space: nowrap;
+    }
+  </style>
 </head>
 
 <body data-page="home">
@@ -159,7 +230,8 @@
     <div class="container hero-inner">
       <h1 class="hero-title">Professional Dryer Vent Cleaning, Repairs and Installations</h1>
       <p class="hero-sub">
-        Serving <strong>Staten Island</strong> and the greater <strong>New York</strong> and <strong>New Jersey</strong>.
+        Serving <strong>Staten Island</strong> and the greater
+        <strong>New York</strong> and <strong>New Jersey</strong>.
       </p>
       <div class="hero-actions">
         <a class="btn btn--primary" href="/contact/">Book Now</a>
@@ -199,13 +271,15 @@
         </div>
       </div>
     </div>
-    <div class="center mt-20"><a class="btn" href="/services/">All Services</a></div>
+    <div class="center mt-20">
+      <a class="btn" href="/services/">All Services</a>
+    </div>
   </section>
 
   <section class="reveal section section-alt fade-in">
     <div class="container">
-      <!-- BEFORE/AFTER -->
-      <section class="reveal ba-section">
+      <!-- BEGIN BEFORE-AFTER -->
+      <section class="reveal ba-section" id="before-after">
         <div class="container">
           <h2 class="section-title">Before and After</h2>
           <div id="ba-carousel" class="ba-carousel" aria-roledescription="carousel" aria-label="Before and after gallery">
@@ -223,32 +297,27 @@
           </div>
         </div>
       </section>
-      <!-- END BEFORE/AFTER -->
+      <!-- END BEFORE-AFTER -->
     </div>
   </section>
 
-  <!-- LIVE GOOGLE REVIEWS ON HOME -->
+  <!-- Google reviews on home -->
   <section class="reveal section container fade-in">
     <h2 class="center">Customer Reviews</h2>
-
     <div class="cards-3" id="home-reviews">
-      <!-- Live Google reviews loaded by reviews-live.js -->
+      <!-- Live Google reviews injected by /assets/js/reviews-live.js -->
     </div>
-
     <div class="center mt-20">
-      <button class="btn" id="homeReviewsMoreLink" type="button">
+      <button class="btn" id="homeReviewsMore" type="button">
         Load more reviews
       </button>
     </div>
-
     <div class="center mt-20">
-      <!-- כפתור רגיל (כחול), לא מלבן לבן -->
-      <button class="btn" id="rateOnGoogleHome" type="button">
+      <button class="btn btn-outline" id="rateOnGoogleHome" type="button">
         Rate Dryer Vent Services on Google
       </button>
     </div>
   </section>
-  <!-- END LIVE GOOGLE REVIEWS -->
 
   <section class="reveal cta-bar">
     <div class="container cta-bar-wrap">
@@ -292,85 +361,129 @@
   <script src="/beforeafter.js"></script>
   <script src="/assets/js/before-after.js"></script>
 
-  <!-- BEFORE/AFTER range init -->
+  <!-- Before/After basic JS (from 5.9) -->
   <script>
-    (function(){
-      function initCompare(root){
-        const range = root.querySelector('.ba-range');
-        const wrap  = root.querySelector('.after-wrap');
-        if (!range || !wrap) return;
-        range.addEventListener('input', () => {
-          const v = Number(range.value);
-          wrap.style.width = v + '%';
-          root.style.setProperty('--pos', v + '%');
-        }, { passive: true });
-      }
-      document.querySelectorAll('.ba-compare').forEach(initCompare);
+  (function(){
+    function initCompare(root){
+      const range=root.querySelector('.ba-range');
+      const wrap=root.querySelector('.after-wrap');
+      if (!range || !wrap) return;
+      range.addEventListener('input', e=>{
+        const v = Number(range.value);
+        wrap.style.width = v + '%';
+        root.style.setProperty('--pos', v + '%');
+      }, {passive: true});
+    }
+    document.querySelectorAll('.ba-compare').forEach(initCompare);
 
-      const carousels = document.querySelectorAll('.ba-carousel');
-      carousels.forEach(car => {
-        let idx = 0;
-        const track = car.querySelector('.ba-track');
-        if (!track) return;
-        function go(n){
-          const slides = track.children.length;
-          if (!slides) return;
-          idx = (n + slides) % slides;
-          track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
-        }
-        const prev = car.querySelector('.prev');
-        const next = car.querySelector('.next');
-        if (prev) prev.addEventListener('click', () => go(idx-1));
-        if (next) next.addEventListener('click', () => go(idx+1));
-      });
-    })();
+    const carousels = document.querySelectorAll('.ba-carousel');
+    carousels.forEach(car => {
+      let idx = 0;
+      const track = car.querySelector('.ba-track');
+      if (!track) return;
+      function go(n){
+        const slides = track.children.length;
+        if (!slides) return;
+        idx = (n + slides) % slides;
+        track.scrollTo({left: idx * track.clientWidth, behavior: 'smooth'});
+      }
+      const prev = car.querySelector('.prev');
+      const next = car.querySelector('.next');
+      if (prev) prev.addEventListener('click', ()=>go(idx-1));
+      if (next) next.addEventListener('click', ()=>go(idx+1));
+    });
+  })();
   </script>
 
-  <!-- BA helper bubble + reveal -->
-  <div id="ba-helper" style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:9999;background:#0b4a72;color:#fff;padding:10px 14px;border-radius:999px;box-shadow:0 6px 20px rgba(0,0,0,.2);font-family:Inter,sans-serif;display:none;">
-    Drag the handle to see <strong>Before/After</strong>
-  </div>
-
+  <!-- Before/After slider behaviour -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const helper = document.getElementById('ba-helper');
-      const target = document.querySelector('.ba-carousel');
-      const KEY = 'baHelperShown_beta56';
-
-      if (helper && target && 'IntersectionObserver' in window && !sessionStorage.getItem(KEY)) {
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((en) => {
-            if (en.isIntersecting) {
-              helper.style.display = 'block';
-              helper.style.opacity = 0;
-              helper.animate([{opacity:0},{opacity:1}], {duration:300, fill:'forwards'});
-              setTimeout(() => {
-                helper.animate([{opacity:1},{opacity:0}], {duration:600, fill:'forwards'})
-                  .onfinish = () => helper.remove();
-              }, 4200);
-              sessionStorage.setItem(KEY, '1');
-              io.disconnect();
-            }
-          });
-        }, { threshold: 0.35 });
-        io.observe(target);
-      }
-
-      // simple reveal on scroll
-      if ('IntersectionObserver' in window) {
-        const obs = new IntersectionObserver((entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add('reveal-in');
-              obs.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.12 });
-        document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
-      } else {
-        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('reveal-in'));
-      }
+  (function(){
+    const sec = document.getElementById('before-after');
+    if(!sec) return;
+    const slides = Array.from(sec.querySelectorAll('.ba-slide'));
+    let idx = 0;
+    function show(i){
+      if (!slides.length) return;
+      idx = (i+slides.length)%slides.length;
+      slides.forEach((s,j)=>s.classList.toggle('active', j===idx));
+    }
+    function setPos(ev, wrap){
+      const rect = wrap.getBoundingClientRect();
+      let x = ev.clientX !== undefined ? ev.clientX : (ev.touches?ev.touches[0].clientX:rect.left+rect.width/2);
+      let p = Math.max(0, Math.min(100, ((x - rect.left)/rect.width)*100));
+      wrap.style.setProperty('--pos', p + '%');
+      const handle = wrap.querySelector('.ba-handle');
+      if (handle) handle.setAttribute('aria-valuenow', Math.round(p));
+    }
+    slides.forEach(slide=>{
+      const wrap = slide.querySelector('.ba-compare');
+      const handle = slide.querySelector('.ba-handle');
+      if (!wrap || !handle) return;
+      ['mousemove','touchmove'].forEach(evt=>{
+        wrap.addEventListener(evt, e=>{ if(wrap._drag) setPos(e, wrap); }, {passive:true});
+      });
+      ['mousedown','touchstart'].forEach(evt=>{
+        wrap.addEventListener(evt, e=>{ wrap._drag = true; setPos(e, wrap); });
+      });
+      ['mouseup','mouseleave','touchend','touchcancel'].forEach(evt=>{
+        wrap.addEventListener(evt, ()=>{ wrap._drag = false; });
+      });
+      handle.addEventListener('keydown', (e)=>{
+        if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+          const now = parseFloat(getComputedStyle(wrap).getPropertyValue('--pos'))||50;
+          const next = Math.max(0, Math.min(100, now + (e.key==='ArrowRight'?5:-5)));
+          wrap.style.setProperty('--pos', next + '%');
+          handle.setAttribute('aria-valuenow', Math.round(next));
+        }
+      });
     });
+    const prev = sec.querySelector('.ba-nav.prev');
+    const next = sec.querySelector('.ba-nav.next');
+    if (prev) prev.addEventListener('click', ()=>show(idx-1));
+    if (next) next.addEventListener('click', ()=>show(idx+1));
+    show(0);
+  })();
+  </script>
+
+  <!-- Orange floating helper bubble -->
+  <div id="ba-helper">Drag the handle to see <strong>Before/After</strong></div>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const helper = document.getElementById('ba-helper');
+    const target = document.querySelector('.ba-carousel, #before-after');
+
+    if (!target || !helper) return;
+
+    let shown = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !shown) {
+          shown = true;
+          helper.style.display = 'block';
+          helper.style.opacity = 0;
+          helper.animate([{opacity:0},{opacity:1}], {duration:350, fill:'forwards'});
+
+          setTimeout(() => {
+            helper.animate([{opacity:1},{opacity:0}], {duration:600, fill:'forwards'})
+                  .onfinish = () => helper.remove();
+          }, 3500);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(target);
+  });
+  </script>
+
+  <!-- Reveal-on-scroll + button hover -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  });
   </script>
 
   <style>
@@ -379,5 +492,6 @@
     a.button, .btn, button{transition:transform .08s ease, box-shadow .2s ease;}
     a.button:hover, .btn:hover, button:hover{transform:translateY(-1px);}
   </style>
+
 </body>
 </html>
