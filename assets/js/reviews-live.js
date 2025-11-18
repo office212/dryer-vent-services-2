@@ -2,11 +2,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const ENDPOINT = 'https://dryer-vent-services.office-d16.workers.dev/';
-  const PLACE_URL =
-    'https://www.google.com/maps/place/?q=place_id:ChIJq81LRSoVi4wRJvvg97db1FU';
+
+  // דף העסק/דירוג בגוגל
+  const GOOGLE_REVIEW_URL =
+    'https://g.page/r/CSb74Pe3W9RVEBE/review';
 
   let allReviews = [];
-  let cursor = 0;
+  const cursors = {
+    home: 0,
+    reviews: 0,
+  };
+  const PAGE_SIZE = 3;
 
   async function fetchReviews() {
     if (allReviews.length) return;
@@ -25,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = document.createElement('article');
     card.className = 'review-card-pro';
 
-    // כשילחצו על הכרטיס – נפתח את העסק בגוגל
+    // לחיצה על כרטיס → עמוד הביקורות בגוגל
     card.addEventListener('click', () => {
-      window.open(PLACE_URL, '_blank', 'noopener');
+      window.open(GOOGLE_REVIEW_URL, '_blank', 'noopener');
     });
 
     const header = document.createElement('div');
@@ -67,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const time = document.createElement('div');
     time.className = 'review-time';
-    time.textContent = review.relativeTime || review.relativeTimeDescription || '';
+    time.textContent =
+      review.relativeTime || review.relativeTimeDescription || '';
 
     meta.appendChild(name);
     meta.appendChild(row);
@@ -86,121 +93,64 @@ document.addEventListener('DOMContentLoaded', () => {
     return card;
   }
 
-  function renderNext(container, count) {
+  // מציג 3 ביקורות, מחליף את הקודמות (לא מוסיף למטה)
+  function renderPage(container, key) {
     if (!allReviews.length || !container) return;
-    for (let i = 0; i < count; i++) {
+
+    container.innerHTML = '';
+    for (let i = 0; i < PAGE_SIZE; i++) {
       if (!allReviews.length) break;
-      const review = allReviews[cursor % allReviews.length];
+      const index = cursors[key] % allReviews.length;
+      const review = allReviews[index];
       const card = createReviewCard(review);
       container.appendChild(card);
-      cursor++;
+      cursors[key]++;
     }
   }
 
-  // מודאל דירוג
-  function setupRatingModal() {
-    const triggers = document.querySelectorAll('.js-open-review-modal');
-    if (!triggers.length) return;
-
-    const backdrop = document.createElement('div');
-    backdrop.className = 'review-modal-backdrop';
-    backdrop.innerHTML = `
-      <div class="review-modal" role="dialog" aria-modal="true">
-        <button class="review-modal-close" aria-label="Close">&times;</button>
-        <h3>Rate Dryer Vent Services</h3>
-        <p>Select a rating from 1–5 stars, then continue to Google to publish your review.</p>
-        <div class="review-modal-stars" data-selected="0">
-          <button type="button" data-value="1">★</button>
-          <button type="button" data-value="2">★</button>
-          <button type="button" data-value="3">★</button>
-          <button type="button" data-value="4">★</button>
-          <button type="button" data-value="5">★</button>
-        </div>
-        <button type="button" class="btn btn-primary review-modal-cta" disabled>
-          Continue on Google
-        </button>
-      </div>
-    `;
-    document.body.appendChild(backdrop);
-    backdrop.style.display = 'none';
-
-    const modal = backdrop.querySelector('.review-modal');
-    const closeBtn = backdrop.querySelector('.review-modal-close');
-    const starsRow = backdrop.querySelector('.review-modal-stars');
-    const cta = backdrop.querySelector('.review-modal-cta');
-
-    function openModal() {
-      backdrop.style.display = 'flex';
-      document.body.classList.add('modal-open');
-    }
-
-    function closeModal() {
-      backdrop.style.display = 'none';
-      document.body.classList.remove('modal-open');
-    }
-
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', (e) => {
-      if (e.target === backdrop) closeModal();
-    });
-
-    starsRow.addEventListener('click', (e) => {
-      if (!(e.target instanceof HTMLElement)) return;
-      const value = e.target.getAttribute('data-value');
-      if (!value) return;
-      starsRow.setAttribute('data-selected', value);
-      starsRow.querySelectorAll('button').forEach((btn) => {
-        const v = btn.getAttribute('data-value');
-        btn.classList.toggle('active', v === value);
-      });
-      cta.disabled = false;
-    });
-
-    cta.addEventListener('click', () => {
-      // לא משנה איזה דירוג בחר – בגוגל הוא יבחר שוב, זה רק לפתוח את הדף
-      window.open(
-        'https://search.google.com/local/writereview?placeid=ChIJq81LRSoVi4wRJvvg97db1FU',
-        '_blank',
-        'noopener'
-      );
-      closeModal();
-    });
-
-    triggers.forEach((btn) => {
-      btn.addEventListener('click', openModal);
-    });
-  }
-
-  // הפעלה
   (async () => {
     await fetchReviews();
 
+    // --- HOME PAGE ---
     const homeContainer = document.getElementById('home-reviews');
-    const homeMoreBtn = document.getElementById('homeReviewsMore');
+    const homeMoreBtn = document.getElementById('homeReviewsMoreLink');
 
     if (homeContainer) {
-      cursor = 0;
-      renderNext(homeContainer, 3);
+      cursors.home = 0;
+      renderPage(homeContainer, 'home');
+
+      // בדף הבית – הכפתור מוביל לדף הביקורות (לא טוען עוד)
       if (homeMoreBtn) {
-        homeMoreBtn.addEventListener('click', () => {
+        homeMoreBtn.addEventListener('click', (e) => {
+          e.preventDefault();
           window.location.href = '/reviews/';
         });
       }
     }
 
+    // --- REVIEWS PAGE ---
     const reviewsContainer = document.getElementById('reviews-list');
     const reviewsMoreBtn = document.getElementById('loadMoreReviews');
 
     if (reviewsContainer) {
-      cursor = 0;
-      renderNext(reviewsContainer, 3);
+      cursors.reviews = 0;
+      renderPage(reviewsContainer, 'reviews');
+
       if (reviewsMoreBtn) {
-        reviewsMoreBtn.addEventListener('click', () => {
-          renderNext(reviewsContainer, 3);
+        reviewsMoreBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          renderPage(reviewsContainer, 'reviews');
         });
       }
     }
 
-    setupRatingModal();
+    // --- DIRECT "RATE ON GOOGLE" BUTTONS (בלי מודאל) ---
+    ['rateOnGoogleHome', 'rateOnGoogleReviews'].forEach((id) => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        window.open(GOOGLE_REVIEW_URL, '_blank', 'noopener');
+      });
+    });
   })();
 });
