@@ -42,12 +42,16 @@ if (location.pathname.endsWith('/index.html')) {
       <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
       <div class="brand-text"><strong>Dryer Vent Services</strong><span>Cleaning - Repairs - Installations</span></div>
     </a>
-    <nav id="site-nav" class="site-nav">
-      <a href="/">Home</a><a href="/services/">Services</a>
-      <a href="/gallery/">Gallery</a><a href="/reviews/">Reviews</a>
-      <a href="/about/">About</a><a href="/areas/">Service Areas</a>
-      <a class="cta" href="/contact/">Contact Us</a>
-    </nav>
+   <nav class="site-nav" id="site-nav">
+  <a data-nav="home" href="/">Home</a>
+  <a data-nav="services" href="/services/">Services</a>
+  <a data-nav="gallery" href="/gallery/">Gallery</a>
+  <a data-nav="reviews" href="/reviews/">Reviews</a>
+  <a data-nav="faq" href="/faq/">FAQ</a>
+  <a data-nav="about" href="/about/">About</a>
+  <a data-nav="areas" href="/areas/">Service Areas</a>
+  <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
+</nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
