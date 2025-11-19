@@ -37,6 +37,7 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.dryer-ventservices.com/#business",
     "name": "Dryer Vent Services",
     "image": "https://www.dryer-ventservices.com/assets/logo.png",
     "url": "https://www.dryer-ventservices.com/",
@@ -79,7 +80,6 @@
     .ba-compare::after { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,0.9); pointer-events:none; }
     @media (min-width: 768px) { .ba-carousel { max-width: 860px; } }
     
-    /* Before/After Carousel wrapper */
     #before-after { padding: 32px 0; }
     #before-after .ba-carousel { position: relative; overflow: hidden; }
     #before-after .ba-slide { width: 100%; display: none; }
@@ -125,7 +125,7 @@
     }
     @media (min-width: 760px){ .ba-compare{ max-width: 520px; } }
 
-    /* === FAQ Styles === */
+    /* FAQ Styles */
     .faq-home { margin-top: 32px; margin-bottom: 8px; }
     .faq-home h2 { text-align: center; margin-bottom: 18px; }
     .faq-home-intro { text-align: center; margin-bottom: 18px; color: #4b5563; font-size: 0.95rem; }
@@ -175,14 +175,14 @@
       .faq-home-intro { font-size: 1rem; }
     }
     
-    /* === Helper Bubble Styles (Orange) === */
+    /* Bubble Helper */
     #ba-helper {
       position: fixed;
       left: 50%;
       transform: translateX(-50%) translateY(20px);
-      bottom: 100px; /* Adjust based on mobile view */
+      bottom: 100px;
       z-index: 10000;
-      background: #f97316; /* Brand Orange */
+      background: #f97316;
       color: #ffffff;
       padding: 10px 20px;
       border-radius: 50px;
@@ -206,6 +206,7 @@
 
   <link rel="stylesheet" href="/assets/css/ba-slider.css" />
   <script defer src="/assets/js/ba-slider.js"></script>
+  
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <script>
     if (location.pathname.endsWith('/index.html')) {
@@ -378,7 +379,7 @@
   <section class="reveal section container fade-in">
     <h2 class="center">Customer Reviews</h2>
     <div class="cards-3" id="home-reviews">
-      </div>
+    </div>
     <div class="center mt-20">
       <button class="btn" id="homeReviewsMore" type="button">
         Load more reviews
@@ -441,18 +442,15 @@
       const helper = document.getElementById('ba-helper');
 
       if(section && helper) {
-        // Use IntersectionObserver to trigger only when seen
         const observer = new IntersectionObserver((entries) => {
           if(entries[0].isIntersecting) {
             helper.classList.add('visible');
-            // Hide after 3.5 seconds
             setTimeout(() => {
               helper.classList.remove('visible');
             }, 3500);
-            // Disconnect so it only happens once
             observer.disconnect();
           }
-        }, { threshold: 0.4 }); // Trigger when 40% of section is visible
+        }, { threshold: 0.4 });
 
         observer.observe(section);
       }
