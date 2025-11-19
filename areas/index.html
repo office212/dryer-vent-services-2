@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Service Areas | Dryer Vent Cleaning Staten Island, NY & NJ</title>
-  <meta name="description" content="Professional dryer vent cleaning and repair service areas. Covering Staten Island, Brooklyn, Rockland County (NY) and New Jersey.">
+  <meta name="description" content="Professional dryer vent cleaning in Staten Island, Brooklyn, Queens, and nearby NJ areas (Linden, Elizabeth, Union, Passaic).">
   
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
@@ -21,7 +21,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.dryer-ventservices.com/areas/" />
   <meta property="og:title" content="Service Areas | Dryer Vent Services NY & NJ" />
-  <meta property="og:description" content="We serve Staten Island, NYC, Rockland County and New Jersey." />
+  <meta property="og:description" content="Serving Staten Island, Brooklyn, Queens, and nearby New Jersey." />
   <meta property="og:image" content="https://www.dryer-ventservices.com/images/gallery/work-car.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -33,23 +33,28 @@
     "areaServed": [
       {"@type": "City", "name": "Staten Island"},
       {"@type": "City", "name": "Brooklyn"},
-      {"@type": "AdministrativeArea", "name": "New Jersey"},
-      {"@type": "AdministrativeArea", "name": "Rockland County"}
+      {"@type": "City", "name": "Queens"},
+      {"@type": "City", "name": "Linden"},
+      {"@type": "City", "name": "Elizabeth"},
+      {"@type": "City", "name": "Union"},
+      {"@type": "City", "name": "Passaic"}
     ],
     "url": "https://www.dryer-ventservices.com/areas/"
   }
   </script>
 
   <style>
-    /* FIX: Ensure car image isn't cut off on desktop */
-    .svc-picture img.fix-fit {
-      object-fit: cover; /* Default mobile behavior */
-    }
+    /* Keeps the car image nice and wide (not cut off) on desktop */
     @media (min-width: 768px) {
+      .card.media .svc-picture {
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+      }
       .svc-picture img.fix-fit {
-        object-fit: contain !important; /* Show full image on desktop */
-        background-color: #f1f5f9; /* Light gray background for spacing */
-        padding: 10px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 0;
       }
     }
   </style>
@@ -84,25 +89,28 @@
   <section class="page-hero fade-in">
     <div class="container">
       <h1>Service Areas</h1>
-      <p>Staten Island and the greater New York & New Jersey area.</p>
+      <p>Staten Island and the nearby NY & NJ areas.</p>
     </div>
   </section>
 
   <section class="section container two-col fade-in">
     <div>
       <h2>Where We Work</h2>
-      <p style="margin-bottom: 16px;">We provide comprehensive dryer vent services to homeowners and property managers in:</p>
+      <p style="margin-bottom: 16px;">We provide dryer vent services in Staten Island and surrounding locations including:</p>
+      
       <ul class="checklist">
         <li><strong>Staten Island</strong> (All neighborhoods)</li>
-        <li>Brooklyn, NY</li>
-        <li>New Jersey</li>
-        <li>Rockland County (Monsey, Spring Valley area)</li>
+        <li>Brooklyn & Queens</li>
+        <li><strong>New Jersey:</strong></li>
+        <li>Linden, Elizabeth, Union, Passaic</li>
+        <li>And surrounding areas</li>
       </ul>
+      
       <p style="margin-top: 20px;">Not sure if we cover your area? <a href="/contact/" style="text-decoration: underline; font-weight: 600;">Send us a message</a>.</p>
       
       <div class="map-embed" style="aspect-ratio:16/9; background:#eef1f5; border-radius:12px; overflow:hidden; margin-top:20px; border:1px solid #ddd;">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96873.54723978008!2d-74.2144634354661!3d40.58694094047295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sStaten%20Island%2C%20NY!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193986.51470076083!2d-74.25819460942383!3d40.57953173456949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sStaten%20Island%2C%20NY!5e0!3m2!1sen!2sus!4v1708464000000!5m2!1sen!2sus" 
           width="100%" 
           height="100%" 
           style="border:0;" 
