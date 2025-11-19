@@ -56,7 +56,6 @@
   </script>
 
   <script>
-    // Remove index.html from URL if present
     if (location.pathname.endsWith('/index.html')) {
       history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
     }
@@ -179,9 +178,11 @@
 
             try {
               const res = await fetch(form.action, { method: "POST", body: fd, redirect: "follow" });
-              window.location.href = "/thanks.html";
+              // FIXED: Redirect to the new folder structure
+              window.location.href = "/thanks/";
             } catch (_) {
-              window.location.href = "/thanks.html";
+              // FIXED: Redirect to the new folder structure
+              window.location.href = "/thanks/";
             }
           }, { passive:false });
         })();
@@ -214,7 +215,6 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', function(){
-    // simple reveal on scroll
     const obs = new IntersectionObserver((entries)=>{
       entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
     },{threshold:.12});
