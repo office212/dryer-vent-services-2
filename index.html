@@ -157,11 +157,9 @@
     }
 
     /* === STRICT DESKTOP SIZE FIX === */
-    /* This ensures the before/after slider is small and neat on PC */
     @media (min-width: 768px) {
         .ba-compare {
-            max-width: 320px !important; /* Force small width */
-            /* Resulting Height will be ~480px because of 2:3 ratio */
+            max-width: 320px !important; 
         }
     }
 
@@ -420,9 +418,7 @@
     <div class="cards-3" id="home-reviews">
     </div>
     <div class="center mt-20">
-      <button class="btn" id="homeReviewsMore" type="button">
-        Load more reviews
-      </button>
+      <a class="btn" href="/reviews/">Load more reviews</a>
     </div>
     <div class="center mt-20">
       <button class="btn btn--primary" id="rateOnGoogleHome" type="button">
