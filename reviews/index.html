@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dryer Vent Cleaning Reviews | Staten Island, New York &amp; New Jersey</title>
   <meta name="description" content="Read customer reviews for Dryer Vent Services—trusted, honest and thorough dryer vent cleaning and repairs across Staten Island, NYC and New Jersey.">
+  
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -21,21 +21,24 @@
   </script>
 
   <meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation" />
-  <link rel="canonical" href="https://www.dryer-ventservices.com/reviews" />
+  
+  <link rel="canonical" href="https://www.dryer-ventservices.com/reviews/" />
+  
   <meta property="og:site_name" content="Dryer Vent Services" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.dryer-ventservices.com/reviews" />
+  <meta property="og:url" content="https://www.dryer-ventservices.com/reviews/" />
   <meta property="og:title" content="Reviews | Trusted, Local &amp; Highly Rated" />
   <meta property="og:description" content="Read customer reviews about our honest pricing, neat workmanship, and reliable dryer vent service." />
-  <meta property="og:image" content="/assets/img/og-image.png" />
+  <meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.dryer-ventservices.com/#business",
     "name": "Dryer Vent Services",
-    "image": "/assets/img/og-image.png",
+    "image": "https://www.dryer-ventservices.com/assets/logo.png",
     "url": "https://www.dryer-ventservices.com/reviews/",
     "telephone": "+1-347-244-9382",
     "areaServed": [
@@ -61,6 +64,29 @@
       history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
     }
   </script>
+
+  <style>
+    /* Fix for Hero Height on Desktop (prevents giant blue screen) */
+    @media (min-width: 992px) {
+        .page-hero {
+            height: auto !important;
+            min-height: unset !important;
+            padding-top: 140px !important;
+            padding-bottom: 80px !important;
+        }
+    }
+    
+    /* Button styling update */
+    #rateOnGoogleReviews {
+        background-color: #f97316; /* Brand Orange */
+        color: white;
+        font-weight: 700;
+    }
+    #rateOnGoogleReviews:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    }
+  </style>
 </head>
 
 <body data-page="reviews">
@@ -100,8 +126,7 @@
     <h2 class="center">Live Google Reviews</h2>
 
     <div id="reviews-list" class="reviews-grid-pro">
-      <!-- Reviews will load here -->
-    </div>
+      </div>
 
     <div class="center mt-20">
       <button class="btn" id="loadMoreReviews" type="button">
