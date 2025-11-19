@@ -11,9 +11,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/cards-override-200.css" />
-  <link rel="stylesheet" href="/assets/css/before-after.css" />
-  <link rel="stylesheet" href="/assets/css/ba-slider.css" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
@@ -24,6 +21,7 @@
   </script>
 
   <meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation" />
+  
   <link rel="canonical" href="https://www.dryer-ventservices.com/" />
   
   <meta property="og:site_name" content="Dryer Vent Services" />
@@ -60,43 +58,39 @@
   }
   </script>
 
+  <link rel="stylesheet" href="/assets/css/cards-override-200.css" />
+  <link rel="stylesheet" href="/assets/css/before-after.css" />
+
   <style>
-    /* === Before/After Carousel Styles === */
-    .ba-carousel { position: relative; max-width: 720px; margin: 0 auto; overflow: hidden; }
+    /* === Before/After Carousel === */
+    .ba-carousel { position: relative; max-width: 720px; margin: 0 auto; }
     .ba-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow: hidden; scroll-snap-type: x mandatory; }
-    .ba-slide { scroll-snap-align: center; padding: 0.5rem; width: 100%; display: none; }
-    .ba-slide.active { display: block; }
+    .ba-slide { scroll-snap-align: center; padding: 0.5rem; }
+    .ba-compare { position: relative; width: 100%; aspect-ratio: 2 / 3; border-radius: 18px; overflow: hidden; background: #f4f6f8; }
+    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .after-wrap { position: absolute; inset: 0; overflow: hidden; }
+    .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
+    .ba-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: transparent; border: none; cursor: pointer; }
+    .ba-nav.prev { left: 6px; }
+    .ba-nav.next { right: 6px; }
+    .ba-nav::before { content: ""; display: block; width: 0.6em; height: 0.6em; border-top: 3px solid #0e3352; border-right: 3px solid #0e3352; margin: auto; transform: rotate(45deg); }
+    .ba-nav.prev::before { transform: rotate(-135deg); }
+    .ba-nav.next::before { transform: rotate(45deg); }
+    .ba-compare::after { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,0.9); pointer-events:none; }
+    @media (min-width: 768px) { .ba-carousel { max-width: 860px; } }
     
-    .ba-compare { 
-      position: relative; 
-      width: 100%; 
-      max-width: 700px; 
-      margin: 0 auto; 
-      border-radius: 18px; 
-      overflow: hidden; 
-      background: #f4f6f8; 
-      aspect-ratio: 2 / 3; 
-    }
-
-    @media (min-width: 760px){ 
-      .ba-compare { max-width: 520px; } 
-      .ba-carousel { max-width: 860px; }
-    }
-
-    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-    
-    /* Clip path logic for before image */
+    /* Before/After Carousel wrapper */
+    #before-after { padding: 32px 0; }
+    #before-after .ba-carousel { position: relative; overflow: hidden; }
+    #before-after .ba-slide { width: 100%; display: none; }
+    #before-after .ba-slide.active { display: block; }
+    .ba-compare { position: relative; width: 100%; max-width: 700px; margin: 0 auto; border-radius: 18px; overflow: hidden; }
+    .ba-img { width: 100%; height: auto; display: block; }
     .ba-img.before {
-      z-index: 1;
+      position: absolute;
+      inset: 0;
       clip-path: polygon(0 0, calc(var(--pos,50)*1%) 0, calc(var(--pos,50)*1%) 100%, 0 100%);
     }
-    
-    .after-wrap { position: absolute; inset: 0; overflow: hidden; }
-    
-    /* Range Input (Invisible slider) */
-    .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 3; }
-
-    /* Handle Line and Circle */
     .ba-handle {
       position: absolute;
       top: 0; bottom: 0;
@@ -104,43 +98,34 @@
       width: 0;
       border-left: 3px solid rgba(255,255,255,0.9);
       cursor: ew-resize;
-      z-index: 2;
-      pointer-events: none; /* Events go to input */
     }
     .ba-handle::after {
       content:""; position:absolute; top:50%; transform:translate(-50%,-50%);
-      width:48px; height:48px; border-radius:50%;
+      width:56px; height:56px; border-radius:50%;
       border:2px solid rgba(255,255,255,0.9);
       background:transparent;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
-
-    /* Navigation Arrows */
     .ba-controls { display:flex; justify-content:center; gap:18px; margin: 14px 0 4px; }
-    .ba-arrow {
+    .ba-nav {
       width:56px; height:56px; border-radius:50%;
-      background:transparent; border:2px solid rgba(0,0,0,0.15);
-      cursor: pointer; position: relative;
-      transition: all 0.2s;
+      background:transparent; border:2px solid rgba(0,0,0,0.2);
+      position:relative;
     }
-    .ba-arrow:hover { border-color: #0b2945; background: rgba(0,0,0,0.03); }
-    .ba-arrow::before {
+    .ba-nav::before {
       content:""; position:absolute; inset:0; margin:auto;
       width:10px; height:10px;
       border-right:3px solid #0b2945; border-top:3px solid #0b2945;
+      transform: rotate(45deg);
     }
-    .ba-arrow.prev::before { transform: rotate(225deg); margin-left: 20px; }
-    .ba-arrow.next::before { transform: rotate(45deg); margin-right: 20px; }
-
-    .ba-captions {
-      display: flex; justify-content: center; gap: 40px; margin-top: 10px;
-      font-weight: 600; color: #555; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+    .ba-nav.prev::before { transform: rotate(225deg); }
+    .ba-more {
+      display:inline-block; margin: 12px auto 0; padding: 12px 22px;
+      border-radius:14px; background:#12324F; color:#fff;
+      text-decoration:none; box-shadow: 0 10px 24px rgba(0,0,0,.12);
     }
-    .ba-cta-wrap { text-align: center; margin-top: 20px; }
-    
-    #before-after { padding: 32px 0; }
+    @media (min-width: 760px){ .ba-compare{ max-width: 520px; } }
 
-    /* FAQ Styles */
+    /* === FAQ Teaser Styles (Updated with UX improvements) === */
     .faq-home { margin-top: 32px; margin-bottom: 8px; }
     .faq-home h2 { text-align: center; margin-bottom: 18px; }
     .faq-home-intro { text-align: center; margin-bottom: 18px; color: #4b5563; font-size: 0.95rem; }
@@ -164,10 +149,12 @@
       justify-content: space-between;
       font-weight: 600;
       color: #111827;
+      /* UX Addition: Prevent text select and add transition */
       user-select: none;
       transition: background-color 0.2s ease;
     }
-    
+
+    /* UX Addition: Hover Effect */
     .faq-home-item summary:hover {
       background-color: #f8fafc;
     }
@@ -180,18 +167,21 @@
       transform: rotate(45deg); flex-shrink: 0;
       transition: transform 0.18s ease; margin-left: 10px;
     }
-    
     .faq-home-item[open] .faq-home-chevron { transform: rotate(-135deg); }
     
     .faq-home-body {
       padding: 0 16px 14px;
       border-top: 1px solid rgba(226,232,240,0.9);
-      color: #4b5563; font-size: 0.95rem; line-height: 1.5;
+      color: #4b5563; font-size: 0.95rem;
     }
     .faq-home-body p { margin: 10px 0 0; }
     .faq-home .btn { min-width: 180px; }
 
-    /* Bubble Helper */
+    @media (min-width: 768px) {
+      .faq-home-intro { font-size: 1rem; }
+    }
+    
+    /* Bubble helper styling */
     #ba-helper {
       position: fixed; left: 50%; transform: translateX(-50%); bottom: 120px;
       z-index: 9999; background: #f97316; color: #fff;
@@ -200,11 +190,16 @@
       font-family: Inter, sans-serif; font-size: 15px; font-weight: 600;
       display: none; text-align: center; white-space: nowrap;
     }
-
-    @media (min-width: 768px) {
-      .faq-home-intro { font-size: 1rem; }
-    }
   </style>
+
+  <link rel="stylesheet" href="/assets/css/ba-slider.css" />
+  <script defer src="/assets/js/ba-slider.js"></script>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script>
+    if (location.pathname.endsWith('/index.html')) {
+      history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
+    }
+  </script>
 </head>
 
 <body data-page="home">
@@ -290,8 +285,8 @@
           <h2 class="section-title">Before and After</h2>
           <div id="ba-carousel" class="ba-carousel" aria-roledescription="carousel" aria-label="Before and after gallery">
             <div class="ba-controls">
-              <button class="ba-arrow prev" aria-label="Previous"></button>
-              <button class="ba-arrow next" aria-label="Next"></button>
+              <button class="ba-arrow prev" aria-label="Previous">&#10094;</button>
+              <button class="ba-arrow next" aria-label="Next">&#10095;</button>
             </div>
           </div>
           <div class="ba-captions">
@@ -348,7 +343,8 @@
           <span class="faq-home-chevron"></span>
         </summary>
         <div class="faq-home-body">
-          <p>Our pricing structure is based on the location of the dryer within the home. We do not impose additional charges for long vents, bird nests, or heavily clogged vents. Rates are determined solely by the floor on which the dryer is located.</p>
+          <p>Our pricing structure is based on the location of the dryer within the home. We do not impose additional charges for long vents, bird nests, or heavily clogged vents. Rates are determined solely by the floor on which the dryer is located and where the vent exits the home (for example: basement/first floor, second floor, third floor, or rooftop).</p>
+          <p>Any necessary repairs or replacement parts are billed separately and only with the customer’s approval. We do not add fees or modify the original quote without the customer’s consent.</p>
         </div>
       </details>
 
@@ -358,7 +354,7 @@
           <span class="faq-home-chevron"></span>
         </summary>
         <div class="faq-home-body">
-          <p>We clean, repair, and install dryer vents only. We focus on airflow and duct safety. We do not repair dryers themselves, but we work with local appliance repair companies when needed.</p>
+          <p>We clean, repair, and install dryer vents only. Our objective is to ensure good airflow from your dryer so that it functions optimally. We do not repair dryers themselves, however we often work with local appliance repair companies when needed.</p>
         </div>
       </details>
     </div>
@@ -421,32 +417,27 @@
     <a class="btn btn--primary" href="/contact/">Book Now</a>
   </div>
 
-  <div id="ba-helper">Drag to compare</div>
-
   <script defer src="/script.js"></script>
   <script defer src="/assets/js/reviews-live.js"></script>
-  <script defer src="/assets/js/ba-slider.js"></script>
+  <script src="/beforeafter.js"></script>
+  <script src="/assets/js/before-after.js"></script>
 
   <script>
-    (function(){
-      function initCompare(root){
-        const range=root.querySelector('.ba-range');
-        const wrap=root.querySelector('.after-wrap');
-        if (!range || !wrap) return;
-        range.addEventListener('input', e=>{
-          const v = Number(range.value);
-          wrap.style.width = v + '%';
-          root.style.setProperty('--pos', v + '%');
-        }, {passive: true});
-      }
-      document.querySelectorAll('.ba-compare').forEach(initCompare);
-      
-      // Show helper bubble after 2 seconds
-      setTimeout(() => {
-        const helper = document.getElementById('ba-helper');
-        if(helper) helper.style.display = 'block';
-      }, 2000);
-    })();
+  (function(){
+    function initCompare(root){
+      const range=root.querySelector('.ba-range');
+      const wrap=root.querySelector('.after-wrap');
+      if (!range || !wrap) return;
+      range.addEventListener('input', e=>{
+        const v = Number(range.value);
+        wrap.style.width = v + '%';
+        root.style.setProperty('--pos', v + '%');
+      }, {passive: true});
+    }
+    document.querySelectorAll('.ba-compare').forEach(initCompare);
+    // Safety check in case this variable was used elsewhere
+    const carousels = document.querySelectorAll('.ba-carousel');
+  })();
   </script>
 </body>
 </html>
