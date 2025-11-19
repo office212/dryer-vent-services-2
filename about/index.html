@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Dryer Vent Services | Licensed & Insured | Staten Island, NY</title>
   <meta name="description" content="Local, licensed & insured dryer vent specialists. Serving Staten Island, New York & New Jersey with fair pricing, honest service, and neat workmanship.">
-  
+
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
-  
+
   <link rel="canonical" href="https://www.dryer-ventservices.com/about/" />
 
   <meta property="og:site_name" content="Dryer Vent Services" />
@@ -48,6 +48,23 @@
     ]
   }
   </script>
+
+  <style>
+    @media (min-width: 768px) {
+      /* Override square/portrait frame */
+      .card.media .svc-picture {
+        height: auto !important;
+        aspect-ratio: 16 / 9; /* Landscape frame */
+      }
+      /* Image fills the new landscape frame naturally */
+      .svc-picture img.fix-fit {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 0;
+      }
+    }
+  </style>
 </head>
 
 <body data-page="about">
@@ -97,7 +114,7 @@
 
     <div class="card media">
       <picture class="svc-picture">
-        <img src="/images/gallery/work-car.png" alt="Dryer Vent Services work van" loading="lazy" class="svc-img">
+        <img src="/images/gallery/work-car.png" alt="Dryer Vent Services work van" loading="lazy" class="svc-img fix-fit">
       </picture>
       <div class="inner">
         <h3>Trusted workmanship</h3>
