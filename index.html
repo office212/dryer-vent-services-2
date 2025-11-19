@@ -132,70 +132,79 @@
     @media (min-width: 760px){ .ba-compare{ max-width: 520px; } }
   </style>
 
-  <!-- FAQ teaser on home -->
-  <section class="reveal section container fade-in faq-home">
-    <h2>Frequently Asked Questions</h2>
-    <p class="faq-home-intro">
-      Short answers to the most commonly asked questions, check out more frequently asked questions and their responses under the FAQ tab.
-    </p>
+  <!-- FAQ teaser styles -->
+  <style>
+    .faq-home {
+      margin-top: 32px;
+      margin-bottom: 8px;
+    }
+    .faq-home h2 {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .faq-home-intro {
+      text-align: center;
+      margin-bottom: 18px;
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+    .faq-home-list {
+      max-width: 720px;
+      margin: 0 auto 16px;
+    }
+    .faq-home-item {
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.06);
+      margin-bottom: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.35);
+    }
+    .faq-home-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 600;
+      color: #111827;
+    }
+    .faq-home-item summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-home-chevron {
+      width: 18px;
+      height: 18px;
+      border-right: 2px solid #0b2945;
+      border-bottom: 2px solid #0b2945;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      transition: transform 0.18s ease;
+      margin-left: 10px;
+    }
+    .faq-home-item[open] .faq-home-chevron {
+      transform: rotate(-135deg);
+    }
+    .faq-home-body {
+      padding: 0 16px 14px;
+      border-top: 1px solid rgba(226,232,240,0.9);
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+    .faq-home-body p {
+      margin: 10px 0 0;
+    }
+    .faq-home .btn {
+      min-width: 180px;
+    }
 
-    <div class="faq-home-list">
-      <details class="faq-home-item">
-        <summary>
-          <span>How often should I clean my dryer vent?</span>
-          <span class="faq-home-chevron"></span>
-        </summary>
-        <div class="faq-home-body">
-          <p>It is recommended to clean your dryer vent once a year. If you have a large household and do laundry frequently it may be necessary for you to clean it every 6-9 months.</p>
-        </div>
-      </details>
-
-      <details class="faq-home-item">
-        <summary>
-          <span>How long does a typical cleaning take?</span>
-          <span class="faq-home-chevron"></span>
-        </summary>
-        <div class="faq-home-body">
-          <p>A standard cleaning usually takes 30-45 minutes. Longer runs, roof exits or damaged vents can take more time.</p>
-        </div>
-      </details>
-
-      <details class="faq-home-item">
-        <summary>
-          <span>Will my home get dusty during the cleaning?</span>
-          <span class="faq-home-chevron"></span>
-        </summary>
-        <div class="faq-home-body">
-          <p>No. We use a sealed vacuum system and professional brushes that keep dust contained. The work area is left neat and clean.</p>
-        </div>
-      </details>
-
-      <details class="faq-home-item">
-        <summary>
-          <span>How much would it cost to clean my dryer vent?</span>
-          <span class="faq-home-chevron"></span>
-        </summary>
-        <div class="faq-home-body">
-          <p>Our pricing structure is based on the location of the dryer within the home. We do not impose additional charges for long vents, bird nests, or heavily clogged vents. Rates are determined solely by the floor on which the dryer is located and where the vent exits the home (for example: basement/first floor, second floor, third floor, or rooftop).</p>
-          <p>Any necessary repairs or replacement parts are billed separately and only with the customer’s approval. We do not add fees or modify the original quote without the customer’s consent.</p>
-        </div>
-      </details>
-
-      <details class="faq-home-item">
-        <summary>
-          <span>Do you repair dryers too?</span>
-          <span class="faq-home-chevron"></span>
-        </summary>
-        <div class="faq-home-body">
-          <p>We clean, repair, and install dryer vents only. Our objective is to ensure good airflow from your dryer so that it functions optimally. We do not repair dryers themselves, however we often work with local appliance repair companies when needed.</p>
-        </div>
-      </details>
-    </div>
-
-    <div class="center mt-20">
-      <a class="btn" href="/faq/">View all FAQs</a>
-    </div>
-  </section>
+    @media (min-width: 768px) {
+      .faq-home-intro {
+        font-size: 1rem;
+      }
+    }
+  </style>
 
   <!-- BEGIN BEFORE-AFTER ASSETS -->
   <link rel="stylesheet" href="/assets/css/ba-slider.css" />
