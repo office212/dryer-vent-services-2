@@ -170,14 +170,14 @@ const grid=document.getElementById('grid');
 const loadMoreBtn=document.getElementById('loadMore');
 const ctaWrap=document.getElementById('ctaWrap');
 let idx=0;
-// INCREASED CHUNK SIZE: Shows 6 images at a time instead of 3
-const CHUNK=6;
+
+// SMART CHUNK: 3 images on Mobile, 6 on Desktop
+const CHUNK = window.innerWidth < 768 ? 3 : 6;
 
 function makeFigure(base){
   const fig=document.createElement('figure');
   const img=document.createElement('img');
   img.loading='lazy';
-  // BETTER SEO: Descriptive Alt Text
   img.alt='Dryer vent cleaning gallery photo';
   img.src=`/images/gallery/${base}.jpg`;
   img.dataset.try='jpg';
