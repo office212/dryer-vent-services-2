@@ -5,8 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dryer Vent Cleaning Photos & Real Results | Staten Island, NY/NJ</title>
   <meta name="description" content="Before & after dryer vent cleaning and repair photos from local homes & businesses in Staten Island and the greater New York & New Jersey area.">
+  
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
+  
+  <link rel="canonical" href="https://www.dryer-ventservices.com/gallery/" />
+  <meta property="og:site_name" content="Dryer Vent Services" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.dryer-ventservices.com/gallery/" />
+  <meta property="og:title" content="Dryer Vent Cleaning Gallery | Real Results" />
+  <meta property="og:description" content="See our work: Before & After photos of dryer vent cleaning in NY & NJ." />
+  <meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "@id": "https://www.dryer-ventservices.com/#business",
+    "name": "Dryer Vent Services Gallery",
+    "url": "https://www.dryer-ventservices.com/gallery/",
+    "image": "https://www.dryer-ventservices.com/assets/logo.png",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Dryer Vent Services",
+      "telephone": "+13472449382",
+      "priceRange": "$$"
+    }
+  }
+  </script>
 
   <style>
     .gallery-grid{
@@ -25,12 +58,18 @@
       background:#f4f7fb;
       box-shadow:0 6px 18px rgba(0,0,0,.06);
       aspect-ratio:4/5;
+      /* Limit height on big screens so images aren't huge */
       max-height:clamp(460px,70vh,820px);
     }
     .gallery-grid img{
       display:block;width:100%;height:100%;
       object-fit:cover;object-position:center;
       image-orientation:from-image;
+      transition: transform 0.3s ease;
+    }
+    /* Subtle hover effect */
+    .gallery-grid figure:hover img {
+      transform: scale(1.02);
     }
 
     .loadmore-wrap{display:flex;justify-content:center;margin:26px 0 10px}
@@ -42,9 +81,9 @@
     }
     #loadMore:hover{transform:translateY(-2px)}
     a.loadmore-link{
-      display:inline-block;background:#f58823;color:#fff;text-decoration:none;
+      display:inline-block;background:#1B365D;color:#fff;text-decoration:none;
       border-radius:999px;padding:14px 26px;font-weight:700;
-      box-shadow:0 8px 20px rgba(245,136,35,.25);
+      box-shadow:0 8px 20px rgba(27,54,93,.25);
     }
   </style>
 </head>
@@ -76,7 +115,6 @@
   </div>
 </header>
 
-<!-- Hero אחיד כמו בשאר האתר -->
 <section class="page-hero fade-in">
   <div class="container">
     <h1>Gallery</h1>
@@ -132,13 +170,15 @@ const grid=document.getElementById('grid');
 const loadMoreBtn=document.getElementById('loadMore');
 const ctaWrap=document.getElementById('ctaWrap');
 let idx=0;
-const CHUNK=3;
+// INCREASED CHUNK SIZE: Shows 6 images at a time instead of 3
+const CHUNK=6;
 
 function makeFigure(base){
   const fig=document.createElement('figure');
   const img=document.createElement('img');
   img.loading='lazy';
-  img.alt='Gallery image';
+  // BETTER SEO: Descriptive Alt Text
+  img.alt='Dryer vent cleaning gallery photo';
   img.src=`/images/gallery/${base}.jpg`;
   img.dataset.try='jpg';
   img.onerror=function(){
@@ -158,7 +198,7 @@ function loadNext(n=CHUNK){
     const link=document.createElement('a');
     link.href='/contact/';
     link.className='loadmore-link';
-    link.textContent='Book Now';
+    link.textContent='Book Your Cleaning';
     ctaWrap.replaceChildren(link);
   }
 }
@@ -168,7 +208,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 
-<!-- מפעיל את ההמבורגר (כמו בכל הדפים) -->
 <script src="/script.js" defer></script>
 </body>
 </html>
