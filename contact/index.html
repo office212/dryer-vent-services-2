@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Schedule Dryer Vent Cleaning | Contact Us for NY & NJ Service</title>
   <meta name="description" content="Get a fast, friendly quote for dryer vent cleaning, repairs or installation in Staten Island, NY and NJ. Book your appointment today.">
-  
+
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/assets/css/contact-fixes.css">
   <link rel="icon" href="/favicon.ico">
-  
+
   <style>
     body.contact.page-contact .mobile-cta,
     body.contact.page-contact #sticky-bar,
@@ -25,7 +25,7 @@
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://www.dryer-ventservices.com/contact/"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  
+
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
   <link rel="canonical" href="https://www.dryer-ventservices.com/contact/"/>
 
@@ -177,12 +177,23 @@
             fd.append("_ref", document.referrer || location.href);
 
             try {
-              const res = await fetch(form.action, { method: "POST", body: fd, redirect: "follow" });
-              // FIXED: Redirect to the new folder structure
-              window.location.href = "/thanks/";
-            } catch (_) {
-              // FIXED: Redirect to the new folder structure
-              window.location.href = "/thanks/";
+              const res = await fetch(form.action, { method: "POST", body: fd });
+              
+              // ERROR CHECK: Only redirect if server responds with OK (200)
+              if (res.ok) {
+                  window.location.href = "/thanks/";
+              } else {
+                  throw new Error("Server response was not ok");
+              }
+
+            } catch (err) {
+              // ERROR HANDLING: If fetch fails or server error, alert user and reset button
+              console.error(err);
+              alert("There was a problem sending your message. Please check your internet connection or call us at 347-244-9382.");
+              
+              sending = false;
+              btn.removeAttribute("disabled");
+              btn.textContent = "Try Again or Call Us";
             }
           }, { passive:false });
         })();
