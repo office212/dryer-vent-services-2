@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dryer Vent Cleaning Staten Island | Repairs &amp; Installations | NY &amp; NJ</title>
   <meta name="description" content="Top-rated dryer vent cleaning in Staten Island. Lint removal, vent repairs &amp; new installations across New York &amp; New Jersey. Call 347-244-9382 for same-week service.">
+  
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/cards-override-200.css" />
+  <link rel="stylesheet" href="/assets/css/before-after.css" />
+  <link rel="stylesheet" href="/assets/css/ba-slider.css" />
 
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -21,12 +24,15 @@
   </script>
 
   <meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation" />
-  <link rel="canonical" href="https://dryer-ventservices.com/" />
+  <link rel="canonical" href="https://www.dryer-ventservices.com/" />
+  
   <meta property="og:site_name" content="Dryer Vent Services" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dryer-ventservices.com/" />
+  <meta property="og:url" content="https://www.dryer-ventservices.com/" />
   <meta property="og:title" content="Dryer Vent Cleaning | Repairs &amp; Installations | Staten Island, NY &amp; NJ" />
   <meta property="og:description" content="Professional dryer vent cleaning, repairs and new installations. Serving Staten Island and the greater New York &amp; New Jersey area. Call 347-244-9382." />
+  <meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="robots" content="index, follow" />
 
   <script type="application/ld+json">
@@ -34,124 +40,112 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Dryer Vent Services",
-    "url": "https://dryer-ventservices.com/",
-    "email": "office@dryer-ventservices.com",
+    "image": "https://www.dryer-ventservices.com/assets/logo.png",
+    "url": "https://www.dryer-ventservices.com/",
     "telephone": "+13472449382",
-    "areaServed": ["Staten Island NY", "New York", "New Jersey"],
-    "sameAs": [],
-    "image": "https://dryer-ventservices.com/assets/logo.png"
+    "email": "office@dryer-ventservices.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Staten Island",
+      "addressRegion": "NY",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      {"@type": "Place", "name": "Staten Island, NY"},
+      {"@type": "Place", "name": "New York"},
+      {"@type": "Place", "name": "New Jersey"}
+    ],
+    "sameAs": ["https://www.dryer-ventservices.com"]
   }
   </script>
 
-  <link rel="stylesheet" href="/assets/css/cards-override-200.css" />
-  <link rel="stylesheet" href="/assets/css/before-after.css" />
-
   <style>
-    /* === Before/After Carousel (portrait 2:3, transparent controls) === */
-    .ba-carousel { position: relative; max-width: 720px; margin: 0 auto; }
+    /* === Before/After Carousel Styles === */
+    .ba-carousel { position: relative; max-width: 720px; margin: 0 auto; overflow: hidden; }
     .ba-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow: hidden; scroll-snap-type: x mandatory; }
-    .ba-slide { scroll-snap-align: center; padding: 0.5rem; }
-    .ba-compare { position: relative; width: 100%; aspect-ratio: 2 / 3; border-radius: 18px; overflow: hidden; background: #f4f6f8; }
-    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .after-wrap { position: absolute; inset: 0; overflow: hidden; }
-    .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
-    .ba-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: transparent; border: none; cursor: pointer; }
-    .ba-nav.prev { left: 6px; }
-    .ba-nav.next { right: 6px; }
-    .ba-nav::before { content: ""; display: block; width: 0.6em; height: 0.6em; border-top: 3px solid #0e3352; border-right: 3px solid #0e3352; margin: auto; transform: rotate(45deg); }
-    .ba-nav.prev::before { transform: rotate(-135deg); }
-    .ba-nav.next::before { transform: rotate(45deg); }
-    .ba-compare::after { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,0.9); pointer-events:none; }
-    @media (min-width: 768px) { .ba-carousel { max-width: 860px; } }
-  </style>
+    .ba-slide { scroll-snap-align: center; padding: 0.5rem; width: 100%; display: none; }
+    .ba-slide.active { display: block; }
+    
+    .ba-compare { 
+      position: relative; 
+      width: 100%; 
+      max-width: 700px; 
+      margin: 0 auto; 
+      border-radius: 18px; 
+      overflow: hidden; 
+      background: #f4f6f8; 
+      aspect-ratio: 2 / 3; 
+    }
 
-  <style>
-    /* Before/After Carousel wrapper */
-    #before-after { padding: 32px 0; }
-    #before-after .ba-carousel { position: relative; overflow: hidden; }
-    #before-after .ba-slide { width: 100%; display: none; }
-    #before-after .ba-slide.active { display: block; }
-    .ba-compare { position: relative; width: 100%; max-width: 700px; margin: 0 auto; border-radius: 18px; overflow: hidden; }
-    .ba-img { width: 100%; height: auto; display: block; }
+    @media (min-width: 760px){ 
+      .ba-compare { max-width: 520px; } 
+      .ba-carousel { max-width: 860px; }
+    }
+
+    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    
+    /* Clip path logic for before image */
     .ba-img.before {
-      position: absolute;
-      inset: 0;
+      z-index: 1;
       clip-path: polygon(0 0, calc(var(--pos,50)*1%) 0, calc(var(--pos,50)*1%) 100%, 0 100%);
     }
+    
+    .after-wrap { position: absolute; inset: 0; overflow: hidden; }
+    
+    /* Range Input (Invisible slider) */
+    .ba-range { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 3; }
+
+    /* Handle Line and Circle */
     .ba-handle {
       position: absolute;
-      top: 0;
-      bottom: 0;
+      top: 0; bottom: 0;
       left: calc(var(--pos,50)*1%);
       width: 0;
       border-left: 3px solid rgba(255,255,255,0.9);
       cursor: ew-resize;
+      z-index: 2;
+      pointer-events: none; /* Events go to input */
     }
     .ba-handle::after {
-      content:"";
-      position:absolute;
-      top:50%;
-      transform:translate(-50%,-50%);
-      width:56px;
-      height:56px;
-      border-radius:50%;
+      content:""; position:absolute; top:50%; transform:translate(-50%,-50%);
+      width:48px; height:48px; border-radius:50%;
       border:2px solid rgba(255,255,255,0.9);
       background:transparent;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
-    .ba-controls { display:flex; justify-content:center; gap:18px; margin: 14px 0 4px; }
-    .ba-nav {
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      background:transparent;
-      border:2px solid rgba(0,0,0,0.2);
-      position:relative;
-    }
-    .ba-nav::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      margin:auto;
-      width:10px;
-      height:10px;
-      border-right:3px solid #0b2945;
-      border-top:3px solid #0b2945;
-      transform: rotate(45deg);
-    }
-    .ba-nav.prev::before { transform: rotate(225deg); }
-    .ba-more {
-      display:inline-block;
-      margin: 12px auto 0;
-      padding: 12px 22px;
-      border-radius:14px;
-      background:#12324F;
-      color:#fff;
-      text-decoration:none;
-      box-shadow: 0 10px 24px rgba(0,0,0,.12);
-    }
-    @media (min-width: 760px){ .ba-compare{ max-width: 520px; } }
-  </style>
 
-  <!-- FAQ teaser styles -->
-  <style>
-    .faq-home {
-      margin-top: 32px;
-      margin-bottom: 8px;
+    /* Navigation Arrows */
+    .ba-controls { display:flex; justify-content:center; gap:18px; margin: 14px 0 4px; }
+    .ba-arrow {
+      width:56px; height:56px; border-radius:50%;
+      background:transparent; border:2px solid rgba(0,0,0,0.15);
+      cursor: pointer; position: relative;
+      transition: all 0.2s;
     }
-    .faq-home h2 {
-      text-align: center;
-      margin-bottom: 18px;
+    .ba-arrow:hover { border-color: #0b2945; background: rgba(0,0,0,0.03); }
+    .ba-arrow::before {
+      content:""; position:absolute; inset:0; margin:auto;
+      width:10px; height:10px;
+      border-right:3px solid #0b2945; border-top:3px solid #0b2945;
     }
-    .faq-home-intro {
-      text-align: center;
-      margin-bottom: 18px;
-      color: #4b5563;
-      font-size: 0.95rem;
+    .ba-arrow.prev::before { transform: rotate(225deg); margin-left: 20px; }
+    .ba-arrow.next::before { transform: rotate(45deg); margin-right: 20px; }
+
+    .ba-captions {
+      display: flex; justify-content: center; gap: 40px; margin-top: 10px;
+      font-weight: 600; color: #555; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
     }
-    .faq-home-list {
-      max-width: 720px;
-      margin: 0 auto 16px;
-    }
+    .ba-cta-wrap { text-align: center; margin-top: 20px; }
+    
+    #before-after { padding: 32px 0; }
+
+    /* FAQ Styles */
+    .faq-home { margin-top: 32px; margin-bottom: 8px; }
+    .faq-home h2 { text-align: center; margin-bottom: 18px; }
+    .faq-home-intro { text-align: center; margin-bottom: 18px; color: #4b5563; font-size: 0.95rem; }
+    .faq-home-list { max-width: 720px; margin: 0 auto 16px; }
+    
     .faq-home-item {
       border-radius: 16px;
       background: #ffffff;
@@ -160,6 +154,7 @@
       overflow: hidden;
       border: 1px solid rgba(148,163,184,0.35);
     }
+    
     .faq-home-item summary {
       list-style: none;
       cursor: pointer;
@@ -169,108 +164,45 @@
       justify-content: space-between;
       font-weight: 600;
       color: #111827;
+      user-select: none;
+      transition: background-color 0.2s ease;
     }
-    .faq-home-item summary::-webkit-details-marker {
-      display: none;
+    
+    .faq-home-item summary:hover {
+      background-color: #f8fafc;
     }
+
+    .faq-home-item summary::-webkit-details-marker { display: none; }
+    
     .faq-home-chevron {
-      width: 18px;
-      height: 18px;
-      border-right: 2px solid #0b2945;
-      border-bottom: 2px solid #0b2945;
-      transform: rotate(45deg);
-      flex-shrink: 0;
-      transition: transform 0.18s ease;
-      margin-left: 10px;
+      width: 18px; height: 18px;
+      border-right: 2px solid #0b2945; border-bottom: 2px solid #0b2945;
+      transform: rotate(45deg); flex-shrink: 0;
+      transition: transform 0.18s ease; margin-left: 10px;
     }
-    .faq-home-item[open] .faq-home-chevron {
-      transform: rotate(-135deg);
-    }
+    
+    .faq-home-item[open] .faq-home-chevron { transform: rotate(-135deg); }
+    
     .faq-home-body {
       padding: 0 16px 14px;
       border-top: 1px solid rgba(226,232,240,0.9);
-      color: #4b5563;
-      font-size: 0.95rem;
+      color: #4b5563; font-size: 0.95rem; line-height: 1.5;
     }
-    .faq-home-body p {
-      margin: 10px 0 0;
-    }
-    .faq-home .btn {
-      min-width: 180px;
+    .faq-home-body p { margin: 10px 0 0; }
+    .faq-home .btn { min-width: 180px; }
+
+    /* Bubble Helper */
+    #ba-helper {
+      position: fixed; left: 50%; transform: translateX(-50%); bottom: 120px;
+      z-index: 9999; background: #f97316; color: #fff;
+      padding: 12px 18px; border-radius: 999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+      font-family: Inter, sans-serif; font-size: 15px; font-weight: 600;
+      display: none; text-align: center; white-space: nowrap;
     }
 
     @media (min-width: 768px) {
-      .faq-home-intro {
-        font-size: 1rem;
-      }
-    }
-  </style>
-
-  <!-- BEGIN BEFORE-AFTER ASSETS -->
-  <link rel="stylesheet" href="/assets/css/ba-slider.css" />
-  <script defer src="/assets/js/ba-slider.js"></script>
-  <!-- END BEFORE-AFTER ASSETS -->
-
-  <meta property="og:title" content="Dryer Vent Cleaning in Staten Island | Repairs & Installations | NY & NJ" />
-  <meta property="og:description" content="Trusted dryer vent cleaning, repairs, and installations across NY & NJ. Fast service, safety-focused, great reviews." />
-  <meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.dryer-ventservices.com/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="canonical" href="https://www.dryer-ventservices.com/" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Dryer Vent Services",
-    "image": "/assets/img/og-image.png",
-    "url": "https://www.dryer-ventservices.com/",
-    "telephone": "+1-347-244-9382",
-    "areaServed": [
-      {"@type": "Place", "name": "Staten Island, NY"},
-      {"@type": "Place", "name": "New York, NY"},
-      {"@type": "Place", "name": "New Jersey"}
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Staten Island",
-      "addressRegion": "NY",
-      "addressCountry": "US"
-    },
-    "priceRange": "$$",
-    "sameAs": ["https://www.dryer-ventservices.com"],
-    "description": "Professional dryer vent cleaning, repairs, and installations across NY & NJ."
-  }
-  </script>
-
-  <script>
-    // Remove index.html from URL if present
-    if (location.pathname.endsWith('/index.html')) {
-      history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
-    }
-  </script>
-
-  <!-- Bubble helper styling (orange, centered) -->
-  <style>
-    #ba-helper {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 120px; /* מעל ה-Call / Book Now */
-      z-index: 9999;
-      background: #f97316; /* כתום מותג */
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 999px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.25);
-      font-family: Inter, sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      display: none;
-      text-align: center;
-      white-space: nowrap;
+      .faq-home-intro { font-size: 1rem; }
     }
   </style>
 </head>
@@ -353,15 +285,13 @@
 
   <section class="reveal section section-alt fade-in">
     <div class="container">
-      <!-- BEGIN BEFORE-AFTER -->
       <section class="reveal ba-section" id="before-after">
         <div class="container">
           <h2 class="section-title">Before and After</h2>
           <div id="ba-carousel" class="ba-carousel" aria-roledescription="carousel" aria-label="Before and after gallery">
-            <!-- Slides injected by JS from filenames.json -->
             <div class="ba-controls">
-              <button class="ba-arrow prev" aria-label="Previous">&#10094;</button>
-              <button class="ba-arrow next" aria-label="Next">&#10095;</button>
+              <button class="ba-arrow prev" aria-label="Previous"></button>
+              <button class="ba-arrow next" aria-label="Next"></button>
             </div>
           </div>
           <div class="ba-captions">
@@ -372,11 +302,9 @@
           </div>
         </div>
       </section>
-      <!-- END BEFORE-AFTER -->
-    </div>
+      </div>
   </section>
 
-  <!-- FAQ teaser on home -->
   <section class="reveal section container fade-in faq-home">
     <h2>Frequently Asked Questions</h2>
     <p class="faq-home-intro">
@@ -420,8 +348,7 @@
           <span class="faq-home-chevron"></span>
         </summary>
         <div class="faq-home-body">
-          <p>Our pricing structure is based on the location of the dryer within the home. We do not impose additional charges for long vents, bird nests, or heavily clogged vents. Rates are determined solely by the floor on which the dryer is located and where the vent exits the home (for example: basement/first floor, second floor, third floor, or rooftop).</p>
-          <p>Any necessary repairs or replacement parts are billed separately and only with the customer’s approval. We do not add fees or modify the original quote without the customer’s consent.</p>
+          <p>Our pricing structure is based on the location of the dryer within the home. We do not impose additional charges for long vents, bird nests, or heavily clogged vents. Rates are determined solely by the floor on which the dryer is located.</p>
         </div>
       </details>
 
@@ -431,7 +358,7 @@
           <span class="faq-home-chevron"></span>
         </summary>
         <div class="faq-home-body">
-          <p>We clean, repair, and install dryer vents only. Our objective is to ensure good airflow from your dryer so that it functions optimally. We do not repair dryers themselves, however we often work with local appliance repair companies when needed.</p>
+          <p>We clean, repair, and install dryer vents only. We focus on airflow and duct safety. We do not repair dryers themselves, but we work with local appliance repair companies when needed.</p>
         </div>
       </details>
     </div>
@@ -441,19 +368,16 @@
     </div>
   </section>
 
-  <!-- Google reviews on home -->
   <section class="reveal section container fade-in">
     <h2 class="center">Customer Reviews</h2>
     <div class="cards-3" id="home-reviews">
-      <!-- Live Google reviews injected by /assets/js/reviews-live.js -->
-    </div>
+      </div>
     <div class="center mt-20">
       <button class="btn" id="homeReviewsMore" type="button">
         Load more reviews
       </button>
     </div>
     <div class="center mt-20">
-      <!-- כפתור כתום חדש -->
       <button class="btn btn--primary" id="rateOnGoogleHome" type="button">
         Rate Dryer Vent Services on Google
       </button>
@@ -497,142 +421,32 @@
     <a class="btn btn--primary" href="/contact/">Book Now</a>
   </div>
 
+  <div id="ba-helper">Drag to compare</div>
+
   <script defer src="/script.js"></script>
   <script defer src="/assets/js/reviews-live.js"></script>
-  <script src="/beforeafter.js"></script>
-  <script src="/assets/js/before-after.js"></script>
+  <script defer src="/assets/js/ba-slider.js"></script>
 
-  <!-- Before/After basic JS -->
   <script>
-  (function(){
-    function initCompare(root){
-      const range=root.querySelector('.ba-range');
-      const wrap=root.querySelector('.after-wrap');
-      if (!range || !wrap) return;
-      range.addEventListener('input', e=>{
-        const v = Number(range.value);
-        wrap.style.width = v + '%';
-        root.style.setProperty('--pos', v + '%');
-      }, {passive: true});
-    }
-    document.querySelectorAll('.ba-compare').forEach(initCompare);
-
-    const carousels = document.querySelectorAll('.ba-carousel');
-    carousels.forEach(car => {
-      let idx = 0;
-      const track = car.querySelector('.ba-track');
-      if (!track) return;
-      function go(n){
-        const slides = track.children.length;
-        if (!slides) return;
-        idx = (n + slides) % slides;
-        track.scrollTo({left: idx * track.clientWidth, behavior: 'smooth'});
+    (function(){
+      function initCompare(root){
+        const range=root.querySelector('.ba-range');
+        const wrap=root.querySelector('.after-wrap');
+        if (!range || !wrap) return;
+        range.addEventListener('input', e=>{
+          const v = Number(range.value);
+          wrap.style.width = v + '%';
+          root.style.setProperty('--pos', v + '%');
+        }, {passive: true});
       }
-      const prev = car.querySelector('.prev');
-      const next = car.querySelector('.next');
-      if (prev) prev.addEventListener('click', ()=>go(idx-1));
-      if (next) next.addEventListener('click', ()=>go(idx+1));
-    });
-  })();
+      document.querySelectorAll('.ba-compare').forEach(initCompare);
+      
+      // Show helper bubble after 2 seconds
+      setTimeout(() => {
+        const helper = document.getElementById('ba-helper');
+        if(helper) helper.style.display = 'block';
+      }, 2000);
+    })();
   </script>
-
-  <!-- Before/After slider behaviour -->
-  <script>
-  (function(){
-    const sec = document.getElementById('before-after');
-    if(!sec) return;
-    const slides = Array.from(sec.querySelectorAll('.ba-slide'));
-    let idx = 0;
-    function show(i){
-      if (!slides.length) return;
-      idx = (i+slides.length)%slides.length;
-      slides.forEach((s,j)=>s.classList.toggle('active', j===idx));
-    }
-    function setPos(ev, wrap){
-      const rect = wrap.getBoundingClientRect();
-      let x = ev.clientX !== undefined ? ev.clientX : (ev.touches?ev.touches[0].clientX:rect.left+rect.width/2);
-      let p = Math.max(0, Math.min(100, ((x - rect.left)/rect.width)*100));
-      wrap.style.setProperty('--pos', p + '%');
-      const handle = wrap.querySelector('.ba-handle');
-      if (handle) handle.setAttribute('aria-valuenow', Math.round(p));
-    }
-    slides.forEach(slide=>{
-      const wrap = slide.querySelector('.ba-compare');
-      const handle = slide.querySelector('.ba-handle');
-      if (!wrap || !handle) return;
-      ['mousemove','touchmove'].forEach(evt=>{
-        wrap.addEventListener(evt, e=>{ if(wrap._drag) setPos(e, wrap); }, {passive:true});
-      });
-      ['mousedown','touchstart'].forEach(evt=>{
-        wrap.addEventListener(evt, e=>{ wrap._drag = true; setPos(e, wrap); });
-      });
-      ['mouseup','mouseleave','touchend','touchcancel'].forEach(evt=>{
-        wrap.addEventListener(evt, ()=>{ wrap._drag = false; });
-      });
-      handle.addEventListener('keydown', (e)=>{
-        if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
-          const now = parseFloat(getComputedStyle(wrap).getPropertyValue('--pos'))||50;
-          const next = Math.max(0, Math.min(100, now + (e.key==='ArrowRight'?5:-5)));
-          wrap.style.setProperty('--pos', next + '%');
-          handle.setAttribute('aria-valuenow', Math.round(next));
-        }
-      });
-    });
-    const prev = sec.querySelector('.ba-nav.prev');
-    const next = sec.querySelector('.ba-nav.next');
-    if (prev) prev.addEventListener('click', ()=>show(idx-1));
-    if (next) next.addEventListener('click', ()=>show(idx+1));
-    show(0);
-  })();
-  </script>
-
-  <!-- Orange floating helper bubble -->
-  <div id="ba-helper">Drag the handle to see <strong>Before/After</strong></div>
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const helper = document.getElementById('ba-helper');
-    const target = document.querySelector('.ba-carousel, #before-after');
-
-    if (!target || !helper) return;
-
-    let shown = false;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !shown) {
-          shown = true;
-          helper.style.display = 'block';
-          helper.style.opacity = 0;
-          helper.animate([{opacity:0},{opacity:1}], {duration:350, fill:'forwards'});
-
-          setTimeout(() => {
-            helper.animate([{opacity:1},{opacity:0}], {duration:600, fill:'forwards'})
-                  .onfinish = () => helper.remove();
-          }, 3500);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    observer.observe(target);
-  });
-  </script>
-
-  <!-- Reveal-on-scroll + button hover -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function(){
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  });
-  </script>
-
-  <style>
-    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease;}
-    .reveal-in{opacity:1 !important; transform:translateY(0) !important;}
-    a.button, .btn, button{transition:transform .08s ease, box-shadow .2s ease;}
-    a.button:hover, .btn:hover, button:hover{transform:translateY(-1px);}
-  </style>
-
 </body>
 </html>
