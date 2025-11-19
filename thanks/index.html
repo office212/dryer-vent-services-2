@@ -1,67 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thank You • Dryer Vent Services</title>
-  <meta name="description" content="Thank you for contacting Dryer Vent Services. We'll be in touch shortly.">
-  <!-- Redirect after 10s (with cache-bust query) -->
-  <meta http-equiv="refresh" content="10; url=/?ty=2">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You! | Dryer Vent Services</title>
+  
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/styles.css?v=ty2">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="canonical" href="https://www.dryer-ventservices.com/thanks/" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X77CVTW1CD');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.dryer-ventservices.com/#business",
+    "name": "Dryer Vent Services",
+    "image": "https://www.dryer-ventservices.com/assets/logo.png",
+    "url": "https://www.dryer-ventservices.com/",
+    "telephone": "+13472449382",
+    "email": "office@dryer-ventservices.com",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Staten Island",
+      "addressRegion": "NY",
+      "addressCountry": "US"
+    }
+  }
+  </script>
 
   <style>
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f8fafc;margin:0;min-height:100vh;display:flex;flex-direction:column}
-    header{display:flex;justify-content:center;margin-top:32px}
-    header img{width:120px;height:auto}
-    main{flex:1;display:grid;place-items:center;padding:20px}
-    .card{max-width:720px;width:100%;background:#fff;border:1px solid #eef0f4;border-radius:16px;box-shadow:0 8px 24px rgba(15,42,82,.10);padding:36px 28px;text-align:center}
-    h1{margin:0 0 8px;font-size:2rem;color:#0b4a72}
-    p{margin:8px 0;color:#475569;line-height:1.6}
-    .btn{display:inline-block;margin:6px 6px;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;color:#fff;background:#0b4a72;box-shadow:0 6px 16px rgba(11,74,114,.15);transition:transform .08s ease,box-shadow .2s ease}
-    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(11,74,114,.25)}
-    .btn-primary{background:#f58823;box-shadow:0 6px 16px rgba(245,136,35,.25)}
-    .btn-primary:hover{box-shadow:0 6px 20px rgba(245,136,35,.35)}
-    .divider{border-top:1px solid #e2e8f0;margin:24px auto 18px;width:80%}
-    .contact-title{font-weight:700;color:#0b4a72;margin:0 0 6px}
-    footer{color:#94a3b8;text-align:center;font-size:.85rem;padding:16px}
+    /* Card layout */
+    .ty-wrap{min-height:calc(100dvh - 120px);display:grid;place-items:center;padding:24px}
+    .ty-card{max-width:760px;width:100%;background:#fff;border:1px solid #eef0f4;border-radius:18px;
+             box-shadow:0 10px 28px rgba(15,42,82,.10);padding:28px 22px;margin:0 auto 18px;text-align:center}
+    .ty-card h1{font-size:clamp(28px,6.2vw,44px);margin:.2em 0 .4em; color: #1B365D;}
+    .ty-card p.lead{font-size:clamp(16px,3.8vw,20px);color:#475569;margin:.4em 0 1.2em}
+    .btn-primary{display:inline-block;background:#ea6a1a;color:#fff;padding:14px 22px;border-radius:14px;
+                 font-weight:800;text-decoration:none;box-shadow:0 10px 26px rgba(234,106,26,.30)}
+    .btn-primary:active{transform:translateY(1px)}
+
+    /* “Other ways” panel */
+    .ty-panel{max-width:760px;width:100%;background:#f8fbff;border:1px solid #e6eef7;border-radius:18px;
+              box-shadow:0 8px 24px rgba(15,42,82,.06);padding:20px;margin:0 auto}
+    .ty-panel h2{font-size:clamp(18px,4vw,24px);margin:0 0 .35em;text-align:center; color: #1B365D;}
+    .ty-panel p{color:#475569;text-align:center;margin:0 0 14px}
+
+    /* Button row – side-by-side on phones too */
+    .btn-row{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(110px,1fr));
+      gap:12px;
+      align-items:center;
+      justify-items:center;
+    }
+    @media (max-width:480px){
+      .btn-row{ grid-template-columns: repeat(3, 1fr); }
+    }
+    .chip{
+      display:inline-block; width:100%; text-align:center;
+      background:#0b3960; color:#fff; padding:12px 16px; border-radius:14px;
+      font-weight:800; text-decoration:none;
+      transition: transform 0.2s ease;
+    }
+    .chip:hover { transform: translateY(-2px); }
+
+    /* Hide mobile sticky CTA on this page so it doesn't clash */
+    .mobile-cta, #sticky-bar, .sticky-bar, .footer-sticky, .cta-sticky { display:none !important; }
   </style>
+
+  <meta http-equiv="refresh" content="10; url=/" />
 </head>
-<body>
-  <header>
-    <img src="/logo.webp" alt="Dryer Vent Services" onerror="this.onerror=null;this.src='/logo.png';">
+
+<body data-page="thanks">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">
+        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='/logo.png';">
+        <div class="brand-text">
+          <strong>Dryer Vent Services</strong>
+          <span>Cleaning - Repairs - Installations</span>
+        </div>
+      </a>
+      <nav class="site-nav" id="site-nav">
+        <a data-nav="home" href="/">Home</a>
+        <a data-nav="services" href="/services/">Services</a>
+        <a data-nav="gallery" href="/gallery/">Gallery</a>
+        <a data-nav="reviews" href="/reviews/">Reviews</a>
+        <a data-nav="faq" href="/faq/">FAQ</a>
+        <a data-nav="about" href="/about/">About</a>
+        <a data-nav="areas" href="/areas/">Service Areas</a>
+        <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <main>
-    <div class="card">
+  <main class="ty-wrap">
+    <section class="ty-card">
       <h1>Thank you!</h1>
-      <p>Your message was sent successfully. We’ll be in touch shortly.</p>
-      <p>We appreciate your trust in Dryer Vent Services — your home’s safety and efficiency are our priority.</p>
-      <p>Returning to the homepage in <span id="sec">10</span> seconds…</p>
+      <p class="lead">Your message was sent successfully. We’ll be in touch shortly.</p>
+      <p class="lead" style="font-size: 0.9em; opacity: 0.8;">Returning to the homepage in <span id="sec" style="font-weight:bold; color:#ea6a1a;">10</span> seconds…</p>
+      <a class="btn-primary" href="/">Go to Homepage now</a>
+    </section>
 
-      <div style="margin-top:16px">
-        <a class="btn btn-primary" href="/?ty=2">Go to Homepage now</a>
+    <section class="ty-panel">
+      <h2>Other ways to contact us</h2>
+      <p>Prefer a faster response? Reach us directly by phone or WhatsApp during business hours.</p>
+      <div class="btn-row">
+        <a class="chip" href="tel:+13472449382">Call</a>
+        <a class="chip" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="chip" href="mailto:office@dryer-ventservices.com">Email</a>
       </div>
-
-      <div class="divider"></div>
-
-      <p class="contact-title">Other ways to contact us</p>
-      <a class="btn" href="tel:+13472449382">Call</a>
-      <a class="btn" href="mailto:office@dryer-ventservices.com">Email</a>
-      <a class="btn" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
-    </div>
+    </section>
   </main>
 
-  <footer>© 2025 Dryer Vent Services. All rights reserved.</footer>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Dryer Vent Services</h4>
+        <p>Dryer Vent Cleaning - Repairs - Installations</p>
+      </div>
+      <div>
+        <ul class="contact-list">
+          <li><a href="tel:+13472449382">347-244-9382</a></li>
+          <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-cta">
+        <a class="btn btn--primary" href="/contact/">Book Now</a>
+      </div>
+    </div>
+    <div class="copyright">© 2025 Dryer Vent Services. All rights reserved.</div>
+  </footer>
+
+  <script src="/script.js" defer></script>
 
   <script>
-    // 10-second countdown (also forces cache-bust on redirect)
-    let n = 10, el = document.getElementById('sec');
-    const t = setInterval(() => {
-      el.textContent = --n;
-      if (n <= 0){ clearInterval(t); location.href='/?ty=2'; }
-    }, 1000);
+    (function(){
+      var n = 10, el = document.getElementById('sec');
+      var t = setInterval(function(){
+        n--; if(n < 0){ n = 0; }
+        el.textContent = n;
+        if(n <= 0){ clearInterval(t); window.location.href = '/'; }
+      }, 1000);
+    })();
   </script>
 </body>
 </html>
