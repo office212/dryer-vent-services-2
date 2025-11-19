@@ -63,7 +63,7 @@
   <link rel="stylesheet" href="/assets/css/before-after.css" />
 
   <style>
-    /* === HERO SECTION FIX (Blue Area) === */
+    /* === HERO SECTION FIX === */
     .hero-modern {
         background-color: #1B365D;
         background-image: none !important;
@@ -77,13 +77,11 @@
         align-items: center;
         text-align: center;
     }
-
     .hero-inner {
         max-width: 800px;
         margin: 0 auto;
         padding: 0 20px;
     }
-    
     @media (min-width: 992px) {
         .hero-title {
             font-size: 3.5rem !important;
@@ -98,8 +96,7 @@
         }
     }
 
-
-    /* === Before/After Carousel Styles === */
+    /* === Before/After Carousel === */
     .ba-carousel { position: relative; max-width: 720px; margin: 0 auto; }
     .ba-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow: hidden; scroll-snap-type: x mandatory; }
     .ba-slide { scroll-snap-align: center; padding: 0.5rem; }
@@ -159,17 +156,14 @@
       text-decoration:none; box-shadow: 0 10px 24px rgba(0,0,0,.12);
     }
 
-    /* === FIX FOR BEFORE/AFTER SIZE ON DESKTOP === */
-    /* Limit width on large screens so it doesn't explode vertically */
-    @media (min-width: 992px) {
+    /* === STRICT DESKTOP SIZE FIX === */
+    /* This ensures the before/after slider is small and neat on PC */
+    @media (min-width: 768px) {
         .ba-compare {
-            max-width: 400px !important; /* Smaller width = Smaller height */
+            max-width: 320px !important; /* Force small width */
+            /* Resulting Height will be ~480px because of 2:3 ratio */
         }
     }
-    @media (min-width: 760px) and (max-width: 991px) {
-         .ba-compare{ max-width: 520px; } 
-    }
-
 
     /* FAQ Styles */
     .faq-home { margin-top: 32px; margin-bottom: 8px; }
@@ -221,7 +215,6 @@
       .faq-home-intro { font-size: 1rem; }
     }
     
-    /* Bubble Helper */
     #ba-helper {
       position: fixed;
       left: 50%;
