@@ -63,21 +63,14 @@
   <link rel="stylesheet" href="/assets/css/before-after.css" />
 
   <style>
-    /* === FIX FOR HERO SECTION (THE BLUE AREA) === */
-    /* Instead of forcing height, we use padding to let content dictate size */
+    /* === HERO SECTION FIX (Blue Area) === */
     .hero-modern {
         background-color: #1B365D;
         background-image: none !important;
-        
-        /* Disable forced full-screen height */
         height: auto !important; 
         min-height: unset !important;
-        
-        /* Add nice spacing (padding) top and bottom */
         padding-top: 140px !important;
         padding-bottom: 140px !important;
-        
-        /* Center everything nicely */
         display: flex !important;
         flex-direction: column;
         justify-content: center;
@@ -91,7 +84,6 @@
         padding: 0 20px;
     }
     
-    /* Make title big and clear on desktop */
     @media (min-width: 992px) {
         .hero-title {
             font-size: 3.5rem !important;
@@ -99,7 +91,6 @@
             margin-bottom: 1.5rem !important;
         }
     }
-    /* Adjust padding for mobile slightly */
     @media (max-width: 768px) {
         .hero-modern {
             padding-top: 100px !important;
@@ -123,7 +114,6 @@
     .ba-nav.prev::before { transform: rotate(-135deg); }
     .ba-nav.next::before { transform: rotate(45deg); }
     .ba-compare::after { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,0.9); pointer-events:none; }
-    @media (min-width: 768px) { .ba-carousel { max-width: 860px; } }
     
     #before-after { padding: 32px 0; }
     #before-after .ba-carousel { position: relative; overflow: hidden; }
@@ -168,7 +158,18 @@
       border-radius:14px; background:#12324F; color:#fff;
       text-decoration:none; box-shadow: 0 10px 24px rgba(0,0,0,.12);
     }
-    @media (min-width: 760px){ .ba-compare{ max-width: 520px; } }
+
+    /* === FIX FOR BEFORE/AFTER SIZE ON DESKTOP === */
+    /* Limit width on large screens so it doesn't explode vertically */
+    @media (min-width: 992px) {
+        .ba-compare {
+            max-width: 400px !important; /* Smaller width = Smaller height */
+        }
+    }
+    @media (min-width: 760px) and (max-width: 991px) {
+         .ba-compare{ max-width: 520px; } 
+    }
+
 
     /* FAQ Styles */
     .faq-home { margin-top: 32px; margin-bottom: 8px; }
