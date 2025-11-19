@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" />
 
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -35,20 +34,53 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Dryer Vent Services",
-    "url": "https://www.dryer-ventservices.com/faq/",
-    "telephone": "+1-347-244-9382",
-    "areaServed": [
-      {"@type": "Place", "name": "Staten Island, NY"},
-      {"@type": "Place", "name": "New York, NY"},
-      {"@type": "Place", "name": "New Jersey"}
-    ],
-    "description": "Frequently asked questions about professional dryer vent cleaning, repairs and installations across NY & NJ."
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "How often should I clean my dryer vent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is recommended to clean your dryer vent once a year. If you have a large household and do laundry frequently it may be necessary for you to clean it every 6–9 months."
+      }
+    }, {
+      "@type": "Question",
+      "name": "How long does a standard cleaning take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard cleaning takes about 30–45 minutes. If the vent is long, clogged, damaged, or on a higher floor, it may take longer."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Will my house get dirty during the cleaning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We use a sealed vacuum system and professional brushes that keep the area clean. No dust is released into your home and we leave the work area neat."
+      }
+    }, {
+      "@type": "Question",
+      "name": "How do I know if I need to clean my dryer vent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You may require a cleaning if: Your laundry is not dry after one cycle, the laundry room feels hot, there is a burnt smell, or it has been more than a year since your last cleaning."
+      }
+    }, {
+      "@type": "Question",
+      "name": "How much does it cost to clean my dryer vent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our pricing is flat and determined solely by the floor on which the dryer is located (Basement/1st, 2nd, or 3rd/Roof). We do not charge extra for bird nests or heavy lint."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Can a clogged dryer vent really cause a fire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Lint is extremely flammable. A clogged vent traps heat and can cause the dryer to overheat, increasing the risk of fire."
+      }
+    }]
   }
   </script>
 
-  <!-- FAQ page styles (כרטיסיות מודרניות, ללא כותרות קבוצות) -->
   <style>
     .faq-page-wrap {
       padding: 32px 0 40px;
@@ -76,6 +108,8 @@
       overflow: hidden;
       border: 1px solid rgba(148,163,184,0.35);
     }
+    
+    /* UPDATED CSS for Summary (UX improvements) */
     .faq-item summary {
       list-style: none;
       cursor: pointer;
@@ -86,7 +120,16 @@
       font-weight: 600;
       color: #111827;
       font-size: 1rem;
+      /* New properties: */
+      user-select: none; /* Prevents text highlighting on click */
+      transition: background-color 0.2s ease; /* Smooth hover effect */
     }
+    
+    /* New Hover Effect */
+    .faq-item summary:hover {
+      background-color: #f8fafc;
+    }
+
     .faq-item summary::-webkit-details-marker {
       display: none;
     }
@@ -164,7 +207,6 @@
 
       <div class="faq-page-list">
 
-        <!-- 1 -->
         <details class="faq-item">
           <summary>
             <span>How often should I clean my dryer vent?</span>
@@ -179,7 +221,6 @@
           </div>
         </details>
 
-        <!-- 2 -->
         <details class="faq-item">
           <summary>
             <span>How long does a standard cleaning take?</span>
@@ -194,7 +235,6 @@
           </div>
         </details>
 
-        <!-- 3 -->
         <details class="faq-item">
           <summary>
             <span>Will my house get dirty during the cleaning?</span>
@@ -209,7 +249,6 @@
           </div>
         </details>
 
-        <!-- 4 -->
         <details class="faq-item">
           <summary>
             <span>How do I know if I need to clean my dryer vent?</span>
@@ -228,7 +267,6 @@
           </div>
         </details>
 
-        <!-- 5 -->
         <details class="faq-item">
           <summary>
             <span>Do you clean the dryer itself or only the vent?</span>
@@ -243,7 +281,6 @@
           </div>
         </details>
 
-        <!-- 6 -->
         <details class="faq-item">
           <summary>
             <span>How much does it cost to clean my dryer vent?</span>
@@ -265,7 +302,6 @@
           </div>
         </details>
 
-        <!-- 7 -->
         <details class="faq-item">
           <summary>
             <span>Do you charge extra for bird nests or heavy lint?</span>
@@ -281,7 +317,6 @@
           </div>
         </details>
 
-        <!-- 8 -->
         <details class="faq-item">
           <summary>
             <span>How are repairs and new vent installations priced?</span>
@@ -298,9 +333,6 @@
           </div>
         </details>
 
-        <!-- (question about being home – הוסר לפי בקשתך) -->
-
-        <!-- 9 -->
         <details class="faq-item">
           <summary>
             <span>Can a clogged dryer vent really cause a fire?</span>
@@ -316,7 +348,6 @@
           </div>
         </details>
 
-        <!-- 10 -->
         <details class="faq-item">
           <summary>
             <span>Will cleaning the vent help my dryer work better?</span>
@@ -330,7 +361,6 @@
           </div>
         </details>
 
-        <!-- 11 -->
         <details class="faq-item">
           <summary>
             <span>Why choose Dryer Vent Services?</span>
