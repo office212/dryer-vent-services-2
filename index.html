@@ -63,24 +63,45 @@
   <link rel="stylesheet" href="/assets/css/before-after.css" />
 
   <style>
-    /* === FIX FOR HERO SECTION ON DESKTOP === */
-    /* This ensures the blue area isn't huge and empty */
+    /* === FIX FOR HERO SECTION (THE BLUE AREA) === */
+    /* This forces the blue section to be shorter and centered on Desktop */
+    
+    /* General Reset for Hero */
+    .hero-modern {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex !important;       /* Use Flexbox */
+        flex-direction: column;
+        justify-content: center;        /* Center vertically */
+        align-items: center;            /* Center horizontally */
+        text-align: center;
+    }
+
+    /* Specific fix for Desktop (screens wider than 992px) */
     @media (min-width: 992px) {
         .hero-modern {
-            min-height: 550px !important; /* Limit height so it's not full screen */
-            height: auto !important;
-            display: flex !important;
-            align-items: center !important; /* Center text vertically */
-            padding-top: 100px !important;
-            padding-bottom: 80px !important;
+            min-height: 500px !important; /* Force height to be reasonable (not too tall) */
+            height: 60vh !important;      /* Use 60% of screen height, not 100% */
+            padding-top: 0 !important;    /* Remove extra padding pushing text down/up */
+            padding-bottom: 0 !important;
         }
+        
         .hero-inner {
-            margin-top: 0 !important; /* Reset any top margin */
-            transform: translateY(-20px); /* Slight adjustment up for visual balance */
+            margin: 0 auto !important;
+            max-width: 800px !important;
+            padding: 20px;
+        }
+        
+        /* Make title font larger on desktop */
+        .hero-title {
+            font-size: 3.5rem !important; 
+            line-height: 1.1 !important;
+            margin-bottom: 1rem !important;
         }
     }
 
-    /* === Before/After Carousel === */
+    /* === Before/After Carousel Styles === */
     .ba-carousel { position: relative; max-width: 720px; margin: 0 auto; }
     .ba-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow: hidden; scroll-snap-type: x mandatory; }
     .ba-slide { scroll-snap-align: center; padding: 0.5rem; }
