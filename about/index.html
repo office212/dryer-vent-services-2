@@ -29,9 +29,10 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.dryer-ventservices.com/#business",
     "name": "Dryer Vent Services",
     "image": "https://www.dryer-ventservices.com/logo.webp",
-    "url": "https://www.dryer-ventservices.com/about/",
+    "url": "https://www.dryer-ventservices.com/",
     "telephone": "+13472449382",
     "email": "office@dryer-ventservices.com",
     "priceRange": "$$",
@@ -50,13 +51,15 @@
   </script>
 
   <style>
+    .svc-picture img.fix-fit {
+      object-fit: cover;
+    }
     @media (min-width: 768px) {
-      /* Override square/portrait frame */
+      /* Adjust frame to landscape like areas page */
       .card.media .svc-picture {
         height: auto !important;
-        aspect-ratio: 16 / 9; /* Landscape frame */
+        aspect-ratio: 16 / 9;
       }
-      /* Image fills the new landscape frame naturally */
       .svc-picture img.fix-fit {
         width: 100%;
         height: 100%;
