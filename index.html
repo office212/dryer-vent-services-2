@@ -64,42 +64,49 @@
 
   <style>
     /* === FIX FOR HERO SECTION (THE BLUE AREA) === */
-    /* This forces the blue section to be shorter and centered on Desktop */
-    
-    /* General Reset for Hero */
+    /* Instead of forcing height, we use padding to let content dictate size */
     .hero-modern {
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        display: flex !important;       /* Use Flexbox */
+        background-color: #1B365D;
+        background-image: none !important;
+        
+        /* Disable forced full-screen height */
+        height: auto !important; 
+        min-height: unset !important;
+        
+        /* Add nice spacing (padding) top and bottom */
+        padding-top: 140px !important;
+        padding-bottom: 140px !important;
+        
+        /* Center everything nicely */
+        display: flex !important;
         flex-direction: column;
-        justify-content: center;        /* Center vertically */
-        align-items: center;            /* Center horizontally */
+        justify-content: center;
+        align-items: center;
         text-align: center;
     }
 
-    /* Specific fix for Desktop (screens wider than 992px) */
+    .hero-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    /* Make title big and clear on desktop */
     @media (min-width: 992px) {
-        .hero-modern {
-            min-height: 500px !important; /* Force height to be reasonable (not too tall) */
-            height: 60vh !important;      /* Use 60% of screen height, not 100% */
-            padding-top: 0 !important;    /* Remove extra padding pushing text down/up */
-            padding-bottom: 0 !important;
-        }
-        
-        .hero-inner {
-            margin: 0 auto !important;
-            max-width: 800px !important;
-            padding: 20px;
-        }
-        
-        /* Make title font larger on desktop */
         .hero-title {
-            font-size: 3.5rem !important; 
+            font-size: 3.5rem !important;
             line-height: 1.1 !important;
-            margin-bottom: 1rem !important;
+            margin-bottom: 1.5rem !important;
         }
     }
+    /* Adjust padding for mobile slightly */
+    @media (max-width: 768px) {
+        .hero-modern {
+            padding-top: 100px !important;
+            padding-bottom: 80px !important;
+        }
+    }
+
 
     /* === Before/After Carousel Styles === */
     .ba-carousel { position: relative; max-width: 720px; margin: 0 auto; }
