@@ -120,7 +120,7 @@
           <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)..."></textarea>
         </div>
 
-        <div class="g-recaptcha" data-sitekey="6LfoRfgrAAAAAOdwl8hrgQYWKdHofF4iPWCnh6rC"></div>
+        <div class="g-recaptcha" data-sitekey="6LdS1BIsAAAAAOt7ZPeSW19iS4wp5fMSzguNNiy1"></div>
 
         <button type="submit" class="btn btn-primary btn-submit">Send Request</button>
       </form>
@@ -179,7 +179,7 @@
             try {
               const res = await fetch(form.action, { method: "POST", body: fd });
               
-              // ERROR CHECK: Only redirect if server responds with OK (200)
+              // Correct redirection on success
               if (res.ok) {
                   window.location.href = "/thanks/";
               } else {
@@ -187,7 +187,6 @@
               }
 
             } catch (err) {
-              // ERROR HANDLING: If fetch fails or server error, alert user and reset button
               console.error(err);
               alert("There was a problem sending your message. Please check your internet connection or call us at 347-244-9382.");
               
