@@ -7,7 +7,7 @@
   
   <meta name="robots" content="noindex, follow">
 
-  <link rel="icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/styles.css" /> <link rel="icon" href="/favicon.ico"/>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -17,6 +17,7 @@
     :root { --brand-blue:#1B365D; --brand-orange:#f97316; --bg-color: #f8fafc; }
     * { box-sizing:border-box; }
     html, body { height:100%; }
+    
     body {
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -24,10 +25,20 @@
       background-color: var(--bg-color);
       background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
       background-size: 20px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      
+      /* השינוי: כדי שההדר יהיה למעלה והתוכן באמצע */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
+
+    /* התאמה להדר כדי שיישב טוב */
+    .site-header {
+      flex-shrink: 0;
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
     .wrap {
       width:100%;
       max-width: 600px;
@@ -38,18 +49,33 @@
       box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
       border: 1px solid rgba(0,0,0,0.05);
       animation: fadeIn .6s cubic-bezier(0.16, 1, 0.3, 1);
+      
+      /* מרכוז הכרטיסייה בחלל שנשאר */
+      margin: auto; 
     }
-    .logo {
+
+    .logo-404 {
       width:100px; height:auto; margin:0 auto 24px; display:block;
     }
-    /* Broken Icon Concept with CSS */
-    .icon-404 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      color: #cbd5e1;
+    
+    /* --- המייבש העצוב --- */
+    .sad-dryer {
+      font-size: 5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
       display: inline-block;
-      transform: rotate(-10deg);
     }
+    .sad-dryer::after {
+      content: "😥";
+      position: absolute;
+      font-size: 2.5rem;
+      bottom: 10px;
+      right: -10px;
+      background: #fff;
+      border-radius: 50%;
+      padding: 2px;
+    }
+
     h1 { 
       font-size: clamp(24px, 5vw, 32px); 
       margin: 0 0 12px; 
@@ -104,13 +130,37 @@
   </script>
 </head>
 <body>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">
+        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
+        <div class="brand-text">
+          <strong>Dryer Vent Services</strong>
+          <span>Cleaning - Repairs - Installations</span>
+        </div>
+      </a>
+      <nav class="site-nav" id="site-nav">
+        <a data-nav="home" href="/">Home</a>
+        <a data-nav="services" href="/services/">Services</a>
+        <a data-nav="gallery" href="/gallery/">Gallery</a>
+        <a data-nav="reviews" href="/reviews/">Reviews</a>
+        <a data-nav="faq" href="/faq/">FAQ</a>
+        <a data-nav="about" href="/about/">About</a>
+        <a data-nav="areas" href="/areas/">Service Areas</a>
+        <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
+      </nav>
+      <button aria-expanded="false" aria-label="Open menu" class="burger" id="burger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
   <main class="wrap" role="main">
-    <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='/logo.png';">
+    <div class="sad-dryer" role="img" aria-label="Sad dryer icon">🧺</div>
     
-    <div class="icon-404">🔌</div>
-    
-    <h1>Oops! Connection Lost</h1>
-    <p class="lead">Looks like this vent leads nowhere. The page you're looking for might have been moved or doesn't exist.</p>
+    <h1>Oops! Vent blocked.</h1>
+    <p class="lead">Looks like this page got stuck in the lint trap. Let’s get you back to clean airflow.</p>
     
     <p><a class="btn" href="/">
       <span>Back to Homepage</span>
@@ -122,5 +172,7 @@
       <a href="/contact/">Contact Us</a>
     </div>
   </main>
+
+  <script src="/script.js" defer></script>
 </body>
 </html>
