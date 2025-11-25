@@ -27,19 +27,24 @@
       background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
       background-size: 20px 20px;
       
-      /* מבנה עמוד מלא: הדר למעלה, פוטר למטה */
+      /* Flexbox to keep footer at bottom */
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* מונע מההדר והפוטר להתכווץ */
-    .site-header, .site-footer {
+    /* TIKUN: Header is white, Footer takes style from styles.css */
+    .site-header {
       flex-shrink: 0;
-      background-color: #ffffff; /* מוודא רקע לבן להדר */
+      background-color: #ffffff;
+    }
+    
+    .site-footer {
+      flex-shrink: 0;
+      /* No background color here, so it uses the dark blue from styles.css */
     }
 
-    /* התוכן המרכזי תופס את כל המקום הפנוי */
+    /* Center Content */
     .main-content {
       flex: 1;
       display: flex;
@@ -58,9 +63,10 @@
       box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
       border: 1px solid rgba(0,0,0,0.05);
       animation: fadeIn .6s cubic-bezier(0.16, 1, 0.3, 1);
+      margin: auto; 
     }
 
-    /* --- המייבש העצוב --- */
+    /* Sad Dryer Icon */
     .sad-dryer {
       font-size: 5rem;
       margin-bottom: 0.5rem;
