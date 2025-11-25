@@ -14,42 +14,85 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
   
   <style>
-    :root { --brand-blue:#1B365D; --brand-orange:#f97316; }
+    :root { --brand-blue:#1B365D; --brand-orange:#f97316; --bg-color: #f8fafc; }
     * { box-sizing:border-box; }
     html, body { height:100%; }
     body {
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:#0b1e2b;
-      background:#ffffff;
+      background-color: var(--bg-color);
+      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+      background-size: 20px 20px;
       display:flex;
       align-items:center;
       justify-content:center;
     }
     .wrap {
       width:100%;
-      max-width: 720px;
-      padding: 24px;
+      max-width: 600px;
+      padding: 40px 24px;
       text-align:center;
-      animation: fadeIn .5s ease;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.05);
+      animation: fadeIn .6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .logo {
-      width:140px; height:auto; margin:0 auto 20px; display:block;
+      width:100px; height:auto; margin:0 auto 24px; display:block;
     }
-    h1 { font-size: clamp(28px, 4vw, 40px); margin: 6px 0 8px; line-height:1.15; color: var(--brand-blue); }
-    p.lead { font-size: clamp(16px, 2.5vw, 18px); margin: 0 0 24px; color:#425466; }
+    /* Broken Icon Concept with CSS */
+    .icon-404 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: #cbd5e1;
+      display: inline-block;
+      transform: rotate(-10deg);
+    }
+    h1 { 
+      font-size: clamp(24px, 5vw, 32px); 
+      margin: 0 0 12px; 
+      line-height:1.2; 
+      color: var(--brand-blue); 
+    }
+    p.lead { 
+      font-size: clamp(16px, 2.5vw, 18px); 
+      margin: 0 auto 32px; 
+      color:#64748b; 
+      max-width: 400px;
+      line-height: 1.5;
+    }
     a.btn {
-      display:inline-block; text-decoration:none; font-weight:600;
-      padding: 12px 24px; border-radius:12px; background:var(--brand-orange); color:#fff;
-      transition: transform .08s ease, box-shadow .2s ease;
-      box-shadow: 0 8px 20px rgba(249,115,22,.25);
+      display:inline-flex; align-items: center; gap: 8px;
+      text-decoration:none; font-weight:600;
+      padding: 14px 28px; border-radius: 50px; 
+      background:var(--brand-orange); color:#fff;
+      transition: all .2s ease;
+      box-shadow: 0 4px 12px rgba(249,115,22,.2);
     }
-    a.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(249,115,22,.35); }
-    .code { display:inline-block; font-weight:800; letter-spacing:1px; color:var(--brand-blue); }
-    @keyframes fadeIn { from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none} }
-    .links { margin-top:24px; font-size:15px; color:#607085; }
-    .links a { color:var(--brand-blue); text-decoration:none; margin:0 .6rem; font-weight: 600; }
-    .links a:hover { text-decoration:underline; }
+    a.btn:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 8px 20px rgba(249,115,22,.3); 
+      background: #ea580c;
+    }
+    .links { 
+      margin-top:32px; 
+      padding-top: 24px;
+      border-top: 1px solid #f1f5f9;
+      font-size:14px; 
+      color:#94a3b8; 
+    }
+    .links a { 
+      color:var(--brand-blue); 
+      text-decoration:none; 
+      margin:0 .6rem; 
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .links a:hover { color: var(--brand-orange); }
+    
+    @keyframes fadeIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none} }
   </style>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
@@ -61,18 +104,21 @@
   </script>
 </head>
 <body>
-  <main class="wrap" role="main" aria-labelledby="notfound-title">
+  <main class="wrap" role="main">
     <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='/logo.png';">
     
-    <h1 id="notfound-title"><span class="code">404</span> – Page Not Found</h1>
-    <p class="lead">Sorry, the page you’re looking for doesn’t exist or may have been moved.</p>
+    <div class="icon-404">🔌</div>
     
-    <p><a class="btn" href="/">Back to Homepage</a></p>
+    <h1>Oops! Connection Lost</h1>
+    <p class="lead">Looks like this vent leads nowhere. The page you're looking for might have been moved or doesn't exist.</p>
+    
+    <p><a class="btn" href="/">
+      <span>Back to Homepage</span>
+    </a></p>
     
     <div class="links" aria-label="Quick links">
       <a href="/services/">Services</a> •
       <a href="/areas/">Service Areas</a> •
-      <a href="/gallery/">Gallery</a> •
       <a href="/contact/">Contact Us</a>
     </div>
   </main>
