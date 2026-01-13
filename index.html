@@ -144,24 +144,25 @@
       </div>
 
       <div class="ba-carousel reveal">
-        <div class="ba-arrow prev" onclick="event.stopPropagation(); document.querySelector('.ba-wrap').style.setProperty('--split','15%')">❮</div>
-        <div class="ba-arrow next" onclick="event.stopPropagation(); document.querySelector('.ba-wrap').style.setProperty('--split','85%')">❯</div>
+        <div class="ba-arrow prev">❮</div>
+        <div class="ba-arrow next">❯</div>
 
         <div class="ba-wrap">
+          <span class="ba-label after">After</span>
+          <span class="ba-label before">Before</span>
+
           <div class="ba-after">
-            <img src="/assets/img/slider-after.jpg" 
+            <img src="/assets/img/before-after/ba01-after.jpg" 
                  alt="Clean Dryer Vent" 
                  class="ba-img" 
                  onerror="this.src='https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80'">
-            <span class="ba-label after">After</span>
           </div>
 
-          <img src="/assets/img/slider-before.jpg" 
+          <img src="/assets/img/before-after/ba01-before.jpg" 
                alt="Dirty Dryer Vent" 
                class="ba-img" 
                onerror="this.src='https://images.unsplash.com/photo-1621905251189-fc015acafd31?auto=format&fit=crop&w=800&q=80'">
-          <span class="ba-label before">Before</span>
-
+          
           <div class="ba-handle"></div>
         </div>
       </div>
@@ -173,6 +174,44 @@
   </section>
 
   <section class="section">
+    <div class="container">
+      <div class="center reveal">
+        <h2>Frequently Asked Questions</h2>
+        <p class="muted" style="margin-bottom:30px;">Common questions about dryer vent maintenance.</p>
+      </div>
+      <div class="faq-grid reveal">
+        <div class="faq-item">
+          <details>
+            <summary>Why is dryer vent cleaning important?</summary>
+            <div class="faq-body">
+              Cleaning your dryer vent prevents lint buildup, which is the #1 cause of dryer fires. It also helps your clothes dry faster and lowers your energy bills.
+            </div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>How often should I clean my dryer vent?</summary>
+            <div class="faq-body">
+              Experts recommend cleaning your dryer vent at least once a year. If you have a large family or use the dryer frequently, you may need it every 6 months.
+            </div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>How do I know if my vent is clogged?</summary>
+            <div class="faq-body">
+              Signs include clothes taking longer to dry, the dryer getting very hot, or a burning smell. If you notice any of these, call us immediately.
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="center mt-20 reveal">
+        <a href="/faq/" class="btn btn-outline" style="color:var(--blue); border-color:var(--border);">View All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
     <div class="container">
       <div class="center reveal">
         <h2>Customer Reviews</h2>
