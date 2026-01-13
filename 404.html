@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Page Not Found | Dryer Vent Services</title>
-  
+
   <meta name="robots" content="noindex, follow">
 
   <link rel="stylesheet" href="/styles.css" />
@@ -13,12 +13,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
-  
+
   <style>
     :root { --brand-blue:#1B365D; --brand-orange:#f97316; --bg-color: #f8fafc; }
     * { box-sizing:border-box; }
     html, body { height:100%; }
-    
+
     body {
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -26,7 +26,7 @@
       background-color: var(--bg-color);
       background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
       background-size: 20px 20px;
-      
+
       /* Flexbox to keep footer at bottom */
       display: flex;
       flex-direction: column;
@@ -38,7 +38,7 @@
       flex-shrink: 0;
       background-color: #ffffff;
     }
-    
+
     .site-footer {
       flex-shrink: 0;
       /* No background color here, so it uses the dark blue from styles.css */
@@ -125,7 +125,7 @@
       transition: color 0.2s;
     }
     .links a:hover { color: var(--brand-orange); }
-    
+
     @keyframes fadeIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none} }
   </style>
 
@@ -167,14 +167,14 @@
   <div class="main-content">
     <main class="wrap" role="main">
       <div class="sad-dryer" role="img" aria-label="Sad dryer icon">🧺</div>
-      
+
       <h1>Oops! Vent blocked.</h1>
       <p class="lead">Looks like this page got stuck in the lint trap. Let’s get you back to clean airflow.</p>
-      
+
       <p><a class="btn-404" href="/">
         <span>Back to Homepage</span>
       </a></p>
-      
+
       <div class="links" aria-label="Quick links">
         <a href="/services/">Services</a> •
         <a href="/areas/">Service Areas</a> •
@@ -200,8 +200,12 @@
         <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
-    <div class="copyright">© 2026 Dryer Vent Services. All rights reserved.</div>
+    <div class="copyright">© <span id="copyright-year">2026</span> Dryer Vent Services. All rights reserved.</div>
   </footer>
+
+  <script>
+    document.getElementById("copyright-year").textContent = new Date().getFullYear();
+  </script>
 
   <script src="/script.js" defer></script>
 </body>
