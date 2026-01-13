@@ -1,17 +1,99 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* -----------------------------------------------
-     1. GLOBAL: Navigation & Burger Menu
-  ----------------------------------------------- */
+  /* --- 1. SLIDER DATA & LOGIC (SWAP + DRAG) --- */
+  
+  // רשימת התמונות שלך (מתוך ה-JSON ששלחת)
+  const slides = [
+    { before: 'ba01-before.jpg', after: 'ba01-after.jpg' },
+    { before: 'ba02-before.jpg', after: 'ba02-after.jpg' },
+    { before: 'ba03-before.jpg', after: 'ba03-after.jpg' },
+    { before: 'ba04-before.jpg', after: 'ba04-after.jpg' },
+    { before: 'ba05-before.jpg', after: 'ba05-after.jpg' }
+  ];
+  const imgPath = '/assets/img/before-after/'; // הנתיב לתיקייה
+  let currentSlideIndex = 0;
+
+  const sliderWrap = document.querySelector('.ba-wrap');
+  const imgBefore = document.getElementById('img-before');
+  const imgAfter = document.getElementById('img-after');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
+
+  // פונקציה לעדכון התמונות
+  function updateSlide(index) {
+    if(!imgBefore || !imgAfter) return;
+    const slide = slides[index];
+    imgBefore.src = imgPath + slide.before;
+    imgAfter.src = imgPath + slide.after;
+    
+    // אופציונלי: איפוס הסליידר לאמצע בכל החלפה
+    // sliderWrap.style.setProperty('--split', '50%'); 
+  }
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // למנוע התנגשויות
+      currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+      updateSlide(currentSlideIndex);
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      updateSlide(currentSlideIndex);
+    });
+  }
+
+  // לוגיקת גרירה - רק על הידית!
+  if (sliderWrap) {
+    const handle = sliderWrap.querySelector('.ba-handle');
+    let isDragging = false;
+
+    const updatePosition = (clientX) => {
+      const rect = sliderWrap.getBoundingClientRect();
+      let x = clientX - rect.left;
+      if (x < 0) x = 0;
+      if (x > rect.width) x = rect.width;
+      const percent = (x / rect.width) * 100;
+      sliderWrap.style.setProperty('--split', `${percent}%`);
+    };
+
+    const startDrag = (e) => {
+      isDragging = true;
+      e.preventDefault(); 
+    };
+
+    const stopDrag = () => {
+      isDragging = false;
+    };
+
+    const doDrag = (clientX) => {
+      if (isDragging) updatePosition(clientX);
+    };
+
+    // מתחיל רק כשלוחצים על הידית
+    if(handle) {
+      handle.addEventListener('mousedown', startDrag);
+      handle.addEventListener('touchstart', startDrag, { passive: false });
+    }
+
+    // מפסיק בכל מקום
+    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('touchend', stopDrag);
+
+    // זז בכל מקום (כל עוד התחלנו בגרירה)
+    window.addEventListener('mousemove', (e) => doDrag(e.clientX));
+    window.addEventListener('touchmove', (e) => doDrag(e.touches[0].clientX), { passive: false });
+  }
+
+  /* --- 2. GLOBAL NAV --- */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('site-nav');
-
   if (burger && nav) {
     burger.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-
     document.addEventListener('click', (e) => {
       if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('open')) {
         nav.classList.remove('open');
@@ -20,273 +102,65 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Active Navigation
-  const page = document.body.getAttribute('data-page') || '';
-  if (page) {
-    document.querySelectorAll(`[data-nav="${page}"]`).forEach(el => el.classList.add('active'));
-  }
-
-  /* -----------------------------------------------
-     2. GLOBAL: Auto-Update Copyright Year
-  ----------------------------------------------- */
-  const yearSpan = document.getElementById('copyright-year');
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
-
-  /* -----------------------------------------------
-     3. ANIMATIONS: Reveal on Scroll
-  ----------------------------------------------- */
-  const groups = [];
-  document.querySelectorAll('.section, .page-hero, .cta-bar').forEach(sec => {
-    const targets = sec.querySelectorAll('h1, h2, .card, .btn, p, .cards-3 > *');
-    targets.forEach(el => el.classList.add('reveal'));
-    groups.push([...targets]);
-  });
-
-  document.querySelectorAll('.hero .hero-inner > *, .fade-in').forEach(el => el.classList.add('reveal'));
-
+  /* --- 3. REVEAL ANIMATIONS --- */
+  const revealElements = document.querySelectorAll('.section, .page-hero, .hero-title, .hero-sub, .hero-actions, .card, .btn');
   const revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        const el = e.target;
-        let delay = 0;
-        for (const g of groups) {
-          const idx = g.indexOf(el);
-          if (idx >= 0) { 
-            delay = Math.min(idx * 80, 400); 
-            break; 
-          }
-        }
-        if (delay > 0) el.style.transitionDelay = `${delay}ms`;
-        el.classList.add('appear');
-        obs.unobserve(el);
+        e.target.classList.add('reveal', 'appear');
+        obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => el.classList.add('reveal'));
+  revealElements.forEach(el => revealObserver.observe(el));
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-  /* -----------------------------------------------
-     4. GOOGLE REVIEWS (Live)
-  ----------------------------------------------- */
+  /* --- 4. GOOGLE REVIEWS --- */
   const ENDPOINT = 'https://dryer-vent-services.office-d16.workers.dev/';
   const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
-  const GOOGLE_REVIEW_URL = 'https://g.page/r/CSb74Pe3W9RVEBE/review';
-
-  let allReviews = [];
-  let cursor = 0;
-
+  
   async function fetchReviews() {
-    if (allReviews.length) return;
     try {
       const res = await fetch(ENDPOINT);
-      if (!res.ok) throw new Error('Bad response from worker');
+      if (!res.ok) return;
       const data = await res.json();
-      allReviews = Array.isArray(data.reviews) ? data.reviews : [];
-    } catch (e) {
-      console.error('Failed to load reviews', e);
-      allReviews = [];
-    }
+      const reviews = Array.isArray(data.reviews) ? data.reviews : [];
+      
+      const container = document.getElementById('home-reviews');
+      if(container && reviews.length) {
+        container.innerHTML = ''; // Clear loading
+        reviews.slice(0, 3).forEach(r => {
+           container.appendChild(createReviewCard(r));
+        });
+      }
+    } catch (e) { console.error(e); }
   }
-
+  
   function createReviewCard(review) {
     const card = document.createElement('article');
     card.className = 'review-card-pro';
-    card.style.animation = "fadeIn 0.5s ease-in-out";
-
-    card.addEventListener('click', () => {
-      if (window.getSelection().toString().length > 0) return;
-      window.open(PLACE_URL, '_blank', 'noopener');
-    });
-
-    const header = document.createElement('div');
-    header.className = 'review-card-header';
-
+    card.addEventListener('click', () => window.open(PLACE_URL, '_blank'));
+    
+    // Avatar
     const avatar = document.createElement('div');
     avatar.className = 'review-avatar-circle';
-    const firstLetter = (review.author || '?').trim().charAt(0).toUpperCase();
-    avatar.textContent = firstLetter || 'G';
-
-    const meta = document.createElement('div');
-    meta.className = 'review-meta';
-
-    const name = document.createElement('div');
-    name.className = 'review-author-name';
-    name.textContent = review.author || 'Google user';
-
-    const row = document.createElement('div');
-    row.className = 'review-stars-row';
-
-    const stars = document.createElement('span');
-    stars.className = 'review-stars';
-    const rating = Number(review.rating) || 5;
-    for (let i = 1; i <= 5; i++) {
-      const star = document.createElement('span');
-      star.className = 'star ' + (i <= rating ? 'star--full' : 'star--empty');
-      star.textContent = '★';
-      stars.appendChild(star);
-    }
-    const ratingNumber = document.createElement('span');
-    ratingNumber.className = 'review-rating-number';
-    row.appendChild(stars);
-    row.appendChild(ratingNumber);
-
-    const time = document.createElement('div');
-    time.className = 'review-time';
-    time.textContent = review.relativeTime || '';
-
-    meta.appendChild(name);
-    meta.appendChild(row);
-    meta.appendChild(time);
+    avatar.textContent = (review.author || 'G').charAt(0).toUpperCase();
+    
+    // Content
+    const body = document.createElement('div');
+    body.innerHTML = `
+      <div class="review-author-name">${review.author}</div>
+      <div class="review-stars-row" style="color:#f7b500">★★★★★</div>
+      <p class="review-body" style="font-size:0.9rem; margin-top:6px;">${review.text || ''}</p>
+    `;
+    
+    const header = document.createElement('div');
+    header.className = 'review-card-header';
     header.appendChild(avatar);
-    header.appendChild(meta);
-
-    const body = document.createElement('p');
-    body.className = 'review-body';
-    body.textContent = review.text || '';
+    header.appendChild(body);
     card.appendChild(header);
-    card.appendChild(body);
-
     return card;
   }
-
-  function renderNext(container, count, { reset = false } = {}) {
-    if (!allReviews.length || !container) return;
-    if (reset) container.innerHTML = '';
-    for (let i = 0; i < count; i++) {
-      const review = allReviews[cursor % allReviews.length];
-      const card = createReviewCard(review);
-      container.appendChild(card);
-      cursor++;
-    }
-  }
-
-  (async () => {
-    await fetchReviews();
-
-    const homeContainer = document.getElementById('home-reviews');
-    const homeMoreBtn = document.getElementById('homeReviewsMoreLink');
-
-    if (homeContainer) {
-      cursor = 0;
-      renderNext(homeContainer, 3, { reset: true });
-      if (homeMoreBtn) {
-        homeMoreBtn.addEventListener('click', () => {
-           if (homeMoreBtn.tagName !== 'A') {
-             window.location.href = '/reviews/';
-           }
-        });
-      }
-    }
-
-    const reviewsContainer = document.getElementById('reviews-list');
-    const reviewsMoreBtn = document.getElementById('loadMoreReviews');
-
-    if (reviewsContainer) {
-      cursor = 0;
-      const initialCount = window.innerWidth < 768 ? 3 : 6;
-      renderNext(reviewsContainer, initialCount, { reset: true });
-      if (reviewsMoreBtn) {
-        reviewsMoreBtn.addEventListener('click', () => {
-          renderNext(reviewsContainer, initialCount, { reset: true });
-          reviewsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-      }
-    }
-
-    ['rateOnGoogleHome', 'rateOnGoogleReviews'].forEach((id) => {
-      const btn = document.getElementById(id);
-      if (btn) {
-        btn.addEventListener('click', () => {
-          window.open(GOOGLE_REVIEW_URL, '_blank', 'noopener');
-        });
-      }
-    });
-  })();
-
-  /* -----------------------------------------------
-     5. CLEANUP
-  ----------------------------------------------- */
-  if (page === 'contact') {
-    document.querySelectorAll('.section .container div').forEach(el => {
-      const t = (el.textContent || '').trim();
-      if (['💬', '🗨️', '💭'].includes(t) && el.children.length === 0) {
-        el.remove();
-      }
-    });
-  }
-
-  /* -----------------------------------------------
-     6. BEFORE / AFTER SLIDER LOGIC (STRICT DRAG)
-  ----------------------------------------------- */
-  const sliders = document.querySelectorAll('.ba-wrap');
   
-  sliders.forEach(slider => {
-    const handle = slider.querySelector('.ba-handle');
-    let isDragging = false;
-
-    // פונקציה לחישוב המיקום
-    const updatePosition = (clientX) => {
-      const rect = slider.getBoundingClientRect();
-      let x = clientX - rect.left;
-      if (x < 0) x = 0;
-      if (x > rect.width) x = rect.width;
-      const percent = (x / rect.width) * 100;
-      slider.style.setProperty('--split', `${percent}%`);
-    };
-
-    // מתחילים גרירה רק בלחיצה על הידית
-    const startDrag = (e) => {
-      isDragging = true;
-      e.preventDefault(); // מונע בחירת טקסט וכו'
-    };
-
-    // מסיימים גרירה בכל מקום שמשחררים
-    const stopDrag = () => {
-      isDragging = false;
-    };
-
-    // תזוזה מתרחשת רק אם הדגל מורם
-    const doDrag = (clientX) => {
-      if (isDragging) {
-        updatePosition(clientX);
-      }
-    };
-
-    // חיבור האירועים
-    // 1. לחיצה על הידית
-    handle.addEventListener('mousedown', startDrag);
-    handle.addEventListener('touchstart', startDrag, { passive: false });
-
-    // 2. שחרור בכל מקום בדף
-    window.addEventListener('mouseup', stopDrag);
-    window.addEventListener('touchend', stopDrag);
-
-    // 3. תזוזה בכל מקום בדף (כל עוד הגרירה פעילה)
-    window.addEventListener('mousemove', (e) => doDrag(e.clientX));
-    window.addEventListener('touchmove', (e) => doDrag(e.touches[0].clientX), { passive: false });
-    
-    // שליטה בחיצים (מזיזים בקפיצות)
-    const prevBtn = slider.parentElement.querySelector('.prev');
-    const nextBtn = slider.parentElement.querySelector('.next');
-    
-    if(prevBtn) prevBtn.addEventListener('click', () => {
-       slider.style.setProperty('--split', '15%');
-    });
-    if(nextBtn) nextBtn.addEventListener('click', () => {
-       slider.style.setProperty('--split', '85%');
-    });
-
-  });
-
+  fetchReviews();
 });
-
-const style = document.createElement('style');
-style.innerHTML = `
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-`;
-document.head.appendChild(style);
