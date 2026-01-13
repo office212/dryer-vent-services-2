@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* --- 1. REVEAL ANIMATION (Safe Mode) --- */
-  // מפעיל את האנימציה מיד כדי שהתוכן לא יישאר מוסתר אם ה-JS נתקע
+  /* --- 1. SAFE REVEAL ANIMATION --- */
+  // מוסיף את המחלקה שמסתירה אלמנטים רק אם ה-JS באמת עובד
   const revealElements = document.querySelectorAll('.section, .page-hero, .card, .btn, .faq-item');
-  
+  revealElements.forEach(el => el.classList.add('js-active'));
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -13,12 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.1 });
 
-  revealElements.forEach(el => {
-    el.classList.add('reveal');
-    observer.observe(el);
-  });
+  revealElements.forEach(el => observer.observe(el));
 
-  /* --- 2. BEFORE/AFTER SLIDER (The Fix) --- */
+  /* --- 2. BEFORE/AFTER SLIDER (FIXED OVERLAY LOGIC) --- */
   const slides = [
     { before: 'ba01-before.jpg', after: 'ba01-after.jpg' },
     { before: 'ba02-before.jpg', after: 'ba02-after.jpg' },
@@ -26,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     { before: 'ba04-before.jpg', after: 'ba04-after.jpg' },
     { before: 'ba05-before.jpg', after: 'ba05-after.jpg' }
   ];
-  // נתיב בסיס לתמונות
   const imgPath = '/assets/img/before-after/';
   
   let currentIndex = 0;
@@ -40,14 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateImages(idx) {
     if(!imgBefore || !imgAfter) return;
     const s = slides[idx];
-    // טעינת התמונות החדשות
     imgBefore.src = imgPath + s.before;
     imgAfter.src = imgPath + s.after;
   }
 
+  // אירועי לחיצה על החיצים (מחליפים תמונות)
   if(prevBtn && nextBtn) {
     prevBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // וודא שהלחיצה לא מפעילה גרירה
+      e.stopPropagation(); 
       currentIndex = (currentIndex - 1 + slides.length) % slides.length;
       updateImages(currentIndex);
     });
@@ -74,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
       sliderWrap.style.setProperty('--split', percent + '%');
     };
 
-    // מתחיל רק אם לוחצים על הידית
     const start = (e) => { dragging = true; e.preventDefault(); };
     const end = () => { dragging = false; };
     const move = (e) => { if(dragging) setPosition(e.clientX); };
@@ -85,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
       handle.addEventListener('touchstart', start, { passive: false });
     }
     
-    // מאזין לכל המסך כדי שהגרירה לא תיתקע אם יוצאים מהאלמנט
     window.addEventListener('mouseup', end);
     window.addEventListener('touchend', end);
     window.addEventListener('mousemove', move);
@@ -106,10 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* --- 4. REVIEWS --- */
+  /* --- 4. REVIEWS (With Backup) --- */
   const homeReviews = document.getElementById('home-reviews');
   if(homeReviews) {
-    // נתונים סטטיים לגיבוי מהיר אם ה-Fetch נכשל (כדי שלא יהיה ריק)
     const backupReviews = [
       { author: "Michael B.", text: "Excellent service! They came on time and fixed my clogged vent quickly.", rating: 5 },
       { author: "Sarah L.", text: "Highly recommend. Very professional and clean work.", rating: 5 },
@@ -123,19 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
         div.className = 'review-card-pro';
         div.innerHTML = `
           <div class="review-card-header">
-            <div class="review-avatar-circle">${r.author[0]}</div>
+            <div class="review-avatar-circle">${(r.author||'G').charAt(0)}</div>
             <div>
               <div class="review-author-name">${r.author}</div>
-              <div style="color:#f7b500">★★★★★</div>
+              <div style="color:#ffb400">★★★★★</div>
             </div>
           </div>
-          <p class="review-body">${r.text}</p>
+          <p class="review-body" style="margin-top:10px; font-size:0.95rem;">${r.text}</p>
         `;
         homeReviews.appendChild(div);
       });
     };
 
-    // נסה למשוך מגוגל, אם נכשל - הצג גיבוי
     fetch('https://dryer-vent-services.office-d16.workers.dev/')
       .then(res => res.json())
       .then(data => {
@@ -145,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(() => renderReviews(backupReviews));
   }
   
-  // Footer Year
   const yr = document.getElementById('copyright-year');
   if(yr) yr.textContent = new Date().getFullYear();
 
