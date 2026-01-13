@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* -----------------------------------------------
      4. GOOGLE REVIEWS (Live from Worker)
   ----------------------------------------------- */
-  // Configuration
   const ENDPOINT = 'https://dryer-vent-services.office-d16.workers.dev/';
   const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
   const GOOGLE_REVIEW_URL = 'https://g.page/r/CSb74Pe3W9RVEBE/review';
@@ -97,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     card.className = 'review-card-pro';
     card.style.animation = "fadeIn 0.5s ease-in-out";
 
-    // Click to open map (unless selecting text)
     card.addEventListener('click', () => {
       if (window.getSelection().toString().length > 0) return;
       window.open(PLACE_URL, '_blank', 'noopener');
@@ -105,10 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const header = document.createElement('div');
     header.className = 'review-card-header';
-    // Add top layout class if needed by CSS, or rely on existing structure
-    header.style.display = 'flex'; 
-    header.style.gap = '12px';
-    header.style.marginBottom = '10px';
 
     const avatar = document.createElement('div');
     avatar.className = 'review-avatar-circle';
@@ -175,11 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initialize Reviews
   (async () => {
     await fetchReviews();
 
-    // A. Logic for Home Page
     const homeContainer = document.getElementById('home-reviews');
     const homeMoreBtn = document.getElementById('homeReviewsMoreLink');
 
@@ -195,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // B. Logic for Reviews Page
     const reviewsContainer = document.getElementById('reviews-list');
     const reviewsMoreBtn = document.getElementById('loadMoreReviews');
 
@@ -212,7 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // C. Rating Buttons
     ['rateOnGoogleHome', 'rateOnGoogleReviews'].forEach((id) => {
       const btn = document.getElementById(id);
       if (btn) {
@@ -224,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   /* -----------------------------------------------
-     5. CLEANUP: Remove Empty Emoji Artifacts
+     5. CLEANUP
   ----------------------------------------------- */
   if (page === 'contact') {
     document.querySelectorAll('.section .container div').forEach(el => {
@@ -236,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -----------------------------------------------
-     6. BEFORE / AFTER SLIDER LOGIC
+     6. BEFORE / AFTER SLIDER LOGIC (Fix: Conflict with arrows)
   ----------------------------------------------- */
   const sliders = document.querySelectorAll('.ba-wrap');
   
@@ -251,17 +241,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     slider.addEventListener('mousemove', (e) => {
+      // אם העכבר על כפתור חץ, אל תזיז את הסליידר
+      if (e.target.closest('.ba-arrow')) return;
       updatePosition(e.clientX);
     });
 
     slider.addEventListener('touchmove', (e) => {
+      // אם האצבע על כפתור חץ, אל תזיז את הסליידר
+      if (e.target.closest('.ba-arrow')) return;
       updatePosition(e.touches[0].clientX);
     }, { passive: true });
   });
 
 });
 
-/* Add Animations for Reviews dynamically */
 const style = document.createElement('style');
 style.innerHTML = `
   @keyframes fadeIn {
