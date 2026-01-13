@@ -45,24 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
     groups.push([...targets]);
   });
 
-  // Also animate items explicitly marked with .fade-in or .hero-inner
   document.querySelectorAll('.hero .hero-inner > *, .fade-in').forEach(el => el.classList.add('reveal'));
 
   const revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         const el = e.target;
-        
-        // Stagger effect: calculate delay based on index in group
         let delay = 0;
         for (const g of groups) {
           const idx = g.indexOf(el);
           if (idx >= 0) { 
-            delay = Math.min(idx * 80, 400); // Cap delay at 400ms
+            delay = Math.min(idx * 80, 400); 
             break; 
           }
         }
-        
         if (delay > 0) el.style.transitionDelay = `${delay}ms`;
         el.classList.add('appear');
         obs.unobserve(el);
@@ -73,28 +69,159 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   /* -----------------------------------------------
-     4. OPTIONAL: Reviews Cycle
+     4. GOOGLE REVIEWS (Live from Worker)
   ----------------------------------------------- */
-  const wrap = document.getElementById('reviewsCycle');
-  const btn = document.getElementById('cycleReviews');
-  if (wrap && btn) {
-    const items = Array.from(wrap.querySelectorAll('.review'));
-    const step = 3;
-    let idx = 0;
+  // Configuration
+  const ENDPOINT = 'https://dryer-vent-services.office-d16.workers.dev/';
+  const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
+  const GOOGLE_REVIEW_URL = 'https://g.page/r/CSb74Pe3W9RVEBE/review';
 
-    function render() {
-      items.forEach(el => el.style.display = 'none');
-      for (let i = 0; i < step; i++) {
-        const k = (idx + i) % items.length;
-        if (items[k]) items[k].style.display = 'block';
+  let allReviews = [];
+  let cursor = 0;
+
+  async function fetchReviews() {
+    if (allReviews.length) return;
+    try {
+      const res = await fetch(ENDPOINT);
+      if (!res.ok) throw new Error('Bad response from worker');
+      const data = await res.json();
+      allReviews = Array.isArray(data.reviews) ? data.reviews : [];
+    } catch (e) {
+      console.error('Failed to load reviews', e);
+      allReviews = [];
+    }
+  }
+
+  function createReviewCard(review) {
+    const card = document.createElement('article');
+    card.className = 'review-card-pro';
+    card.style.animation = "fadeIn 0.5s ease-in-out";
+
+    // Click to open map (unless selecting text)
+    card.addEventListener('click', () => {
+      if (window.getSelection().toString().length > 0) return;
+      window.open(PLACE_URL, '_blank', 'noopener');
+    });
+
+    const header = document.createElement('div');
+    header.className = 'review-card-header';
+    // Add top layout class if needed by CSS, or rely on existing structure
+    header.style.display = 'flex'; 
+    header.style.gap = '12px';
+    header.style.marginBottom = '10px';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'review-avatar-circle';
+    const firstLetter = (review.author || '?').trim().charAt(0).toUpperCase();
+    avatar.textContent = firstLetter || 'G';
+
+    const meta = document.createElement('div');
+    meta.className = 'review-meta';
+
+    const name = document.createElement('div');
+    name.className = 'review-author-name';
+    name.textContent = review.author || 'Google user';
+
+    const row = document.createElement('div');
+    row.className = 'review-stars-row';
+
+    const stars = document.createElement('span');
+    stars.className = 'review-stars';
+    const rating = Number(review.rating) || 5;
+    
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('span');
+      star.className = 'star ' + (i <= rating ? 'star--full' : 'star--empty');
+      star.textContent = '★';
+      stars.appendChild(star);
+    }
+
+    const ratingNumber = document.createElement('span');
+    ratingNumber.className = 'review-rating-number';
+    
+    row.appendChild(stars);
+    row.appendChild(ratingNumber);
+
+    const time = document.createElement('div');
+    time.className = 'review-time';
+    time.textContent = review.relativeTime || '';
+
+    meta.appendChild(name);
+    meta.appendChild(row);
+    meta.appendChild(time);
+
+    header.appendChild(avatar);
+    header.appendChild(meta);
+
+    const body = document.createElement('p');
+    body.className = 'review-body';
+    body.textContent = review.text || '';
+
+    card.appendChild(header);
+    card.appendChild(body);
+
+    return card;
+  }
+
+  function renderNext(container, count, { reset = false } = {}) {
+    if (!allReviews.length || !container) return;
+    if (reset) container.innerHTML = '';
+
+    for (let i = 0; i < count; i++) {
+      const review = allReviews[cursor % allReviews.length];
+      const card = createReviewCard(review);
+      container.appendChild(card);
+      cursor++;
+    }
+  }
+
+  // Initialize Reviews
+  (async () => {
+    await fetchReviews();
+
+    // A. Logic for Home Page
+    const homeContainer = document.getElementById('home-reviews');
+    const homeMoreBtn = document.getElementById('homeReviewsMoreLink');
+
+    if (homeContainer) {
+      cursor = 0;
+      renderNext(homeContainer, 3, { reset: true });
+      if (homeMoreBtn) {
+        homeMoreBtn.addEventListener('click', () => {
+           if (homeMoreBtn.tagName !== 'A') {
+             window.location.href = '/reviews/';
+           }
+        });
       }
     }
-    render();
-    btn.addEventListener('click', () => {
-      idx = (idx + step) % items.length;
-      render();
+
+    // B. Logic for Reviews Page
+    const reviewsContainer = document.getElementById('reviews-list');
+    const reviewsMoreBtn = document.getElementById('loadMoreReviews');
+
+    if (reviewsContainer) {
+      cursor = 0;
+      const initialCount = window.innerWidth < 768 ? 3 : 6;
+      renderNext(reviewsContainer, initialCount, { reset: true });
+
+      if (reviewsMoreBtn) {
+        reviewsMoreBtn.addEventListener('click', () => {
+          renderNext(reviewsContainer, initialCount, { reset: true });
+          reviewsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      }
+    }
+
+    // C. Rating Buttons
+    ['rateOnGoogleHome', 'rateOnGoogleReviews'].forEach((id) => {
+      const btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener('click', () => {
+          window.open(GOOGLE_REVIEW_URL, '_blank', 'noopener');
+        });
+      }
     });
-  }
+  })();
 
   /* -----------------------------------------------
      5. CLEANUP: Remove Empty Emoji Artifacts
@@ -102,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'contact') {
     document.querySelectorAll('.section .container div').forEach(el => {
       const t = (el.textContent || '').trim();
-      // Remove divs that contain ONLY specific emojis and nothing else
       if (['💬', '🗨️', '💭'].includes(t) && el.children.length === 0) {
         el.remove();
       }
@@ -110,33 +236,37 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -----------------------------------------------
-     6. BEFORE / AFTER SLIDER LOGIC (The Fix)
+     6. BEFORE / AFTER SLIDER LOGIC
   ----------------------------------------------- */
   const sliders = document.querySelectorAll('.ba-wrap');
   
   sliders.forEach(slider => {
-    // Helper function to update position
     const updatePosition = (clientX) => {
       const rect = slider.getBoundingClientRect();
       let x = clientX - rect.left;
-      
-      // Keep within bounds (0 to width)
       if (x < 0) x = 0;
       if (x > rect.width) x = rect.width;
-      
       const percent = (x / rect.width) * 100;
       slider.style.setProperty('--split', `${percent}%`);
     };
 
-    // Desktop: Move on hover
     slider.addEventListener('mousemove', (e) => {
       updatePosition(e.clientX);
     });
 
-    // Mobile: Move on touch drag
     slider.addEventListener('touchmove', (e) => {
       updatePosition(e.touches[0].clientX);
     }, { passive: true });
   });
 
 });
+
+/* Add Animations for Reviews dynamically */
+const style = document.createElement('style');
+style.innerHTML = `
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+`;
+document.head.appendChild(style);
