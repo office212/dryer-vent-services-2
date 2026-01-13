@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!nav.contains(e.target) && !burger.contains(e.target) && nav.classList.contains('open')) {
         nav.classList.remove('open');
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Active Navigation Highlight
+  // Active Navigation
   const page = document.body.getAttribute('data-page') || '';
   if (page) {
     document.querySelectorAll(`[data-nav="${page}"]`).forEach(el => el.classList.add('active'));
@@ -69,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   /* -----------------------------------------------
-     4. GOOGLE REVIEWS (Live from Worker)
+     4. GOOGLE REVIEWS (Live)
   ----------------------------------------------- */
   const ENDPOINT = 'https://dryer-vent-services.office-d16.workers.dev/';
   const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
@@ -122,17 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const stars = document.createElement('span');
     stars.className = 'review-stars';
     const rating = Number(review.rating) || 5;
-    
     for (let i = 1; i <= 5; i++) {
       const star = document.createElement('span');
       star.className = 'star ' + (i <= rating ? 'star--full' : 'star--empty');
       star.textContent = '★';
       stars.appendChild(star);
     }
-
     const ratingNumber = document.createElement('span');
     ratingNumber.className = 'review-rating-number';
-    
     row.appendChild(stars);
     row.appendChild(ratingNumber);
 
@@ -143,14 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
     meta.appendChild(name);
     meta.appendChild(row);
     meta.appendChild(time);
-
     header.appendChild(avatar);
     header.appendChild(meta);
 
     const body = document.createElement('p');
     body.className = 'review-body';
     body.textContent = review.text || '';
-
     card.appendChild(header);
     card.appendChild(body);
 
@@ -160,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderNext(container, count, { reset = false } = {}) {
     if (!allReviews.length || !container) return;
     if (reset) container.innerHTML = '';
-
     for (let i = 0; i < count; i++) {
       const review = allReviews[cursor % allReviews.length];
       const card = createReviewCard(review);
@@ -194,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
       cursor = 0;
       const initialCount = window.innerWidth < 768 ? 3 : 6;
       renderNext(reviewsContainer, initialCount, { reset: true });
-
       if (reviewsMoreBtn) {
         reviewsMoreBtn.addEventListener('click', () => {
           renderNext(reviewsContainer, initialCount, { reset: true });
@@ -226,11 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -----------------------------------------------
-     6. BEFORE / AFTER SLIDER LOGIC (Fix: Conflict with arrows)
+     6. BEFORE / AFTER SLIDER LOGIC (STRICT DRAG)
   ----------------------------------------------- */
   const sliders = document.querySelectorAll('.ba-wrap');
   
   sliders.forEach(slider => {
+    const handle = slider.querySelector('.ba-handle');
+    let isDragging = false;
+
+    // פונקציה לחישוב המיקום
     const updatePosition = (clientX) => {
       const rect = slider.getBoundingClientRect();
       let x = clientX - rect.left;
@@ -240,17 +236,48 @@ document.addEventListener('DOMContentLoaded', () => {
       slider.style.setProperty('--split', `${percent}%`);
     };
 
-    slider.addEventListener('mousemove', (e) => {
-      // אם העכבר על כפתור חץ, אל תזיז את הסליידר
-      if (e.target.closest('.ba-arrow')) return;
-      updatePosition(e.clientX);
+    // מתחילים גרירה רק בלחיצה על הידית
+    const startDrag = (e) => {
+      isDragging = true;
+      e.preventDefault(); // מונע בחירת טקסט וכו'
+    };
+
+    // מסיימים גרירה בכל מקום שמשחררים
+    const stopDrag = () => {
+      isDragging = false;
+    };
+
+    // תזוזה מתרחשת רק אם הדגל מורם
+    const doDrag = (clientX) => {
+      if (isDragging) {
+        updatePosition(clientX);
+      }
+    };
+
+    // חיבור האירועים
+    // 1. לחיצה על הידית
+    handle.addEventListener('mousedown', startDrag);
+    handle.addEventListener('touchstart', startDrag, { passive: false });
+
+    // 2. שחרור בכל מקום בדף
+    window.addEventListener('mouseup', stopDrag);
+    window.addEventListener('touchend', stopDrag);
+
+    // 3. תזוזה בכל מקום בדף (כל עוד הגרירה פעילה)
+    window.addEventListener('mousemove', (e) => doDrag(e.clientX));
+    window.addEventListener('touchmove', (e) => doDrag(e.touches[0].clientX), { passive: false });
+    
+    // שליטה בחיצים (מזיזים בקפיצות)
+    const prevBtn = slider.parentElement.querySelector('.prev');
+    const nextBtn = slider.parentElement.querySelector('.next');
+    
+    if(prevBtn) prevBtn.addEventListener('click', () => {
+       slider.style.setProperty('--split', '15%');
+    });
+    if(nextBtn) nextBtn.addEventListener('click', () => {
+       slider.style.setProperty('--split', '85%');
     });
 
-    slider.addEventListener('touchmove', (e) => {
-      // אם האצבע על כפתור חץ, אל תזיז את הסליידר
-      if (e.target.closest('.ba-arrow')) return;
-      updatePosition(e.touches[0].clientX);
-    }, { passive: true });
   });
 
 });
