@@ -19,6 +19,49 @@
     
     /* Layout fix for buttons */
     .contact-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+
+    /* === CHECKBOX STYLING FIX === */
+    .services-fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 16px;
+      border-radius: 12px;
+    }
+    
+    .services-fieldset legend {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1B365D;
+    }
+
+    .services-fieldset .chk {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    /* Make the whole row clickable and look active on hover */
+    .services-fieldset .chk:hover {
+      border-color: #F47C20;
+      background: #fff7ed;
+    }
+
+    .services-fieldset input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      accent-color: #F47C20; /* Makes the checkmark orange */
+      cursor: pointer;
+    }
   </style>
 
   <meta property="og:title" content="Schedule Dryer Vent Cleaning | Staten Island, NY & NJ"/>
@@ -253,4 +296,3 @@
   </style>
   </body>
 </html>
- 
