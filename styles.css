@@ -71,12 +71,11 @@ img { max-width: 100%; display: block; }
 .burger span { width: 22px; height: 2px; background: #0f1b2d; display: block; transition: 0.3s; }
 
 /* =========================================
-   3. HERO SECTION (TALLER VERSION)
+   3. HERO SECTION
    ========================================= */
 .hero-modern {
   position: relative;
-  /* הוגבה ל-60vh כדי שיראה מרשים יותר */
-  min-height: 60vh; 
+  min-height: 55vh; 
   padding: 0;
   color: #fff;
   background:
@@ -100,15 +99,13 @@ img { max-width: 100%; display: block; }
   pointer-events: none;
   z-index: 0;
 }
-.hero-inner { position: relative; width: 100%; padding: 40px 0; }
-.hero-title { font-size: clamp(36px, 5.5vw, 52px); line-height: 1.1; margin: 0 0 18px; letter-spacing: -0.015em; color: #fff; }
+.hero-inner { position: relative; width: 100%; padding: 60px 0; }
+.hero-title { font-size: clamp(34px, 5vw, 50px); line-height: 1.1; margin: 0 0 18px; letter-spacing: -0.015em; color: #fff; }
 .hero-sub { font-size: clamp(17px, 2.4vw, 20px); color: #d7e3f7; margin: 0 0 28px; max-width: 60ch; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 @media (max-width: 768px) {
-  /* הגבהה גם בנייד */
-  .hero-modern { min-height: auto; padding: 100px 0; }
-  .hero-title { font-size: 36px; }
+  .hero-modern { min-height: auto; padding: 80px 0; }
 }
 
 /* =========================================
@@ -216,7 +213,7 @@ body.contact .btn-submit:hover { transform: translateY(-2px); background: #e66e0
 body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !important; }
 
 /* =========================================
-   7. BEFORE / AFTER SLIDER (GLASS + ARROW FIX)
+   7. BEFORE / AFTER SLIDER (STRICT DRAG)
    ========================================= */
 .ba-section { padding: 40px 0; position: relative; }
 
@@ -225,6 +222,8 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
   max-width: 800px;
   margin: 0 auto;
   user-select: none;
+  /* ביטול גרירה על כל הקונטיינר כדי שהג'אווה סקריפט ישלוט */
+  touch-action: none; 
 }
 
 .ba-wrap {
@@ -235,7 +234,8 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
   overflow: hidden;
   background: #eef2f6; 
   box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
-  cursor: ew-resize;
+  /* הסרת הסמן על הכל, רק הידית תהיה פעילה */
+  cursor: default;
   --split: 50%;
 }
 
@@ -256,8 +256,19 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
 .ba-handle {
   position: absolute; top: 0; bottom: 0; left: var(--split);
   width: 2px; background: rgba(255,255,255,0.8);
-  pointer-events: none; z-index: 10;
+  /* מאפשר לחיצה על הידית */
+  pointer-events: auto; 
+  z-index: 10;
   transform: translateX(-50%);
+  cursor: ew-resize; /* סמן גרירה רק על הידית */
+}
+
+/* אזור לחיצה מורחב לידית כדי שיהיה קל לתפוס בנייד */
+.ba-handle::before {
+  content: "";
+  position: absolute; top: 0; bottom: 0;
+  left: -20px; right: -20px;
+  z-index: 1;
 }
 
 /* הידית השקופה */
@@ -272,6 +283,7 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3Cpolyline points='9 18 3 12 9 6'/%3E%3C/svg%3E");
   background-size: 24px; background-position: center; background-repeat: no-repeat;
+  z-index: 2;
 }
 
 /* החיצים השקופים */
@@ -285,9 +297,10 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
   color: #fff;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; 
-  z-index: 30; /* Z-Index גבוה יותר מהסליידר כדי שאפשר יהיה ללחוץ עליהם */
+  z-index: 30; 
   transition: all 0.2s ease;
   font-size: 18px;
+  pointer-events: auto; /* וודא שהם לחיצים */
 }
 .ba-arrow:hover {
   background: rgba(15, 40, 70, 0.3);
@@ -296,20 +309,48 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
 .ba-arrow.prev { left: 16px; }
 .ba-arrow.next { right: 16px; }
 
-/* Labels */
+/* Labels - ממוקמים בחוץ כדי שלא יחתכו */
 .ba-label {
   position: absolute; top: 20px;
   background: rgba(0,0,0,0.6);
   color: #fff; padding: 5px 12px;
   border-radius: 20px; font-size: 12px; font-weight: 700;
-  pointer-events: none; z-index: 5;
+  pointer-events: none; z-index: 25; /* מעל הכל */
   text-transform: uppercase;
 }
 .ba-label.before { left: 20px; }
 .ba-label.after { right: 20px; }
 
 /* =========================================
-   8. REVIEWS & GALLERY
+   8. FAQ SECTION (ACCORDION)
+   ========================================= */
+.faq-grid { max-width: 800px; margin: 0 auto; }
+.faq-item {
+  border: 1px solid #eef1f5; border-radius: 12px;
+  margin-bottom: 12px; background: #fff;
+  overflow: hidden;
+}
+.faq-item details { width: 100%; }
+.faq-item summary {
+  padding: 16px 20px;
+  font-weight: 600; cursor: pointer;
+  list-style: none; position: relative;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; font-size: 20px; color: var(--blue); font-weight: 400;
+}
+.faq-item details[open] summary::after { content: "-"; }
+.faq-item details[open] summary { background: #f8fafc; color: var(--blue); }
+.faq-body {
+  padding: 16px 20px 24px;
+  line-height: 1.6; color: var(--ink);
+  border-top: 1px solid #f0f4f8;
+}
+
+/* =========================================
+   9. REVIEWS & GALLERY
    ========================================= */
 .reviews-grid-pro { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 18px; }
 .review-card-pro { background: #fff; border-radius: 18px; padding: 18px; box-shadow: 0 8px 22px rgba(15, 119, 204, 0.08); border: 1px solid rgba(15,119,204,0.06); }
@@ -327,7 +368,7 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
 .gallery-grid img { width: 100%; height: 200px; object-fit: cover; display: block; }
 
 /* =========================================
-   9. FOOTER & UTILITIES
+   10. FOOTER & UTILITIES
    ========================================= */
 .site-footer { background: #0f233f; color: #d9e3f2; margin-top: 24px; }
 .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; padding: 24px 0; }
