@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   /* -----------------------------------------------
      1. GLOBAL: Navigation & Burger Menu
   ----------------------------------------------- */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('site-nav');
-  
+
   if (burger && nav) {
     burger.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Active Navigation Highlight
   const page = document.body.getAttribute('data-page') || '';
   if (page) {
-    // Try to match data-nav
     document.querySelectorAll(`[data-nav="${page}"]`).forEach(el => el.classList.add('active'));
   }
 
@@ -37,21 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* -----------------------------------------------
-     3. ANIMATIONS: Reveal on Scroll (Unified)
+     3. ANIMATIONS: Reveal on Scroll
   ----------------------------------------------- */
-  // Add .reveal class dynamically to key elements for smoother entrance
   const groups = [];
   document.querySelectorAll('.section, .page-hero, .cta-bar').forEach(sec => {
-    // Select elements to animate inside sections
     const targets = sec.querySelectorAll('h1, h2, .card, .btn, p, .cards-3 > *');
     targets.forEach(el => el.classList.add('reveal'));
     groups.push([...targets]);
   });
-  
+
   // Also animate items explicitly marked with .fade-in or .hero-inner
   document.querySelectorAll('.hero .hero-inner > *, .fade-in').forEach(el => el.classList.add('reveal'));
 
-  // The Observer
   const revealObserver = new IntersectionObserver((entries, obs) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -68,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (delay > 0) el.style.transitionDelay = `${delay}ms`;
-        
         el.classList.add('appear');
         obs.unobserve(el);
       }
@@ -78,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   /* -----------------------------------------------
-     4. OPTIONAL: Reviews Cycle (if exists)
+     4. OPTIONAL: Reviews Cycle
   ----------------------------------------------- */
   const wrap = document.getElementById('reviewsCycle');
   const btn = document.getElementById('cycleReviews');
@@ -94,10 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (items[k]) items[k].style.display = 'block';
       }
     }
-    
-    // Initial render
     render();
-    
     btn.addEventListener('click', () => {
       idx = (idx + step) % items.length;
       render();
@@ -116,4 +108,35 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* -----------------------------------------------
+     6. BEFORE / AFTER SLIDER LOGIC (The Fix)
+  ----------------------------------------------- */
+  const sliders = document.querySelectorAll('.ba-wrap');
+  
+  sliders.forEach(slider => {
+    // Helper function to update position
+    const updatePosition = (clientX) => {
+      const rect = slider.getBoundingClientRect();
+      let x = clientX - rect.left;
+      
+      // Keep within bounds (0 to width)
+      if (x < 0) x = 0;
+      if (x > rect.width) x = rect.width;
+      
+      const percent = (x / rect.width) * 100;
+      slider.style.setProperty('--split', `${percent}%`);
+    };
+
+    // Desktop: Move on hover
+    slider.addEventListener('mousemove', (e) => {
+      updatePosition(e.clientX);
+    });
+
+    // Mobile: Move on touch drag
+    slider.addEventListener('touchmove', (e) => {
+      updatePosition(e.touches[0].clientX);
+    }, { passive: true });
+  });
+
 });
