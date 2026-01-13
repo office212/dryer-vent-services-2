@@ -50,23 +50,36 @@ img { max-width: 100%; display: block; }
 .burger span { width: 22px; height: 2px; background: #0f1b2d; display: block; transition: 0.3s; }
 
 /* =========================================
-   3. HERO SECTION
+   3. HERO SECTION (ORIGINAL DESIGN RESTORED)
    ========================================= */
 .hero-modern {
   position: relative;
-  min-height: 55vh; 
-  padding: 0;
+  min-height: 62vh;
   color: #fff;
-  background: radial-gradient(1200px 600px at 80% -10%, rgba(62,106,214,0.35), rgba(62,106,214,0) 60%), linear-gradient(180deg, #0c1a33, #14284f);
+  /* הרקע המקורי עם הנקודות והגרדיאנט */
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(62,106,214,0.35), rgba(62,106,214,0) 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(30,157,109,0.25), rgba(30,157,109,0) 60%),
+    linear-gradient(180deg, #0c1a33, #14284f);
   overflow: hidden;
-  display: flex; align-items: center;
+  isolation: isolate;
 }
-.hero-inner { position: relative; width: 100%; padding: 60px 0; }
-.hero-title { font-size: clamp(34px, 5vw, 50px); line-height: 1.1; margin: 0 0 18px; color: #fff; }
-.hero-sub { font-size: clamp(17px, 2.4vw, 20px); color: #d7e3f7; margin: 0 0 28px; max-width: 60ch; }
+/* הטקסטורה של הנקודות */
+.hero-modern::before {
+  content:"";
+  position:absolute; inset:-2px;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04) 0 2px, transparent 3px);
+  background-size: 26px 26px, 32px 32px;
+  mix-blend-mode: overlay;
+  pointer-events:none;
+  z-index:0;
+}
+.hero-inner { position: relative; padding: 90px 0 80px; }
+.hero-title { font-size: clamp(34px, 6vw, 52px); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.015em; color: #fff; }
+.hero-sub { font-size: clamp(16px, 2.4vw, 20px); color: #d7e3f7; margin: 0 0 22px; max-width: 60ch; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-
-@media (max-width: 768px) { .hero-modern { min-height: auto; padding: 80px 0; } }
 
 /* =========================================
    4. GENERAL SECTIONS
@@ -85,6 +98,7 @@ img { max-width: 100%; display: block; }
 .svc-picture img { width: 100%; height: 220px; object-fit: cover; display: block; border-bottom: 1px solid #e6eaf2; }
 .card.media .inner { padding: 16px; }
 
+/* החזרת ה-Checklist המקורי */
 .checklist { list-style: none; padding: 0; margin: 10px 0 0; }
 .checklist li { position: relative; padding-left: 24px; margin-bottom: 6px; font-size: 0.95em; color: var(--muted); }
 .checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--orange); font-weight: bold; }
@@ -105,6 +119,9 @@ img { max-width: 100%; display: block; }
 .btn--light { background: #fff; color: var(--blue); border-color: #fff; }
 .btn-outline { background: transparent; color: #fff; border-color: #fff; }
 
+.hero-modern .btn--primary { animation: pulseCTA 2.6s infinite; }
+@keyframes pulseCTA { 0%,100%{ box-shadow:0 8px 18px rgba(244,124,32,.18);} 50%{ box-shadow:0 16px 32px rgba(244,124,32,.32);} }
+
 /* =========================================
    6. CONTACT FORM
    ========================================= */
@@ -119,7 +136,7 @@ body.contact .btn-submit, body.page-contact .btn-submit {
 body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !important; }
 
 /* =========================================
-   7. BEFORE / AFTER SLIDER (STRICT LOGIC)
+   7. BEFORE / AFTER SLIDER (OVERLAY FIX)
    ========================================= */
 .ba-section { padding: 40px 0; position: relative; }
 
@@ -128,7 +145,7 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
   max-width: 800px;
   margin: 0 auto;
   user-select: none;
-  touch-action: pan-y; /* מאפשר גלילה של הדף, אבל לא בתוך הסליידר */
+  touch-action: pan-y;
 }
 
 .ba-wrap {
@@ -139,7 +156,7 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
   overflow: hidden;
   background: #eef2f6; 
   box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
-  cursor: default; /* סמן רגיל על התמונות */
+  cursor: default;
   --split: 50%;
 }
 
@@ -149,61 +166,64 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
   position: absolute; top: 0; left: 0;
   width: 100%; height: 100%;
   object-fit: cover; display: block;
-  pointer-events: none; /* התמונות לא מגיבות ללחיצה */
+  pointer-events: none;
 }
 
-.ba-after { clip-path: inset(0 0 0 var(--split)); z-index: 2; }
+/* התיקון הקריטי: clip-path שחושף את התמונה העליונה לפי הגרירה */
+.ba-after {
+  position: absolute; top: 0; left: 0; bottom: 0; right: 0;
+  clip-path: inset(0 0 0 var(--split)); /* חיתוך משמאל לימין */
+  z-index: 2;
+}
 
 /* הקו הלבן */
 .ba-handle {
   position: absolute; top: 0; bottom: 0; left: var(--split);
   width: 2px; background: rgba(255,255,255,0.8);
-  pointer-events: auto; /* הידית מגיבה ללחיצה! */
+  pointer-events: auto;
   z-index: 10;
   transform: translateX(-50%);
-  cursor: ew-resize; /* סמן גרירה רק על הידית */
+  cursor: ew-resize;
 }
 
-/* אזור לחיצה מוגדל לידית */
+/* אזור לחיצה מוגדל */
 .ba-handle::before {
-  content: ""; position: absolute; top: 0; bottom: 0; left: -20px; right: -20px; z-index: 1;
+  content: ""; position: absolute; top: 0; bottom: 0; left: -25px; right: -25px; z-index: 1;
 }
 
-/* העיגול של הידית */
+/* האייקון המתוקן < > */
 .ba-handle::after {
   content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 54px; height: 54px; border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.8);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3Cpolyline points='9 18 3 12 9 6'/%3E%3C/svg%3E");
-  background-size: 24px; background-position: center; background-repeat: no-repeat;
+  /* אייקון RESIZE נכון */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 3h5v5M4 20L21 3M21 3h-5M3 21l0-5M3 21h5'/%3E%3C/svg%3E"); /* זמני להחלפה בפשוט יותר */
+  /* אייקון חצים פשוטים ימינה שמאלה */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3Cpolyline points='9 18 3 12 9 6' opacity='0'/%3E%3Cpath d='M18 12H6'/%3E%3Cpolyline points='9 17 4 12 9 7'/%3E%3Cpolyline points='15 7 20 12 15 17'/%3E%3C/svg%3E");
+  background-size: 20px; background-position: center; background-repeat: no-repeat;
   z-index: 2;
 }
 
-/* החיצים להחלפת תמונות */
+/* כפתורי החלפת תמונות */
 .ba-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 48px; height: 48px; border-radius: 50%;
-  background: rgba(15, 40, 70, 0.15);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  background: rgba(15, 40, 70, 0.4);
+  backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #fff;
   display: flex; align-items: center; justify-content: center;
-  cursor: pointer; 
-  z-index: 30; /* מעל הכל */
-  font-size: 18px; pointer-events: auto;
-  transition: all 0.2s;
+  cursor: pointer; z-index: 30; font-size: 18px;
 }
-.ba-arrow:hover { background: rgba(15, 40, 70, 0.4); transform: translateY(-50%) scale(1.1); }
+.ba-arrow:hover { background: rgba(15, 40, 70, 0.6); }
 .ba-arrow.prev { left: 16px; }
 .ba-arrow.next { right: 16px; }
 
-/* תוויות */
-.ba-labels-container {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20;
-}
+/* Labels */
+.ba-labels-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 20; }
 .ba-label {
   position: absolute; top: 20px;
   background: rgba(0,0,0,0.65);
@@ -215,32 +235,20 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
 .ba-label.after { right: 20px; }
 
 /* =========================================
-   8. FAQ SECTION
-   ========================================= */
-.faq-grid { max-width: 800px; margin: 0 auto; }
-.faq-item { border: 1px solid #eef1f5; border-radius: 12px; margin-bottom: 12px; background: #fff; overflow: hidden; }
-.faq-item details { width: 100%; }
-.faq-item summary { padding: 16px 20px; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: "+"; font-size: 20px; color: var(--blue); }
-.faq-item details[open] summary::after { content: "-"; }
-.faq-item details[open] summary { background: #f8fafc; color: var(--blue); }
-.faq-body { padding: 16px 20px 24px; line-height: 1.6; border-top: 1px solid #f0f4f8; }
-
-/* =========================================
-   9. REVIEWS & GALLERY
+   8. REVIEWS & GALLERY
    ========================================= */
 .reviews-grid-pro { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 18px; }
 .review-card-pro { background: #fff; border-radius: 18px; padding: 18px; box-shadow: 0 8px 22px rgba(15, 119, 204, 0.08); border: 1px solid rgba(15,119,204,0.06); }
 .review-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
 .review-avatar-circle { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg,#ff9f4a,#ff6a3d); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; flex-shrink: 0; }
 .review-author-name { font-weight: 600; font-size: 0.98rem; }
+.review-stars-row { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; }
 .star--full { color: #f7b500; } .star--empty { color: #d0d7e2; }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 16px; }
 .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 14px; }
 
 /* =========================================
-   10. FOOTER & UTILITIES
+   9. FOOTER & UTILITIES
    ========================================= */
 .site-footer { background: #0f233f; color: #d9e3f2; margin-top: 24px; }
 .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; padding: 24px 0; }
@@ -255,6 +263,10 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s, transform .6s; will-change: opacity, transform; }
 .reveal.appear { opacity: 1; transform: none; }
 .floating-whatsapp, .whatsapp-fab { display: none !important; }
+
+/* =========================================
+   10. MOBILE STICKY BAR (FIXED)
+   ========================================= */
 .mobile-cta { display: none; }
 
 @media (max-width: 920px) { .cards-3, .footer-grid, .reviews-carousel, .reviews-grid-pro { grid-template-columns: 1fr; } }
@@ -262,7 +274,19 @@ body.contact .mobile-cta, body.page-contact .mobile-cta { display: none !importa
   .site-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eef1f5; padding: 10px 12px; flex-direction: column; gap: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
   .site-nav.open { display: flex; }
   .burger { display: flex; }
-  .mobile-cta { position: fixed; left: 0; right: 0; bottom: 0; display: flex; gap: 10px; padding: 10px 12px; background: #ffffff; border-top: 1px solid #eef1f5; z-index: 70; }
+  
+  .mobile-cta {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    display: flex; gap: 10px; padding: 10px 12px;
+    background: #ffffff; border-top: 1px solid #eef1f5;
+    z-index: 70;
+  }
   .mobile-cta a { flex: 1; text-align: center; justify-content: center; }
+  /* תיקון לכפתור הלבן שנעלם */
+  .mobile-cta .btn--light {
+    background: #fff; 
+    color: var(--blue); 
+    border: 1px solid #d1d9e6;
+  }
   body { padding-bottom: 70px; } 
 }
