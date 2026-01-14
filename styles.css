@@ -47,7 +47,7 @@ img { max-width: 100%; display: block; }
 .burger span { width: 24px; height: 2px; background: #0f1b2d; display: block; transition: 0.3s; }
 
 /* =========================================
-   3. HERO SECTION (DOTS)
+   3. HERO SECTION (ORIGINAL DOTS)
    ========================================= */
 .hero-modern {
   position: relative;
@@ -74,13 +74,17 @@ img { max-width: 100%; display: block; }
 @media (max-width: 768px) { .hero-modern { min-height: auto; padding: 80px 0; align-items: flex-start; } }
 
 /* =========================================
-   4. GENERAL SECTIONS
+   4. GENERAL SECTIONS & CONTACT LAYOUT
    ========================================= */
 .section { padding: 60px 0; }
 .section-alt { background: var(--bg-alt); }
 .center { text-align: center; }
 .mt-20 { margin-top: 24px; }
 .muted { color: var(--muted); }
+
+/* תיקון פריסת דף צור קשר */
+.two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
 
 .cards-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
 .card { background: #fff; border: 1px solid #eef1f5; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.25s; }
@@ -94,10 +98,9 @@ img { max-width: 100%; display: block; }
 .checklist li { position: relative; padding-left: 26px; margin-bottom: 8px; font-size: 0.95rem; color: var(--muted); }
 .checklist li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--orange); font-weight: 800; font-size: 1.1em; }
 
-/* Page Hero (For Contact page to prevent white space) */
-.page-hero { background: var(--bg-alt); padding: 40px 0; border-bottom: 1px solid #eef1f5; margin-bottom: 20px; }
-.page-hero h1 { color: var(--blue); margin: 0 0 8px; text-align: center; }
-.page-hero p { text-align: center; color: var(--muted); max-width: 600px; margin: 0 auto; }
+.page-hero { background: var(--bg-alt); padding: 50px 0; border-bottom: 1px solid #eef1f5; text-align: center; margin-bottom: 30px; }
+.page-hero h1 { color: var(--blue); margin: 0 0 10px; font-size: 2.5rem; }
+.page-hero p { max-width: 600px; margin: 0 auto; color: var(--muted); }
 
 /* =========================================
    5. BUTTONS
@@ -114,29 +117,28 @@ img { max-width: 100%; display: block; }
 @keyframes pulseCTA { 0%,100%{ box-shadow:0 0 0 0 rgba(244,124,32,0.4);} 70%{ box-shadow:0 0 0 12px rgba(244,124,32,0);} }
 
 /* =========================================
-   6. CONTACT FORM STYLES (Restored)
+   6. CONTACT FORM & ALT STYLES
    ========================================= */
-.contact-form { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 16px; border: 1px solid #eef1f5; }
-.lead-form label { font-weight: 600; color: var(--blue); margin-bottom: 6px; display: block; font-size: 0.95rem; }
-.lead-form input, .lead-form textarea { width: 100%; padding: 12px; border: 1px solid #d1d9e6; border-radius: 8px; font-size: 16px; background: #fff; transition: border 0.2s; }
-.lead-form input:focus, .lead-form textarea:focus { border-color: var(--blue); outline: none; }
+.contact-form .grid.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media(max-width:600px){ .contact-form .grid.two { grid-template-columns: 1fr; } }
 
-/* Checkboxes row */
-.services-fieldset { border: none; padding: 0; margin: 15px 0; }
-.services-fieldset legend { font-weight: 600; color: var(--blue); margin-bottom: 8px; font-size: 0.95rem; }
-.services-options { display: flex; flex-direction: column; gap: 8px; }
-.services-options label { display: flex; align-items: center; gap: 8px; font-weight: 400; cursor: pointer; }
-.services-options input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--orange); }
+.contact-form label { font-weight: 600; color: var(--blue); margin-bottom: 6px; display: block; font-size: 0.95rem; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 12px; border: 1px solid #d1d9e6; border-radius: 8px; font-size: 16px; background: #fff; margin-bottom: 15px; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--blue); outline: none; }
 
-.btn-submit { width: 100%; background: #ff7a00; color: #fff; border: none; font-size: 18px; margin-top: 15px; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+.services-fieldset { border: 1px solid #eef1f5; padding: 15px; border-radius: 10px; margin-bottom: 20px; background: #f9fbfd; }
+.services-fieldset legend { font-weight: 700; color: var(--blue); padding: 0 5px; }
+.services-fieldset .chk { display: block; margin-bottom: 8px; cursor: pointer; }
+.services-fieldset input { width: auto; margin-right: 8px; }
+
+.btn-submit { width: 100%; background: #ff7a00; color: #fff; border: none; font-size: 18px; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
 .btn-submit:hover { background: #e66e00; }
 
-/* Other ways to contact us (Simple text/links) */
-.alt-contacts { text-align: center; margin-top: 30px; }
-.alt-contacts h3 { font-size: 1.1rem; color: var(--blue); margin-bottom: 15px; }
-.alt-links-row { display: flex; justify-content: center; gap: 20px; font-weight: 600; font-size: 1rem; }
-.alt-links-row a { color: var(--blue); }
-.alt-links-row a:hover { color: var(--orange); }
+/* Contact Alt (Side box) */
+.contact-alt { background: #f8fafc; padding: 30px; border-radius: 16px; border: 1px solid #eef1f5; text-align: center; }
+.contact-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.contact-buttons .btn { width: 100%; background: #fff; border: 1px solid #d1d9e6; color: var(--blue); }
+.contact-buttons .btn:hover { border-color: var(--blue); }
 
 /* =========================================
    7. BEFORE / AFTER SLIDER
@@ -187,7 +189,7 @@ img { max-width: 100%; display: block; }
 .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.9rem; }
 
 /* =========================================
-   10. MOBILE STICKY BAR (FIXED COLOR)
+   10. MOBILE STICKY BAR (FIXED COLOR BLUE)
    ========================================= */
 .mobile-cta { display: none; }
 
@@ -204,17 +206,16 @@ img { max-width: 100%; display: block; }
     background: #fff; border-top: 1px solid #eef1f5;
     z-index: 1000; box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
   }
-  .mobile-cta a { flex: 1; text-align: center; justify-content: center; height: 48px; border-radius: 8px; }
+  .mobile-cta a { flex: 1; text-align: center; justify-content: center; height: 48px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; }
   
-  /* התיקון הסופי לכפתור ה-Call (כחול מלא) */
+  /* === כפתור CALL כחול === */
   .mobile-cta a.btn--light {
     background-color: #1B365D !important; /* כחול */
-    color: #ffffff !important; /* לבן */
-    border: none !important;
+    color: #ffffff !important; /* טקסט לבן */
+    border: 1px solid #1B365D !important;
     font-weight: 700;
   }
   
-  /* כפתור Book כתום */
   .mobile-cta a.btn--primary {
     background-color: #F47C20 !important;
     color: #fff !important;
@@ -223,6 +224,5 @@ img { max-width: 100%; display: block; }
   body { padding-bottom: 80px; } 
 }
 
-/* ביטול הסתרה */
 .reveal { opacity: 1; transform: none; }
 .floating-whatsapp { display: none !important; }
