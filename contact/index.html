@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" href="/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body class="page-contact" data-page="contact">
@@ -39,70 +40,54 @@
   </section>
 
   <section class="section">
-    <div class="container contact-form">
-      <div class="grid two">
-        <div class="card">
-          <form class="lead-form" action="https://formsubmit.co/office@dryer-ventservices.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://www.dryer-ventservices.com/thank-you/">
-            
-            <div style="margin-bottom:12px;">
-              <label>Name</label>
-              <input type="text" name="name" required placeholder="Your name">
-            </div>
-            <div style="margin-bottom:12px;">
-              <label>Phone</label>
-              <input type="tel" name="phone" required placeholder="Phone number">
-            </div>
-            <div style="margin-bottom:12px;">
-              <label>Address (Optional)</label>
-              <input type="text" name="address" placeholder="Service address">
-            </div>
-            
-            <fieldset class="services-fieldset">
-              <legend>Service Needed</legend>
-              <label class="chk"><input type="checkbox" name="service[]" value="Cleaning"> Cleaning</label>
-              <label class="chk"><input type="checkbox" name="service[]" value="Repair"> Repair</label>
-              <label class="chk"><input type="checkbox" name="service[]" value="Installation"> New Installation</label>
-            </fieldset>
-
-            <div style="margin-bottom:12px;">
-              <label>Message (Optional)</label>
-              <textarea name="message" rows="3" placeholder="Tell us a bit about the issue..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-submit">Send Request</button>
-          </form>
+    <div class="container">
+      
+      <form class="contact-form" id="contactForm">
+        
+        <div style="margin-bottom:15px;">
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
         </div>
 
-        <div>
-          <div class="card" style="margin-bottom:24px;">
-            <h3>Contact Information</h3>
-            <p class="muted">Fast response times for Staten Island and surrounding areas.</p>
-            <ul style="list-style:none; padding:0; margin-top:20px; line-height:1.8;">
-              <li><strong>Phone:</strong> <a href="tel:+13472449382">347-244-9382</a></li>
-              <li><strong>Email:</strong> <a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
-              <li><strong>Hours:</strong> Sun-Fri: 8am - 8pm</li>
-            </ul>
-          </div>
+        <div style="margin-bottom:15px;">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="Phone number" required>
+        </div>
 
-          <h3 style="margin-bottom:15px; font-size:1.2rem;">Other ways to contact us</h3>
-          <div class="alt-contact-grid">
-            <a href="tel:+13472449382" class="alt-contact-btn">
-              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-              Call
-            </a>
-            <a href="mailto:office@dryer-ventservices.com" class="alt-contact-btn">
-              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              Email
-            </a>
-            <a href="https://wa.me/13472449382" target="_blank" class="alt-contact-btn">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-              WhatsApp
-            </a>
+        <div style="margin-bottom:15px;">
+          <label>Address (Optional)</label>
+          <input type="text" name="address" placeholder="Service address">
+        </div>
+
+        <fieldset class="services-fieldset">
+          <legend>Service Needed</legend>
+          <div class="services-options">
+            <label><input type="checkbox" name="service" value="Cleaning"> Cleaning</label>
+            <label><input type="checkbox" name="service" value="Repair"> Repair</label>
+            <label><input type="checkbox" name="service" value="Installation"> New Installation</label>
           </div>
+        </fieldset>
+
+        <div style="margin-bottom:15px;">
+          <label>How can we help? (optional)</label>
+          <textarea name="message" rows="4" placeholder="Tell us a bit about the issue..."></textarea>
+        </div>
+
+        <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_HERE" style="margin-bottom:15px;"></div>
+
+        <button type="submit" class="btn-submit">Send Request</button>
+
+      </form>
+
+      <div class="alt-contacts">
+        <h3>Other ways to contact us</h3>
+        <div class="alt-links-row">
+          <a href="tel:+13472449382">Call</a>
+          <a href="mailto:office@dryer-ventservices.com">Email</a>
+          <a href="https://wa.me/13472449382" target="_blank">WhatsApp</a>
         </div>
       </div>
+
     </div>
   </section>
 
