@@ -55,7 +55,6 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   color: #fff;
-  /* החזרת הרקע המקורי המדויק */
   background:
     radial-gradient(1200px 600px at 80% -10%, rgba(62,106,214,0.35), rgba(62,106,214,0) 60%),
     radial-gradient(900px 500px at -10% 20%, rgba(30,157,109,0.25), rgba(30,157,109,0) 60%),
@@ -64,7 +63,6 @@ img { max-width: 100%; display: block; }
   isolation: isolate;
 }
 
-/* טקסטורת הנקודות שביקשת להחזיר */
 .hero-modern::before {
   content:"";
   position:absolute; inset:-2px;
@@ -178,7 +176,7 @@ body.contact .btn-submit {
 .ba-carousel {
   position: relative; max-width: 800px; margin: 0 auto;
   user-select: none; -webkit-user-select: none;
-  touch-action: pan-y; /* מונע גלילה אנכית בטעות */
+  touch-action: pan-y; 
 }
 
 .ba-wrap {
@@ -187,26 +185,23 @@ body.contact .btn-submit {
   background: #f0f0f0;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
   cursor: default;
-  --split: 50%; /* משתנה CSS ששולט במיקום */
+  --split: 50%;
 }
 
 @media (max-width: 600px) { .ba-wrap { height: 280px; } }
 
-/* התמונות - שתיהן תמיד באותו מיקום, אחת על השנייה */
 .ba-img {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: center;
-  pointer-events: none; /* ביטול לחיצה על התמונות */
+  pointer-events: none;
 }
 
-/* תמונת ה"אחרי" נחתכת לפי הגרירה */
 .ba-after {
   position: absolute; inset: 0;
-  clip-path: inset(0 0 0 var(--split)); /* הקסם של הסליידר */
+  clip-path: inset(0 0 0 var(--split));
   z-index: 2;
 }
 
-/* הידית (Handle) */
 .ba-handle {
   position: absolute; top: 0; bottom: 0; left: var(--split);
   width: 4px; background: #fff;
@@ -214,10 +209,10 @@ body.contact .btn-submit {
   z-index: 10;
   transform: translateX(-50%);
   cursor: ew-resize;
-  pointer-events: auto; /* רק הידית לחיצה */
+  pointer-events: auto;
 }
 
-/* כפתור הגרירה העגול */
+/* כפתור הגרירה העגול - תוקן האייקון */
 .ba-handle::after {
   content: ""; position: absolute;
   top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -225,12 +220,11 @@ body.contact .btn-submit {
   background: #fff;
   border: 4px solid #eef2f6;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  /* אייקון חצים ימינה-שמאלה תקין */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B365D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3Cpolyline points='9 18 3 12 9 6' opacity='0'/%3E%3Cpath d='M17 12H7'/%3E%3Cpolyline points='7 17 2 12 7 7'/%3E%3Cpolyline points='17 7 22 12 17 17'/%3E%3C/svg%3E");
+  /* אייקון חצים נקי וברור */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231B365D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12H3M18 8l3 4-3 4M6 16l-3-4 3-4'/%3E%3C/svg%3E");
   background-size: 20px; background-position: center; background-repeat: no-repeat;
 }
 
-/* תוויות Before/After */
 .ba-labels-container {
   position: absolute; top: 20px; left: 20px; right: 20px;
   display: flex; justify-content: space-between;
@@ -242,7 +236,6 @@ body.contact .btn-submit {
   font-size: 12px; font-weight: 700; text-transform: uppercase;
 }
 
-/* כפתורי החיצים בצדדים (להחלפת תמונות) */
 .ba-arrow {
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 50px; height: 50px; border-radius: 50%;
@@ -311,17 +304,16 @@ body.contact .btn-submit {
   }
   .mobile-cta a { flex: 1; text-align: center; justify-content: center; height: 48px; border-radius: 8px; }
   
-  /* התיקון לכפתור Call הלבן */
+  /* התיקון לכפתור Call שיהיה כחול */
   .mobile-cta .btn--light {
-    background: #fff; color: var(--blue); border: 1px solid #ced4da;
+    background: #fff !important; 
+    color: var(--blue) !important; 
+    border: 1px solid #ced4da;
   }
   
   body { padding-bottom: 80px; } 
 }
 
-/* ביטול מצב שהאלמנטים נעלמים אם ה-JS לא עובד */
-.reveal { opacity: 1; transform: none; } /* ברירת מחדל: גלוי */
-.reveal.js-active { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
-.reveal.appear { opacity: 1; transform: none; }
-
+/* ביטול הסתרה - התוכן תמיד גלוי */
+.reveal { opacity: 1; transform: none; }
 .floating-whatsapp { display: none !important; }
