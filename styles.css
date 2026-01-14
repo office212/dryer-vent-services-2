@@ -47,7 +47,7 @@ img { max-width: 100%; display: block; }
 .burger span { width: 24px; height: 2px; background: #0f1b2d; display: block; transition: 0.3s; }
 
 /* =========================================
-   3. HERO SECTION (ORIGINAL DOTS)
+   3. HERO SECTION
    ========================================= */
 .hero-modern {
   position: relative;
@@ -74,16 +74,13 @@ img { max-width: 100%; display: block; }
 @media (max-width: 768px) { .hero-modern { min-height: auto; padding: 80px 0; align-items: flex-start; } }
 
 /* =========================================
-   4. GENERAL SECTIONS & LAYOUT
+   4. GENERAL SECTIONS
    ========================================= */
 .section { padding: 60px 0; }
 .section-alt { background: var(--bg-alt); }
 .center { text-align: center; }
 .mt-20 { margin-top: 24px; }
 .muted { color: var(--muted); }
-
-.two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
-@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
 
 .cards-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
 .card { background: #fff; border: 1px solid #eef1f5; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.25s; }
@@ -118,8 +115,8 @@ img { max-width: 100%; display: block; }
 /* =========================================
    6. CONTACT FORM & ALT CONTACTS
    ========================================= */
-.contact-form .grid.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-@media(max-width:600px){ .contact-form .grid.two { grid-template-columns: 1fr; } }
+.two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
 
 .contact-form label { font-weight: 600; color: var(--blue); margin-bottom: 6px; display: block; font-size: 0.95rem; }
 .contact-form input, .contact-form textarea { width: 100%; padding: 12px; border: 1px solid #d1d9e6; border-radius: 8px; font-size: 16px; background: #fff; margin-bottom: 15px; }
@@ -133,7 +130,7 @@ img { max-width: 100%; display: block; }
 .btn-submit { width: 100%; background: #ff7a00; color: #fff; border: none; font-size: 18px; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
 .btn-submit:hover { background: #e66e00; }
 
-/* עיצוב לכפתורי יצירת קשר הגדולים (אייקונים) */
+/* כפתורי יצירת קשר (גדולים ויפים) */
 .alt-contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 15px; }
 .alt-contact-btn {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -144,7 +141,9 @@ img { max-width: 100%; display: block; }
   text-decoration: none; font-size: 0.95rem;
 }
 .alt-contact-btn:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); background: #f8fafc; }
-.alt-contact-btn svg { width: 32px; height: 32px; fill: var(--blue); }
+
+/* התיקון לאייקונים הענקיים - גודל קבוע */
+.alt-contact-btn svg { width: 36px !important; height: 36px !important; fill: var(--blue); display: block; }
 
 /* =========================================
    7. BEFORE / AFTER SLIDER
@@ -195,7 +194,7 @@ img { max-width: 100%; display: block; }
 .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.9rem; }
 
 /* =========================================
-   10. MOBILE STICKY BAR (FIXED: BLUE EVERYWHERE)
+   10. MOBILE STICKY BAR (FIXED COLOR EVERYWHERE)
    ========================================= */
 .mobile-cta { display: none; }
 
@@ -210,21 +209,20 @@ img { max-width: 100%; display: block; }
     position: fixed; left: 0; right: 0; bottom: 0;
     display: flex; gap: 10px; padding: 12px 16px;
     background: #fff; border-top: 1px solid #eef1f5;
-    z-index: 10000; /* Z-Index גבוה כדי לוודא שזה מעל הכל */
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+    z-index: 10000; box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
   }
   .mobile-cta a { flex: 1; text-align: center; justify-content: center; height: 48px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; }
   
-  /* FORCE BLUE BUTTON */
-  .mobile-cta a.btn--light, 
-  .mobile-cta .btn.btn--light {
+  /* FORCE BLUE BUTTON (CALL) */
+  .mobile-cta a:first-child {
     background-color: #1B365D !important; /* כחול */
     color: #ffffff !important; /* טקסט לבן */
     border: none !important;
     font-weight: 700;
   }
   
-  .mobile-cta a.btn--primary {
+  /* ORANGE BUTTON (BOOK) */
+  .mobile-cta a:last-child {
     background-color: #F47C20 !important;
     color: #fff !important;
   }
@@ -232,6 +230,5 @@ img { max-width: 100%; display: block; }
   body { padding-bottom: 80px; } 
 }
 
-/* ביטול הסתרה */
 .reveal { opacity: 1; transform: none; }
 .floating-whatsapp { display: none !important; }
