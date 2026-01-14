@@ -2,296 +2,138 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Schedule Dryer Vent Cleaning | Contact Us for NY & NJ Service</title>
-  <meta name="description" content="Get a fast, friendly quote for dryer vent cleaning, repairs or installation in Staten Island, NY and NJ. Book your appointment today.">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Dryer Vent Services</title>
+  <meta name="description" content="Contact us for dryer vent cleaning and repairs in Staten Island.">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" href="/favicon.ico">
-
-  <style>
-    body.contact.page-contact .mobile-cta,
-    body.contact.page-contact #sticky-bar,
-    body.contact.page-contact .sticky-bar,
-    body.contact.page-contact .footer-sticky,
-    body.contact.page-contact .cta-sticky { display:none!important;visibility:hidden!important;pointer-events:none!important; }
-    .btn-submit[disabled]{opacity:.65;cursor:not-allowed}
-    
-    /* Layout fix for buttons */
-    .contact-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-
-    /* === CHECKBOX STYLING FIX === */
-    .services-fieldset {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      padding: 16px;
-      border-radius: 12px;
-    }
-    
-    .services-fieldset legend {
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #1B365D;
-    }
-
-    .services-fieldset .chk {
-      display: flex;
-      align-items: center;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      padding: 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    .services-fieldset .chk:hover {
-      border-color: #F47C20;
-      background: #fff7ed;
-    }
-
-    .services-fieldset input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      margin-right: 12px;
-      accent-color: #F47C20;
-      cursor: pointer;
-    }
-  </style>
-
-  <meta property="og:title" content="Schedule Dryer Vent Cleaning | Staten Island, NY & NJ"/>
-  <meta property="og:description" content="Get a fast quote for dryer vent cleaning, repairs, and installations. Serving Staten Island and the greater NY/NJ area."/>
-  <meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://www.dryer-ventservices.com/contact/"/>
-  <meta name="twitter:card" content="summary_large_image"/>
-
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-  <link rel="canonical" href="https://www.dryer-ventservices.com/contact/"/>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://www.dryer-ventservices.com/#business",
-    "name": "Dryer Vent Services",
-    "image": "https://www.dryer-ventservices.com/assets/logo.png",
-    "url": "https://www.dryer-ventservices.com/contact/",
-    "telephone": "+13472449382",
-    "email": "office@dryer-ventservices.com",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Staten Island",
-      "addressRegion": "NY",
-      "addressCountry": "US"
-    },
-    "areaServed": [
-      {"@type": "Place", "name": "Staten Island, NY"},
-      {"@type": "Place", "name": "New York"},
-      {"@type": "Place", "name": "New Jersey"}
-    ],
-    "sameAs": ["https://www.dryer-ventservices.com"]
-  }
-  </script>
-
-  <script>
-    if (location.pathname.endsWith('/index.html')) {
-      history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 
-<body class="contact page-contact" data-page="contact">
+<body class="page-contact" data-page="contact">
+
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
+        <img src="/logo.webp" alt="Logo" class="logo" onerror="this.src='logo.png'">
         <div class="brand-text"><strong>Dryer Vent Services</strong><span>Cleaning - Repairs - Installations</span></div>
       </a>
       <nav class="site-nav" id="site-nav">
-        <a data-nav="home" href="/">Home</a>
-        <a data-nav="services" href="/services/">Services</a>
-        <a data-nav="gallery" href="/gallery/">Gallery</a>
-        <a data-nav="reviews" href="/reviews/">Reviews</a>
-        <a data-nav="faq" href="/faq/">FAQ</a>
-        <a data-nav="about" href="/about/">About</a>
-        <a data-nav="areas" href="/areas/">Service Areas</a>
-        <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
+        <a href="/">Home</a>
+        <a href="/services/">Services</a>
+        <a href="/gallery/">Gallery</a>
+        <a href="/reviews/">Reviews</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a class="cta active" href="/contact/">Contact Us</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <section class="page-hero"><div class="container"><h1>Contact Us</h1><p>All fields are required.</p></div></section>
-
-  <section class="section container two-col">
-    <div>
-      <h2>Send a Message</h2>
-
-      <form id="contactForm"
-            action="https://script.google.com/macros/s/AKfycbyXLyX2094tKPcJJoIDTRAqWD2oV9pOXnCWjFHkJi8fyPFZhGkrLtaolMwQHMRAEoQm/exec"
-            method="POST" class="contact-form lead-form" novalidate>
-
-        <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px;opacity:0;height:0;width:0;">
-        <input type="hidden" name="_started_at" id="_started_at">
-        <input type="hidden" name="_ua" id="_ua">
-        <input type="hidden" name="_url" id="_url">
-        <input type="hidden" name="_ip" id="_ip">
-        <input type="hidden" name="_tz" id="_tz">
-        <input type="hidden" name="_lang" id="_lang">
-        <input type="hidden" name="_token" id="_token">
-
-        <div class="grid two">
-          <div><label for="name">Full Name *</label><input id="name" name="name" type="text" required></div>
-          <div><label for="email">Email *</label><input id="email" name="email" type="email" required></div>
-          <div><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" inputmode="tel" required placeholder="+1 (___) ___-____"></div>
-          <div><label for="phone2">Confirm Phone *</label><input id="phone2" name="phone_confirm" type="tel" inputmode="tel" required placeholder="Re-enter phone"></div>
-          <div><label for="zip">ZIP code *</label><input id="zip" name="zip" type="text" inputmode="numeric" dir="ltr" autocomplete="postal-code" required placeholder="e.g. 10314 or 10314-5022"></div>
-        </div>
-
-        <fieldset class="services-fieldset">
-          <legend>Which service do you need? (select at least one) *</legend>
-          <label class="chk"><input type="checkbox" name="services[]" value="Cleaning"> Dryer Vent Cleaning</label>
-          <label class="chk"><input type="checkbox" name="services[]" value="Repair"> Repair</label>
-          <label class="chk"><input type="checkbox" name="services[]" value="Installation"> New Installation</label>
-        </fieldset>
-
-        <div><label for="message">How can we help? (optional)</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about the issue (optional)..."></textarea>
-        </div>
-
-        <div class="g-recaptcha" data-sitekey="6LdS1BIsAAAAAOt7ZPeSW19iS4wp5fMSzguNNiy1"></div>
-
-        <button type="submit" class="btn btn--primary btn-submit" style="width:100%; display:block;">Send Request</button>
-      </form>
-
-      <script>
-        (function(){
-          const form = document.getElementById("contactForm");
-          const btn  = form.querySelector(".btn-submit");
-
-          // meta
-          document.getElementById("_started_at").value = Date.now();
-          document.getElementById("_ua").value  = navigator.userAgent || "";
-          document.getElementById("_url").value = location.href || "";
-          document.getElementById("_tz").value  = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-          document.getElementById("_lang").value = navigator.language || "";
-
-          // unique token for de-dup on server
-          const token = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2,10);
-          document.getElementById("_token").value = token;
-
-          // client IP for reliable geo
-          fetch("https://api.ipify.org?format=json")
-            .then(r => r.json()).then(d => { document.getElementById("_ip").value = d.ip || ""; })
-            .catch(()=>{});
-
-          function digitsOnly(v){ return (v || "").replace(/\D+/g, ""); }
-          function validate() {
-            const phone  = digitsOnly(form.phone.value);
-            const phone2 = digitsOnly(form.phone2.value);
-            const zipDigits = digitsOnly(form.zip.value);
-            const errs = [];
-            if (phone.length < 10) errs.push("Please enter a valid phone number.");
-            if (phone !== phone2)  errs.push("Phone numbers do not match.");
-            if (!(zipDigits.length === 5 || zipDigits.length === 9)) errs.push("Please enter a valid ZIP code (5 or 9 digits).");
-            if (!form.querySelector('input[name="services[]"]:checked')) errs.push("Select at least one service.");
-            try { if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse().length === 0) errs.push("Please confirm you're not a robot."); } catch(_) {}
-            return errs;
-          }
-
-          // prevent double submit by locking button
-          let sending = false;
-          form.addEventListener("submit", async function(e){
-            e.preventDefault();
-            if (sending) return;
-            const errs = validate();
-            if (errs.length){ alert(errs.join("\n")); return; }
-
-            sending = true;
-            btn.setAttribute("disabled","disabled");
-            btn.textContent = "Sending…";
-
-            const fd = new FormData(form);
-            try { const token = (typeof grecaptcha !== "undefined") ? grecaptcha.getResponse() : ""; if (token) fd.append("g-recaptcha-response", token); } catch(_) {}
-            fd.append("_ref", document.referrer || location.href);
-
-            try {
-              const res = await fetch(form.action, { method: "POST", body: fd });
-
-              // Check if the script returned success
-              if (res.ok) {
-                  const json = await res.json();
-                  if (json.result === "success") {
-                      window.location.href = "/thanks/";
-                  } else {
-                      throw new Error(json.error || "Unknown error from server");
-                  }
-              } else {
-                  throw new Error("Server response was not ok");
-              }
-
-            } catch (err) {
-              console.error(err);
-              alert("There was a problem sending your message. Please check your internet connection or call us at 347-244-9382.");
-
-              sending = false;
-              btn.removeAttribute("disabled");
-              btn.textContent = "Try Again or Call Us";
-            }
-          }, { passive:false });
-        })();
-      </script>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Have a question or need to schedule a service? Fill out the form below or use one of our quick contact methods.</p>
     </div>
+  </section>
 
-    <div class="card contact-alt">
-      <h3>Other ways to contact us</h3>
-      <div class="contact-buttons">
-        <a class="btn" href="tel:+13472449382">Call</a>
-        <a class="btn" href="mailto:office@dryer-ventservices.com">Email</a>
-        <a class="btn" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+  <section class="section">
+    <div class="container contact-form">
+      <div class="grid two">
+        <div class="card">
+          <form class="lead-form" action="https://formsubmit.co/office@dryer-ventservices.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.dryer-ventservices.com/thank-you/">
+            
+            <div style="margin-bottom:12px;">
+              <label>Name</label>
+              <input type="text" name="name" required placeholder="Your name">
+            </div>
+            <div style="margin-bottom:12px;">
+              <label>Phone</label>
+              <input type="tel" name="phone" required placeholder="Phone number">
+            </div>
+            <div style="margin-bottom:12px;">
+              <label>Address (Optional)</label>
+              <input type="text" name="address" placeholder="Service address">
+            </div>
+            
+            <fieldset class="services-fieldset">
+              <legend>Service Needed</legend>
+              <label class="chk"><input type="checkbox" name="service[]" value="Cleaning"> Cleaning</label>
+              <label class="chk"><input type="checkbox" name="service[]" value="Repair"> Repair</label>
+              <label class="chk"><input type="checkbox" name="service[]" value="Installation"> New Installation</label>
+            </fieldset>
+
+            <div style="margin-bottom:12px;">
+              <label>Message (Optional)</label>
+              <textarea name="message" rows="3" placeholder="Tell us a bit about the issue..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Send Request</button>
+          </form>
+        </div>
+
+        <div>
+          <div class="card" style="margin-bottom:24px;">
+            <h3>Contact Information</h3>
+            <p class="muted">Fast response times for Staten Island and surrounding areas.</p>
+            <ul style="list-style:none; padding:0; margin-top:20px; line-height:1.8;">
+              <li><strong>Phone:</strong> <a href="tel:+13472449382">347-244-9382</a></li>
+              <li><strong>Email:</strong> <a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
+              <li><strong>Hours:</strong> Sun-Fri: 8am - 8pm</li>
+            </ul>
+          </div>
+
+          <h3 style="margin-bottom:15px; font-size:1.2rem;">Other ways to contact us</h3>
+          <div class="alt-contact-grid">
+            <a href="tel:+13472449382" class="alt-contact-btn">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              Call
+            </a>
+            <a href="mailto:office@dryer-ventservices.com" class="alt-contact-btn">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              Email
+            </a>
+            <a href="https://wa.me/13472449382" target="_blank" class="alt-contact-btn">
+              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div><h4>Dryer Vent Services</h4><p>Dryer Vent Cleaning - Repairs - Installations</p></div>
-      <div><ul class="contact-list">
-        <li><a href="tel:+13472449382">347-244-9382</a></li>
-        <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
-      </ul></div>
+      <div>
+        <h4>Dryer Vent Services</h4>
+        <p class="muted" style="color:#b9c6dd;">Professional dryer vent cleaning, repairs, and installations across Staten Island, NY and NJ.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="contact-list">
+          <li><a href="tel:+13472449382">347-244-9382</a></li>
+          <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
+          <li>Staten Island, NY</li>
+        </ul>
+      </div>
       <div class="footer-cta">
         <a class="btn btn--primary" href="/contact/">Book Now</a>
-        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
-    <div class="copyright">© <span id="copyright-year">2026</span> Dryer Vent Services. All rights reserved.</div>
+    <div class="copyright">
+      © <span id="copyright-year">2026</span> Dryer Vent Services. All rights reserved.
+    </div>
   </footer>
 
-  <script>
-    document.getElementById("copyright-year").textContent = new Date().getFullYear();
-  </script>
+  <div class="mobile-cta">
+    <a href="tel:+13472449382" class="btn btn--light">Call</a>
+    <a href="/contact/" class="btn btn--primary">Book</a>
+  </div>
 
   <script src="/script.js" defer></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function(){
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=> e.isIntersecting && e.target.classList.add('reveal-in'));
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-  });
-  </script>
-  <style>
-    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease;}
-    .reveal-in{opacity:1 !important; transform:translateY(0) !important;}
-  </style>
-  </body>
-</html> 
+</body>
+</html>
