@@ -47,42 +47,30 @@ img { max-width: 100%; display: block; }
 .burger span { width: 24px; height: 2px; background: #0f1b2d; display: block; transition: 0.3s; }
 
 /* =========================================
-   3. HERO SECTION (ORIGINAL DOTS DESIGN)
+   3. HERO SECTION (DOTS)
    ========================================= */
 .hero-modern {
   position: relative;
   min-height: 60vh;
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center;
   color: #fff;
   background:
     radial-gradient(1200px 600px at 80% -10%, rgba(62,106,214,0.35), rgba(62,106,214,0) 60%),
     radial-gradient(900px 500px at -10% 20%, rgba(30,157,109,0.25), rgba(30,157,109,0) 60%),
     linear-gradient(180deg, #0c1a33, #14284f);
-  overflow: hidden;
-  isolation: isolate;
+  overflow: hidden; isolation: isolate;
 }
-
 .hero-modern::before {
-  content:"";
-  position:absolute; inset:-2px;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 0 2px, transparent 3px),
-    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04) 0 2px, transparent 3px);
-  background-size: 26px 26px, 32px 32px;
-  mix-blend-mode: overlay;
-  pointer-events:none;
-  z-index:0;
+  content:""; position:absolute; inset:-2px;
+  background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 0 2px, transparent 3px), radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04) 0 2px, transparent 3px);
+  background-size: 26px 26px, 32px 32px; mix-blend-mode: overlay; pointer-events:none; z-index:0;
 }
-
 .hero-inner { position: relative; width: 100%; padding: 60px 0; z-index: 1; }
 .hero-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.1; margin: 0 0 20px; letter-spacing: -0.01em; color: #fff; font-weight: 800; }
 .hero-sub { font-size: clamp(18px, 2.5vw, 22px); color: #d7e3f7; margin: 0 0 32px; max-width: 60ch; line-height: 1.5; }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
-@media (max-width: 768px) {
-  .hero-modern { min-height: auto; padding: 80px 0; align-items: flex-start; }
-}
+@media (max-width: 768px) { .hero-modern { min-height: auto; padding: 80px 0; align-items: flex-start; } }
 
 /* =========================================
    4. GENERAL SECTIONS
@@ -93,181 +81,97 @@ img { max-width: 100%; display: block; }
 .mt-20 { margin-top: 24px; }
 .muted { color: var(--muted); }
 
-/* Cards Grid */
 .cards-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
-.card {
-  background: #fff;
-  border: 1px solid #eef1f5;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-  transition: transform 0.25s;
-}
+.card { background: #fff; border: 1px solid #eef1f5; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.25s; }
 .card:hover { transform: translateY(-4px); }
-
 .card.media { padding: 0; }
-.svc-picture { display: block; overflow: hidden; }
 .svc-picture img { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid #e6eaf2; }
 .card.media .inner { padding: 20px; }
 .card h3 { margin: 0 0 8px; font-size: 1.25rem; color: var(--blue); }
 
-/* Checklist */
 .checklist { list-style: none; padding: 0; margin: 12px 0 0; }
 .checklist li { position: relative; padding-left: 26px; margin-bottom: 8px; font-size: 0.95rem; color: var(--muted); }
-.checklist li::before { 
-  content: "✓"; position: absolute; left: 0; top: 0; 
-  color: var(--orange); font-weight: 800; font-size: 1.1em; 
-}
+.checklist li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--orange); font-weight: 800; font-size: 1.1em; }
 
-/* Page Hero (Inner Pages) */
 .page-hero { background: var(--bg-alt); padding: 40px 0; border-bottom: 1px solid #eef1f5; }
 .page-hero h1 { color: var(--blue); margin: 0 0 8px; }
 
 /* =========================================
    5. BUTTONS
    ========================================= */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 14px 24px; border-radius: 12px; font-weight: 700;
-  transition: all 0.2s; cursor: pointer; text-align: center; border: 2px solid transparent;
-}
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px; border-radius: 12px; font-weight: 700; transition: all 0.2s; cursor: pointer; text-align: center; border: 2px solid transparent; }
 .btn:active { transform: translateY(1px); }
-
-.btn--primary {
-  background: var(--orange); color: #fff;
-  box-shadow: 0 4px 12px rgba(244,124,32,0.3);
-}
+.btn--primary { background: var(--orange); color: #fff; box-shadow: 0 4px 12px rgba(244,124,32,0.3); }
 .btn--primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
-
 .btn--light { background: #fff; color: var(--blue); border-color: #fff; }
 .btn--light:hover { background: #f0f4f8; }
-
 .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); }
 .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
-
-/* Pulse Animation */
 .hero-modern .btn--primary { animation: pulseCTA 2.5s infinite; }
 @keyframes pulseCTA { 0%,100%{ box-shadow:0 0 0 0 rgba(244,124,32,0.4);} 70%{ box-shadow:0 0 0 12px rgba(244,124,32,0);} }
 
 /* =========================================
-   6. CONTACT FORM
+   6. CONTACT FORM & ALTERNATIVE CONTACTS
    ========================================= */
 .contact-form .grid.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 16px; }
 .lead-form label { font-weight: 600; color: var(--blue); margin-bottom: 6px; display: block; }
-.lead-form input, .lead-form textarea {
-  width: 100%; padding: 12px; border: 1px solid #d1d9e6; border-radius: 10px;
-  font-size: 16px; background: #fff; transition: border 0.2s;
-}
+.lead-form input, .lead-form textarea { width: 100%; padding: 12px; border: 1px solid #d1d9e6; border-radius: 10px; font-size: 16px; background: #fff; transition: border 0.2s; }
 .lead-form input:focus { border-color: var(--blue); outline: none; }
-
 .services-fieldset { border: 1px solid #eef1f5; padding: 16px; border-radius: 12px; margin: 16px 0; background: #fafbfc; }
 .services-fieldset legend { font-weight: 600; color: var(--blue); padding: 0 8px; }
 .services-fieldset .chk { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; cursor: pointer; }
+body.contact .btn-submit { width: 100%; background: #ff7a00; color: #fff; border: none; font-size: 18px; margin-top: 10px; }
 
-body.contact .btn-submit {
-  width: 100%; background: #ff7a00; color: #fff; border: none; font-size: 18px; margin-top: 10px;
+/* FIX: עיצוב יפה ל"Other ways to contact us" */
+.alt-contact-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;
 }
+.alt-contact-btn {
+  display: flex; align-items: center; justify-content: center;
+  padding: 12px; border-radius: 10px;
+  background: #fff; border: 1px solid #eef1f5;
+  color: var(--blue); font-weight: 600; text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03); transition: all 0.2s;
+}
+.alt-contact-btn:hover { border-color: var(--blue); transform: translateY(-2px); }
 
 /* =========================================
    7. BEFORE / AFTER SLIDER
    ========================================= */
 .ba-section { padding: 50px 0; }
-
-.ba-carousel {
-  position: relative; max-width: 800px; margin: 0 auto;
-  user-select: none; -webkit-user-select: none;
-  touch-action: pan-y; 
-}
-
-.ba-wrap {
-  position: relative; width: 100%; height: 420px;
-  border-radius: 20px; overflow: hidden;
-  background: #f0f0f0;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  cursor: default;
-  --split: 50%;
-}
-
+.ba-carousel { position: relative; max-width: 800px; margin: 0 auto; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.ba-wrap { position: relative; width: 100%; height: 420px; border-radius: 20px; overflow: hidden; background: #f0f0f0; box-shadow: 0 20px 40px rgba(0,0,0,0.1); cursor: default; --split: 50%; }
 @media (max-width: 600px) { .ba-wrap { height: 280px; } }
-
-.ba-img {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
-  pointer-events: none;
-}
-
-.ba-after {
-  position: absolute; inset: 0;
-  clip-path: inset(0 0 0 var(--split));
-  z-index: 2;
-}
-
-.ba-handle {
-  position: absolute; top: 0; bottom: 0; left: var(--split);
-  width: 4px; background: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  z-index: 10;
-  transform: translateX(-50%);
-  cursor: ew-resize;
-  pointer-events: auto;
-}
-
-.ba-handle::after {
-  content: ""; position: absolute;
-  top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 48px; height: 48px; border-radius: 50%;
-  background: #fff;
-  border: 4px solid #eef2f6;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231B365D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12H3M18 8l3 4-3 4M6 16l-3-4 3-4'/%3E%3C/svg%3E");
-  background-size: 20px; background-position: center; background-repeat: no-repeat;
-}
-
-.ba-labels-container {
-  position: absolute; top: 20px; left: 20px; right: 20px;
-  display: flex; justify-content: space-between;
-  pointer-events: none; z-index: 20;
-}
-.ba-label {
-  background: rgba(0,0,0,0.7); color: #fff;
-  padding: 6px 12px; border-radius: 20px;
-  font-size: 12px; font-weight: 700; text-transform: uppercase;
-}
-
-.ba-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 50px; height: 50px; border-radius: 50%;
-  background: rgba(255,255,255,0.9);
-  color: var(--blue);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; z-index: 30;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  font-size: 24px; transition: all 0.2s;
-  border: 1px solid rgba(0,0,0,0.05);
-}
+.ba-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; }
+.ba-after { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--split)); z-index: 2; }
+.ba-handle { position: absolute; top: 0; bottom: 0; left: var(--split); width: 4px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 10; transform: translateX(-50%); cursor: ew-resize; pointer-events: auto; }
+.ba-handle::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 4px solid #eef2f6; box-shadow: 0 4px 10px rgba(0,0,0,0.2); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231B365D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12H3M18 8l3 4-3 4M6 16l-3-4 3-4'/%3E%3C/svg%3E"); background-size: 20px; background-position: center; background-repeat: no-repeat; }
+.ba-labels-container { position: absolute; top: 20px; left: 20px; right: 20px; display: flex; justify-content: space-between; pointer-events: none; z-index: 20; }
+.ba-label { background: rgba(0,0,0,0.7); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+.ba-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.9); color: var(--blue); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 30; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-size: 24px; transition: all 0.2s; border: 1px solid rgba(0,0,0,0.05); }
 .ba-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
-.ba-arrow.prev { left: -25px; }
-.ba-arrow.next { right: -25px; }
-
-@media (max-width: 900px) {
-  .ba-arrow.prev { left: 10px; }
-  .ba-arrow.next { right: 10px; }
-}
+.ba-arrow.prev { left: -25px; } .ba-arrow.next { right: -25px; }
+@media (max-width: 900px) { .ba-arrow.prev { left: 10px; } .ba-arrow.next { right: 10px; } }
 
 /* =========================================
    8. FAQ & REVIEWS
    ========================================= */
-/* FAQ תיקון: הסרת ה-plus המיותר ושימוש בחץ הטבעי */
+/* FIX: הסרת הפלוס והשארת החץ בלבד */
 .faq-grid { max-width: 800px; margin: 0 auto; text-align: left; }
 .faq-item { background: #fff; border: 1px solid #eef1f5; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
-.faq-item summary { padding: 18px 24px; cursor: pointer; font-weight: 600; outline: none; }
-/* כאן הסרתי את ה-summary::after והחזרתי את ההתנהגות הטבעית של details */
+.faq-item summary { padding: 18px 24px; cursor: pointer; font-weight: 600; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+/* כאן הסרתי את ה-content: "+" */
+.faq-item summary::after { content: ""; display: block; width: 8px; height: 8px; border-right: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(45deg); transition: transform 0.2s; }
+.faq-item details[open] summary::after { transform: rotate(-135deg); }
 .faq-body { padding: 0 24px 24px; line-height: 1.6; color: var(--ink); border-top: 1px solid #f8f9fa; }
 
 .reviews-carousel, .reviews-grid-pro { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .review-card-pro { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; }
 .review-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .review-avatar-circle { width: 42px; height: 42px; background: linear-gradient(135deg, #ff9f4a, #ff6a3d); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+.review-meta { flex: 1; }
+.review-author-name { font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+.review-time { font-size: 0.8rem; color: #999; font-weight: 400; margin-top: 2px; }
 .star--full { color: #ffb400; }
 
 /* =========================================
@@ -282,7 +186,7 @@ body.contact .btn-submit {
 .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.9rem; }
 
 /* =========================================
-   10. MOBILE STICKY BAR (COLOR FIX)
+   10. MOBILE STICKY BAR (Global Fix)
    ========================================= */
 .mobile-cta { display: none; }
 
@@ -301,17 +205,16 @@ body.contact .btn-submit {
   }
   .mobile-cta a { flex: 1; text-align: center; justify-content: center; height: 48px; border-radius: 8px; }
   
-  /* צבע כחול חזק לכפתור Call */
+  /* FIX: כפתור CALL כחול תמיד בכל הדפים */
   .mobile-cta .btn--light {
     background: #fff !important; 
-    color: #1B365D !important; /* Blue forced */
-    border: 1px solid #ced4da !important;
+    color: #1B365D !important; 
+    border: 1px solid #1B365D !important;
     font-weight: 700;
   }
   
   body { padding-bottom: 80px; } 
 }
 
-/* ביטול הסתרה */
 .reveal { opacity: 1; transform: none; }
 .floating-whatsapp { display: none !important; }
