@@ -1,18 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* --- 1. REVEAL ANIMATION (Safe) --- */
-  const revealElements = document.querySelectorAll('.section, .page-hero, .card, .btn, .faq-item');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('appear');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  revealElements.forEach(el => observer.observe(el));
-
-  /* --- 2. BEFORE/AFTER SLIDER --- */
+  /* --- 1. SLIDER --- */
   const slides = [
     { before: 'ba01-before.jpg', after: 'ba01-after.jpg' },
     { before: 'ba02-before.jpg', after: 'ba02-after.jpg' },
@@ -61,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mousemove', move); window.addEventListener('touchmove', touchMove, { passive: false });
   }
 
-  /* --- 3. MENU --- */
+  /* --- 2. MENU & REVEAL --- */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('site-nav');
   if (burger && nav) {
@@ -69,58 +57,84 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !burger.contains(e.target)) nav.classList.remove('open'); });
   }
 
-  /* --- 4. REVIEWS (Fixed: Works on Home AND Reviews Page) --- */
-  const homeReviews = document.getElementById('home-reviews'); // דף הבית
-  const reviewsList = document.getElementById('reviews-list'); // דף הביקורות
+  const revealElements = document.querySelectorAll('.section, .page-hero, .card, .btn');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('appear');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealElements.forEach(el => { el.classList.add('reveal'); observer.observe(el); });
+
+  /* --- 3. REVIEWS LOGIC (Fix: Time & Shuffle) --- */
+  const homeReviews = document.getElementById('home-reviews');
+  const reviewsList = document.getElementById('reviews-list');
+  const loadMoreBtn = document.getElementById('loadMoreReviews');
+  
   const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
 
   const createCard = (r) => {
     const div = document.createElement('div');
     div.className = 'review-card-pro';
-    div.style.cursor = 'pointer'; // מראה שזה לחיץ
-    div.onclick = () => window.open(PLACE_URL, '_blank'); // הלינק תוקן
+    div.style.cursor = 'pointer';
+    div.onclick = () => window.open(PLACE_URL, '_blank');
+    
+    // FIX: הוספתי את הזמן (Relative Time)
     div.innerHTML = `
       <div class="review-card-header">
         <div class="review-avatar-circle">${(r.author||'G').charAt(0)}</div>
-        <div>
+        <div class="review-meta">
           <div class="review-author-name">${r.author}</div>
-          <div style="color:#ffb400">★★★★★</div>
+          <div class="review-time">${r.relativeTime || 'Recently'}</div>
         </div>
+        <div style="color:#ffb400">★★★★★</div>
       </div>
-      <p class="review-body" style="margin-top:10px; font-size:0.95rem;">${r.text}</p>
+      <p class="review-body" style="font-size:0.95rem;">${r.text}</p>
     `;
     return div;
   };
 
-  const renderReviews = (list) => {
-    // 1. אם אנחנו בדף הבית - הצג 3
-    if(homeReviews) {
-      homeReviews.innerHTML = '';
-      list.slice(0, 3).forEach(r => homeReviews.appendChild(createCard(r)));
-    }
-    // 2. אם אנחנו בדף הביקורות - הצג את כולם
-    if(reviewsList) {
-      reviewsList.innerHTML = '';
-      list.forEach(r => reviewsList.appendChild(createCard(r)));
-    }
-  };
-
-  // גיבוי למקרה שהשרת לא עונה
-  const backupReviews = [
-    { author: "Michael B.", text: "Excellent service! They came on time and fixed my clogged vent quickly.", rating: 5 },
-    { author: "Sarah L.", text: "Highly recommend. Very professional and clean work.", rating: 5 },
-    { author: "David K.", text: "Saved me from a potential fire hazard. Thank you!", rating: 5 }
-  ];
-
   fetch('https://dryer-vent-services.office-d16.workers.dev/')
     .then(res => res.json())
     .then(data => {
-      if(data.reviews && data.reviews.length) renderReviews(data.reviews);
-      else renderReviews(backupReviews);
+      const reviews = data.reviews || [];
+      
+      // A. דף הבית - מציג 3 ראשונים
+      if(homeReviews) {
+        homeReviews.innerHTML = '';
+        reviews.slice(0, 3).forEach(r => homeReviews.appendChild(createCard(r)));
+      }
+
+      // B. דף הביקורות - מנגנון שאפל
+      if(reviewsList) {
+        let reviewIndex = 0;
+        const batchSize = 3;
+
+        const showNextBatch = () => {
+          reviewsList.innerHTML = ''; // מנקה את הקודמים (שאפל)
+          for(let i=0; i<batchSize; i++) {
+            const r = reviews[(reviewIndex + i) % reviews.length]; // מעגלי
+            reviewsList.appendChild(createCard(r));
+          }
+          reviewIndex = (reviewIndex + batchSize) % reviews.length;
+        };
+
+        // טעינה ראשונית
+        showNextBatch();
+
+        // כפתור טוען את הבאים
+        if(loadMoreBtn) {
+          loadMoreBtn.addEventListener('click', () => {
+            showNextBatch();
+            window.scrollTo({ top: reviewsList.offsetTop - 100, behavior: 'smooth' });
+          });
+        }
+      }
     })
-    .catch(() => renderReviews(backupReviews));
-  
-  // Footer Year
+    .catch(console.error);
+
   const yr = document.getElementById('copyright-year');
   if(yr) yr.textContent = new Date().getFullYear();
 });
