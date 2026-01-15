@@ -59,14 +59,12 @@
   </script>
 
   <script>
-    // Remove index.html from URL if present
     if (location.pathname.endsWith('/index.html')) {
       history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
     }
   </script>
 
   <style>
-    /* Fix for Hero Height on Desktop (prevents giant blue screen) */
     @media (min-width: 992px) {
         .page-hero {
             height: auto !important;
@@ -76,15 +74,20 @@
         }
     }
 
-    /* Button styling update */
+    /* תיקון והגדרת עיצוב לכפתור הדירוג כקישור */
     #rateOnGoogleReviews {
-        background-color: #f97316; /* Brand Orange */
+        background-color: #f97316; 
         color: white;
         font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
     #rateOnGoogleReviews:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        color: white;
     }
   </style>
 </head>
@@ -100,15 +103,15 @@
         </div>
       </a>
      <nav class="site-nav" id="site-nav">
-  <a data-nav="home" href="/">Home</a>
-  <a data-nav="services" href="/services/">Services</a>
-  <a data-nav="gallery" href="/gallery/">Gallery</a>
-  <a data-nav="reviews" href="/reviews/">Reviews</a>
-  <a data-nav="faq" href="/faq/">FAQ</a>
-  <a data-nav="about" href="/about/">About</a>
-  <a data-nav="areas" href="/areas/">Service Areas</a>
-  <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
-</nav>
+        <a data-nav="home" href="/">Home</a>
+        <a data-nav="services" href="/services/">Services</a>
+        <a data-nav="gallery" href="/gallery/">Gallery</a>
+        <a data-nav="reviews" href="/reviews/">Reviews</a>
+        <a data-nav="faq" href="/faq/">FAQ</a>
+        <a data-nav="about" href="/about/">About</a>
+        <a data-nav="areas" href="/areas/">Service Areas</a>
+        <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
+      </nav>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -139,9 +142,9 @@
       <p>
         Click below to rate Dryer Vent Services on Google and share your experience with others.
       </p>
-      <button class="btn" id="rateOnGoogleReviews" type="button">
+      <a href="https://g.page/r/CSb74Pe3W9RVEBE/review" target="_blank" class="btn" id="rateOnGoogleReviews">
         Rate Dryer Vent Services on Google
-      </button>
+      </a>
     </div>
   </section>
 
@@ -178,4 +181,3 @@
   <script src="/assets/js/reviews-live.js" defer></script>
 </body>
 </html>
- 
