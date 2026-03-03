@@ -10,10 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   
   <style>
-    /* תיקון כדי שהצ'אט יופיע מעל הכפתורים בנייד */
+    /* תיקון קריטי: מוודא שהצ'אט יופיע מעל הכל ובמיקום גלוי בנייד */
     @media (max-width: 767px) {
-      #pro-chat-bubble, .pro-chat-bubble-container, iframe#proChat { 
+      #housecall-pro-chat-bubble, 
+      #pro-chat-bubble, 
+      .pro-chat-bubble-container, 
+      iframe#proChat { 
         bottom: 110px !important; 
+        z-index: 999999 !important;
       }
     }
   </style>
@@ -57,7 +61,7 @@
     <div class="container">
       <div class="center">
         <h2 style="font-size:2rem; margin-bottom:10px; color:#1B365D;">Our Services</h2>
-        <p class="muted" style="max-width:600px; margin:0 auto 40px;">Professional cleaning, repair, and installation services for a safer and more efficient home.</p>
+        <p class="muted" style="max-width:600px; margin:0 auto 40px;">Trusted dryer vent cleaning, repairs, and installations for your home and business.</p>
       </div>
       <div class="cards-3">
         <div class="card media">
@@ -109,6 +113,60 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="center">
+        <h2>Frequently Asked Questions</h2>
+        <p class="muted" style="margin-bottom:30px;">Common questions about dryer vent maintenance.</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <details>
+            <summary>Why is dryer vent cleaning important?</summary>
+            <div class="faq-body">Cleaning your dryer vent prevents lint buildup, which is the #1 cause of dryer fires. It also helps your clothes dry faster and lowers your energy bills.</div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>How often should I clean my dryer vent?</summary>
+            <div class="faq-body">Experts recommend cleaning your dryer vent at least once a year. Larger families may need it more often.</div>
+          </details>
+        </div>
+        <div class="faq-item">
+          <details>
+            <summary>How do I know if my vent is clogged?</summary>
+            <div class="faq-body">Signs include clothes taking longer to dry, the dryer getting very hot, or a burning smell.</div>
+          </details>
+        </div>
+      </div>
+      <div class="center mt-20"><a href="/faq/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">View All FAQs</a></div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="center">
+        <h2>Customer Reviews</h2>
+        <p class="muted" style="margin-bottom:30px;">Rated 5 Stars on Google.</p>
+      </div>
+      <div id="home-reviews" class="reviews-carousel"></div>
+      <div class="center mt-20"><a href="/reviews/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">Read All Reviews</a></div>
+    </div>
+  </section>
+
+  <section class="cta-bar" style="background:#1B365D; color:#fff; padding:40px 0;">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div>
+        <h2 style="margin:0; font-size:24px; color:#fff;">Need your dryer vent cleaned?</h2>
+        <p style="margin:5px 0 0; opacity:0.9;">Book today and prevent fire hazards.</p>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <a href="tel:+13472449382" class="btn btn--light">Call Now</a>
+        <a href="/contact/" class="btn btn--primary" style="border:1px solid #fff;">Book Online</a>
+      </div>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="container footer-grid">
       <div><h4>Dryer Vent Services</h4><p class="muted" style="color:#b9c6dd;">Professional dryer vent cleaning, repairs, and installations.</p></div>
@@ -120,7 +178,7 @@
 
   <div class="mobile-cta">
     <a href="tel:+13472449382" class="btn btn--light">Call</a>
-    <a href="/contact/" class="btn btn--primary">Book</a>
+    <a href="/contact/" class="btn btn--primary">Book Now</a>
   </div>
 
   <script src="/script.js" defer></script>
