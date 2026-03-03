@@ -8,16 +8,13 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" href="/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  
+
   <style>
-    /* תיקון קריטי: מוודא שהצ'אט יופיע מעל הכל ובמיקום גלוי בנייד */
+    /* תיקון כדי שהצ'אט יופיע מעל הכפתורים התחתונים בנייד */
     @media (max-width: 767px) {
-      #housecall-pro-chat-bubble, 
-      #pro-chat-bubble, 
-      .pro-chat-bubble-container, 
-      iframe#proChat { 
+      #pro-chat-bubble, .pro-chat-bubble-container, iframe#proChat { 
         bottom: 110px !important; 
-        z-index: 999999 !important;
+        z-index: 9999 !important;
       }
     }
   </style>
@@ -61,7 +58,7 @@
     <div class="container">
       <div class="center">
         <h2 style="font-size:2rem; margin-bottom:10px; color:#1B365D;">Our Services</h2>
-        <p class="muted" style="max-width:600px; margin:0 auto 40px;">Trusted dryer vent cleaning, repairs, and installations for your home and business.</p>
+        <p class="muted" style="max-width:600px; margin:0 auto 40px;">Complete solutions for residential and commercial dryer vents.</p>
       </div>
       <div class="cards-3">
         <div class="card media">
@@ -178,9 +175,10 @@
 
   <div class="mobile-cta">
     <a href="tel:+13472449382" class="btn btn--light">Call</a>
-    <a href="/contact/" class="btn btn--primary">Book Now</a>
+    <a href="/contact/" class="btn btn--primary">Book</a>
   </div>
 
   <script src="/script.js" defer></script>
+
 </body>
 </html>
