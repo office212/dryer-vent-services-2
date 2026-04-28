@@ -51,6 +51,14 @@
   </script>
 
   <style>
+    /* תיקון CSS כדי לוודא שהבועה לא מוסתרת על ידי כפתורי המובייל */
+    @media (max-width: 767px) {
+      #housecall-pro-chat-bubble, #pro-chat-bubble, iframe#proChat { 
+        bottom: 110px !important; 
+        z-index: 9999 !important;
+      }
+    }
+
     .svc-picture img.fix-fit {
       object-fit: cover;
     }
@@ -68,6 +76,8 @@
       }
     }
   </style>
+
+  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </head>
 
 <body data-page="about">
@@ -86,8 +96,9 @@
         <a data-nav="gallery" href="/gallery/">Gallery</a>
         <a data-nav="reviews" href="/reviews/">Reviews</a>
         <a data-nav="faq" href="/faq/">FAQ</a>
-        <a data-nav="about" href="/about/">About</a>
         <a data-nav="areas" href="/areas/">Service Areas</a>
+        <a data-nav="booking" href="/booking/">Book Online</a>
+        <a data-nav="about" href="/about/">About</a>
         <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
       </nav>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
@@ -112,7 +123,7 @@
         <li>On-time and reliable</li>
         <li>Upfront pricing</li>
       </ul>
-      <a class="btn btn--primary" href="/contact/">Book Now</a>
+      <a class="btn btn--primary" href="/booking/">Book Now</a>
     </div>
 
     <div class="card media">
@@ -138,9 +149,11 @@
           <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
         </ul>
       </div>
-      <div class="footer-cta">
-        <a class="btn btn--primary" href="/contact/">Book Now</a>
-        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="footer-cta" style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener" style="color:#fff; border-color:rgba(255,255,255,0.4);">WhatsApp</a>
+        <a class="btn btn-outline" href="tel:+13472449382" style="color:#fff; border-color:rgba(255,255,255,0.4);">Call Us</a>
+        <a class="btn btn-outline" href="/contact/" style="color:#fff; border-color:rgba(255,255,255,0.4);">Contact Us</a>
+        <a class="btn btn--primary" href="/booking/">Book Now</a>
       </div>
     </div>
     <div class="copyright">© <span id="copyright-year">2026</span> Dryer Vent Services. All rights reserved.</div>
@@ -151,14 +164,10 @@
   </script>
 
   <div class="mobile-cta">
-    <a class="btn" href="tel:+13472449382">Call</a>
-    <a class="btn btn--primary" href="/contact/">Book Now</a>
+    <a href="/contact/" class="btn btn--light">Contact Us</a>
+    <a href="/booking/" class="btn btn--primary">Book Now</a>
   </div>
 
   <script src="/script.js" defer></script>
-
-  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#0E6FBE" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
-
 </body>
 </html>
-
