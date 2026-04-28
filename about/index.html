@@ -51,25 +51,24 @@
   </script>
 
   <style>
-    /* תיקון CSS /* תיקון סופי לבועת הצ'אט בנייד - שלא תסתתר מאחורי הכפתורים */
-@media (max-width: 767px) {
-  #housecall-pro-chat-bubble, 
-  #pro-chat-bubble, 
-  iframe#proChat,
-  .pro-chat-bubble-container { 
-    bottom: 120px !important; /* דוחף אותה מעל הסרגל הכתום/כחול */
-    z-index: 999999 !important; /* מוודא שהיא בשכבה הכי עליונה שיש */
-    visibility: visible !important;
-    display: block !important;
-  }
-}
-
+    /* תיקון סופי ואגרסיבי לבועת הצ'אט בנייד */
+    @media (max-width: 767px) {
+      #housecall-pro-chat-bubble, 
+      #pro-chat-bubble, 
+      iframe#proChat,
+      [id*="pro-chat"], 
+      [class*="pro-chat"] { 
+        bottom: 130px !important; /* דוחף אותה מעל הסרגל */
+        z-index: 9999999 !important; /* תמיד מעל הכל */
+        visibility: visible !important;
+        display: block !important;
+      }
+    }
 
     .svc-picture img.fix-fit {
       object-fit: cover;
     }
     @media (min-width: 768px) {
-      /* Adjust frame to landscape like areas page */
       .card.media .svc-picture {
         height: auto !important;
         aspect-ratio: 16 / 9;
@@ -82,8 +81,6 @@
       }
     }
   </style>
-
-  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </head>
 
 <body data-page="about">
@@ -175,5 +172,7 @@
   </div>
 
   <script src="/script.js" defer></script>
+
+  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </body>
 </html>
