@@ -13,7 +13,39 @@
     body.contact.page-contact .mobile-cta,
     body.contact.page-contact #sticky-bar { display:none!important;visibility:hidden!important;pointer-events:none!important; }
     .btn-submit[disabled]{opacity:.65;cursor:not-allowed}
+
+    /* תיקון CSS כדי לוודא שהבועה לא מוסתרת על ידי כפתורי המובייל */
+    @media (max-width: 767px) {
+      #housecall-pro-chat-bubble, #pro-chat-bubble, iframe#proChat { 
+        bottom: 110px !important; 
+        z-index: 9999 !important;
+      }
+    }
+
+    /* עיצוב כפתור ההזמנה של Housecall Pro כדי שיתאים למותג שלך */
+    .hcp-button {
+        background-color: #f97316 !important; 
+        color: #ffffff !important;
+        border: none !important;
+        padding: 14px 28px !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        border-radius: 6px !important;
+        cursor: pointer !important;
+        font-family: 'Inter', sans-serif !important;
+        transition: all 0.3s ease !important;
+        display: inline-block;
+        margin-bottom: 30px; /* מרווח מהטופס שמתחתיו */
+        box-shadow: 0 4px 6px rgba(249, 115, 22, 0.2) !important;
+    }
+    .hcp-button:hover {
+        background-color: #e86305 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 12px rgba(249, 115, 22, 0.3) !important;
+    }
   </style>
+
+  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 
   <link rel="canonical" href="https://www.dryer-ventservices.com/contact/"/>
 </head>
@@ -33,6 +65,7 @@
         <a data-nav="faq" href="/faq/">FAQ</a>
         <a data-nav="about" href="/about/">About</a>
         <a data-nav="areas" href="/areas/">Service Areas</a>
+        <a data-nav="booking" href="/booking/">Book Online</a>
         <a class="cta active" data-nav="contact" href="/contact/">Contact Us</a>
       </nav>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -44,11 +77,16 @@
   <section class="section container two-col">
     <div>
       <h2>Send a Message</h2>
-
+      
+      <p style="margin-bottom: 10px; font-weight: 600; color: #1B365D;">Want to skip the form? Book directly on our calendar:</p>
+      <button data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()"> Book Online Now </button> 
+      <script async src="https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services"></script> 
+      <hr style="margin-bottom: 30px; border: 0; border-top: 1px solid #eef1f5;">
+      
       <form id="contactForm"
             action="https://script.google.com/macros/s/AKfycbyXLyX2094tKPcJJoIDTRAqWD2oV9pOXnCWjFHkJi8fyPFZhGkrLtaolMwQHMRAEoQm/exec"
             method="POST" class="contact-form" novalidate>
-            
+
         <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-5000px;opacity:0;height:0;width:0;">
         <input type="hidden" name="_started_at" id="_started_at">
         <input type="hidden" name="_ua" id="_ua">
@@ -179,10 +217,19 @@
         <li><a href="tel:+13472449382">347-244-9382</a></li>
         <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
       </ul></div>
-      <div class="footer-cta"><a class="btn btn--primary" href="/contact/">Book Now</a></div>
+      <div class="footer-cta" style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener" style="color:#fff; border-color:rgba(255,255,255,0.4);">WhatsApp</a>
+        <a class="btn btn-outline" href="tel:+13472449382" style="color:#fff; border-color:rgba(255,255,255,0.4);">Call Us</a>
+        <a class="btn btn-outline" href="/contact/" style="color:#fff; border-color:rgba(255,255,255,0.4);">Contact Us</a>
+        <a class="btn btn--primary" href="/booking/">Book Now</a>
+      </div>
     </div>
-    <div class="copyright">© 2026 Dryer Vent Services. All rights reserved.</div>
+    <div class="copyright">© <span id="copyright-year">2026</span> Dryer Vent Services. All rights reserved.</div>
   </footer>
+
+  <script>
+    document.getElementById("copyright-year").textContent = new Date().getFullYear();
+  </script>
 
   <script src="/script.js" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
