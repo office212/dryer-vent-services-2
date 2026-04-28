@@ -51,13 +51,19 @@
   </script>
 
   <style>
-    /* תיקון CSS כדי לוודא שהבועה לא מוסתרת על ידי כפתורי המובייל */
-    @media (max-width: 767px) {
-      #housecall-pro-chat-bubble, #pro-chat-bubble, iframe#proChat { 
-        bottom: 110px !important; 
-        z-index: 9999 !important;
-      }
-    }
+    /* תיקון CSS /* תיקון סופי לבועת הצ'אט בנייד - שלא תסתתר מאחורי הכפתורים */
+@media (max-width: 767px) {
+  #housecall-pro-chat-bubble, 
+  #pro-chat-bubble, 
+  iframe#proChat,
+  .pro-chat-bubble-container { 
+    bottom: 120px !important; /* דוחף אותה מעל הסרגל הכתום/כחול */
+    z-index: 999999 !important; /* מוודא שהיא בשכבה הכי עליונה שיש */
+    visibility: visible !important;
+    display: block !important;
+  }
+}
+
 
     .svc-picture img.fix-fit {
       object-fit: cover;
