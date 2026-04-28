@@ -128,16 +128,16 @@
 
     @keyframes fadeIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none} }
 
-    /* תיקון CSS כדי לוודא שהבועה לא מוסתרת על ידי כפתורי המובייל */
+    /* התיקון הרשמי והאולטימטיבי לבועה של Housecall Pro בנייד */
     @media (max-width: 767px) {
-      #housecall-pro-chat-bubble, #pro-chat-bubble, iframe#proChat { 
-        bottom: 110px !important; 
-        z-index: 9999 !important;
+      #proChatIframeContainer { 
+        /* המספר הכי גבוה שדפדפנים מאפשרים, כדי לנצח את הסרגל התחתון */
+        z-index: 2147483647 !important; 
+        /* מושך את הבועה למעלה בכוח עוקף את ההגדרות שלהם */
+        transform: translateY(-80px) !important; 
       }
     }
   </style>
-
-  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
@@ -226,5 +226,7 @@
   </div>
 
   <script src="/script.js" defer></script>
+
+  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </body>
 </html>
