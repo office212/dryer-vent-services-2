@@ -51,17 +51,13 @@
   </script>
 
   <style>
-    /* תיקון סופי ואגרסיבי לבועת הצ'אט בנייד */
+    /* התיקון הרשמי והאולטימטיבי לבועה של Housecall Pro בנייד */
     @media (max-width: 767px) {
-      #housecall-pro-chat-bubble, 
-      #pro-chat-bubble, 
-      iframe#proChat,
-      [id*="pro-chat"], 
-      [class*="pro-chat"] { 
-        bottom: 130px !important; /* דוחף אותה מעל הסרגל */
-        z-index: 9999999 !important; /* תמיד מעל הכל */
-        visibility: visible !important;
-        display: block !important;
+      #proChatIframeContainer { 
+        /* המספר הכי גבוה שדפדפנים מאפשרים, כדי לנצח את הסרגל התחתון */
+        z-index: 2147483647 !important; 
+        /* מושך את הבועה למעלה בכוח, עוקף את ההגדרות הפנימיות שלהם */
+        transform: translateY(-80px) !important; 
       }
     }
 
@@ -69,6 +65,7 @@
       object-fit: cover;
     }
     @media (min-width: 768px) {
+      /* Adjust frame to landscape like areas page */
       .card.media .svc-picture {
         height: auto !important;
         aspect-ratio: 16 / 9;
@@ -81,6 +78,7 @@
       }
     }
   </style>
+
 </head>
 
 <body data-page="about">
