@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Online | Dryer Vent Services NY & NJ</title>
+  <meta name="description" content="Schedule your professional dryer vent cleaning, repair, or installation online with Dryer Vent Services. Serving Staten Island and New Jersey.">
+
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    @media (min-width: 992px) {
+        .page-hero {
+            padding-top: 140px !important;
+            padding-bottom: 80px !important;
+        }
+    }
+    
+    /* עיצוב כפתור ההזמנה של Housecall Pro כדי שיתאים למותג שלך */
+    .hcp-button {
+        background-color: #f97316 !important; /* הכתום של האתר */
+        color: #ffffff !important;
+        border: none !important;
+        padding: 16px 32px !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        border-radius: 6px !important;
+        cursor: pointer !important;
+        font-family: 'Inter', sans-serif !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 6px rgba(249, 115, 22, 0.2) !important;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .hcp-button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 12px rgba(249, 115, 22, 0.3) !important;
+        background-color: #e86305 !important;
+    }
+
+    /* תיקון לבועת הצ'אט בנייד */
+    @media (max-width: 767px) {
+      #housecall-pro-chat-bubble, #pro-chat-bubble, iframe#proChat { 
+        bottom: 110px !important; 
+        z-index: 9999 !important;
+      }
+    }
+  </style>
+
+  <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
+</head>
+
+<body data-page="booking">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/">
+        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
+        <div class="brand-text">
+          <strong>Dryer Vent Services</strong>
+          <span>Cleaning - Repairs - Installations</span>
+        </div>
+      </a>
+     <nav class="site-nav" id="site-nav">
+        <a data-nav="home" href="/">Home</a>
+        <a data-nav="services" href="/services/">Services</a>
+        <a data-nav="gallery" href="/gallery/">Gallery</a>
+        <a data-nav="reviews" href="/reviews/">Reviews</a>
+        <a data-nav="faq" href="/faq/">FAQ</a>
+        <a data-nav="areas" href="/areas/">Service Areas</a>
+        <a data-nav="about" href="/about/">About</a>
+        <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-hero fade-in">
+    <div class="container">
+      <h1>Book Online</h1>
+      <p>Schedule your professional dryer vent service in seconds.</p>
+    </div>
+  </section>
+
+  <section class="section container fade-in reveal">
+    <div class="center" style="max-width: 600px; margin: 60px auto; background: #fff; padding: 50px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(27, 54, 93, 0.08); border-top: 4px solid #1B365D;">
+        <h2 style="color: #1B365D; margin-bottom: 15px; font-size: 28px;">Ready to schedule?</h2>
+        <p class="muted" style="margin-bottom: 35px; font-size: 16px; line-height: 1.6;">Click the button below to view our live availability and book your appointment directly into our calendar.</p>
+        
+        <button data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()"> Book Online Now </button> 
+        <script async src="https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services"></script> 
+        </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Dryer Vent Services</h4>
+        <p>Dryer Vent Cleaning - Repairs - Installations</p>
+      </div>
+      <div>
+        <ul class="contact-list">
+          <li><a href="tel:+13472449382">347-244-9382</a></li>
+          <li><a href="mailto:office@dryer-ventservices.com">office@dryer-ventservices.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-cta">
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="copyright">© <span id="copyright-year">2026</span> Dryer Vent Services. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById("copyright-year").textContent = new Date().getFullYear();
+  </script>
+
+  <div class="mobile-cta">
+    <a class="btn" href="tel:+13472449382">Call</a>
+    <a class="btn btn--primary" href="/contact/">Contact Us</a>
+  </div>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>
