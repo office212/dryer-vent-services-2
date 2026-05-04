@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* התיקון הרשמי והאולטימטיבי לבועה של Housecall Pro בנייד */
+    /* התיקון לבועה של Housecall Pro בנייד */
     @media (max-width: 767px) {
       #proChatIframeContainer { 
         z-index: 2147483647 !important; 
@@ -18,77 +18,70 @@
       }
     }
 
-    /* --- עיצוב ה-Hero ה-MODERN-PREMIUM --- */
+    /* --- עיצוב ה-Hero המעודכן: פילטר מובנה וקריאות מושלמת --- */
     .hero-modern {
       position: relative;
-      /* כאן נמצא נתיב התמונה. ודא שהשם מדויק! */
-      background-image: url('/images/gallery/hero-bg.jpg'); 
+      /* כאן הוספתי גרדיאנט כחול כהה שיושב *יחד* עם התמונה, ככה זה תמיד יעבוד */
+      background-image: linear-gradient(rgba(27, 54, 93, 0.65), rgba(27, 54, 93, 0.85)), url('/images/gallery/hero-bg.jpg'); 
       background-size: cover;
       background-position: center;
-      padding: 140px 20px; /* ריווח נדיב למעלה ולמטה */
-      color: #ffffff; /* טקסט לבן */
+      padding: 100px 20px; /* ריווח מתון יותר כדי לשמור על מראה רוחבי */
+      color: #ffffff; 
     }
     
-    /* הוספת הפילטר הכחול-כהה (Overlay) */
-    .hero-modern::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(27, 54, 93, 0.85); /* צבע המותג עם 85% אטימות */
-      z-index: 1;
-    }
-    
-    /* מזיז את כל הבלוק הפנימי שמאלה */
     .hero-inner {
       position: relative;
       z-index: 2;
       max-width: 700px;
-      margin: 0; /* מזיז הכל שמאלה */
-      text-align: left; /* מיישר טקסט לשמאל */
+      margin: 0; 
+      text-align: left; 
     }
     
     .hero-title {
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: #ffffff;
       margin-bottom: 20px;
-      line-height: 1.1;
+      line-height: 1.2;
       font-weight: 800;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.6); /* צללית קלה להבלטה מירבית */
     }
     
     .hero-sub {
-      font-size: 1.25rem;
-      color: #e2e8f0; /* לבן-אפרפר עדין */
-      margin-bottom: 40px;
-      line-height: 1.6;
-      max-width: 600px; /* שומר שהשורה לא תהיה ארוכה מדי */
+      font-size: 1.15rem;
+      color: #f8fafc; 
+      margin-bottom: 30px;
+      line-height: 1.5;
+      max-width: 600px; 
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* צללית קלה להבלטה מירבית */
     }
     
     .hero-actions {
       display: flex;
-      justify-content: flex-start; /* כפתורים מתחילים משמאל */
+      justify-content: flex-start; 
       gap: 15px;
     }
     
-    /* עיצוב כפתור Call מבריק */
     .hero-actions .btn-outline {
       color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.5);
-      background: transparent;
+      border-color: rgba(255, 255, 255, 0.6);
+      background: rgba(0,0,0,0.2); /* רקע כהה שקוף שיהיה קריא על התמונה */
     }
     
     .hero-actions .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.15);
       border-color: #ffffff;
     }
 
+    /* התאמות מיוחדות למובייל - כדי שהתמונה תישאר באנר לרוחב! */
     @media (max-width: 767px) {
-      .hero-modern { padding: 80px 20px; }
-      .hero-title { font-size: 2.2rem; }
-      .hero-inner { text-align: center; margin: 0 auto; } /* מחזיר למרכז במובייל */
-      .hero-actions { flex-direction: column; justify-content: center; align-items: center;}
-      .burger {
-        margin-left: initial !important;
+      .hero-modern { 
+        padding: 50px 20px; /* ריווח נמוך בהרבה = מונע חיתוך ארוך וגבוה של התמונה */
       }
+      .hero-title { font-size: 2rem; }
+      .hero-sub { font-size: 1rem; margin-bottom: 25px; }
+      .hero-inner { text-align: center; margin: 0 auto; } 
+      .hero-actions { flex-direction: column; justify-content: center; align-items: center;}
+      .burger { margin-left: initial !important; }
     }
   </style>
 
