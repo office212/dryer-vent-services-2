@@ -18,60 +18,77 @@
       }
     }
 
-    /* --- עיצוב חדש לחלק העליון (Hero) עם התמונה והפילטר הכחול --- */
+    /* --- עיצוב ה-Hero ה-MODERN-PREMIUM --- */
     .hero-modern {
       position: relative;
       /* כאן נמצא נתיב התמונה. ודא שהשם מדויק! */
       background-image: url('/images/gallery/hero-bg.jpg'); 
       background-size: cover;
       background-position: center;
-      padding: 120px 20px; /* ריווח נדיב למעלה ולמטה */
-      text-align: center;
+      padding: 140px 20px; /* ריווח נדיב למעלה ולמטה */
+      color: #ffffff; /* טקסט לבן */
     }
-    /* הפילטר הכחול שיושב מעל התמונה */
+    
+    /* הוספת הפילטר הכחול-כהה (Overlay) */
     .hero-modern::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(27, 54, 93, 0.85); /* צבע המותג שלך עם 85% אטימות */
+      background: rgba(27, 54, 93, 0.85); /* צבע המותג עם 85% אטימות */
       z-index: 1;
     }
-    /* שומר שהטקסט והכפתורים יהיו מעל הפילטר */
+    
+    /* מזיז את כל הבלוק הפנימי שמאלה */
     .hero-inner {
       position: relative;
       z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 700px;
+      margin: 0; /* מזיז הכל שמאלה */
+      text-align: left; /* מיישר טקסט לשמאל */
     }
+    
     .hero-title {
-      font-size: 3rem;
+      font-size: 3.5rem;
       color: #ffffff;
       margin-bottom: 20px;
-      line-height: 1.2;
+      line-height: 1.1;
+      font-weight: 800;
     }
+    
     .hero-sub {
       font-size: 1.25rem;
-      color: #e2e8f0;
-      margin-bottom: 35px;
+      color: #e2e8f0; /* לבן-אפרפר עדין */
+      margin-bottom: 40px;
       line-height: 1.6;
+      max-width: 600px; /* שומר שהשורה לא תהיה ארוכה מדי */
     }
+    
     .hero-actions {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start; /* כפתורים מתחילים משמאל */
       gap: 15px;
     }
+    
+    /* עיצוב כפתור Call מבריק */
     .hero-actions .btn-outline {
       color: #ffffff;
       border-color: rgba(255, 255, 255, 0.5);
       background: transparent;
     }
+    
     .hero-actions .btn-outline:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: #ffffff;
     }
+
     @media (max-width: 767px) {
+      .hero-modern { padding: 80px 20px; }
       .hero-title { font-size: 2.2rem; }
-      .hero-actions { flex-direction: column; }
+      .hero-inner { text-align: center; margin: 0 auto; } /* מחזיר למרכז במובייל */
+      .hero-actions { flex-direction: column; justify-content: center; align-items: center;}
+      .burger {
+        margin-left: initial !important;
+      }
     }
   </style>
 
