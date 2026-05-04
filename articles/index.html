@@ -13,26 +13,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" />
 
   <style>
-    .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+    /* Hero Section (Matching your site's style) */
+    .page-hero { background: #1B365D; color: #fff; padding: 60px 0; text-align: center; }
+    .page-hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    .page-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+    /* Articles Grid */
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin: 50px 0; }
     .article-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #eee; transition: transform 0.3s ease; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
-    .article-card:hover { transform: translateY(-5px); }
-    .article-card img { width: 100%; height: 200px; object-fit: cover; }
+    .article-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+    .article-card img { width: 100%; height: 220px; object-fit: cover; }
     .article-card-content { padding: 20px; flex-grow: 1; }
-    .article-card h2 { color: #1B365D; font-size: 1.25rem; margin-bottom: 10px; line-height: 1.4; }
-    .article-card p { color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 15px; }
-    .read-more { color: #1B365D; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .article-card h2 { color: #1B365D; font-size: 1.3rem; margin-bottom: 12px; line-height: 1.4; }
+    .article-card p { color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+    .read-more { color: #1B365D; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 5px; }
     
     @media (max-width: 767px) {
+      .page-hero h1 { font-size: 2rem; }
       #proChatIframeContainer { z-index: 2147483647 !important; transform: translateY(-80px) !important; }
     }
   </style>
 </head>
 
-<body>
+<body data-page="articles">
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="lazy" alt="Dryer Vent Services logo" class="logo" src="/logo.webp" onerror="this.onerror=null;this.src='logo.png';">
+        <img loading="lazy" alt="Dryer Vent Services logo" class="logo" src="/logo.webp" onerror="this.onerror=null;this.src='/logo.png';">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
           <span>Cleaning - Repairs - Installations</span>
@@ -54,18 +61,22 @@
     </div>
   </header>
 
-  <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
-    <h1 style="color: #1B365D; text-align: center; font-size: 2.5rem; margin-bottom: 10px;">Expert Insights & Safety Tips</h1>
-    <p style="text-align: center; color: #666; max-width: 700px; margin: 0 auto 40px;">Stay informed about dryer safety, energy savings, and the latest home maintenance standards in New York and New Jersey.</p>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Expert Insights & Safety Tips</h1>
+      <p>Stay informed about dryer safety, energy savings, and home maintenance standards in New York and New Jersey.</p>
+    </div>
+  </section>
 
+  <main class="container">
     <div class="articles-grid">
       
       <a href="/articles/insurance/" class="article-card">
-        <img src="/images/insurance1.jpg" alt="Home insurance and dryer fires">
+        <img src="/images/gallery/insurance-thumb.jpg" alt="Home insurance and dryer fires">
         <div class="article-card-content">
           <h2>Will My Home Insurance Cover a Dryer Fire?</h2>
-          <p>What every homeowner in NY & NJ needs to know about maintenance clauses and fire safety.</p>
-          <span class="read-more">Read Full Article →</span>
+          <p>Important information for homeowners regarding maintenance clauses and fire safety regulations.</p>
+          <span class="read-more">Read Full Article &rarr;</span>
         </div>
       </a>
 
