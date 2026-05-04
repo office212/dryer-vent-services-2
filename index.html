@@ -13,11 +13,65 @@
     /* התיקון הרשמי והאולטימטיבי לבועה של Housecall Pro בנייד */
     @media (max-width: 767px) {
       #proChatIframeContainer { 
-        /* המספר הכי גבוה שדפדפנים מאפשרים, כדי לנצח את הסרגל התחתון */
         z-index: 2147483647 !important; 
-        /* מושך את הבועה למעלה בכוח עוקף את ההגדרות שלהם */
         transform: translateY(-80px) !important; 
       }
+    }
+
+    /* --- עיצוב חדש לחלק העליון (Hero) עם התמונה והפילטר הכחול --- */
+    .hero-modern {
+      position: relative;
+      /* כאן נמצא נתיב התמונה. ודא שהשם מדויק! */
+      background-image: url('/images/gallery/hero-bg.jpg'); 
+      background-size: cover;
+      background-position: center;
+      padding: 120px 20px; /* ריווח נדיב למעלה ולמטה */
+      text-align: center;
+    }
+    /* הפילטר הכחול שיושב מעל התמונה */
+    .hero-modern::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(27, 54, 93, 0.85); /* צבע המותג שלך עם 85% אטימות */
+      z-index: 1;
+    }
+    /* שומר שהטקסט והכפתורים יהיו מעל הפילטר */
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-title {
+      font-size: 3rem;
+      color: #ffffff;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .hero-sub {
+      font-size: 1.25rem;
+      color: #e2e8f0;
+      margin-bottom: 35px;
+      line-height: 1.6;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .hero-actions .btn-outline {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.5);
+      background: transparent;
+    }
+    .hero-actions .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ffffff;
+    }
+    @media (max-width: 767px) {
+      .hero-title { font-size: 2.2rem; }
+      .hero-actions { flex-direction: column; }
     }
   </style>
 
