@@ -8,7 +8,19 @@
 
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <link rel="canonical" href="https://www.dryer-ventservices.com/booking/" />
+  <meta property="og:site_name" content="Dryer Vent Services" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.dryer-ventservices.com/booking/" />
+  <meta property="og:title" content="Book Online | Dryer Vent Services NY & NJ" />
+  <meta property="og:description" content="Schedule your professional dryer vent cleaning, repair, or installation online. Serving Staten Island and New Jersey." />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
 
   <style>
     @media (min-width: 992px) {
@@ -18,9 +30,8 @@
         }
     }
 
-    /* עיצוב כפתור ההזמנה של Housecall Pro כדי שיתאים למותג שלך */
     .hcp-button {
-        background-color: #f97316 !important; 
+        background-color: #f97316 !important;
         color: #ffffff !important;
         border: none !important;
         padding: 16px 32px !important;
@@ -43,9 +54,7 @@
     /* התיקון הרשמי והאולטימטיבי לבועה של Housecall Pro בנייד */
     @media (max-width: 767px) {
       #proChatIframeContainer { 
-        /* המספר הכי גבוה שדפדפנים מאפשרים, כדי לנצח את הסרגל התחתון */
         z-index: 2147483647 !important; 
-        /* מושך את הבועה למעלה בכוח עוקף את ההגדרות שלהם */
         transform: translateY(-80px) !important; 
       }
     }
@@ -56,13 +65,13 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="lazy" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
+        <img loading="eager" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
           <span>Cleaning - Repairs - Installations</span>
         </div>
       </a>
-     <nav class="site-nav" id="site-nav">
+      <nav class="site-nav" id="site-nav">
         <a data-nav="home" href="/">Home</a>
         <a data-nav="services" href="/services/">Services</a>
         <a data-nav="gallery" href="/gallery/">Gallery</a>
@@ -89,12 +98,18 @@
 
   <section class="section container fade-in reveal">
     <div class="center" style="max-width: 600px; margin: 60px auto; background: #fff; padding: 50px 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(27, 54, 93, 0.08); border-top: 4px solid #1B365D;">
-        <h2 style="color: #1B365D; margin-bottom: 15px; font-size: 28px;">Ready to schedule?</h2>
-        <p class="muted" style="margin-bottom: 35px; font-size: 16px; line-height: 1.6;">Click the button below to view our live availability and book your dryer vent cleaning or repair in seconds.</p>
+      <h2 style="color: #1B365D; margin-bottom: 15px; font-size: 28px;">Ready to schedule?</h2>
+      <p class="muted" style="margin-bottom: 35px; font-size: 16px; line-height: 1.6;">Click the button below to view our live availability and book your dryer vent cleaning or repair in seconds.</p>
 
-        <button data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()"> Book Online Now </button> 
-        <script async src="https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services"></script> 
-        </div>
+      <button data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()">Book Online Now</button>
+      <script async src="https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services"></script>
+
+      <p style="margin-top: 28px; font-size: 14px; color: #6b7280; line-height: 1.9;">
+        ✓ &nbsp;We'll confirm your appointment within a few hours<br>
+        ✓ &nbsp;Airflow tested before &amp; after every job<br>
+        ✓ &nbsp;Flat-rate pricing — no surprises on site
+      </p>
+    </div>
   </section>
 
   <footer class="site-footer">
