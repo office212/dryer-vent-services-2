@@ -35,12 +35,12 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "HomeAndConstructionBusiness",
     "@id": "https://www.dryer-ventservices.com/#business",
     "name": "Dryer Vent Services",
-    "image": "https://www.dryer-ventservices.com/assets/logo.png",
+    "image": "https://dryer-ventservices.com/logo.webp",
     "url": "https://www.dryer-ventservices.com/reviews/",
-    "telephone": "+1-347-244-9382",
+    "telephone": "+13472449382",
     "areaServed": [
       {"@type": "Place", "name": "Staten Island, NY"},
       {"@type": "Place", "name": "New York, NY"},
@@ -53,11 +53,34 @@
       "addressCountry": "US"
     },
     "priceRange": "$$",
-    "sameAs": ["https://www.dryer-ventservices.com"],
-    "description": "Professional dryer vent cleaning, repairs, and installations across NY & NJ."
+    "sameAs": [
+      "https://www.dryer-ventservices.com",
+      "https://g.page/r/CSb74Pe3W9RVEBE/review"
+    ],
+    "description": "Professional residential dryer vent cleaning, repairs, and installations across NY & NJ.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "59"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Jacob F."
+        },
+        "datePublished": "2026-04-29",
+        "reviewBody": "Fast, professional, and thorough. They cleared out lint from my dryer vent and the difference is huge. Dryer runs faster, less heat in the laundry room, and I feel safer knowing the fire risk is gone. Booking was easy and the tech was on time. Highly recommend!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      }
+    ]
   }
   </script>
-
   <script>
     if (location.pathname.endsWith('/index.html')) {
       history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
