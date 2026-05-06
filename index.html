@@ -33,7 +33,7 @@
       }
     }
 
-    /* --- עיצוב ה-Hero המעודכן: פילטר מובנה וקריאות מושלמת --- */
+    /* --- Hero Section --- */
     .hero-modern {
       position: relative;
       background-image: linear-gradient(rgba(27, 54, 93, 0.65), rgba(27, 54, 93, 0.85)), url('/images/gallery/hero-bg.jpg'); 
@@ -75,15 +75,47 @@
       gap: 15px;
     }
 
-    .hero-actions .btn-outline {
-      color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.6);
-      background: rgba(0,0,0,0.2); 
+    /* --- המראה החדש והיוקרתי של שורת האמון --- */
+    .trust-bar {
+      background: #fdfdfe;
+      border-top: 1px solid #edf2f7;
+      border-bottom: 1px solid #edf2f7;
+      padding: 20px 0;
     }
 
-    .hero-actions .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #ffffff;
+    .trust-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #2d3748;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    /* האייקון המעוצב */
+    .trust-icon {
+      background: #1B365D;
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(27, 54, 93, 0.2);
     }
 
     @media (max-width: 767px) {
@@ -92,6 +124,8 @@
       .hero-sub { font-size: 1rem; margin-bottom: 25px; }
       .hero-inner { text-align: center; margin: 0 auto; } 
       .hero-actions { flex-direction: column; justify-content: center; align-items: center;}
+      .trust-container { gap: 12px; padding: 0 15px; }
+      .trust-item { font-size: 0.85rem; width: 45%; justify-content: flex-start; }
       .burger { margin-left: initial !important; }
     }
   </style>
@@ -182,6 +216,27 @@
       </div>
     </div>
   </section>
+
+  <div class="trust-bar">
+    <div class="trust-container">
+      <div class="trust-item">
+        <span class="trust-icon">✓</span>
+        <span>Serving NY & NJ Since 2020</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">✓</span>
+        <span>Professional & Reliable</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">✓</span>
+        <span>5-Star Google Rated</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">✓</span>
+        <span>1,000+ Happy Customers</span>
+      </div>
+    </div>
+  </div>
 
   <section class="section">
     <div class="container">
