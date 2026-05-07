@@ -135,34 +135,22 @@
   <div id="grid" class="gallery-grid">
 
     <figure>
-      <img src="/images/gallery/Gallery-32.jpg" loading="eager"
-           alt="Dryer vent cleaning results - Staten Island NY"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-32.jpg';">
+      <img src="/images/gallery/Gallery-32.jpg" loading="eager" alt="Dryer vent cleaning results - Staten Island NY">
     </figure>
     <figure>
-      <img src="/images/gallery/Gallery-41.jpg" loading="eager"
-           alt="Clogged dryer vent before and after cleaning - New Jersey"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-41.jpg';">
+      <img src="/images/gallery/Gallery-41.jpg" loading="eager" alt="Clogged dryer vent before and after cleaning - New Jersey">
     </figure>
     <figure>
-      <img src="/images/gallery/Gallery-23.jpeg" loading="eager"
-           alt="Professional dryer vent lint removal - Staten Island"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-23.jpeg';">
+      <img src="/images/gallery/Gallery-23.jpeg" loading="eager" alt="Professional dryer vent lint removal - Staten Island">
     </figure>
     <figure>
-      <img src="/images/gallery/Gallery-45.jpg" loading="eager"
-           alt="Dryer vent duct cleaning service - NY and NJ"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-45.jpg';">
+      <img src="/images/gallery/Gallery-45.jpg" loading="eager" alt="Dryer vent duct cleaning service - NY and NJ">
     </figure>
     <figure>
-      <img src="/images/gallery/Gallery-24.jpg" loading="eager"
-           alt="Bird nest removal from dryer vent - Staten Island"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-24.jpg';">
+      <img src="/images/gallery/Gallery-24.jpg" loading="eager" alt="Bird nest removal from dryer vent - Staten Island">
     </figure>
     <figure>
-      <img src="/images/gallery/Gallery-44.jpg" loading="eager"
-           alt="Dryer vent exterior hood cleaning and repair - NY NJ"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-44.jpg';">
+      <img src="/images/gallery/Gallery-44.jpg" loading="eager" alt="Dryer vent exterior hood cleaning and repair - NY NJ">
     </figure>
 
   </div>
@@ -227,11 +215,14 @@ function makeFigure(base){
   img.loading='lazy';
   img.alt='Dryer vent cleaning gallery photo - Staten Island NY NJ';
   img.src=`/images/gallery/${base}.jpg`;
-  img.dataset.try='jpg';
   img.onerror=function(){
-    if(this.dataset.try==='jpg'){this.dataset.try='jpeg';this.src=`/images/gallery/${base}.jpg`;}
-    else if(this.dataset.try==='jpeg'){this.dataset.try='webp';this.src=`/images/gallery/${base}.webp`;}
-    else{this.onerror=null;this.src='/images/gallery/placeholder.jpg';}
+    if(!this.dataset.tried){
+      this.dataset.tried='true';
+      this.src=`/images/gallery/${base}.jpeg`;
+    } else {
+      this.onerror=null; // מפסיק לנסות כדי לא להיתקע
+      this.src='/images/gallery/social-preview.jpg'; // תמונת הוואטסאפ כגיבוי אחרון
+    }
   };
   fig.appendChild(img);
   return fig;
