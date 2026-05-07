@@ -15,13 +15,14 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
 
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.dryer-ventservices.com/gallery/" />
   <meta property="og:site_name" content="Dryer Vent Services" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.dryer-ventservices.com/gallery/" />
   <meta property="og:title" content="Dryer Vent Cleaning Gallery | Real Results" />
   <meta property="og:description" content="See our work: Before & After photos of dryer vent cleaning in NY & NJ." />
-  <meta property="og:image" content="https://www.dryer-ventservices.com/assets/img/og-image.png" />
+  <meta property="og:image" content="https://www.dryer-ventservices.com/images/gallery/social-preview.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <script type="application/ld+json">
@@ -31,7 +32,7 @@
     "@id": "https://www.dryer-ventservices.com/#business",
     "name": "Dryer Vent Services Gallery",
     "url": "https://www.dryer-ventservices.com/gallery/",
-    "image": "https://www.dryer-ventservices.com/assets/logo.png",
+    "image": "https://www.dryer-ventservices.com/logo.webp",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Dryer Vent Services",
@@ -98,7 +99,7 @@
 <header class="site-header">
   <div class="container nav-wrap">
     <a class="brand" href="/">
-      <img src="/logo.webp" alt="Dryer Vent Services logo" class="logo" loading="eager" onerror="this.onerror=null;this.src='logo.png';">
+      <img src="/logo.webp" alt="Dryer Vent Services logo" class="logo" loading="eager" onerror="this.onerror=null;this.src='/logo.png';">
       <div class="brand-text">
         <strong>Dryer Vent Services</strong>
         <span>Cleaning - Repairs - Installations</span>
@@ -112,7 +113,6 @@
       <a data-nav="reviews" href="/reviews/">Reviews</a>
       <a data-nav="faq" href="/faq/">FAQ</a>
       <a href="/articles/">Articles</a>
-      <a data-nav="about" href="/about/">About</a>
       <a data-nav="areas" href="/areas/">Service Areas</a>
       <a data-nav="booking" href="/booking/">Book Online</a>
       <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
@@ -136,32 +136,32 @@
     <figure>
       <img src="/images/gallery/Gallery-32.jpg" loading="eager"
            alt="Dryer vent cleaning results - Staten Island NY"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-32.jpeg';">
+           onerror="this.onerror=null;this.src='/images/gallery/Gallery-32.jpg';">
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-41.jpg" loading="eager"
            alt="Clogged dryer vent before and after cleaning - New Jersey"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-41.jpeg';">
+           onerror="this.onerror=null;this.src='/images/gallery/Gallery-41.jpg';">
     </figure>
     <figure>
-      <img src="/images/gallery/Gallery-23.jpg" loading="eager"
+      <img src="/images/gallery/Gallery-23.jpeg" loading="eager"
            alt="Professional dryer vent lint removal - Staten Island"
            onerror="this.onerror=null;this.src='/images/gallery/Gallery-23.jpeg';">
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-45.jpg" loading="eager"
            alt="Dryer vent duct cleaning service - NY and NJ"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-45.jpeg';">
+           onerror="this.onerror=null;this.src='/images/gallery/Gallery-45.jpg';">
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-24.jpg" loading="eager"
            alt="Bird nest removal from dryer vent - Staten Island"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-24.jpeg';">
+           onerror="this.onerror=null;this.src='/images/gallery/Gallery-24.jpg';">
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-44.jpg" loading="eager"
            alt="Dryer vent exterior hood cleaning and repair - NY NJ"
-           onerror="this.onerror=null;this.src='/images/gallery/Gallery-44.jpeg';">
+           onerror="this.onerror=null;this.src='/images/gallery/Gallery-44.jpg';">
     </figure>
 
   </div>
@@ -228,7 +228,7 @@ function makeFigure(base){
   img.src=`/images/gallery/${base}.jpg`;
   img.dataset.try='jpg';
   img.onerror=function(){
-    if(this.dataset.try==='jpg'){this.dataset.try='jpeg';this.src=`/images/gallery/${base}.jpeg`;}
+    if(this.dataset.try==='jpg'){this.dataset.try='jpeg';this.src=`/images/gallery/${base}.jpg`;}
     else if(this.dataset.try==='jpeg'){this.dataset.try='webp';this.src=`/images/gallery/${base}.webp`;}
     else{this.onerror=null;this.src='/images/gallery/placeholder.jpg';}
   };
@@ -255,7 +255,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 
 <script src="/script.js" defer></script>
-
 <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </body>
 </html>
