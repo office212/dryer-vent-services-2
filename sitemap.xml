@@ -10,6 +10,7 @@
   <url><loc>https://www.dryer-ventservices.com/faq/</loc><priority>0.8</priority></url>
   <url><loc>https://www.dryer-ventservices.com/about/</loc><priority>0.7</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/</loc><priority>0.7</priority></url>
+
   <url><loc>https://www.dryer-ventservices.com/articles/warnings/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/burning-smell/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/lint-trap/</loc><priority>0.6</priority></url>
@@ -29,4 +30,14 @@
   <url><loc>https://www.dryer-ventservices.com/articles/insurance/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/new-dryers/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/older-homes/</loc><priority>0.6</priority></url>
+
+  <url><loc>https://www.dryer-ventservices.com/articles/vent-covers/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/articles/local-advantage/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/articles/how-often/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/articles/exterior-signs/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/articles/thermal-fuse/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/articles/winter-hazards/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/articles/hot-room/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/articles/dryer-sheets/</loc><priority>0.6</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/articles/towels-vs-shirts/</loc><priority>0.6</priority></url>
 </urlset>
