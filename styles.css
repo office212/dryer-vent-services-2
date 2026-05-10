@@ -1,144 +1,277 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* =========================================
+   1. CORE VARIABLES & RESET
+   ========================================= */
+:root {
+  --ink: #0f1b2d;
+  --blue: #1B365D;
+  --blue-2: #3E6AD6;
+  --green: #1E9D6D;
+  --orange: #F47C20;
+  --orange-dark: #d4621c;
+  --muted: #6b7280;
+  --border: #e6eaf2;
+  --bg: #ffffff;
+  --bg-alt: #f7f9fc;
+}
 
-  /* --- 1. SLIDER --- */
-  const slides = [
-    { before: 'ba01-before.jpg', after: 'ba01-after.jpg' },
-    { before: 'ba02-before.jpg', after: 'ba02-after.jpg' },
-    { before: 'ba03-before.jpg', after: 'ba03-after.jpg' },
-    { before: 'ba04-before.jpg', after: 'ba04-after.jpg' },
-    { before: 'ba05-before.jpg', after: 'ba05-after.jpg' }
-  ];
-  const imgPath = '/assets/img/before-after/';
-  let currentIndex = 0;
+* { box-sizing: border-box; }
 
-  const sliderWrap = document.querySelector('.ba-wrap');
-  const imgBefore = document.getElementById('ba-before-img');
-  const imgAfter = document.getElementById('ba-after-img');
-  const prevBtn = document.getElementById('ba-prev');
-  const nextBtn = document.getElementById('ba-next');
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg); color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
 
-  function updateImages(idx) {
-    if(!imgBefore || !imgAfter) return;
-    const s = slides[idx];
-    imgBefore.src = imgPath + s.before;
-    imgAfter.src = imgPath + s.after;
+a { color: var(--blue); text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { width: min(1100px, 92%); margin-inline: auto; }
+
+/* =========================================
+   2. HEADER & NAVIGATION (EXTRA GLASSY)
+   ========================================= */
+.site-header { 
+  position: sticky; top: 0; z-index: 100; 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 0; }
+.brand { display: flex; align-items: center; gap: 12px; color: inherit; }
+.logo { width: 54px; height: auto; }
+.brand-text span { display: block; font-size: 12px; color: var(--muted); letter-spacing: 0.08em; margin-top: 2px; }
+
+.site-nav { display: flex; gap: 16px; align-items: center; }
+.site-nav a { padding: 8px 10px; border-radius: 10px; transition: background 0.2s; font-weight: 500; }
+.site-nav a:hover { background: var(--bg-alt); }
+.site-nav a.cta { background: var(--orange); color: #fff; font-weight: 600; }
+.site-nav a.cta:hover { opacity: .9; }
+.site-nav a.active { background: var(--bg-alt); font-weight: 700; color: var(--blue); }
+
+.burger { display: none; flex-direction: column; align-items: center; gap: 4px; background: transparent; border: 0; cursor: pointer; padding: 5px 0; }
+.burger span { width: 28px; height: 2px; background: #0f1b2d; display: block; transition: 0.3s; border-radius: 2px; }
+
+.burger::after {
+  content: "MENU";
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--blue);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* =========================================
+   3. HERO SECTION (CLEANED)
+   ========================================= */
+.hero-modern {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(62,106,214,0.35), rgba(62,106,214,0) 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(30,157,109,0.25), rgba(30,157,109,0) 60%),
+    linear-gradient(180deg, #0c1a33, #14284f);
+  overflow: hidden; isolation: isolate;
+}
+
+.hero-inner { position: relative; width: 100%; padding: 60px 0; z-index: 1; }
+.hero-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.1; margin: 0 0 20px; letter-spacing: -0.01em; color: #fff; font-weight: 800; }
+.hero-sub { font-size: clamp(18px, 2.5vw, 22px); color: #d7e3f7; margin: 0 0 32px; max-width: 60ch; line-height: 1.5; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 768px) { .hero-modern { min-height: auto; padding: 80px 0; align-items: flex-start; } }
+
+/* =========================================
+   4. GENERAL SECTIONS
+   ========================================= */
+.section { padding: 60px 0; }
+.section-alt { background: var(--bg-alt); }
+.center { text-align: center; }
+.mt-20 { margin-top: 24px; }
+.muted { color: var(--muted); }
+
+.cards-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
+.card { background: #fff; border: 1px solid #eef1f5; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.25s, box-shadow 0.25s; }
+.card:hover { 
+  transform: translateY(-5px); 
+  box-shadow: 0 12px 30px rgba(27, 54, 93, 0.12); 
+}
+.card.media { padding: 0; }
+.svc-picture img { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid #e6eaf2; }
+.card.media .inner { padding: 20px; }
+.card h3 { margin: 0 0 8px; font-size: 1.25rem; color: var(--blue); }
+
+.checklist { list-style: none; padding: 0; margin: 12px 0 0; }
+.checklist li { position: relative; padding-left: 26px; margin-bottom: 8px; font-size: 0.95rem; color: var(--muted); }
+.checklist li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--orange); font-weight: 800; font-size: 1.1em; }
+
+.page-hero { background: var(--bg-alt); padding: 50px 0; border-bottom: 1px solid #eef1f5; text-align: center; margin-bottom: 30px; }
+.page-hero h1 { color: var(--blue); margin: 0 0 10px; font-size: 2.5rem; }
+.page-hero p { max-width: 600px; margin: 0 auto; color: var(--muted); }
+
+/* =========================================
+   5. BUTTONS
+   ========================================= */
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px; border-radius: 12px; font-weight: 700; transition: all 0.2s; cursor: pointer; text-align: center; border: 2px solid transparent; }
+.btn:active { transform: translateY(1px); }
+.btn--primary { background: var(--orange); color: #fff; box-shadow: 0 4px 12px rgba(244,124,32,0.3); }
+.btn--primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+.btn--light { background: #fff; color: var(--blue); border-color: #fff; }
+.btn--light:hover { background: #f0f4f8; }
+.btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); }
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+.hero-modern .btn--primary { animation: pulseCTA 2.5s infinite; }
+@keyframes pulseCTA { 0%,100%{ box-shadow:0 0 0 0 rgba(244,124,32,0.4);} 70%{ box-shadow:0 0 0 12px rgba(244,124,32,0);} }
+
+/* =========================================
+   6. CONTACT FORM & ALT CONTACTS
+   ========================================= */
+.two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: start; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+.contact-form label { font-weight: 600; color: var(--blue); margin-bottom: 6px; display: block; font-size: 0.95rem; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 12px; border: 1px solid #d1d9e6; border-radius: 8px; font-size: 16px; background: #fff; margin-bottom: 15px; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--blue); outline: none; }
+
+.services-fieldset { border: 1px solid #eef1f5; padding: 15px; border-radius: 10px; margin-bottom: 20px; background: #f9fbfd; }
+.services-fieldset legend { font-weight: 700; color: var(--blue); padding: 0 5px; }
+.services-fieldset .chk { display: block; margin-bottom: 8px; cursor: pointer; }
+.services-fieldset input { width: auto; margin-right: 8px; }
+
+.btn-submit { width: 100%; background: #ff7a00; color: #fff; border: none; font-size: 18px; padding: 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+.btn-submit:hover { background: #e66e00; }
+
+/* Alt Contact Buttons */
+.alt-contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 15px; }
+.alt-contact-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 20px 10px; border-radius: 12px;
+  background: #fff; border: 1px solid #e3e7ee;
+  color: var(--blue); font-weight: 600; text-align: center; gap: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: all 0.2s;
+  text-decoration: none; font-size: 0.95rem;
+}
+.alt-contact-btn:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); background: #f8fafc; }
+.alt-contact-btn svg { width: 36px !important; height: 36px !important; fill: var(--blue); display: block; }
+
+/* =========================================
+   7. BEFORE / AFTER SLIDER
+   ========================================= */
+.ba-section { padding: 50px 0; }
+.ba-carousel { position: relative; max-width: 800px; margin: 0 auto; user-select: none; -webkit-user-select: none; touch-action: pan-y; }
+.ba-wrap { position: relative; width: 100%; height: 420px; border-radius: 20px; overflow: hidden; background: #f0f0f0; box-shadow: 0 20px 40px rgba(0,0,0,0.1); cursor: default; --split: 50%; }
+@media (max-width: 600px) { .ba-wrap { height: 280px; } }
+.ba-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; }
+.ba-after { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--split)); z-index: 2; }
+.ba-handle { position: absolute; top: 0; bottom: 0; left: var(--split); width: 4px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.3); z-index: 10; transform: translateX(-50%); cursor: ew-resize; pointer-events: auto; }
+.ba-handle::after { content: ""; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 4px solid #eef2f6; box-shadow: 0 4px 10px rgba(0,0,0,0.2); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231B365D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12H3M18 8l3 4-3 4M6 16l-3-4 3-4'/%3E%3C/svg%3E"); background-size: 20px; background-position: center; background-repeat: no-repeat; }
+.ba-labels-container { position: absolute; top: 20px; left: 20px; right: 20px; display: flex; justify-content: space-between; pointer-events: none; z-index: 20; }
+.ba-label { background: rgba(0,0,0,0.7); color: #fff; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+.ba-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.9); color: var(--blue); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 30; box-shadow: 0 4px 12px rgba(0,0,0,0.15); font-size: 24px; transition: all 0.2s; border: 1px solid rgba(0,0,0,0.05); }
+.ba-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.1); }
+.ba-arrow.prev { left: -25px; } .ba-arrow.next { right: -25px; }
+@media (max-width: 900px) { .ba-arrow.prev { left: 10px; } .ba-arrow.next { right: 10px; } }
+
+/* =========================================
+   8. FAQ & REVIEWS (WITH SMOOTH ANIMATION)
+   ========================================= */
+.faq-grid { max-width: 800px; margin: 0 auto; text-align: left; }
+.faq-item { background: #fff; border: 1px solid #eef1f5; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+.faq-item summary { padding: 18px 24px; cursor: pointer; font-weight: 600; outline: none; color: var(--blue); }
+.faq-body { padding: 0 24px 24px; line-height: 1.6; color: var(--ink); border-top: 1px solid #f8f9fa; }
+
+details[open] summary ~ * {
+  animation: faqSlideDown 0.4s ease-out;
+}
+@keyframes faqSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reviews-carousel, .reviews-grid-pro { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.review-card-pro { background: #fff; padding: 24px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; }
+.review-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.review-avatar-circle { width: 42px; height: 42px; background: linear-gradient(135deg, #ff9f4a, #ff6a3d); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+.review-meta { flex: 1; }
+.review-author-name { font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+.review-time { font-size: 0.8rem; color: #8898aa; font-weight: 400; margin-top: 2px; }
+.star--full { color: #ffb400; }
+
+/* =========================================
+   9. FOOTER
+   ========================================= */
+.site-footer { background: #0f233f; color: #d9e3f2; margin-top: 60px; padding: 60px 0 20px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.site-footer h4 { color: #fff; margin: 0 0 16px; font-size: 1.1rem; }
+.site-footer a { color: #b9c6dd; transition: color 0.2s; }
+.site-footer a:hover { color: var(--orange); }
+.contact-list li { margin-bottom: 10px; }
+.copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.9rem; }
+
+/* =========================================
+   10. MOBILE STICKY BAR (APPLE GLASS STYLE)
+   ========================================= */
+.mobile-cta { display: none; }
+
+@media (max-width: 920px) { .cards-3, .footer-grid, .reviews-carousel, .reviews-grid-pro { grid-template-columns: 1fr; } }
+
+@media (max-width: 760px) {
+  .site-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eef1f5; padding: 20px; flex-direction: column; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  
+  .site-nav.open { 
+    display: flex; 
+    animation: menuSlideDown 0.3s ease-out forwards;
   }
 
-  if(prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateImages(currentIndex); });
-    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % slides.length; updateImages(currentIndex); });
+  @keyframes menuSlideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  if (sliderWrap) {
-    const handle = sliderWrap.querySelector('.ba-handle');
-    let dragging = false;
-    const setPosition = (x) => {
-      requestAnimationFrame(() => {
-        const rect = sliderWrap.getBoundingClientRect();
-        let pos = x - rect.left;
-        if (pos < 0) pos = 0;
-        if (pos > rect.width) pos = rect.width;
-        sliderWrap.style.setProperty('--split', (pos / rect.width) * 100 + '%');
-      });
-    };
-    const start = (e) => { dragging = true; e.preventDefault(); };
-    const end = () => { dragging = false; };
-    const move = (e) => { if(dragging) setPosition(e.clientX); };
-    const touchMove = (e) => { if(dragging) setPosition(e.touches[0].clientX); };
+  .burger { display: flex; }
 
-    if(handle) { handle.addEventListener('mousedown', start); handle.addEventListener('touchstart', start, { passive: false }); }
-    window.addEventListener('mouseup', end); window.addEventListener('touchend', end);
-    window.addEventListener('mousemove', move); window.addEventListener('touchmove', touchMove, { passive: false });
+  .mobile-cta {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    display: flex; gap: 10px; padding: 12px 16px;
+    z-index: 10000; box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.45); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .mobile-cta a { flex: 1; text-align: center; justify-content: center; height: 48px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; }
+
+  body .mobile-cta a:first-child,
+  body .mobile-cta a.btn--light {
+    background-color: #1B365D !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-weight: 700;
   }
 
-  /* --- 2. MENU & REVEAL --- */
-  const burger = document.getElementById('burger');
-  const nav = document.getElementById('site-nav');
-  if (burger && nav) {
-    burger.addEventListener('click', () => nav.classList.toggle('open'));
-    document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !burger.contains(e.target)) nav.classList.remove('open'); });
+  body .mobile-cta a:last-child,
+  body .mobile-cta a.btn--primary {
+    background-color: #F47C20 !important;
+    color: #fff !important;
   }
 
-  // התיקון המקיף לבעיית המסך הלבן:
-  // 1. קודם מוסיפים דינמית את המחלקה 'reveal' לאלמנטים קטנים
-  const dynamicElements = document.querySelectorAll('.page-hero, .card, .btn');
-  dynamicElements.forEach(el => el.classList.add('reveal'));
+  body { padding-bottom: 80px; } 
+}
 
-  // 2. עכשיו תופסים את *כל* מה שיש לו 'reveal' (כולל עמוד ה-FAQ) ומפעילים עליו את האנימציה בגלילה
-  const allRevealElements = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('active');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { rootMargin: "0px 0px -20px 0px" });
-
-  allRevealElements.forEach(el => observer.observe(el));
-
-  /* --- 3. REVIEWS LOGIC --- */
-  const homeReviews = document.getElementById('home-reviews');
-  const reviewsList = document.getElementById('reviews-list');
-  const loadMoreBtn = document.getElementById('loadMoreReviews');
-
-  const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
-
-  const createCard = (r) => {
-    const div = document.createElement('div');
-    div.className = 'review-card-pro';
-    div.style.cursor = 'pointer';
-    div.onclick = () => window.open(PLACE_URL, '_blank');
-
-    div.innerHTML = `
-      <div class="review-card-header">
-        <div class="review-avatar-circle">${(r.author||'G').charAt(0)}</div>
-        <div class="review-meta">
-          <div class="review-author-name">${r.author}</div>
-          <div class="review-time">${r.relativeTime || 'Recently'}</div>
-        </div>
-        <div style="color:#ffb400">★★★★★</div>
-      </div>
-      <p class="review-body" style="font-size:0.95rem;">${r.text}</p>
-    `;
-    return div;
-  };
-
-  fetch('https://dryer-vent-services.office-d16.workers.dev/')
-    .then(res => res.json())
-    .then(data => {
-      const reviews = data.reviews || [];
-
-      if(homeReviews) {
-        homeReviews.innerHTML = '';
-        reviews.slice(0, 3).forEach(r => homeReviews.appendChild(createCard(r)));
-      }
-
-      if(reviewsList) {
-        let reviewIndex = 0;
-        const batchSize = 3;
-
-        const showNextBatch = () => {
-          reviewsList.innerHTML = ''; 
-          for(let i=0; i<batchSize; i++) {
-            const r = reviews[(reviewIndex + i) % reviews.length]; 
-            reviewsList.appendChild(createCard(r));
-          }
-          reviewIndex = (reviewIndex + batchSize) % reviews.length;
-        };
-
-        showNextBatch();
-
-        if(loadMoreBtn) {
-          loadMoreBtn.addEventListener('click', () => {
-            showNextBatch();
-            window.scrollTo({ top: reviewsList.offsetTop - 100, behavior: 'smooth' });
-          });
-        }
-      }
-    })
-    .catch(console.error);
-
-  const yr = document.getElementById('copyright-year');
-  if(yr) yr.textContent = new Date().getFullYear();
-});
+/* =========================================
+   11. SCROLL REVEAL ANIMATION 
+   ========================================= */
+.reveal { 
+  opacity: 0; 
+  transform: translateY(30px); 
+}
+.reveal.active { 
+  opacity: 1; 
+  transform: translateY(0); 
+  transition: all 0.8s cubic-bezier(0.2, 0, 0, 1); 
+}
+.floating-whatsapp { display: none !important; }
