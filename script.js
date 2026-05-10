@@ -59,8 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !burger.contains(e.target)) nav.classList.remove('open'); });
   }
 
-  // התיקון הקריטי: הורדנו את ה-.section שלא יעלים בטעות את כל המאמר!
-  const revealElements = document.querySelectorAll('.page-hero, .card, .btn');
+  // התיקון המקיף לבעיית המסך הלבן:
+  // 1. קודם מוסיפים דינמית את המחלקה 'reveal' לאלמנטים קטנים
+  const dynamicElements = document.querySelectorAll('.page-hero, .card, .btn');
+  dynamicElements.forEach(el => el.classList.add('reveal'));
+
+  // 2. עכשיו תופסים את *כל* מה שיש לו 'reveal' (כולל עמוד ה-FAQ) ומפעילים עליו את האנימציה בגלילה
+  const allRevealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -68,11 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(e.target);
       }
     });
-  }, { rootMargin: "0px 0px -50px 0px" });
+  }, { rootMargin: "0px 0px -20px 0px" });
 
-  revealElements.forEach(el => { el.classList.add('reveal'); observer.observe(el); });
+  allRevealElements.forEach(el => observer.observe(el));
 
-  /* --- 3. REVIEWS LOGIC (Fix: Time & Shuffle) --- */
+  /* --- 3. REVIEWS LOGIC --- */
   const homeReviews = document.getElementById('home-reviews');
   const reviewsList = document.getElementById('reviews-list');
   const loadMoreBtn = document.getElementById('loadMoreReviews');
