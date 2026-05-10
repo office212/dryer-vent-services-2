@@ -29,14 +29,14 @@ img { max-width: 100%; display: block; }
 .container { width: min(1100px, 92%); margin-inline: auto; }
 
 /* =========================================
-   2. HEADER & NAVIGATION
+   2. HEADER & NAVIGATION (APPLE GLASS STYLE)
    ========================================= */
 .site-header { 
   position: sticky; top: 0; z-index: 100; 
-  border-bottom: 1px solid rgba(238, 241, 245, 0.8);
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.65); /* שקיפות מוגברת */
+  backdrop-filter: blur(20px); /* טשטוש חזק יותר */
+  -webkit-backdrop-filter: blur(20px); /* תמיכה באפל/ספארי */
 }
 .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 0; }
 .brand { display: flex; align-items: center; gap: 12px; color: inherit; }
@@ -269,5 +269,16 @@ img { max-width: 100%; display: block; }
   body { padding-bottom: 80px; } 
 }
 
-.reveal { opacity: 1; transform: none; }
+/* =========================================
+   11. SCROLL REVEAL ANIMATION (הופעה בגלילה)
+   ========================================= */
+.reveal { 
+  opacity: 0; 
+  transform: translateY(40px); 
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); 
+}
+.reveal.active { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
 .floating-whatsapp { display: none !important; }
