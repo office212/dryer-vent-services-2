@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (sliderWrap) {
     const handle = sliderWrap.querySelector('.ba-handle');
-    let dragging = false;
+    
     const setPosition = (x) => {
       requestAnimationFrame(() => {
         const rect = sliderWrap.getBoundingClientRect();
@@ -41,30 +41,57 @@ document.addEventListener('DOMContentLoaded', () => {
         sliderWrap.style.setProperty('--split', (pos / rect.width) * 100 + '%');
       });
     };
-    const start = (e) => { dragging = true; e.preventDefault(); };
-    const end = () => { dragging = false; };
-    const move = (e) => { if(dragging) setPosition(e.clientX); };
-    const touchMove = (e) => { if(dragging) setPosition(e.touches[0].clientX); };
 
-    if(handle) { handle.addEventListener('mousedown', start); handle.addEventListener('touchstart', start, { passive: false }); }
-    window.addEventListener('mouseup', end); window.addEventListener('touchend', end);
-    window.addEventListener('mousemove', move); window.addEventListener('touchmove', touchMove, { passive: false });
+    const moveMouse = (e) => setPosition(e.clientX);
+    const moveTouch = (e) => setPosition(e.touches[0].clientX);
+
+    const stopDrag = () => {
+      window.removeEventListener('mousemove', moveMouse);
+      window.removeEventListener('touchmove', moveTouch);
+      window.removeEventListener('mouseup', stopDrag);
+      window.removeEventListener('touchend', stopDrag);
+    };
+
+    const startDragMouse = (e) => {
+      e.preventDefault();
+      window.addEventListener('mousemove', moveMouse);
+      window.addEventListener('mouseup', stopDrag);
+    };
+
+    const startDragTouch = () => {
+      window.addEventListener('touchmove', moveTouch, { passive: false });
+      window.addEventListener('touchend', stopDrag);
+    };
+
+    if(handle) {
+      handle.addEventListener('mousedown', startDragMouse);
+      handle.addEventListener('touchstart', startDragTouch, { passive: false });
+    }
   }
 
   /* --- 2. MENU & REVEAL --- */
   const burger = document.getElementById('burger');
   const nav = document.getElementById('site-nav');
   if (burger && nav) {
-    burger.addEventListener('click', () => nav.classList.toggle('open'));
-    document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !burger.contains(e.target)) nav.classList.remove('open'); });
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Toggle menu');
+
+    burger.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.addEventListener('click', (e) => { 
+      if (!nav.contains(e.target) && !burger.contains(e.target)) {
+        nav.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
-  // התיקון המקיף לבעיית המסך הלבן:
-  // 1. קודם מוסיפים דינמית את המחלקה 'reveal' לאלמנטים קטנים
-  const dynamicElements = document.querySelectorAll('.page-hero, .card, .btn');
+  const dynamicElements = document.querySelectorAll('.page-hero, .card');
   dynamicElements.forEach(el => el.classList.add('reveal'));
 
-  // 2. עכשיו תופסים את *כל* מה שיש לו 'reveal' (כולל עמוד ה-FAQ) ומפעילים עליו את האנימציה בגלילה
   const allRevealElements = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -84,23 +111,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
 
+  const loadingHtml = '<p class="muted" style="text-align:center; width:100%; grid-column:1/-1;">Loading reviews...</p>';
+  if(homeReviews) homeReviews.innerHTML = loadingHtml;
+  if(reviewsList) reviewsList.innerHTML = loadingHtml;
+
   const createCard = (r) => {
     const div = document.createElement('div');
     div.className = 'review-card-pro';
     div.style.cursor = 'pointer';
     div.onclick = () => window.open(PLACE_URL, '_blank');
 
+    const authorName = r.author || 'Google User';
+
+    // יצירת המבנה בנפרד (בלי המידע עצמו עדיין)
     div.innerHTML = `
       <div class="review-card-header">
-        <div class="review-avatar-circle">${(r.author||'G').charAt(0)}</div>
+        <div class="review-avatar-circle"></div>
         <div class="review-meta">
-          <div class="review-author-name">${r.author}</div>
-          <div class="review-time">${r.relativeTime || 'Recently'}</div>
+          <div class="review-author-name"></div>
+          <div class="review-time"></div>
         </div>
         <div style="color:#ffb400">★★★★★</div>
       </div>
-      <p class="review-body" style="font-size:0.95rem;">${r.text}</p>
+      <p class="review-body" style="font-size:0.95rem;"></p>
     `;
+
+    // הזרקת המידע בצורה מאובטחת דרך textContent נגד XSS
+    div.querySelector('.review-avatar-circle').textContent = authorName.charAt(0);
+    div.querySelector('.review-author-name').textContent = authorName;
+    div.querySelector('.review-time').textContent = r.relativeTime || 'Recently';
+    div.querySelector('.review-body').textContent = r.text;
+
     return div;
   };
 
@@ -137,7 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     })
-    .catch(console.error);
+    .catch(err => {
+      console.error(err);
+      if(homeReviews) homeReviews.innerHTML = '<p class="muted" style="text-align:center;">Could not load reviews at this time.</p>';
+      if(reviewsList) reviewsList.innerHTML = '<p class="muted" style="text-align:center;">Could not load reviews at this time.</p>';
+    });
 
   const yr = document.getElementById('copyright-year');
   if(yr) yr.textContent = new Date().getFullYear();
