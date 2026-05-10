@@ -43,8 +43,17 @@ img { max-width: 100%; display: block; }
 .site-nav a.cta:hover { opacity: .9; }
 .site-nav a.active { background: var(--bg-alt); font-weight: 700; color: var(--blue); }
 
-.burger { display: none; flex-direction: column; gap: 5px; background: transparent; border: 0; cursor: pointer; padding: 5px; }
-.burger span { width: 24px; height: 2px; background: #0f1b2d; display: block; transition: 0.3s; }
+.burger { display: none; flex-direction: column; align-items: center; gap: 4px; background: transparent; border: 0; cursor: pointer; padding: 5px 0; }
+.burger span { width: 28px; height: 2px; background: #0f1b2d; display: block; transition: 0.3s; border-radius: 2px; }
+
+.burger::after {
+  content: "MENU";
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--blue);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
 
 /* =========================================
    3. HERO SECTION (DOTS)
@@ -213,7 +222,7 @@ img { max-width: 100%; display: block; }
   .site-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eef1f5; padding: 20px; flex-direction: column; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .site-nav.open { display: flex; }
   .burger { display: flex; }
-  
+
   .mobile-cta {
     position: fixed; left: 0; right: 0; bottom: 0;
     display: flex; gap: 10px; padding: 12px 16px;
@@ -221,7 +230,7 @@ img { max-width: 100%; display: block; }
     z-index: 10000; box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
   }
   .mobile-cta a { flex: 1; text-align: center; justify-content: center; height: 48px; border-radius: 8px; text-decoration: none; display: flex; align-items: center; }
-  
+
   /* FORCE BLUE BUTTON (CALL) - EVERY PAGE */
   /* דורס כל עיצוב אחר עם !important מחוזק */
   body .mobile-cta a:first-child,
@@ -231,14 +240,14 @@ img { max-width: 100%; display: block; }
     border: none !important;
     font-weight: 700;
   }
-  
+
   /* ORANGE BUTTON (BOOK) */
   body .mobile-cta a:last-child,
   body .mobile-cta a.btn--primary {
     background-color: #F47C20 !important;
     color: #fff !important;
   }
-  
+
   body { padding-bottom: 80px; } 
 }
 
