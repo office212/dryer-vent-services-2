@@ -33,11 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const handle = sliderWrap.querySelector('.ba-handle');
     let dragging = false;
     const setPosition = (x) => {
-      const rect = sliderWrap.getBoundingClientRect();
-      let pos = x - rect.left;
-      if (pos < 0) pos = 0;
-      if (pos > rect.width) pos = rect.width;
-      sliderWrap.style.setProperty('--split', (pos / rect.width) * 100 + '%');
+      // שיפור ביצועים: שימוש ב-requestAnimationFrame כדי שהגרירה תהיה סופר-חלקה
+      requestAnimationFrame(() => {
+        const rect = sliderWrap.getBoundingClientRect();
+        let pos = x - rect.left;
+        if (pos < 0) pos = 0;
+        if (pos > rect.width) pos = rect.width;
+        sliderWrap.style.setProperty('--split', (pos / rect.width) * 100 + '%');
+      });
     };
     const start = (e) => { dragging = true; e.preventDefault(); };
     const end = () => { dragging = false; };
@@ -57,11 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !burger.contains(e.target)) nav.classList.remove('open'); });
   }
 
+  // תוקן: שיניתי מ-'appear' ל-'active' כדי שיתחבר לאפקט ה-CSS שהכנו
   const revealElements = document.querySelectorAll('.section, .page-hero, .card, .btn');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('appear');
+        e.target.classList.add('active'); // התיקון כאן
         observer.unobserve(e.target);
       }
     });
@@ -72,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const homeReviews = document.getElementById('home-reviews');
   const reviewsList = document.getElementById('reviews-list');
   const loadMoreBtn = document.getElementById('loadMoreReviews');
-  
+
   const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
 
   const createCard = (r) => {
@@ -80,8 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     div.className = 'review-card-pro';
     div.style.cursor = 'pointer';
     div.onclick = () => window.open(PLACE_URL, '_blank');
-    
-    // FIX: הוספתי את הזמן (Relative Time)
+
     div.innerHTML = `
       <div class="review-card-header">
         <div class="review-avatar-circle">${(r.author||'G').charAt(0)}</div>
@@ -100,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(data => {
       const reviews = data.reviews || [];
-      
+
       // A. דף הבית - מציג 3 ראשונים
       if(homeReviews) {
         homeReviews.innerHTML = '';
