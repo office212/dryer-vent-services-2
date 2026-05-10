@@ -34,7 +34,7 @@ img { max-width: 100%; display: block; }
 .site-header { 
   position: sticky; top: 0; z-index: 100; 
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  background: rgba(255, 255, 255, 0.45); /* שקיפות מוגברת מאוד */
+  background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -234,7 +234,6 @@ img { max-width: 100%; display: block; }
     position: fixed; left: 0; right: 0; bottom: 0;
     display: flex; gap: 10px; padding: 12px 16px;
     z-index: 10000; box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
-    /* אפקט זכוכית חלבית */
     background: rgba(255, 255, 255, 0.7); 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -260,15 +259,16 @@ img { max-width: 100%; display: block; }
 }
 
 /* =========================================
-   11. SCROLL REVEAL ANIMATION
+   11. SCROLL REVEAL ANIMATION 
    ========================================= */
+/* הוספתי את ה-transition רק ל-active כדי שדברים לא ייעלמו בטעינה */
 .reveal { 
   opacity: 0; 
-  transform: translateY(40px); 
-  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); 
+  transform: translateY(30px); 
 }
 .reveal.active { 
   opacity: 1; 
   transform: translateY(0); 
+  transition: all 0.8s cubic-bezier(0.2, 0, 0, 1); 
 }
 .floating-whatsapp { display: none !important; }
