@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const handle = sliderWrap.querySelector('.ba-handle');
     let dragging = false;
     const setPosition = (x) => {
-      // שיפור ביצועים: שימוש ב-requestAnimationFrame כדי שהגרירה תהיה סופר-חלקה
       requestAnimationFrame(() => {
         const rect = sliderWrap.getBoundingClientRect();
         let pos = x - rect.left;
@@ -60,16 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => { if (!nav.contains(e.target) && !burger.contains(e.target)) nav.classList.remove('open'); });
   }
 
-  // תוקן: שיניתי מ-'appear' ל-'active' כדי שיתחבר לאפקט ה-CSS שהכנו
-  const revealElements = document.querySelectorAll('.section, .page-hero, .card, .btn');
+  // התיקון הקריטי: הורדנו את ה-.section שלא יעלים בטעות את כל המאמר!
+  const revealElements = document.querySelectorAll('.page-hero, .card, .btn');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('active'); // התיקון כאן
+        e.target.classList.add('active');
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { rootMargin: "0px 0px -50px 0px" }); // הגדרת מרווח נכונה יותר
+
   revealElements.forEach(el => { el.classList.add('reveal'); observer.observe(el); });
 
   /* --- 3. REVIEWS LOGIC (Fix: Time & Shuffle) --- */
@@ -104,30 +104,26 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => {
       const reviews = data.reviews || [];
 
-      // A. דף הבית - מציג 3 ראשונים
       if(homeReviews) {
         homeReviews.innerHTML = '';
         reviews.slice(0, 3).forEach(r => homeReviews.appendChild(createCard(r)));
       }
 
-      // B. דף הביקורות - מנגנון שאפל
       if(reviewsList) {
         let reviewIndex = 0;
         const batchSize = 3;
 
         const showNextBatch = () => {
-          reviewsList.innerHTML = ''; // מנקה את הקודמים (שאפל)
+          reviewsList.innerHTML = ''; 
           for(let i=0; i<batchSize; i++) {
-            const r = reviews[(reviewIndex + i) % reviews.length]; // מעגלי
+            const r = reviews[(reviewIndex + i) % reviews.length]; 
             reviewsList.appendChild(createCard(r));
           }
           reviewIndex = (reviewIndex + batchSize) % reviews.length;
         };
 
-        // טעינה ראשונית
         showNextBatch();
 
-        // כפתור טוען את הבאים
         if(loadMoreBtn) {
           loadMoreBtn.addEventListener('click', () => {
             showNextBatch();
