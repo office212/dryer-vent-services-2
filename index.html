@@ -203,13 +203,13 @@
         <a href="/about/">About</a>
         <a class="cta" href="/contact/">Contact Us</a>
       </nav>
-      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-expanded="false" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <section class="hero-modern">
     <div class="container hero-inner">
-      <h1 class="hero-title">Expert Dryer Vent<br>Cleaning & Repair</h1>
+      <h1 class="hero-title"><span class="gradient-text">Expert</span> Dryer Vent<br>Cleaning & Repair</h1>
       <p class="hero-sub">Prevent fires, save energy, and dry clothes faster with professional dryer vent services in Staten Island, NY & NJ.</p>
       <div class="hero-actions">
         <a href="/booking/" class="btn btn--primary">Book Now</a>
@@ -241,11 +241,12 @@
 
   <section class="section">
     <div class="container">
-      <div class="center">
-        <h2 style="font-size:2rem; margin-bottom:10px; color:#1B365D;">Our Services</h2>
-        <p class="muted" style="max-width:600px; margin:0 auto 40px;">Expert residential dryer vent cleaning, repairs, and installations.</p>
+      <div class="center reveal">
+        <p class="section-label">OUR SERVICES</p>
+        <h2>What We Do</h2>
+        <p class="muted">Expert residential dryer vent cleaning, repairs, and installations.</p>
       </div>
-      <div class="cards-3">
+      <div class="cards-3 reveal">
         <div class="card media">
           <div class="svc-picture"><img src="/assets/images/services/cards/card-cleaning.jpg" alt="Professional dryer vent cleaning service" loading="lazy"></div>
           <div class="inner">
@@ -271,17 +272,18 @@
           </div>
         </div>
       </div>
-      <div class="center mt-20"><a href="/services/" class="btn">View All Services</a></div>
+      <div class="center mt-20 reveal"><a href="/services/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">View All Services</a></div>
     </div>
   </section>
 
   <section class="section ba-section section-alt">
     <div class="container">
-      <div class="center">
+      <div class="center reveal">
+        <p class="section-label">THE DIFFERENCE</p>
         <h2>Before and After</h2>
-        <p class="muted" style="margin-bottom: 30px;">Drag the slider to see the difference.</p>
+        <p class="muted">Drag the slider to see the difference.</p>
       </div>
-      <div class="ba-carousel">
+      <div class="ba-carousel reveal">
         <div class="ba-arrow prev" id="ba-prev">❮</div>
         <div class="ba-arrow next" id="ba-next">❯</div>
         <div class="ba-wrap">
@@ -291,62 +293,70 @@
           <div class="ba-handle"></div>
         </div>
       </div>
-      <div class="center mt-20"><a href="/gallery/" class="btn">See more photos</a></div>
+      <div class="center mt-20 reveal"><a href="/gallery/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">See more photos</a></div>
     </div>
   </section>
 
-  <section class="section">
+  <div class="wave-divider wave--to-dark">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"></path>
+    </svg>
+  </div>
+
+  <section class="section section-dark">
     <div class="container">
-      <div class="center">
+      <div class="center reveal">
+        <p class="section-label">ANSWERS</p>
         <h2>Frequently Asked Questions</h2>
-        <p class="muted" style="margin-bottom:30px;">Common questions about dryer vent maintenance.</p>
+        <p class="muted">Common questions about dryer vent maintenance.</p>
       </div>
-      <div class="faq-grid">
-        <div class="faq-item">
+      <div class="faq-grid reveal">
+        <div class="faq-item" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
           <details>
-            <summary>Why is dryer vent cleaning important?</summary>
-            <div class="faq-body">Cleaning your dryer vent prevents lint buildup, which is the #1 cause of dryer fires. It also helps your clothes dry faster and lowers your energy bills.</div>
+            <summary style="color: #fff;">Why is dryer vent cleaning important?</summary>
+            <div class="faq-body" style="color: #8fa8c8; border-top: 1px solid rgba(255,255,255,0.05);">Cleaning your dryer vent prevents lint buildup, which is the #1 cause of dryer fires. It also helps your clothes dry faster and lowers your energy bills.</div>
           </details>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
           <details>
-            <summary>How often should I clean my dryer vent?</summary>
-            <div class="faq-body">Experts recommend cleaning your dryer vent at least once a year. Larger families may need it more often.</div>
+            <summary style="color: #fff;">How often should I clean my dryer vent?</summary>
+            <div class="faq-body" style="color: #8fa8c8; border-top: 1px solid rgba(255,255,255,0.05);">Experts recommend cleaning your dryer vent at least once a year. Larger families may need it more often.</div>
           </details>
         </div>
-        <div class="faq-item">
+        <div class="faq-item" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
           <details>
-            <summary>How do I know if my vent is clogged?</summary>
-            <div class="faq-body">Signs include clothes taking longer to dry, the dryer getting very hot, or a burning smell.</div>
+            <summary style="color: #fff;">How do I know if my vent is clogged?</summary>
+            <div class="faq-body" style="color: #8fa8c8; border-top: 1px solid rgba(255,255,255,0.05);">Signs include clothes taking longer to dry, the dryer getting very hot, or a burning smell.</div>
           </details>
         </div>
       </div>
-      <div class="center mt-20"><a href="/faq/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">View All FAQs</a></div>
+      <div class="center mt-20 reveal"><a href="/faq/" class="btn btn-outline">View All FAQs</a></div>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
-      <div class="center">
+      <div class="center reveal">
+        <p class="section-label">TESTIMONIALS</p>
         <h2>Customer Reviews</h2>
-        <p class="muted" style="margin-bottom:30px;">Rated 5 Stars on Google.</p>
+        <p class="muted">Rated 5 Stars on Google.</p>
       </div>
-      <div style="max-width: 800px; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background: #fff; -webkit-overflow-scrolling: touch;">
+      <div class="reveal" style="max-width: 800px; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background: #fff; -webkit-overflow-scrolling: touch;">
         <iframe src="https://client.housecallpro.com/reviews/widget/93a75d59-cc4b-477a-9c90-d0a5905fd2fa" height="650" width="100%" style="border:none; display: block; overflow-y: auto;" scrolling="yes" title="Customer Reviews" loading="lazy"></iframe>
       </div>
-      <div class="center mt-20"><a href="/reviews/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">Read All Reviews</a></div>
+      <div class="center mt-20 reveal"><a href="/reviews/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">Read All Reviews</a></div>
     </div>
   </section>
 
-  <section class="cta-bar" style="background:#1B365D; color:#fff; padding:40px 0;">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+  <section class="cta-bar" style="background: var(--blue); color:#fff; padding:40px 0;">
+    <div class="container reveal" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
       <div>
         <h2 style="margin:0; font-size:24px; color:#fff;">Need your dryer vent cleaned?</h2>
         <p style="margin:5px 0 0; opacity:0.9;">Book today and prevent fire hazards.</p>
       </div>
       <div style="display:flex; gap:10px;">
-        <a href="tel:+13472449382" class="btn btn--light">Call Now</a>
-        <a href="/booking/" class="btn btn--primary" style="border:1px solid #fff;">Book Online</a>
+        <a href="tel:+13472449382" class="btn btn-outline">Call Now</a>
+        <a href="/booking/" class="btn btn--primary">Book Online</a>
       </div>
     </div>
   </section>
@@ -354,7 +364,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div><h4>Dryer Vent Services</h4><p class="muted" style="color:#b9c6dd;">Professional dryer vent cleaning, repairs, and installations.</p></div>
-      <div><h4>Contact</h4><ul class="contact-list"><li>347-244-9382</li><li>office@dryer-ventservices.com</li><li>Staten Island, NY</li></ul></div>
+      <div><h4>Contact</h4><ul class="contact-list" style="list-style: none; padding: 0; margin: 0;"><li>347-244-9382</li><li>office@dryer-ventservices.com</li><li>Staten Island, NY</li></ul></div>
       <div class="footer-cta" style="display: flex; flex-wrap: wrap; gap: 10px;">
         <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener" style="color:#fff; border-color:rgba(255,255,255,0.4);">WhatsApp</a>
         <a class="btn btn-outline" href="tel:+13472449382" style="color:#fff; border-color:rgba(255,255,255,0.4);">Call Us</a>
@@ -365,17 +375,12 @@
     <div class="copyright">© <span id="copyright-year">2026</span> Dryer Vent Services. All rights reserved.</div>
   </footer>
 
-  <script>
-    document.getElementById("copyright-year").textContent = new Date().getFullYear();
-  </script>
-
   <div class="mobile-cta">
     <a href="/contact/" class="btn btn--light">Contact Us</a>
     <a href="/booking/" class="btn btn--primary">Book Now</a>
   </div>
 
   <script src="/script.js" defer></script>
-
   <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </body>
 </html>
