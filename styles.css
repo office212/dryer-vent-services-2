@@ -63,7 +63,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* =========================================
-   3. HERO SECTION (DOTS)
+   3. HERO SECTION (CLEANED)
    ========================================= */
 .hero-modern {
   position: relative;
@@ -77,11 +77,9 @@ img { max-width: 100%; display: block; }
     linear-gradient(180deg, #0c1a33, #14284f);
   overflow: hidden; isolation: isolate;
 }
-.hero-modern::before {
-  content:""; position:absolute; inset:-2px;
-  background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 0 2px, transparent 3px), radial-gradient(circle at 70% 60%, rgba(255,255,255,0.04) 0 2px, transparent 3px);
-  background-size: 26px 26px, 32px 32px; mix-blend-mode: overlay; pointer-events:none; z-index:0;
-}
+
+/* שכבת הנקודות נמחקה מכאן כדי להשאיר את התמונה חלקה */
+
 .hero-inner { position: relative; width: 100%; padding: 60px 0; z-index: 1; }
 .hero-title { font-size: clamp(36px, 5vw, 52px); line-height: 1.1; margin: 0 0 20px; letter-spacing: -0.01em; color: #fff; font-weight: 800; }
 .hero-sub { font-size: clamp(18px, 2.5vw, 22px); color: #d7e3f7; margin: 0 0 32px; max-width: 60ch; line-height: 1.5; }
@@ -234,8 +232,8 @@ img { max-width: 100%; display: block; }
     position: fixed; left: 0; right: 0; bottom: 0;
     display: flex; gap: 10px; padding: 12px 16px;
     z-index: 10000; box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
-    background: rgba(255, 255, 255, 0.45); /* הושווה להדר */
-    backdrop-filter: blur(20px); /* הושווה להדר */
+    background: rgba(255, 255, 255, 0.45); 
+    backdrop-filter: blur(20px); 
     -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid rgba(0, 0, 0, 0.05);
   }
