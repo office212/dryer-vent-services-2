@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(e.target);
       }
     });
-  }, { rootMargin: "0px 0px -50px 0px" }); // הגדרת מרווח נכונה יותר
+  }, { rootMargin: "0px 0px -50px 0px" });
 
   revealElements.forEach(el => { el.classList.add('reveal'); observer.observe(el); });
 
