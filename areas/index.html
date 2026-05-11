@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Service Areas | Dryer Vent Services NY & NJ</title>
-  <meta name="description" content="Professional dryer vent cleaning, repairs and installations across Staten Island, Monsey, Upstate NY and New Jersey.">
+  <meta name="description" content="Professional dryer vent cleaning, repairs and installations across Staten Island, Monsey, Upstate NY, Brooklyn, Queens, and New Jersey. Find your local service area.">
 
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
@@ -22,56 +22,98 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.dryer-ventservices.com/areas/" />
   <meta property="og:title" content="Service Areas | Dryer Vent Services NY & NJ" />
-  <meta property="og:description" content="Professional dryer vent cleaning, repairs and installations across Staten Island, Monsey, Upstate NY and New Jersey." />
+  <meta property="og:description" content="Professional dryer vent cleaning, repairs and installations across Staten Island, Monsey, Upstate NY, Brooklyn, Queens, and New Jersey." />
   <meta property="og:image" content="https://www.dryer-ventservices.com/images/gallery/work-car.png" />
   <meta name="twitter:card" content="summary_large_image" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://www.dryer-ventservices.com/#business",
-    "name": "Dryer Vent Services",
-    "url": "https://www.dryer-ventservices.com/",
-    "areaServed": [
-      { "@type": "Place", "name": "Staten Island, NY" },
-      { "@type": "Place", "name": "Brooklyn, NY" },
-      { "@type": "Place", "name": "Queens, NY" },
-      { "@type": "Place", "name": "Five Towns, NY" },
-      { "@type": "Place", "name": "Monsey, NY" },
-      { "@type": "Place", "name": "Spring Valley, NY" },
-      { "@type": "Place", "name": "Upstate New York" },
-      { "@type": "Place", "name": "Linden, NJ" },
-      { "@type": "Place", "name": "Elizabeth, NJ" },
-      { "@type": "Place", "name": "Passaic, NJ" },
-      { "@type": "Place", "name": "Clifton, NJ" },
-      { "@type": "Place", "name": "Lakewood, NJ" }
-    ]
-  }
-  </script>
 
   <style>
     /* התיקון הרשמי והאולטימטיבי לבועה של Housecall Pro בנייד */
     @media (max-width: 767px) {
       #proChatIframeContainer { 
-        /* המספר הכי גבוה שדפדפנים מאפשרים, כדי לנצח את הסרגל התחתון */
         z-index: 2147483647 !important; 
-        /* מושך את הבועה למעלה בכוח עוקף את ההגדרות שלהם */
         transform: translateY(-80px) !important; 
       }
     }
 
-    @media (min-width: 768px) {
-      .card.media .svc-picture {
-        height: auto !important;
-        aspect-ratio: 16 / 9;
-      }
-      .svc-picture img.fix-fit {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        padding: 0;
-      }
+    /* עיצוב רשת האזורים המודרנית */
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      margin-bottom: 50px;
+    }
+
+    .area-card {
+      background: var(--bg-alt, #ffffff);
+      border: 1px solid var(--border, #e6eaf2);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text, #333333);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .area-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(27, 54, 93, 0.1);
+    }
+
+    .area-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--orange, #F47C20);
+    }
+
+    .area-card-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .area-card-title {
+      font-size: 1.3rem;
+      color: var(--blue, #1B365D);
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .area-card-desc {
+      font-size: 0.95rem;
+      color: var(--muted, #64748b);
+      margin-bottom: 20px;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .area-card-link {
+      display: inline-block;
+      color: var(--orange, #F47C20);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .area-card-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .area-card:hover .area-card-link svg {
+      transform: translateX(4px);
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 30px;
     }
   </style>
 </head>
@@ -93,7 +135,7 @@
         <a data-nav="reviews" href="/reviews/">Reviews</a>
         <a data-nav="faq" href="/faq/">FAQ</a>
         <a href="/articles/">Articles</a>
-        <a data-nav="areas" href="/areas/">Service Areas</a>
+        <a data-nav="areas" class="active" href="/areas/">Service Areas</a>
         <a data-nav="booking" href="/booking/">Book Online</a>
         <a data-nav="about" href="/about/">About</a>
         <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
@@ -106,62 +148,135 @@
 
   <section class="page-hero fade-in">
     <div class="container">
-      <h1>Service Areas</h1>
-      <p>Professional dryer vent cleaning, repairs and installations across Staten Island, Monsey, Upstate NY and New Jersey.</p>
+      <h1>Our Service Areas</h1>
+      <p>Professional dryer vent cleaning, repairs, and installations across New York and New Jersey. Click your area to learn more.</p>
     </div>
   </section>
 
-  <section class="section container two-col fade-in">
-    <div>
-      <h2>Where We Work</h2>
-      <p style="margin-bottom: 16px;">We provide dryer vent cleaning, repairs and installation across the Tri-State area:</p>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-        <div>
-            <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: #1B365D;">New York</h3>
-            <ul class="checklist" style="margin:0; padding:0;">
-                <li><strong>Staten Island</strong> (All)</li>
-                <li><strong>Rockland County:</strong> Monsey, Spring Valley</li>
-                <li><strong>Upstate NY:</strong> (Summer months)</li>
-                <li><strong>Five Towns:</strong> Cedarhurst, Lawrence, Woodmere</li>
-                <li><strong>Brooklyn & Queens</strong></li>
-            </ul>
-        </div>
-
-        <div>
-            <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: #1B365D;">New Jersey</h3>
-            <ul class="checklist" style="margin:0; padding:0;">
-                <li><strong>Union County:</strong> Linden, Elizabeth, Union, Rahway</li>
-                <li><strong>Passaic/Bergen:</strong> Passaic, Clifton, Teaneck</li>
-                <li><strong>Middlesex:</strong> Woodbridge, Edison</li>
-                <li><strong>Jersey Shore:</strong> Lakewood, Toms River</li>
-            </ul>
-        </div>
-      </div>
-
-      <p style="margin-top: 20px;">Not sure if we cover your area? <a href="/contact/" style="text-decoration: underline; font-weight: 600;">Send us a message</a>.</p>
-
-      <div class="map-embed" style="aspect-ratio:16/9; background:#eef1f5; border-radius:12px; overflow:hidden; margin-top:20px; border:1px solid #ddd;">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193984.7352462615!2d-74.2120092!3d40.5647568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sStaten%20Island%2C%20NY!5e0!3m2!1sen!2sus!4v1709210000000!5m2!1sen!2sus" 
-          width="100%" 
-          height="100%" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
+  <section class="section container fade-in">
+    
+    <div class="section-title-wrap">
+      <h2>New York Service Zones</h2>
+      <p class="muted">Serving all boroughs and surrounding counties.</p>
     </div>
 
-    <div class="card media">
-      <picture class="svc-picture">
-        <img src="/images/gallery/work-car.png" alt="Dryer Vent Services work van" loading="lazy" class="svc-img fix-fit">
-      </picture>
-      <div class="inner">
-        <h3>Easy scheduling</h3>
-        <p>We work around your availability.</p>
-      </div>
+    <div class="areas-grid">
+      <a href="/areas/staten-island/" class="area-card">
+        <img src="/areas/images/staten-island-dryer-vent-cleaning.jpg" alt="Staten Island Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Staten Island, NY</h3>
+          <p class="area-card-desc">Serving the North, Mid-Island, and South Shores. We handle all residential vent cleaning and hose replacements.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/brooklyn/" class="area-card">
+        <img src="/areas/images/brooklyn-dryer-vent-cleaning.jpg" alt="Brooklyn Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Brooklyn, NY</h3>
+          <p class="area-card-desc">From classic brownstones to high-rise condos, we clear tight and complex venting systems across Kings County.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/queens/" class="area-card">
+        <img src="/areas/images/queens-dryer-vent-cleaning.jpg" alt="Queens Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Queens, NY</h3>
+          <p class="area-card-desc">Providing prompt, owner-operated vent cleaning for private homes and apartment buildings throughout Queens.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/five-towns/" class="area-card">
+        <img src="/areas/images/five-towns-dryer-vent-cleaning.jpg" alt="Five Towns Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Five Towns, NY</h3>
+          <p class="area-card-desc">Specialized care for high-capacity laundry setups in Lawrence, Cedarhurst, Woodmere, and surrounding Nassau County.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/monsey/" class="area-card">
+        <img src="/areas/images/monsey-dryer-vent-cleaning.jpg" alt="Monsey Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Monsey, NY</h3>
+          <p class="area-card-desc">Reliable service for large households in Monsey, Spring Valley, and Rockland County to prevent dangerous lint buildup.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/upstate-ny/" class="area-card">
+        <img src="/areas/images/upstate-dryer-vent-cleaning.jpg" alt="Upstate NY Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Upstate NY (Summer)</h3>
+          <p class="area-card-desc">Opening your summer home? We handle heavy lint clearing and winter bird nest removals in Sullivan County.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+
+    <hr style="border: 0; height: 1px; background: var(--border, #e6eaf2); margin: 60px 0;">
+
+    <div class="section-title-wrap">
+      <h2>New Jersey Service Zones</h2>
+      <p class="muted">Providing fast and reliable service across Central and Northern NJ.</p>
+    </div>
+
+    <div class="areas-grid">
+      <a href="/areas/lakewood/" class="area-card">
+        <img src="/areas/images/lakewood-dryer-vent-cleaning.jpg" alt="Lakewood Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Lakewood, NJ</h3>
+          <p class="area-card-desc">Specializing in high-usage systems for large families across Lakewood, Toms River, and Ocean County.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/linden/" class="area-card">
+        <img src="/areas/images/linden-dryer-vent-cleaning.jpg" alt="Linden Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Linden, NJ</h3>
+          <p class="area-card-desc">Owner-operated dryer vent cleaning and repairs for homes in Linden, Elizabeth, and Union County.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/clifton/" class="area-card">
+        <img src="/areas/images/clifton-dryer-vent-cleaning.jpg" alt="Clifton Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Clifton & Passaic, NJ</h3>
+          <p class="area-card-desc">Professional maintenance for classic residential setups across Clifton, Passaic, and the surrounding areas.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/edison/" class="area-card">
+        <img src="/areas/images/edison-dryer-vent-cleaning.jpg" alt="Edison Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Edison, NJ</h3>
+          <p class="area-card-desc">Fire prevention and airflow restoration for homes throughout Edison, Highland Park, and Middlesex County.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/teaneck/" class="area-card">
+        <img src="/areas/images/teaneck-dryer-vent-cleaning.jpg" alt="Teaneck Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Teaneck, NJ</h3>
+          <p class="area-card-desc">Ensuring fast drying times and safety code compliance for homes in Teaneck and Bergen County.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a href="/areas/fair-lawn/" class="area-card">
+        <img src="/areas/images/fair-lawn-dryer-vent-cleaning.jpg" alt="Fair Lawn Service Area" class="area-card-img" loading="lazy" onerror="this.src='/images/gallery/work-car.png'">
+        <div class="area-card-content">
+          <h3 class="area-card-title">Fair Lawn, NJ</h3>
+          <p class="area-card-desc">Expert cleaning services for complex venting routes in Radburn, Fair Lawn, and nearby communities.</p>
+          <span class="area-card-link">View Service Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -197,7 +312,6 @@
   </div>
 
   <script src="/script.js" defer></script>
-
   <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </body>
 </html>
