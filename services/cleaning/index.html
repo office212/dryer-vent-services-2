@@ -6,19 +6,24 @@
     <title>Professional Dryer Vent Cleaning | Dryer Vent Services</title>
     <meta name="description" content="Expert dryer vent cleaning services by owner-operator Chanoch. Prevent fire hazards, lower your energy bills, and dry clothes faster. Book your service today!">
     
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
     <header class="site-header">
         <div class="container nav-wrap">
             <a href="/" class="brand">
-                <img src="../../logo.webp" alt="Dryer Vent Services Logo" class="logo">
+                <img src="/logo.webp" alt="Dryer Vent Services Logo" class="logo">
                 <div class="brand-text">
                     <strong>Dryer Vent Services</strong>
-                    <span>Professional Care & Safety</span>
+                    <span>Dryer Vent Cleaning & Repair</span> 
                 </div>
             </a>
+            
+            <button class="burger" onclick="document.querySelector('.site-nav').classList.toggle('open')">
+                <span></span>
+            </button>
+
             <nav class="site-nav">
                 <a href="/">Home</a>
                 <a href="/services/" class="active">Services</a>
@@ -55,7 +60,7 @@
                         </ul>
                     </div>
                     <div class="card media" style="border: none; box-shadow: none;">
-                        <img src="../images/service-cleaning.jpg" alt="Dryer Vent Cleaning Process" style="border-radius: 16px; width: 100%; height: auto; object-fit: cover;">
+                        <img src="/services/images/service-cleaning.jpg" alt="Dryer Vent Cleaning Process" style="border-radius: 16px; width: 100%; height: auto; object-fit: cover;">
                     </div>
                 </div>
             </div>
@@ -122,6 +127,13 @@
             </div>
         </div>
     </footer>
+
+    <div class="mobile-cta">
+        <a href="tel:3472449382">Call Us</a>
+        <a href="/contact/">Book Now</a>
+    </div>
+
+    <script src="/script.js"></script>
 
 </body>
 </html>
