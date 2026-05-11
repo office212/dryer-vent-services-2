@@ -118,12 +118,12 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 .checklist li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--orange); font-weight: 800; }
 
 /* =========================================
-   5. FOOTER (UPDATED - SLIMMER)
+   5. FOOTER
    ========================================= */
 .site-footer { 
   background: #0f233f; 
   color: #d9e3f2; 
-  padding: 30px 0 20px; /* צומצם מ-60px */
+  padding: 30px 0 20px;
   line-height: 1.6;
 }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 30px; margin-bottom: 20px; }
@@ -134,7 +134,9 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 /* =========================================
    6. MOBILE & REVEAL
    ========================================= */
-@media (max-width: 920px) { .cards-3, .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 920px) { .cards-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .cards-3 { grid-template-columns: 1fr; } }
+
 @media (max-width: 760px) {
   .site-nav { display: none; }
   .burger { display: flex; }
@@ -147,6 +149,26 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
   }
   .mobile-cta a { flex: 1; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
   body { padding-bottom: 80px; }
+
+  /* Footer slim on mobile */
+  .site-footer { padding: 20px 0 15px; }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .footer-grid > div:first-child { display: none; } /* hide brand block */
+  .footer-grid > div:nth-child(2) {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-grid > div:nth-child(2) h4 { display: none; }
+  .footer-grid > div:nth-child(2) .contact-list { display: flex; flex-direction: row; gap: 16px; margin: 0; }
+  .footer-grid > div:nth-child(3) { justify-content: center; }
+  .footer-cta { flex-wrap: nowrap !important; }
 }
 
 .reveal { opacity: 0; transform: translateY(30px); }
