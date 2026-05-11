@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
   <url><loc>https://www.dryer-ventservices.com/</loc><priority>1.0</priority></url>
   <url><loc>https://www.dryer-ventservices.com/services/</loc><priority>0.9</priority></url>
   <url><loc>https://www.dryer-ventservices.com/contact/</loc><priority>0.9</priority></url>
@@ -30,7 +31,6 @@
   <url><loc>https://www.dryer-ventservices.com/articles/insurance/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/new-dryers/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/older-homes/</loc><priority>0.6</priority></url>
-
   <url><loc>https://www.dryer-ventservices.com/articles/vent-covers/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/local-advantage/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/how-often/</loc><priority>0.6</priority></url>
@@ -40,4 +40,19 @@
   <url><loc>https://www.dryer-ventservices.com/articles/hot-room/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/dryer-sheets/</loc><priority>0.6</priority></url>
   <url><loc>https://www.dryer-ventservices.com/articles/towels-vs-shirts/</loc><priority>0.6</priority></url>
+
+  <url><loc>https://www.dryer-ventservices.com/areas/staten-island/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/brooklyn/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/queens/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/five-towns/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/monsey/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/upstate-ny/</loc><priority>0.8</priority></url>
+
+  <url><loc>https://www.dryer-ventservices.com/areas/lakewood/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/linden/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/clifton/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/edison/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/teaneck/</loc><priority>0.8</priority></url>
+  <url><loc>https://www.dryer-ventservices.com/areas/fair-lawn/</loc><priority>0.8</priority></url>
+
 </urlset>
