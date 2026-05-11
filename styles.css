@@ -123,7 +123,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 .site-footer { 
   background: #0f233f; 
   color: #d9e3f2; 
-  padding: 30px 0 20px;
+  padding: 30px 0 20px; /* צומצם מ-60px */
   line-height: 1.6;
 }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 30px; margin-bottom: 20px; }
@@ -147,22 +147,6 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
   }
   .mobile-cta a { flex: 1; height: 48px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
   body { padding-bottom: 80px; }
-
-  /* ---- Mobile footer fix ---- */
-  .site-footer { padding: 16px 0 12px; }
-  .footer-grid { gap: 10px; margin-bottom: 10px; }
-  .footer-grid > div:first-child { display: none; }
-  .footer-grid > div:nth-child(2) h4 { display: none; }
-  .footer-grid > div:nth-child(2) .contact-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 16px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size: 0.85rem;
-  }
-  .footer-cta { flex-wrap: nowrap !important; }
 }
 
 .reveal { opacity: 0; transform: translateY(30px); }
