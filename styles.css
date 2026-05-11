@@ -92,6 +92,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 
 /* =========================================
    [7] GRADIENT TEXT
+    שימוש: <span class="gradient-text">המילה</span>
    ========================================= */
 .gradient-text {
   background: linear-gradient(95deg, #ffffff 0%, #a8c8ff 55%, #F47C20 100%);
@@ -134,6 +135,8 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 
 /* =========================================
    [9] SECTION LABEL
+   שימוש: <p class="section-label">WHY CHOOSE US</p>
+          <h2>כותרת</h2>
    ========================================= */
 .section-label {
   display: inline-block;
@@ -246,6 +249,7 @@ details[open] summary ~ * { animation: faqSlideDown 0.4s ease-out; }
 
 /* =========================================
    [3] SECTION כהה — dark navy section
+   שימוש: <section class="section section-dark">
    ========================================= */
 .section-dark {
   background: linear-gradient(160deg, #0c1a33 0%, #0f2347 50%, #0a1628 100%);
@@ -297,23 +301,84 @@ details[open] summary ~ * { animation: faqSlideDown 0.4s ease-out; }
 .section-dark .checklist li { color: #8fa8c8; }
 
 /* =========================================
-   9. FOOTER
+   9. FOOTER (UPDATED - SLIM & CUTE FOR MOBILE)
    ========================================= */
-.site-footer { background: #0f233f; color: #d9e3f2; margin-top: 0; padding: 30px 0 15px; line-height: 1.6; }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 25px; }
-.site-footer h4 { color: #fff; margin: 0 0 12px; font-size: 1.1rem; }
-.site-footer a { color: #b9c6dd; transition: color 0.2s; }
-.site-footer a:hover { color: var(--orange); }
-.contact-list li { margin-bottom: 8px; }
-.copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; text-align: center; font-size: 0.85rem; }
+.site-footer { 
+  background: #0f233f; 
+  color: #d9e3f2; 
+  margin-top: 0; 
+  padding: 40px 0 20px; 
+  line-height: 1.7; 
+}
+.footer-grid { 
+  display: grid; 
+  grid-template-columns: 1.5fr 1fr 1fr; 
+  gap: 40px; 
+  margin-bottom: 40px; 
+}
+.site-footer h4 { 
+  color: #fff; 
+  margin: 0 0 16px; 
+  font-size: 1.1rem; 
+}
+.site-footer a { 
+  color: #b9c6dd; 
+  transition: color 0.2s; 
+}
+.site-footer a:hover { 
+  color: var(--orange); 
+}
+.contact-list li { 
+  margin-bottom: 10px; 
+}
+.copyright { 
+  border-top: 1px solid rgba(255,255,255,0.1); 
+  padding-top: 20px; 
+  text-align: center; 
+  font-size: 0.9rem; 
+}
 
-/* תיקון ספציפי למובייל - כיווץ הפוטר ומרכוז */
+/* [W] פתרון למובייל: כיווץ הפוטר ועיצוב כפתורים אלגנטי */
 @media (max-width: 768px) {
-  .site-footer { padding: 20px 0 15px; text-align: center; }
-  .footer-grid { gap: 15px; margin-bottom: 15px; }
-  .site-footer h4 { margin: 0 0 5px; }
-  .contact-list li { margin-bottom: 2px; }
-  .footer-cta { justify-content: center !important; }
+  .site-footer { 
+    padding: 30px 0 15px; 
+    text-align: center; 
+    /* רקע מיוחד שנותן עומק לפוטר הקומפקטי */
+    background: linear-gradient(180deg, #11294a 0%, #0f233f 100%);
+  }
+  .footer-grid { 
+    gap: 15px; 
+    margin-bottom: 20px; 
+  }
+  .site-footer h4 { 
+    margin: 0 0 5px; 
+    font-size: 1.05rem;
+  }
+  .contact-list li { 
+    margin-bottom: 2px; 
+    font-size: 0.9rem;
+  }
+  /* מרכוז כפתורי הפוטר ועיצובם מחדש כ"קפסולות" */
+  .footer-cta { 
+    justify-content: center !important; 
+    margin-top: 10px;
+  }
+  .footer-cta .btn { 
+    padding: 8px 18px !important; 
+    font-size: 0.85rem !important;
+    border-radius: 100px !important; /* קצוות עגולים לחלוטין */
+  }
+  .footer-cta .btn-outline {
+    color: #fff !important;
+    border-color: rgba(255,255,255,0.4) !important;
+  }
+  .footer-cta .btn--primary {
+    background-color: var(--orange) !important;
+  }
+  .copyright {
+    padding-top: 10px;
+    font-size: 0.8rem;
+  }
 }
 
 /* =========================================
