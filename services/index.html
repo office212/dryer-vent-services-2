@@ -42,59 +42,80 @@
       }
     }
 
-    /* הפיכת כל הכרטיסייה ללחיצה */
-    .card-link {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        transition: transform 0.3s ease;
-    }
-
+    /* עיצוב רשת השירותים המודרנית - מבוסס על אזורי השירות */
     .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      margin-bottom: 50px;
     }
 
-    .card.media {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        transition: box-shadow 0.3s ease;
-        cursor: pointer;
+    .service-card {
+      background: var(--bg-alt, #ffffff);
+      border: 1px solid var(--border, #e6eaf2);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text, #333333);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
 
-    .card-link:hover .card.media {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(27, 54, 93, 0.1);
     }
 
-    .svc-picture img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 12px 12px 0 0;
+    .service-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--orange, #F47C20);
     }
 
-    .card.media .inner {
-        padding: 24px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
+    .service-card-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
-    .card.media .inner h3 {
-        margin-top: 0;
-        color: #1B365D;
+    .service-card-title {
+      font-size: 1.3rem;
+      color: var(--blue, #1B365D);
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 800;
     }
 
-    .card.media .inner p {
-        flex-grow: 1;
-        font-size: 0.95rem;
-        color: #4b5563;
-        line-height: 1.6;
-        margin-bottom: 20px;
+    .service-card-desc {
+      font-size: 0.95rem;
+      color: var(--muted, #64748b);
+      margin-bottom: 20px;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .service-card-link {
+      display: inline-block;
+      color: var(--orange, #F47C20);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .service-card-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .service-card:hover .service-card-link svg {
+      transform: translateX(4px);
     }
   </style>
 </head>
@@ -103,7 +124,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="eager" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
+        <img loading="eager" alt="Dryer Vent Services logo" class="logo" src="/logo.webp" onerror="this.onerror=null;this.src='logo.png';">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
           <span>Cleaning - Repairs - Installations</span>
@@ -116,12 +137,12 @@
         <a data-nav="reviews" href="/reviews/">Reviews</a>
         <a data-nav="faq" href="/faq/">FAQ</a>
         <a href="/articles/">Articles</a>
-        <a data-nav="about" href="/about/">About</a>
         <a data-nav="areas" href="/areas/">Service Areas</a>
         <a data-nav="booking" href="/booking/">Book Online</a>
+        <a data-nav="about" href="/about/">About</a>
         <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <button aria-expanded="false" aria-label="Open menu" class="burger" id="burger">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -130,88 +151,64 @@
   <section class="page-hero fade-in">
     <div class="container">
       <h1>Our Professional Services</h1>
-      <p>Expert dryer vent solutions for safe, efficient drying.</p>
+      <p>Expert dryer vent solutions for safety, efficiency, and peace of mind. Click a service to learn more.</p>
     </div>
   </section>
 
   <section class="section container fade-in">
     <div class="services-grid">
 
-      <a href="/services/cleaning/" class="card-link">
-        <div class="card media">
-          <picture class="svc-picture">
-            <img src="/services/images/service-cleaning.jpg" alt="Dryer vent cleaning service" loading="eager">
-          </picture>
-          <div class="inner">
-            <h3>Dryer Vent Cleaning</h3>
-            <p>Remove years of dangerous lint buildup. We restore airflow and prevent fire hazards with deep rotary brushing and powerful vacuums.</p>
-            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
-          </div>
+      <a href="/services/cleaning/" class="service-card">
+        <img src="/services/images/service-cleaning.jpg" alt="Dryer vent cleaning service" class="service-card-img" loading="eager">
+        <div class="service-card-content">
+          <h3 class="service-card-title">Dryer Vent Cleaning</h3>
+          <p class="service-card-desc">Remove years of dangerous lint buildup. We restore airflow and prevent fire hazards with deep rotary brushing and powerful vacuums.</p>
+          <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <a href="/services/repairs/" class="card-link">
-        <div class="card media">
-          <picture class="svc-picture">
-            <img src="/services/images/service-repairs.jpg" alt="Dryer vent repair service" loading="lazy">
-          </picture>
-          <div class="inner">
-            <h3>Repairs & Rerouting</h3>
-            <p>We fix crushed, torn, or non-compliant ductwork. Our repairs meet strict safety codes using durable, rigid metal materials.</p>
-            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
-          </div>
+      <a href="/services/repairs/" class="service-card">
+        <img src="/services/images/service-repairs.jpg" alt="Dryer vent repair service" class="service-card-img" loading="lazy">
+        <div class="service-card-content">
+          <h3 class="service-card-title">Repairs & Rerouting</h3>
+          <p class="service-card-desc">We fix crushed, torn, or non-compliant ductwork. Our repairs meet strict safety codes using durable, rigid metal materials.</p>
+          <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <a href="/services/installations/" class="card-link">
-        <div class="card media">
-          <picture class="svc-picture">
-            <img src="/services/images/service-installations.jpg" alt="Dryer vent installation" loading="lazy">
-          </picture>
-          <div class="inner">
-            <h3>New Installations</h3>
-            <p>Professional vent routing for new homes, renovations, or laundry room relocations. Built for maximum efficiency from day one.</p>
-            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
-          </div>
+      <a href="/services/installations/" class="service-card">
+        <img src="/services/images/service-installations.jpg" alt="Dryer vent installation" class="service-card-img" loading="lazy">
+        <div class="service-card-content">
+          <h3 class="service-card-title">New Installations</h3>
+          <p class="service-card-desc">Professional vent routing for new homes, renovations, or laundry relocations. Built for maximum efficiency from day one.</p>
+          <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <a href="/services/inspection/" class="card-link">
-        <div class="card media">
-          <picture class="svc-picture">
-            <img src="/services/images/service-inspection.jpg" alt="Dryer vent airflow inspection" loading="lazy">
-          </picture>
-          <div class="inner">
-            <h3>Airflow Inspection</h3>
-            <p>Not sure if your vent is clogged? We use digital sensors to measure air velocity and identify hidden issues inside your walls.</p>
-            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
-          </div>
+      <a href="/services/inspection/" class="service-card">
+        <img src="/services/images/service-inspection.jpg" alt="Dryer vent airflow inspection" class="service-card-img" loading="lazy">
+        <div class="service-card-content">
+          <h3 class="service-card-title">Airflow Inspection</h3>
+          <p class="service-card-desc">Not sure if your vent is clogged? We use digital sensors to measure air velocity and identify hidden issues inside your walls.</p>
+          <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <a href="/services/bird-nest/" class="card-link">
-        <div class="card media">
-          <picture class="svc-picture">
-            <img src="/services/images/service-bird-nest.jpg" alt="Bird nest removal from vent" loading="lazy">
-          </picture>
-          <div class="inner">
-            <h3>Bird Nest Removal</h3>
-            <p>Safely clear out nests and debris that block your vent and create fire risks. We sanitize the line to keep your home healthy.</p>
-            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
-          </div>
+      <a href="/services/bird-nest/" class="service-card">
+        <img src="/services/images/service-bird-nest.jpg" alt="Bird nest removal from vent" class="service-card-img" loading="lazy">
+        <div class="service-card-content">
+          <h3 class="service-card-title">Bird Nest Removal</h3>
+          <p class="service-card-desc">Safely clear out nests and debris that block your vent and create fire risks. We sanitize the line to keep your home healthy.</p>
+          <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <a href="/services/bird-guard/" class="card-link">
-        <div class="card media">
-          <picture class="svc-picture">
-            <img src="/services/images/service-bird-guard.jpg" alt="Dryer vent bird guard installation" loading="lazy">
-          </picture>
-          <div class="inner">
-            <h3>Bird & Pest Guards</h3>
-            <p>Prevent birds from nesting in your vent with specialized guards that allow lint to escape while keeping animals out for good.</p>
-            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
-          </div>
+      <a href="/services/bird-guard/" class="service-card">
+        <img src="/services/images/service-bird-guard.jpg" alt="Dryer vent bird guard installation" class="service-card-img" loading="lazy">
+        <div class="service-card-content">
+          <h3 class="service-card-title">Bird & Pest Guards</h3>
+          <p class="service-card-desc">Prevent birds from nesting in your vent with specialized guards that allow lint to escape while keeping animals out for good.</p>
+          <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
