@@ -122,6 +122,27 @@
       .trust-item { font-size: 0.85rem; width: 45%; justify-content: flex-start; }
       .burger { margin-left: initial !important; }
     }
+
+    /* הגדרות לכרטיסיות הלחיצות בדף הבית */
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.3s ease;
+        height: 100%;
+    }
+    
+    .card-link:hover .card.media {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* סידור תמונות בתוך הכרטיסיות שייראו טוב גם אם הן חתוכות */
+    .svc-picture img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -192,7 +213,7 @@
         <div class="brand-text"><strong>Dryer Vent Services</strong><span>Cleaning - Repairs - Installations</span></div>
       </a>
       <nav class="site-nav" id="site-nav">
-        <a href="/">Home</a>
+        <a href="/" class="active">Home</a>
         <a href="/services/">Services</a>
         <a href="/gallery/">Gallery</a>
         <a href="/reviews/">Reviews</a>
@@ -246,32 +267,44 @@
         <h2>What We Do</h2>
         <p class="muted">Expert residential dryer vent cleaning, repairs, and installations.</p>
       </div>
+      
       <div class="cards-3 reveal">
-        <div class="card media">
-          <div class="svc-picture"><img src="/assets/images/services/cards/card-cleaning.jpg" alt="Professional dryer vent cleaning service" loading="lazy"></div>
-          <div class="inner">
-            <h3>Cleaning</h3>
-            <p class="muted">Thorough lint removal to restore airflow.</p>
-            <ul class="checklist"><li>Deep line cleaning</li><li>Airflow check</li><li>Fire prevention</li></ul>
+        
+        <a href="/services/cleaning/" class="card-link">
+          <div class="card media">
+            <div class="svc-picture"><img src="/services/images/service-cleaning.jpg" alt="Professional dryer vent cleaning service" loading="lazy"></div>
+            <div class="inner">
+              <h3>Cleaning</h3>
+              <p class="muted">Thorough lint removal to restore airflow.</p>
+              <ul class="checklist"><li>Deep line cleaning</li><li>Airflow check</li><li>Fire prevention</li></ul>
+            </div>
           </div>
-        </div>
-        <div class="card media">
-          <div class="svc-picture"><img src="/assets/images/services/cards/card-repairs.jpg" alt="Dryer vent duct repair and replacement" loading="lazy"></div>
-          <div class="inner">
-            <h3>Repairs</h3>
-            <p class="muted">Fixing disconnected or damaged lines.</p>
-            <ul class="checklist"><li>Duct reconnection</li><li>Pipe replacement</li><li>Code compliance</li></ul>
+        </a>
+
+        <a href="/services/repairs/" class="card-link">
+          <div class="card media">
+            <div class="svc-picture"><img src="/services/images/service-repairs.jpg" alt="Dryer vent duct repair and replacement" loading="lazy"></div>
+            <div class="inner">
+              <h3>Repairs</h3>
+              <p class="muted">Fixing disconnected or damaged lines.</p>
+              <ul class="checklist"><li>Duct reconnection</li><li>Pipe replacement</li><li>Code compliance</li></ul>
+            </div>
           </div>
-        </div>
-        <div class="card media">
-          <div class="svc-picture"><img src="/assets/images/services/cards/card-installations.jpg" alt="New dryer vent installation service" loading="lazy"></div>
-          <div class="inner">
-            <h3>Installation</h3>
-            <p class="muted">Installing new dryer vents.</p>
-            <ul class="checklist"><li>New route installation</li><li>Bird guards</li><li>Roof venting</li></ul>
+        </a>
+
+        <a href="/services/installations/" class="card-link">
+          <div class="card media">
+            <div class="svc-picture"><img src="/services/images/service-installations.jpg" alt="New dryer vent installation service" loading="lazy"></div>
+            <div class="inner">
+              <h3>Installation</h3>
+              <p class="muted">Installing new dryer vents.</p>
+              <ul class="checklist"><li>New route installation</li><li>Bird guards</li><li>Roof venting</li></ul>
+            </div>
           </div>
-        </div>
+        </a>
+
       </div>
+      
       <div class="center mt-20 reveal"><a href="/services/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">View All Services</a></div>
     </div>
   </section>
