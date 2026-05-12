@@ -1,0 +1,1 @@
+Drop your photos here named job-01.jpg, job-02.jpg, ... up to job-24.jpg (any .jpg/.png). They will appear automatically on the home page and the gallery.
