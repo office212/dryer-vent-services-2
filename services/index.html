@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dryer Vent Services: Cleaning, Lint Removal, Repairs &amp; Installations | Staten Island</title>
-  <meta name="description" content="Complete dryer vent service: professional cleaning, clog removal, repairs, replacements &amp; code-compliant installations for homes, condos and businesses in Staten Island, NYC &amp; NJ.">
+  <title>Our Services | Dryer Vent Cleaning, Repairs & Installations</title>
+  <meta name="description" content="Complete dryer vent solutions in Staten Island & NJ. Professional cleaning, bird nest removal, repairs, and code-compliant installations. Explore our services.">
 
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" href="/favicon.ico">
@@ -20,86 +20,21 @@
     gtag('config', 'G-X77CVTW1CD');
   </script>
 
-  <meta name="keywords" content="dryer vent cleaning, dryer vent repair, staten island, new york, new jersey, lint removal, dryer installation">
+  <meta name="keywords" content="dryer vent cleaning, dryer vent repair, bird nest removal, dryer vent installation, staten island, new jersey">
   <meta name="robots" content="index, follow">
 
   <link rel="canonical" href="https://www.dryer-ventservices.com/services/">
   <meta property="og:site_name" content="Dryer Vent Services">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.dryer-ventservices.com/services/">
-  <meta property="og:title" content="Services | Dryer Vent Cleaning, Repairs &amp; Installations">
-  <meta property="og:description" content="All dryer vent services: cleaning, lint removal, repairs, replacements, and code-compliant installations for homes and businesses.">
-  <meta property="og:image" content="https://www.dryer-ventservices.com/images/gallery/social-preview.jpg">
+  <meta property="og:title" content="Our Professional Services | Dryer Vent Services">
+  <meta property="og:description" content="Explore our full range of dryer vent services: from deep cleaning and bird nest removal to repairs and new installations.">
+  <meta property="og:image" content="https://www.dryer-ventservices.com/logo.webp">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    "@id": "https://www.dryer-ventservices.com/#business",
-    "name": "Dryer Vent Services",
-    "url": "https://www.dryer-ventservices.com/services/",
-    "email": "office@dryer-ventservices.com",
-    "telephone": "+13472449382",
-    "areaServed": [
-      {"@type": "Place", "name": "Staten Island, NY"},
-      {"@type": "Place", "name": "New York"},
-      {"@type": "Place", "name": "New Jersey"}
-    ],
-    "sameAs": ["https://www.dryer-ventservices.com"],
-    "image": "https://www.dryer-ventservices.com/logo.webp",
-    "priceRange": "$$",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "59"
-    }
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How often should dryer vents be cleaned?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most homes need dryer vent cleaning every 1 to 2 years. Heavy use, long vents or bends may require annual cleaning."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you serve beyond Staten Island?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. We serve Staten Island first and the greater New York and New Jersey area."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can clogged vents cause dryer fires?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Lint buildup is highly flammable. Professional cleaning restores airflow and reduces risk."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <script>
-    if (location.pathname.endsWith('/index.html')) {
-      history.replaceState(null, '', location.pathname.replace('/index.html','/') + location.search + location.hash);
-    }
-  </script>
-
   <style>
-    /* התיקון הרשמי והאולטימטיבי לבועה של Housecall Pro בנייד */
     @media (max-width: 767px) {
       #proChatIframeContainer { 
         z-index: 2147483647 !important; 
@@ -107,28 +42,56 @@
       }
     }
 
-    @media (min-width: 992px) {
-      .page-hero {
-        height: auto !important;
-        min-height: unset !important;
-        padding-top: 140px !important;
-        padding-bottom: 80px !important;
-      }
+    /* עיצוב אחיד לכרטיסיות השירותים */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .card.media {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card.media:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+
+    .svc-picture img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .card.media .inner {
+        padding: 24px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card.media .inner h3 {
+        margin-top: 0;
+        color: #1B365D;
     }
 
     .card.media .inner p {
-      font-size: 0.95rem;
-      color: #4b5563;
-      margin: 0 0 12px;
-      line-height: 1.55;
+        flex-grow: 1;
+        font-size: 0.95rem;
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 20px;
     }
 
-    /* עיצוב בסיסי ל-FAQ שהוספנו */
-    .faq-grid { max-width: 800px; margin: 0 auto; }
-    .faq-item { background: #fff; margin-bottom: 15px; border-radius: 8px; border: 1px solid #eee; overflow: hidden; }
-    .faq-item details { padding: 15px 20px; cursor: pointer; }
-    .faq-item summary { font-weight: 600; color: #1B365D; font-size: 1.1rem; outline: none; }
-    .faq-body { margin-top: 10px; color: #666; line-height: 1.6; padding-top: 10px; border-top: 1px solid #eee; }
+    .card-footer {
+        padding: 0 24px 24px;
+    }
   </style>
 </head>
 
@@ -136,15 +99,15 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="eager" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
+        <img loading="eager" src="/logo.webp" alt="Dryer Vent Services logo" class="logo">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
-          <span>Cleaning - Repairs - Installations</span>
+          <span>Dryer Vent Cleaning & Repair</span>
         </div>
       </a>
       <nav class="site-nav" id="site-nav">
         <a data-nav="home" href="/">Home</a>
-        <a data-nav="services" href="/services/">Services</a>
+        <a data-nav="services" class="active" href="/services/">Services</a>
         <a data-nav="gallery" href="/gallery/">Gallery</a>
         <a data-nav="reviews" href="/reviews/">Reviews</a>
         <a data-nav="faq" href="/faq/">FAQ</a>
@@ -154,7 +117,7 @@
         <a data-nav="booking" href="/booking/">Book Online</a>
         <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <button class="burger" id="burger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -162,97 +125,88 @@
 
   <section class="page-hero fade-in">
     <div class="container">
-      <h1>Services</h1>
-      <p>Complete dryer vent solutions for safe, efficient drying.</p>
+      <h1>Our Professional Services</h1>
+      <p>Expert dryer vent solutions for safety, efficiency, and peace of mind.</p>
     </div>
   </section>
 
   <section class="section container fade-in">
-    <div class="cards-3">
+    <div class="services-grid">
 
       <div class="card media">
         <picture class="svc-picture">
-          <img src="/assets/images/services/cards/card-cleaning.jpg?v=200" alt="Dryer vent cleaning" loading="eager" decoding="async">
+          <img src="/services/images/service-cleaning.jpg" alt="Dryer vent cleaning service" loading="lazy">
         </picture>
         <div class="inner">
           <h3>Dryer Vent Cleaning</h3>
-          <p>A thorough line cleaning from the dryer to the exterior exit, airflow tested before and after to confirm the vent is fully clear.</p>
-          <ul class="checklist">
-            <li>Full lint removal from vent line</li>
-            <li>Airflow test before and after</li>
-            <li>Clean-up included</li>
-          </ul>
+          <p>Remove years of dangerous lint buildup. We restore airflow and prevent fire hazards with deep rotary brushing and powerful vacuums.</p>
+          <a href="/services/cleaning/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
         </div>
       </div>
 
       <div class="card media">
         <picture class="svc-picture">
-          <img src="/assets/images/services/cards/card-repairs.jpg?v=200" alt="Dryer vent repairs" loading="eager" decoding="async">
+          <img src="/services/images/service-repairs.jpg" alt="Dryer vent repair service" loading="lazy">
         </picture>
         <div class="inner">
-          <h3>Repairs and Replacements</h3>
-          <p>We fix damaged, crushed or non-compliant ductwork and replace unsafe materials with proper rigid or semi-rigid metal ducting.</p>
-          <ul class="checklist">
-            <li>Fix crushed or disconnected ducts</li>
-            <li>Replace unsafe foil or vinyl with rigid metal</li>
-            <li>Seal joints and improve efficiency</li>
-          </ul>
+          <h3>Repairs & Rerouting</h3>
+          <p>We fix crushed, torn, or non-compliant ductwork. Our repairs meet strict safety codes using durable, rigid metal materials.</p>
+          <a href="/services/repairs/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
         </div>
       </div>
 
       <div class="card media">
         <picture class="svc-picture">
-          <img src="/assets/images/services/cards/card-installations.jpg?v=200" alt="Dryer vent installations" loading="eager" decoding="async">
+          <img src="/services/images/service-installations.jpg" alt="Dryer vent installation" loading="lazy">
         </picture>
         <div class="inner">
           <h3>New Installations</h3>
-          <p>Full vent system installations from scratch, routed correctly and built to code for homes, condos and commercial properties.</p>
-          <ul class="checklist">
-            <li>Code-compliant vent routing</li>
-            <li>Exterior hood and bird guard install</li>
-            <li>Condos, multi-family and commercial</li>
-          </ul>
+          <p>Professional vent routing for new homes, renovations, or laundry room relocations. Built for maximum efficiency from day one.</p>
+          <a href="/services/installations/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+        </div>
+      </div>
+
+      <div class="card media">
+        <picture class="svc-picture">
+          <img src="/services/images/service-inspection.jpg" alt="Dryer vent airflow inspection" loading="lazy">
+        </picture>
+        <div class="inner">
+          <h3>Airflow Inspection</h3>
+          <p>Not sure if your vent is clogged? We use digital sensors to measure air velocity and identify hidden issues inside your walls.</p>
+          <a href="/services/inspection/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+        </div>
+      </div>
+
+      <div class="card media">
+        <picture class="svc-picture">
+          <img src="/services/images/service-bird-nest.jpg" alt="Bird nest removal from vent" loading="lazy">
+        </picture>
+        <div class="inner">
+          <h3>Bird Nest Removal</h3>
+          <p>Safely clear out nests and debris that block your vent and create fire risks. We sanitize the line to keep your home healthy.</p>
+          <a href="/services/bird-nest/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+        </div>
+      </div>
+
+      <div class="card media">
+        <picture class="svc-picture">
+          <img src="/services/images/service-bird-guard.jpg" alt="Dryer vent bird guard installation" loading="lazy">
+        </picture>
+        <div class="inner">
+          <h3>Bird & Pest Guards</h3>
+          <p>Prevent birds from nesting in your vent with specialized guards that allow lint to escape while keeping animals out for good.</p>
+          <a href="/services/bird-guard/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
         </div>
       </div>
 
     </div>
-  </section>
-
-  <section class="section container fade-in" style="padding-top: 0;">
-    <div class="center" style="margin-bottom: 30px;">
-      <h2 style="color: #1B365D; font-size: 2rem;">Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <details>
-          <summary>How often should dryer vents be cleaned?</summary>
-          <div class="faq-body">Most homes need dryer vent cleaning every 1 to 2 years. Heavy use, long vents or bends may require annual cleaning.</div>
-        </details>
-      </div>
-      <div class="faq-item">
-        <details>
-          <summary>Do you serve beyond Staten Island?</summary>
-          <div class="faq-body">Yes. We serve Staten Island first and the greater New York and New Jersey area.</div>
-        </details>
-      </div>
-      <div class="faq-item">
-        <details>
-          <summary>Can clogged vents cause dryer fires?</summary>
-          <div class="faq-body">Yes. Lint buildup is highly flammable. Professional cleaning restores airflow and reduces risk.</div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="section container center fade-in" style="padding-top: 10px;">
-    <a class="btn btn--primary" href="/booking/">Book Now</a>
   </section>
 
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
         <h4>Dryer Vent Services</h4>
-        <p>Dryer Vent Cleaning - Repairs - Installations</p>
+        <p>Dryer Vent Cleaning & Repair</p>
       </div>
       <div>
         <ul class="contact-list">
@@ -280,7 +234,6 @@
   </div>
 
   <script src="/script.js" defer></script>
-
   <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </body>
 </html>
