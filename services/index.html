@@ -20,7 +20,7 @@
     gtag('config', 'G-X77CVTW1CD');
   </script>
 
-  <meta name="keywords" content="dryer vent cleaning, dryer vent repair, bird nest removal, dryer vent installation, staten island, new jersey">
+  <meta name="keywords" content="dryer vent cleaning, dryer vent repair, bird nest removal, dryer vent installation, staten island, new york, new jersey">
   <meta name="robots" content="index, follow">
 
   <link rel="canonical" href="https://www.dryer-ventservices.com/services/">
@@ -42,7 +42,14 @@
       }
     }
 
-    /* עיצוב אחיד לכרטיסיות השירותים */
+    /* הפיכת כל הכרטיסייה ללחיצה */
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
     .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -54,10 +61,11 @@
         display: flex;
         flex-direction: column;
         height: 100%;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition: box-shadow 0.3s ease;
+        cursor: pointer;
     }
 
-    .card.media:hover {
+    .card-link:hover .card.media {
         transform: translateY(-5px);
         box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     }
@@ -88,10 +96,6 @@
         line-height: 1.6;
         margin-bottom: 20px;
     }
-
-    .card-footer {
-        padding: 0 24px 24px;
-    }
   </style>
 </head>
 
@@ -99,10 +103,10 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img loading="eager" src="/logo.webp" alt="Dryer Vent Services logo" class="logo">
+        <img loading="eager" src="/logo.webp" alt="Dryer Vent Services logo" class="logo" onerror="this.onerror=null;this.src='logo.png';">
         <div class="brand-text">
           <strong>Dryer Vent Services</strong>
-          <span>Dryer Vent Cleaning & Repair</span>
+          <span>Cleaning - Repairs - Installations</span>
         </div>
       </a>
       <nav class="site-nav" id="site-nav">
@@ -117,7 +121,7 @@
         <a data-nav="booking" href="/booking/">Book Online</a>
         <a class="cta" data-nav="contact" href="/contact/">Contact Us</a>
       </nav>
-      <button class="burger" id="burger" aria-label="Open menu">
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -126,78 +130,90 @@
   <section class="page-hero fade-in">
     <div class="container">
       <h1>Our Professional Services</h1>
-      <p>Expert dryer vent solutions for safety, efficiency, and peace of mind.</p>
+      <p>Expert dryer vent solutions for safe, efficient drying.</p>
     </div>
   </section>
 
   <section class="section container fade-in">
     <div class="services-grid">
 
-      <div class="card media">
-        <picture class="svc-picture">
-          <img src="/services/images/service-cleaning.jpg" alt="Dryer vent cleaning service" loading="lazy">
-        </picture>
-        <div class="inner">
-          <h3>Dryer Vent Cleaning</h3>
-          <p>Remove years of dangerous lint buildup. We restore airflow and prevent fire hazards with deep rotary brushing and powerful vacuums.</p>
-          <a href="/services/cleaning/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+      <a href="/services/cleaning/" class="card-link">
+        <div class="card media">
+          <picture class="svc-picture">
+            <img src="/services/images/service-cleaning.jpg" alt="Dryer vent cleaning service" loading="eager">
+          </picture>
+          <div class="inner">
+            <h3>Dryer Vent Cleaning</h3>
+            <p>Remove years of dangerous lint buildup. We restore airflow and prevent fire hazards with deep rotary brushing and powerful vacuums.</p>
+            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="card media">
-        <picture class="svc-picture">
-          <img src="/services/images/service-repairs.jpg" alt="Dryer vent repair service" loading="lazy">
-        </picture>
-        <div class="inner">
-          <h3>Repairs & Rerouting</h3>
-          <p>We fix crushed, torn, or non-compliant ductwork. Our repairs meet strict safety codes using durable, rigid metal materials.</p>
-          <a href="/services/repairs/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+      <a href="/services/repairs/" class="card-link">
+        <div class="card media">
+          <picture class="svc-picture">
+            <img src="/services/images/service-repairs.jpg" alt="Dryer vent repair service" loading="lazy">
+          </picture>
+          <div class="inner">
+            <h3>Repairs & Rerouting</h3>
+            <p>We fix crushed, torn, or non-compliant ductwork. Our repairs meet strict safety codes using durable, rigid metal materials.</p>
+            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="card media">
-        <picture class="svc-picture">
-          <img src="/services/images/service-installations.jpg" alt="Dryer vent installation" loading="lazy">
-        </picture>
-        <div class="inner">
-          <h3>New Installations</h3>
-          <p>Professional vent routing for new homes, renovations, or laundry room relocations. Built for maximum efficiency from day one.</p>
-          <a href="/services/installations/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+      <a href="/services/installations/" class="card-link">
+        <div class="card media">
+          <picture class="svc-picture">
+            <img src="/services/images/service-installations.jpg" alt="Dryer vent installation" loading="lazy">
+          </picture>
+          <div class="inner">
+            <h3>New Installations</h3>
+            <p>Professional vent routing for new homes, renovations, or laundry room relocations. Built for maximum efficiency from day one.</p>
+            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="card media">
-        <picture class="svc-picture">
-          <img src="/services/images/service-inspection.jpg" alt="Dryer vent airflow inspection" loading="lazy">
-        </picture>
-        <div class="inner">
-          <h3>Airflow Inspection</h3>
-          <p>Not sure if your vent is clogged? We use digital sensors to measure air velocity and identify hidden issues inside your walls.</p>
-          <a href="/services/inspection/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+      <a href="/services/inspection/" class="card-link">
+        <div class="card media">
+          <picture class="svc-picture">
+            <img src="/services/images/service-inspection.jpg" alt="Dryer vent airflow inspection" loading="lazy">
+          </picture>
+          <div class="inner">
+            <h3>Airflow Inspection</h3>
+            <p>Not sure if your vent is clogged? We use digital sensors to measure air velocity and identify hidden issues inside your walls.</p>
+            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="card media">
-        <picture class="svc-picture">
-          <img src="/services/images/service-bird-nest.jpg" alt="Bird nest removal from vent" loading="lazy">
-        </picture>
-        <div class="inner">
-          <h3>Bird Nest Removal</h3>
-          <p>Safely clear out nests and debris that block your vent and create fire risks. We sanitize the line to keep your home healthy.</p>
-          <a href="/services/bird-nest/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+      <a href="/services/bird-nest/" class="card-link">
+        <div class="card media">
+          <picture class="svc-picture">
+            <img src="/services/images/service-bird-nest.jpg" alt="Bird nest removal from vent" loading="lazy">
+          </picture>
+          <div class="inner">
+            <h3>Bird Nest Removal</h3>
+            <p>Safely clear out nests and debris that block your vent and create fire risks. We sanitize the line to keep your home healthy.</p>
+            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="card media">
-        <picture class="svc-picture">
-          <img src="/services/images/service-bird-guard.jpg" alt="Dryer vent bird guard installation" loading="lazy">
-        </picture>
-        <div class="inner">
-          <h3>Bird & Pest Guards</h3>
-          <p>Prevent birds from nesting in your vent with specialized guards that allow lint to escape while keeping animals out for good.</p>
-          <a href="/services/bird-guard/" class="btn btn-outline" style="width: 100%; text-align: center;">Learn More</a>
+      <a href="/services/bird-guard/" class="card-link">
+        <div class="card media">
+          <picture class="svc-picture">
+            <img src="/services/images/service-bird-guard.jpg" alt="Dryer vent bird guard installation" loading="lazy">
+          </picture>
+          <div class="inner">
+            <h3>Bird & Pest Guards</h3>
+            <p>Prevent birds from nesting in your vent with specialized guards that allow lint to escape while keeping animals out for good.</p>
+            <span class="btn btn-outline" style="width: 100%; text-align: center; display: block;">Learn More</span>
+          </div>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
@@ -206,7 +222,7 @@
     <div class="container footer-grid">
       <div>
         <h4>Dryer Vent Services</h4>
-        <p>Dryer Vent Cleaning & Repair</p>
+        <p>Dryer Vent Cleaning - Repairs - Installations</p>
       </div>
       <div>
         <ul class="contact-list">
