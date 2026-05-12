@@ -123,25 +123,81 @@
       .burger { margin-left: initial !important; }
     }
 
-    /* הגדרות לכרטיסיות הלחיצות בדף הבית */
-    .card-link {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        transition: transform 0.3s ease;
-        height: 100%;
+    /* עיצוב רשת השירותים המודרנית (כמו בדפי השירות והאזורים) */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      margin-bottom: 20px;
     }
-    
-    .card-link:hover .card.media {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+
+    .service-card {
+      background: var(--bg-alt, #ffffff);
+      border: 1px solid var(--border, #e6eaf2);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--text, #333333);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
-    
-    /* סידור תמונות בתוך הכרטיסיות שייראו טוב גם אם הן חתוכות */
-    .svc-picture img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(27, 54, 93, 0.1);
+    }
+
+    .service-card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--orange, #F47C20);
+    }
+
+    .service-card-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card-title {
+      font-size: 1.3rem;
+      color: var(--blue, #1B365D);
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .service-card-desc {
+      font-size: 0.95rem;
+      color: var(--muted, #64748b);
+      margin-bottom: 20px;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .service-card-link {
+      display: inline-block;
+      color: var(--orange, #F47C20);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: auto;
+    }
+
+    .service-card-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .service-card:hover .service-card-link svg {
+      transform: translateX(4px);
     }
   </style>
 
@@ -268,44 +324,38 @@
         <p class="muted">Expert residential dryer vent cleaning, repairs, and installations.</p>
       </div>
       
-      <div class="cards-3 reveal">
+      <div class="services-grid reveal">
         
-        <a href="/services/cleaning/" class="card-link">
-          <div class="card media">
-            <div class="svc-picture"><img src="/services/images/service-cleaning.jpg" alt="Professional dryer vent cleaning service" loading="lazy"></div>
-            <div class="inner">
-              <h3>Cleaning</h3>
-              <p class="muted">Thorough lint removal to restore airflow.</p>
-              <ul class="checklist"><li>Deep line cleaning</li><li>Airflow check</li><li>Fire prevention</li></ul>
-            </div>
+        <a href="/services/cleaning/" class="service-card">
+          <img src="/services/images/service-cleaning.jpg" alt="Professional dryer vent cleaning service" class="service-card-img" loading="lazy">
+          <div class="service-card-content">
+            <h3 class="service-card-title">Cleaning</h3>
+            <p class="service-card-desc">Thorough lint removal to restore airflow. Deep line cleaning, airflow check, and fire prevention.</p>
+            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
 
-        <a href="/services/repairs/" class="card-link">
-          <div class="card media">
-            <div class="svc-picture"><img src="/services/images/service-repairs.jpg" alt="Dryer vent duct repair and replacement" loading="lazy"></div>
-            <div class="inner">
-              <h3>Repairs</h3>
-              <p class="muted">Fixing disconnected or damaged lines.</p>
-              <ul class="checklist"><li>Duct reconnection</li><li>Pipe replacement</li><li>Code compliance</li></ul>
-            </div>
+        <a href="/services/repairs/" class="service-card">
+          <img src="/services/images/service-repairs.jpg" alt="Dryer vent duct repair and replacement" class="service-card-img" loading="lazy">
+          <div class="service-card-content">
+            <h3 class="service-card-title">Repairs</h3>
+            <p class="service-card-desc">Fixing disconnected or damaged lines. Duct reconnection, pipe replacement, and code compliance.</p>
+            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
 
-        <a href="/services/installations/" class="card-link">
-          <div class="card media">
-            <div class="svc-picture"><img src="/services/images/service-installations.jpg" alt="New dryer vent installation service" loading="lazy"></div>
-            <div class="inner">
-              <h3>Installation</h3>
-              <p class="muted">Installing new dryer vents.</p>
-              <ul class="checklist"><li>New route installation</li><li>Bird guards</li><li>Roof venting</li></ul>
-            </div>
+        <a href="/services/installations/" class="service-card">
+          <img src="/services/images/service-installations.jpg" alt="New dryer vent installation service" class="service-card-img" loading="lazy">
+          <div class="service-card-content">
+            <h3 class="service-card-title">Installation</h3>
+            <p class="service-card-desc">Installing new dryer vents. Custom route installation, bird guards, and exterior wall venting.</p>
+            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
 
       </div>
       
-      <div class="center mt-20 reveal"><a href="/services/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">View All Services</a></div>
+      <div class="center reveal"><a href="/services/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">View All Services</a></div>
     </div>
   </section>
 
