@@ -36,6 +36,12 @@
       }
     }
 
+    /* תיקון נגישות: מסגרת ברורה למנווטי מקלדת */
+    *:focus-visible {
+      outline: 3px solid #F47C20 !important;
+      outline-offset: 2px !important;
+    }
+
     /* --- Hero Section --- */
     .hero-modern {
       position: relative;
@@ -123,7 +129,7 @@
       .burger { margin-left: initial !important; }
     }
 
-    /* עיצוב רשת השירותים המודרנית (כמו בדפי השירות והאזורים) */
+    /* עיצוב רשת השירותים */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -264,12 +270,12 @@
 
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="/">
-        <img src="/logo.webp" alt="Dryer Vent Services - Staten Island Cleaning & Repairs" class="logo" loading="eager" onerror="this.src='/logo.png'">
+      <a class="brand" href="/" aria-label="Dryer Vent Services Homepage">
+        <img src="/logo.webp" alt="Dryer Vent Services Logo" class="logo" loading="eager" onerror="this.src='/logo.png'">
         <div class="brand-text"><strong>Dryer Vent Services</strong><span>Cleaning - Repairs - Installations</span></div>
       </a>
-      <nav class="site-nav" id="site-nav">
-        <a href="/" class="active">Home</a>
+      <nav class="site-nav" id="site-nav" aria-label="Main menu">
+        <a href="/" class="active" aria-current="page">Home</a>
         <a href="/services/">Services</a>
         <a href="/gallery/">Gallery</a>
         <a href="/reviews/">Reviews</a>
@@ -280,7 +286,7 @@
         <a href="/about/">About</a>
         <a class="cta" href="/contact/">Contact Us</a>
       </nav>
-      <button class="burger" id="burger" aria-expanded="false" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-expanded="false" aria-label="Toggle menu" aria-controls="site-nav"><span></span><span></span><span></span></button>
     </div>
   </header>
 
@@ -290,7 +296,7 @@
       <p class="hero-sub">Prevent fires, save energy, and dry clothes faster with professional dryer vent services in Staten Island, NY & NJ.</p>
       <div class="hero-actions">
         <a href="/booking/" class="btn btn--primary">Book Now</a>
-        <a href="tel:+13472449382" class="btn btn-outline">Call 347-244-9382</a>
+        <a href="tel:+13472449382" class="btn btn-outline" aria-label="Call us at 3 4 7. 2 4 4. 9 3 8 2.">Call 347-244-9382</a>
       </div>
     </div>
   </section>
@@ -298,19 +304,19 @@
   <div class="trust-bar">
     <div class="trust-container">
       <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
         <span>Serving NY & NJ Since 2020</span>
       </div>
       <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         <span>Professional & Reliable</span>
       </div>
       <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
         <span>5-Star Google Rated</span>
       </div>
       <div class="trust-item">
-        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
         <span>1,000+ Happy Customers</span>
       </div>
     </div>
@@ -325,34 +331,32 @@
       </div>
       
       <div class="services-grid reveal">
-        
         <a href="/services/cleaning/" class="service-card">
-          <img src="/services/images/service-cleaning.jpg" alt="Professional dryer vent cleaning service" class="service-card-img" loading="lazy">
+          <img src="/services/images/service-cleaning.jpg" alt="Dryer vent deep cleaning in progress" class="service-card-img" loading="lazy">
           <div class="service-card-content">
             <h3 class="service-card-title">Cleaning</h3>
             <p class="service-card-desc">Thorough lint removal to restore airflow. Deep line cleaning, airflow check, and fire prevention.</p>
-            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
 
         <a href="/services/repairs/" class="service-card">
-          <img src="/services/images/service-repairs.jpg" alt="Dryer vent duct repair and replacement" class="service-card-img" loading="lazy">
+          <img src="/services/images/service-repairs.jpg" alt="Technician repairing a damaged dryer vent hose" class="service-card-img" loading="lazy">
           <div class="service-card-content">
             <h3 class="service-card-title">Repairs</h3>
             <p class="service-card-desc">Fixing disconnected or damaged lines. Duct reconnection, pipe replacement, and code compliance.</p>
-            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
 
         <a href="/services/installations/" class="service-card">
-          <img src="/services/images/service-installations.jpg" alt="New dryer vent installation service" class="service-card-img" loading="lazy">
+          <img src="/services/images/service-installations.jpg" alt="Newly installed rigid metal dryer vent system" class="service-card-img" loading="lazy">
           <div class="service-card-content">
             <h3 class="service-card-title">Installation</h3>
             <p class="service-card-desc">Installing new dryer vents. Custom route installation, bird guards, and exterior wall venting.</p>
-            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <span class="service-card-link">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-
       </div>
       
       <div class="center reveal"><a href="/services/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">View All Services</a></div>
@@ -366,21 +370,21 @@
         <h2>Before and After</h2>
         <p class="muted">Drag the slider to see the difference.</p>
       </div>
-      <div class="ba-carousel reveal">
-        <div class="ba-arrow prev" id="ba-prev">❮</div>
-        <div class="ba-arrow next" id="ba-next">❯</div>
+      <div class="ba-carousel reveal" aria-roledescription="carousel" aria-label="Before and after transformation example">
+        <div class="ba-arrow prev" id="ba-prev" role="button" aria-label="Previous example" tabindex="0">❮</div>
+        <div class="ba-arrow next" id="ba-next" role="button" aria-label="Next example" tabindex="0">❯</div>
         <div class="ba-wrap">
-          <div class="ba-labels-container"><span class="ba-label">Before</span><span class="ba-label">After</span></div>
-          <div class="ba-after"><img id="ba-after-img" src="/assets/img/before-after/ba01-after.jpg" class="ba-img" alt="Dryer vent after professional cleaning - clear airflow" loading="lazy"></div>
-          <img id="ba-before-img" src="/assets/img/before-after/ba01-before.jpg" class="ba-img" alt="Clogged dryer vent before cleaning - heavy lint buildup" loading="lazy">
-          <div class="ba-handle"></div>
+          <div class="ba-labels-container" aria-hidden="true"><span class="ba-label">Before</span><span class="ba-label">After</span></div>
+          <div class="ba-after"><img id="ba-after-img" src="/assets/img/before-after/ba01-after.jpg" class="ba-img" alt="Dryer vent after professional cleaning - completely clear airflow" loading="lazy"></div>
+          <img id="ba-before-img" src="/assets/img/before-after/ba01-before.jpg" class="ba-img" alt="Clogged dryer vent before cleaning - heavy dangerous lint buildup" loading="lazy">
+          <div class="ba-handle" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Drag to compare before and after images" tabindex="0"></div>
         </div>
       </div>
       <div class="center mt-20 reveal"><a href="/gallery/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">See more photos</a></div>
     </div>
   </section>
 
-  <div class="wave-divider wave--to-dark">
+  <div class="wave-divider wave--to-dark" aria-hidden="true">
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"></path>
     </svg>
@@ -396,19 +400,19 @@
       <div class="faq-grid reveal">
         <div class="faq-item" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
           <details>
-            <summary style="color: #fff;">Why is dryer vent cleaning important?</summary>
+            <summary style="color: #fff; cursor: pointer;">Why is dryer vent cleaning important?</summary>
             <div class="faq-body" style="color: #8fa8c8; border-top: 1px solid rgba(255,255,255,0.05);">Cleaning your dryer vent prevents lint buildup, which is the #1 cause of dryer fires. It also helps your clothes dry faster and lowers your energy bills.</div>
           </details>
         </div>
         <div class="faq-item" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
           <details>
-            <summary style="color: #fff;">How often should I clean my dryer vent?</summary>
+            <summary style="color: #fff; cursor: pointer;">How often should I clean my dryer vent?</summary>
             <div class="faq-body" style="color: #8fa8c8; border-top: 1px solid rgba(255,255,255,0.05);">Experts recommend cleaning your dryer vent at least once a year. Larger families may need it more often.</div>
           </details>
         </div>
         <div class="faq-item" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
           <details>
-            <summary style="color: #fff;">How do I know if my vent is clogged?</summary>
+            <summary style="color: #fff; cursor: pointer;">How do I know if my vent is clogged?</summary>
             <div class="faq-body" style="color: #8fa8c8; border-top: 1px solid rgba(255,255,255,0.05);">Signs include clothes taking longer to dry, the dryer getting very hot, or a burning smell.</div>
           </details>
         </div>
@@ -425,7 +429,7 @@
         <p class="muted">Rated 5 Stars on Google.</p>
       </div>
       <div class="reveal" style="max-width: 800px; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background: #fff; -webkit-overflow-scrolling: touch;">
-        <iframe src="https://client.housecallpro.com/reviews/widget/93a75d59-cc4b-477a-9c90-d0a5905fd2fa" height="650" width="100%" style="border:none; display: block; overflow-y: auto;" scrolling="yes" title="Customer Reviews" loading="lazy"></iframe>
+        <iframe src="https://client.housecallpro.com/reviews/widget/93a75d59-cc4b-477a-9c90-d0a5905fd2fa" height="650" width="100%" style="border:none; display: block; overflow-y: auto;" scrolling="yes" title="Customer Reviews Widget from Housecall Pro" loading="lazy"></iframe>
       </div>
       <div class="center mt-20 reveal"><a href="/reviews/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">Read All Reviews</a></div>
     </div>
@@ -436,8 +440,8 @@
       <div><h4>Dryer Vent Services</h4><p class="muted" style="color:#b9c6dd;">Professional dryer vent cleaning, repairs, and installations.</p></div>
       <div><h4>Contact</h4><ul class="contact-list" style="list-style: none; padding: 0; margin: 0;"><li>347-244-9382</li><li>office@dryer-ventservices.com</li><li>Staten Island, NY</li></ul></div>
       <div class="footer-cta" style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener" style="color:#fff; border-color:rgba(255,255,255,0.4);">WhatsApp</a>
-        <a class="btn btn-outline" href="tel:+13472449382" style="color:#fff; border-color:rgba(255,255,255,0.4);">Call Us</a>
+        <a class="btn btn-outline" href="https://wa.me/13472449382" target="_blank" rel="noopener" style="color:#fff; border-color:rgba(255,255,255,0.4);" aria-label="Chat with us on WhatsApp">WhatsApp</a>
+        <a class="btn btn-outline" href="tel:+13472449382" style="color:#fff; border-color:rgba(255,255,255,0.4);" aria-label="Call us">Call Us</a>
         <a class="btn btn-outline" href="/contact/" style="color:#fff; border-color:rgba(255,255,255,0.4);">Contact Us</a>
         <a class="btn btn--primary" href="/booking/">Book Now</a>
       </div>
