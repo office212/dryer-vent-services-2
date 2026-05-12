@@ -4,7 +4,8 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Page Not Found | Dryer Vent Services</title>
-
+  
+  <meta name="description" content="Oops! The page you are looking for cannot be found. Return to Dryer Vent Services for professional cleaning, repairs, and installations in NY & NJ.">
   <meta name="robots" content="noindex, follow">
 
   <link rel="stylesheet" href="/styles.css" />
@@ -26,116 +27,49 @@
       background-color: var(--bg-color);
       background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
       background-size: 20px 20px;
-
-      /* Flexbox to keep footer at bottom */
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* TIKUN: Header is white, Footer takes style from styles.css */
-    .site-header {
-      flex-shrink: 0;
-      background-color: #ffffff;
-    }
-
-    .site-footer {
-      flex-shrink: 0;
-      /* No background color here, so it uses the dark blue from styles.css */
-    }
-
-    /* Center Content */
+    .site-header { flex-shrink: 0; background-color: #ffffff; }
+    .site-footer { flex-shrink: 0; }
     .main-content {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
+      flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 24px;
     }
 
     .wrap {
-      width:100%;
-      max-width: 600px;
-      padding: 40px 24px;
-      text-align:center;
-      background: #ffffff;
-      border-radius: 24px;
+      width:100%; max-width: 600px; padding: 40px 24px; text-align:center;
+      background: #ffffff; border-radius: 24px;
       box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
       border: 1px solid rgba(0,0,0,0.05);
-      animation: fadeIn .6s cubic-bezier(0.16, 1, 0.3, 1);
-      margin: auto; 
+      animation: fadeIn .6s cubic-bezier(0.16, 1, 0.3, 1); margin: auto; 
     }
 
-    /* Sad Dryer Icon */
-    .sad-dryer {
-      font-size: 5rem;
-      margin-bottom: 0.5rem;
-      position: relative;
-      display: inline-block;
-    }
+    .sad-dryer { font-size: 5rem; margin-bottom: 0.5rem; position: relative; display: inline-block; }
     .sad-dryer::after {
-      content: "😥";
-      position: absolute;
-      font-size: 2.5rem;
-      bottom: 10px;
-      right: -10px;
-      background: #fff;
-      border-radius: 50%;
-      padding: 2px;
+      content: "😥"; position: absolute; font-size: 2.5rem; bottom: 10px; right: -10px;
+      background: #fff; border-radius: 50%; padding: 2px;
     }
 
-    h1 { 
-      font-size: clamp(24px, 5vw, 32px); 
-      margin: 0 0 12px; 
-      line-height:1.2; 
-      color: var(--brand-blue); 
-    }
-    p.lead { 
-      font-size: clamp(16px, 2.5vw, 18px); 
-      margin: 0 auto 32px; 
-      color:#64748b; 
-      max-width: 400px;
-      line-height: 1.5;
-    }
+    h1 { font-size: clamp(24px, 5vw, 32px); margin: 0 0 12px; line-height:1.2; color: var(--brand-blue); }
+    p.lead { font-size: clamp(16px, 2.5vw, 18px); margin: 0 auto 32px; color:#64748b; max-width: 400px; line-height: 1.5; }
+    
     a.btn-404 {
-      display:inline-flex; align-items: center; gap: 8px;
-      text-decoration:none; font-weight:600;
-      padding: 14px 28px; border-radius: 50px; 
-      background:var(--brand-orange); color:#fff;
-      transition: all .2s ease;
-      box-shadow: 0 4px 12px rgba(249,115,22,.2);
+      display:inline-flex; align-items: center; gap: 8px; text-decoration:none; font-weight:600;
+      padding: 14px 28px; border-radius: 50px; background:var(--brand-orange); color:#fff;
+      transition: all .2s ease; box-shadow: 0 4px 12px rgba(249,115,22,.2);
     }
-    a.btn-404:hover { 
-      transform: translateY(-2px); 
-      box-shadow: 0 8px 20px rgba(249,115,22,.3); 
-      background: #ea580c;
-    }
-    .links { 
-      margin-top:32px; 
-      padding-top: 24px;
-      border-top: 1px solid #f1f5f9;
-      font-size:14px; 
-      color:#94a3b8; 
-    }
-    .links a { 
-      color:var(--brand-blue); 
-      text-decoration:none; 
-      margin:0 .6rem; 
-      font-weight: 600;
-      transition: color 0.2s;
-    }
+    a.btn-404:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249,115,22,.3); background: #ea580c; }
+    
+    .links { margin-top:32px; padding-top: 24px; border-top: 1px solid #f1f5f9; font-size:14px; color:#94a3b8; }
+    .links a { color:var(--brand-blue); text-decoration:none; margin:0 .6rem; font-weight: 600; transition: color 0.2s; }
     .links a:hover { color: var(--brand-orange); }
 
     @keyframes fadeIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none} }
 
-    /* התיקון הרשמי והאולטימטיבי לבועה של Housecall Pro בנייד */
     @media (max-width: 767px) {
-      #proChatIframeContainer { 
-        /* המספר הכי גבוה שדפדפנים מאפשרים, כדי לנצח את הסרגל התחתון */
-        z-index: 2147483647 !important; 
-        /* מושך את הבועה למעלה בכוח עוקף את ההגדרות שלהם */
-        transform: translateY(-80px) !important; 
-      }
+      #proChatIframeContainer { z-index: 2147483647 !important; transform: translateY(-80px) !important; }
     }
   </style>
 
@@ -227,7 +161,6 @@
   </div>
 
   <script src="/script.js" defer></script>
-
   <script id="housecall-pro-chat-bubble" src="https://chat.housecallpro.com/proChat.js" type="text/javascript" data-color="#1B365D" data-organization="93a75d59-cc4b-477a-9c90-d0a5905fd2fa" defer></script>
 </body>
 </html>
