@@ -415,7 +415,7 @@
         <p class="muted">Rated 5 Stars on Google.</p>
       </div>
       <div class="reveal" style="max-width: 800px; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background: #fff; -webkit-overflow-scrolling: touch;">
-        <iframe src="https://client.housecallpro.com/reviews/widget/93a75d59-cc4b-477a-9c90-d0a5905fd2fa" height="650" width="100%" style="border:none; display: block; overflow-y: auto;" scrolling="yes" title="Customer Reviews Widget from Housecall Pro" loading="lazy"></iframe>
+        <iframe id="hcp-reviews-iframe" data-src="https://client.housecallpro.com/reviews/widget/93a75d59-cc4b-477a-9c90-d0a5905fd2fa" height="650" width="100%" style="border:none; display: block; overflow-y: auto;" scrolling="yes" title="Customer Reviews Widget from Housecall Pro"></iframe>
       </div>
       <div class="center mt-20 reveal"><a href="/reviews/" class="btn btn-outline" style="color:#1B365D; border-color:#e6eaf2;">Read All Reviews</a></div>
     </div>
@@ -469,6 +469,12 @@
         hcp.src = 'https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services';
         hcp.async = true;
         document.body.appendChild(hcp);
+
+        // Housecall Pro Reviews Iframe Lazy Load
+        var iframe = document.getElementById('hcp-reviews-iframe');
+        if (iframe && iframe.getAttribute('data-src')) {
+          iframe.src = iframe.getAttribute('data-src');
+        }
       }
       var timer = setTimeout(loadThirdPartyScripts, 3500);
       ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
