@@ -25,8 +25,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   
   <link rel="preload" href="/images/gallery/hero-bg.webp" as="image" type="image/webp" fetchpriority="high">
 
@@ -251,13 +250,6 @@
     ]
   }
   </script>
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-X77CVTW1CD');
-  </script>
 </head>
 
 <body class="home" data-page="home">
@@ -461,7 +453,12 @@
         });
         clearTimeout(timer);
 
-        // Google Analytics / Tag Manager
+        // Google Analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X77CVTW1CD');
+
         var gtm = document.createElement('script');
         gtm.src = 'https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD';
         gtm.async = true;
