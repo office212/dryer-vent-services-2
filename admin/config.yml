@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: office212/dryer-vent-services-2 # חיבור למאגר שלך
+  branch: main
+  # פה נוסיף בשלב הבא את מפתח האבטחה (app_id) אחרי שנייצר אותו
+
+media_folder: "assets/img/uploads" # התיקייה שאליה יעלו התמונות שתוסיף למאמרים
+public_folder: "/assets/img/uploads" # איך הנתיב של התמונה ייראה בקוד
+
+collections:
+  - name: "articles"
+    label: "מאמרים ופוסטים (Blog)"
+    folder: "articles_data" # המערכת תייצר פה את קבצי המידע של המאמרים שלך
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    fields:
+      - {label: "כותרת המאמר", name: "title", widget: "string"}
+      - {label: "תיאור קצר (לגוגל ולתצוגה מקדימה)", name: "description", widget: "text"}
+      - {label: "תמונה ראשית", name: "image", widget: "image", required: false}
+      - {label: "תאריך פרסום", name: "date", widget: "datetime"}
+      - {label: "תוכן המאמר", name: "body", widget: "markdown"} # זה הווידג'ט שמאפשר לך לכתוב כמו בוורד!
