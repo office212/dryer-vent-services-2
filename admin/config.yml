@@ -2,8 +2,8 @@ backend:
   name: github
   repo: office212/dryer-vent-services-2
   branch: main
-  auth_type: pkce
-  app_id: "Ov23li0Qa2fhJShL64A1"
+  base_url: https://sveltia-cms.netlify.app
+  auth_endpoint: /.netlify/functions/auth
 
 media_folder: "assets/img/uploads"
 public_folder: "/assets/img/uploads"
