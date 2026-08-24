@@ -90,7 +90,7 @@ collections:
     label: "📝 מאמרים (Articles)"
     folder: "articles"
     create: true
-    slug: "{{slug}}/index"
+    path: "{{slug}}/index"
     extension: "html"
     format: "html"
     fields:
@@ -106,7 +106,7 @@ collections:
     label: "📍 אזורי שירות (Service Areas)"
     folder: "areas"
     create: true
-    slug: "{{slug}}/index"
+    path: "{{slug}}/index"
     extension: "html"
     format: "html"
     fields:
@@ -122,7 +122,7 @@ collections:
     label: "🛠️ שירותים (Services Pages)"
     folder: "services"
     create: true
-    slug: "{{slug}}/index"
+    path: "{{slug}}/index"
     extension: "html"
     format: "html"
     fields:
