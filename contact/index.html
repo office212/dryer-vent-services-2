@@ -125,9 +125,8 @@
       <h2>Send a Message</h2>
       
       <p style="margin-bottom: 10px; font-weight: 600; color: #1B365D;">Want to skip the form? Book directly on our calendar:</p>
-      <button data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()"> Book Online Now </button> 
-      <script defer src="https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services"></script> 
-      <hr style="margin-bottom: 30px; border: 0; border-top: 1px solid #eef1f5;">
+      <button data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()"> Book Online Now </button>
+<hr style="margin-bottom: 30px; border: 0; border-top: 1px solid #eef1f5;">
       
       <form id="contactForm"
             action="https://script.google.com/macros/s/AKfycbyXLyX2094tKPcJJoIDTRAqWD2oV9pOXnCWjFHkJi8fyPFZhGkrLtaolMwQHMRAEoQm/exec"
@@ -279,5 +278,26 @@
 
   <script src="/script.js" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    (function() {
+      var loaded = false;
+      function loadHCP() {
+        if (loaded) return;
+        loaded = true;
+        ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
+          window.removeEventListener(e, loadHCP, { passive: true });
+        });
+        clearTimeout(timer);
+        var s = document.createElement('script');
+        s.src = 'https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      var timer = setTimeout(loadHCP, 3500);
+      ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
+        window.addEventListener(e, loadHCP, { passive: true, once: true });
+      });
+    })();
+  </script>
 </body>
 </html>
