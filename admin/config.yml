@@ -2,7 +2,7 @@ backend:
   name: github
   repo: office212/dryer-vent-services-2
   branch: main
-  # כאן נוסיף את מפתח האבטחה בשלב הבא
+  auth_type: implicit # השורה שמתקנת את ההתחברות ומונעת את השגיאה
 
 media_folder: "assets/img/uploads"
 public_folder: "/assets/img/uploads"
