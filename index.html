@@ -26,6 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/images/gallery/hero-bg.webp" fetchpriority="high">
 
   <style>
     /* תיקון נגישות: מסגרת ברורה למנווטי מקלדת */
@@ -447,6 +448,27 @@
   </div>
 
   <script src="/script.js" defer></script>
+  <script>
+    (function() {
+      var loaded = false;
+      function loadHCP() {
+        if (loaded) return;
+        loaded = true;
+        ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
+          window.removeEventListener(e, loadHCP, { passive: true });
+        });
+        clearTimeout(timer);
+        var s = document.createElement('script');
+        s.src = 'https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      var timer = setTimeout(loadHCP, 3500);
+      ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
+        window.addEventListener(e, loadHCP, { passive: true, once: true });
+      });
+    })();
+  </script>
 
 </body>
 </html>
