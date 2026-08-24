@@ -1,0 +1,6 @@
+{
+  "name": "Dryer Vent Services",
+  "description": "Professional dryer vent cleaning, repairs, and installations serving New York and New Jersey.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
