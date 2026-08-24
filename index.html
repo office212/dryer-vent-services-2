@@ -21,64 +21,20 @@
 
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"></noscript>
-
-  <link rel="preload" as="image" href="/images/gallery/hero-bg.webp" fetchpriority="high">
-
-  <link rel="stylesheet" href="/styles.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="/styles.css"></noscript>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Critical Above-the-fold CSS */
-    :root {
-      --ink: #0f1b2d;
-      --blue: #1B365D;
-      --blue-2: #3E6AD6;
-      --green: #1E9D6D;
-      --orange: #F47C20;
-      --orange-dark: #d4621c;
-      --muted: #6b7280;
-      --border: #e6eaf2;
-      --bg: #ffffff;
-      --bg-alt: #f7f9fc;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0;
-      background: var(--bg); color: var(--ink);
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      scroll-behavior: smooth;
-    }
-    a { color: var(--blue); text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container { width: min(1100px, 92%); margin-inline: auto; }
-
+    /* תיקון נגישות: מסגרת ברורה למנווטי מקלדת */
     *:focus-visible {
       outline: 3px solid #F47C20 !important;
       outline-offset: 2px !important;
     }
 
-    .site-header { 
-      position: sticky; top: 0; z-index: 100; 
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-    .nav-wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 0; }
-    .brand { display: flex; align-items: center; gap: 12px; color: inherit; }
-    .logo { width: 80px; height: 47px; }
-    .brand-text strong { display: block; font-size: 1.1rem; color: var(--blue); }
-    .brand-text span { display: block; font-size: 12px; color: var(--muted); letter-spacing: 0.08em; margin-top: 2px; }
-    .site-nav { display: flex; gap: 16px; align-items: center; }
-    .site-nav a { padding: 8px 10px; border-radius: 10px; font-weight: 500; }
-    .site-nav a.cta { background: var(--orange); color: #fff; font-weight: 600; }
-    .site-nav a.active { background: var(--bg-alt); font-weight: 700; color: var(--blue); }
-    .burger { display: none; background: transparent; border: 0; cursor: pointer; }
-
+    /* --- Hero Section --- */
     .hero-modern {
       position: relative;
       background-image: linear-gradient(rgba(27, 54, 93, 0.65), rgba(27, 54, 93, 0.85)), url('/images/gallery/hero-bg.webp'); 
@@ -86,10 +42,8 @@
       background-position: center;
       padding: 100px 20px; 
       color: #ffffff; 
-      min-height: 50vh;
-      display: flex;
-      align-items: center;
     }
+
     .hero-inner {
       position: relative;
       z-index: 2;
@@ -97,46 +51,29 @@
       margin: 0; 
       text-align: left; 
     }
+
     .hero-title {
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: 3rem;
       color: #ffffff;
-      margin: 0 0 20px;
+      margin-bottom: 20px;
       line-height: 1.2;
       font-weight: 800;
       text-shadow: 0 2px 5px rgba(0,0,0,0.6); 
     }
+
     .hero-sub {
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-size: 1.15rem;
       color: #f8fafc; 
-      margin: 0 0 30px;
+      margin-bottom: 30px;
       line-height: 1.5;
       max-width: 600px; 
       text-shadow: 0 1px 3px rgba(0,0,0,0.5); 
     }
+
     .hero-actions {
       display: flex;
       justify-content: flex-start; 
       gap: 15px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .btn--primary {
-      background: var(--orange);
-      color: #fff;
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #fff;
-      color: #fff;
     }
 
     .trust-bar {
@@ -145,6 +82,7 @@
       border-bottom: 1px solid #edf2f7;
       padding: 20px 0;
     }
+
     .trust-container {
       max-width: 1100px;
       margin: 0 auto;
@@ -154,6 +92,7 @@
       flex-wrap: wrap;
       gap: 20px;
     }
+
     .trust-item {
       display: flex;
       align-items: center;
@@ -163,6 +102,7 @@
       font-weight: 600;
       letter-spacing: -0.01em;
     }
+
     .trust-icon {
       color: #F47C20;
       width: 24px;
@@ -172,12 +112,10 @@
 
     @media (max-width: 767px) {
       .hero-modern { padding: 50px 20px; }
+      .hero-title { font-size: 2rem; }
+      .hero-sub { font-size: 1rem; margin-bottom: 25px; }
       .hero-inner { text-align: center; margin: 0 auto; } 
-      .hero-actions { flex-direction: column; justify-content: center; align-items: stretch;}
-      .site-nav { display: none; }
-      .burger { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 5px 0; }
-      .burger span { width: 28px; height: 2px; background: #0f1b2d; display: block; border-radius: 2px; }
-      .burger::after { content: "MENU"; font-size: 10px; font-weight: 800; color: var(--blue); letter-spacing: 0.5px; margin-top: 2px; }
+      .hero-actions { flex-direction: column; justify-content: center; align-items: center;}
       .trust-container { gap: 16px; padding: 0 15px; }
       .trust-item { font-size: 0.85rem; width: 45%; justify-content: flex-start; }
       .burger { margin-left: initial !important; }
@@ -191,6 +129,7 @@
       margin-top: 40px;
       margin-bottom: 20px;
     }
+
     .service-card {
       background: var(--bg-alt, #ffffff);
       border: 1px solid var(--border, #e6eaf2);
@@ -202,22 +141,26 @@
       display: flex;
       flex-direction: column;
     }
+
     .service-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(27, 54, 93, 0.1);
     }
+
     .service-card-img {
       width: 100%;
       height: 220px;
       object-fit: cover;
       border-bottom: 3px solid var(--orange, #F47C20);
     }
+
     .service-card-content {
       padding: 25px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
+
     .service-card-title {
       font-size: 1.3rem;
       color: var(--blue, #1B365D);
@@ -225,6 +168,7 @@
       margin-bottom: 10px;
       font-weight: 800;
     }
+
     .service-card-desc {
       font-size: 0.95rem;
       color: var(--muted, #64748b);
@@ -232,6 +176,7 @@
       line-height: 1.5;
       flex-grow: 1;
     }
+
     .service-card-link {
       display: inline-block;
       color: var(--orange, #F47C20);
@@ -242,11 +187,13 @@
       gap: 5px;
       margin-top: auto;
     }
+
     .service-card-link svg {
       width: 16px;
       height: 16px;
       transition: transform 0.2s ease;
     }
+
     .service-card:hover .service-card-link svg {
       transform: translateX(4px);
     }
@@ -316,7 +263,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/" aria-label="Dryer Vent Services Homepage">
-        <img src="/logo.webp" alt="Dryer Vent Services Logo" class="logo" loading="eager" width="80" height="47" onerror="this.src='/logo.png'">
+        <img src="/logo.webp" alt="Dryer Vent Services Logo" class="logo" loading="eager" onerror="this.src='/logo.png'">
         <div class="brand-text"><strong>Dryer Vent Services</strong><span>Cleaning - Repairs - Installations</span></div>
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Main menu">
@@ -377,7 +324,7 @@
 
       <div class="services-grid reveal">
         <a href="/services/cleaning/" class="service-card">
-          <img src="/services/images/service-cleaning.jpg" alt="Dryer vent deep cleaning in progress" class="service-card-img" width="1500" height="2000" loading="lazy">
+          <img src="/services/images/service-cleaning.jpg" alt="Dryer vent deep cleaning in progress" class="service-card-img" loading="lazy">
           <div class="service-card-content">
             <h3 class="service-card-title">Cleaning</h3>
             <p class="service-card-desc">Thorough lint removal to restore airflow. Deep line cleaning, airflow check, and fire prevention.</p>
@@ -386,7 +333,7 @@
         </a>
 
         <a href="/services/repairs/" class="service-card">
-          <img src="/services/images/service-repairs.jpg" alt="Technician repairing a damaged dryer vent hose" class="service-card-img" width="1688" height="2048" loading="lazy">
+          <img src="/services/images/service-repairs.jpg" alt="Technician repairing a damaged dryer vent hose" class="service-card-img" loading="lazy">
           <div class="service-card-content">
             <h3 class="service-card-title">Repairs</h3>
             <p class="service-card-desc">Fixing disconnected or damaged lines. Duct reconnection, pipe replacement, and code compliance.</p>
@@ -395,7 +342,7 @@
         </a>
 
         <a href="/services/installations/" class="service-card">
-          <img src="/services/images/service-installations.jpg" alt="Newly installed rigid metal dryer vent system" class="service-card-img" width="924" height="2000" loading="lazy">
+          <img src="/services/images/service-installations.jpg" alt="Newly installed rigid metal dryer vent system" class="service-card-img" loading="lazy">
           <div class="service-card-content">
             <h3 class="service-card-title">Installation</h3>
             <p class="service-card-desc">Installing new dryer vents. Custom route installation, bird guards, and exterior wall venting.</p>
@@ -420,8 +367,8 @@
         <div class="ba-arrow next" id="ba-next" role="button" aria-label="Next example" tabindex="0">❯</div>
         <div class="ba-wrap">
           <div class="ba-labels-container" aria-hidden="true"><span class="ba-label">Before</span><span class="ba-label">After</span></div>
-          <div class="ba-after"><img id="ba-after-img" src="/assets/img/before-after/ba01-after.jpg" class="ba-img" alt="Dryer vent after professional cleaning - completely clear airflow" width="800" height="1200" loading="lazy"></div>
-          <img id="ba-before-img" src="/assets/img/before-after/ba01-before.jpg" class="ba-img" alt="Clogged dryer vent before cleaning - heavy dangerous lint buildup" width="800" height="1200" loading="lazy">
+          <div class="ba-after"><img id="ba-after-img" src="/assets/img/before-after/ba01-after.jpg" class="ba-img" alt="Dryer vent after professional cleaning - completely clear airflow" loading="lazy"></div>
+          <img id="ba-before-img" src="/assets/img/before-after/ba01-before.jpg" class="ba-img" alt="Clogged dryer vent before cleaning - heavy dangerous lint buildup" loading="lazy">
           <div class="ba-handle" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Drag to compare before and after images" tabindex="0"></div>
         </div>
       </div>
@@ -500,27 +447,6 @@
   </div>
 
   <script src="/script.js" defer></script>
-  <script>
-    (function() {
-      var loaded = false;
-      function loadHCP() {
-        if (loaded) return;
-        loaded = true;
-        ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
-          window.removeEventListener(e, loadHCP, { passive: true });
-        });
-        clearTimeout(timer);
-        var s = document.createElement('script');
-        s.src = 'https://online-booking.housecallpro.com/script.js?token=d4344d0d864946b783322ca9c3694d2c&orgName=Dryer-Vent-Services';
-        s.async = true;
-        document.body.appendChild(s);
-      }
-      var timer = setTimeout(loadHCP, 3500);
-      ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
-        window.addEventListener(e, loadHCP, { passive: true, once: true });
-      });
-    })();
-  </script>
 
 </body>
 </html>
