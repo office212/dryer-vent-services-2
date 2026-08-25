@@ -3,8 +3,8 @@ backend:
   repo: office212/dryer-vent-services-2
   branch: main
 
-media_folder: "assets/img/uploads"
-public_folder: "/assets/img/uploads"
+media_folder: "images/gallery"
+public_folder: "/images/gallery"
 
 collections:
   # =========================================
@@ -34,7 +34,7 @@ collections:
         fields:
           - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
           - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-          - {label: "כותרת ראשית (H1)", name: "h1", widget: "string", selector: "h1"}
+          - {label: "כותרת H1", name: "h1", widget: "string", selector: "h1"}
 
       - file: "faq/index.html"
         label: "שאלות נפוצות (FAQ)"
@@ -42,7 +42,7 @@ collections:
         fields:
           - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
           - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-          - {label: "כותרת ראשית (H1)", name: "h1", widget: "string", selector: "h1"}
+          - {label: "כותרת H1", name: "h1", widget: "string", selector: "h1"}
 
       - file: "contact/index.html"
         label: "צור קשר (Contact)"
@@ -50,7 +50,7 @@ collections:
         fields:
           - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
           - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-          - {label: "כותרת ראשית (H1)", name: "h1", widget: "string", selector: "h1"}
+          - {label: "כותרת H1", name: "h1", widget: "string", selector: "h1"}
 
       - file: "reviews/index.html"
         label: "ביקורות (Reviews)"
@@ -67,46 +67,55 @@ collections:
           - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
 
   # =========================================
-  # 3. כל המאמרים (Articles)
+  # 3. מאמרים קיימים (Articles)
   # =========================================
   - name: "articles"
     label: "📝 מאמרים (Articles)"
-    folder: "articles"
-    extension: "html"
-    format: "html"
-    nested:
-      depth: 2
-    fields:
-      - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
-      - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-      - {label: "כותרת המאמר (H1)", name: "h1", widget: "string", selector: "h1"}
+    files:
+      - {file: "articles/air/index.html", label: "Airflow", name: "air", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/birds/index.html", label: "Birds & Nests", name: "birds", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/burning-smell/index.html", label: "Burning Smell", name: "burning_smell", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/clothes-damage/index.html", label: "Clothes Damage", name: "clothes_damage", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/condensation/index.html", label: "Condensation", name: "condensation", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/diy-trap/index.html", label: "DIY Trap", name: "diy_trap", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/dryer-sheets/index.html", label: "Dryer Sheets", name: "dryer_sheets", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/energy/index.html", label: "Energy Efficiency", name: "energy", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/exterior-signs/index.html", label: "Exterior Signs", name: "exterior_signs", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/gas/index.html", label: "Gas Dryer Safety", name: "gas", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/hot-room/index.html", label: "Hot Laundry Room", name: "hot_room", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/how-often/index.html", label: "How Often To Clean", name: "how_often", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/insurance/index.html", label: "Home Insurance", name: "insurance", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/large-family/index.html", label: "Large Families", name: "large_family", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/lint-trap/index.html", label: "Lint Trap vs Vent", name: "lint_trap", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/local-advantage/index.html", label: "Local Advantage", name: "local_advantage", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/moving/index.html", label: "Moving In Checklist", name: "moving", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/new-dryers/index.html", label: "New Dryers", name: "new_dryers", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/older-homes/index.html", label: "Older Homes", name: "older_homes", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/pets/index.html", label: "Pet Hair Impact", name: "pets", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/stacked/index.html", label: "Stacked Units", name: "stacked", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/summer/index.html", label: "Summer Dryer Care", name: "summer", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/thermal-fuse/index.html", label: "Thermal Fuse", name: "thermal_fuse", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/towels-vs-shirts/index.html", label: "Towels vs Shirts", name: "towels_vs_shirts", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/unattended/index.html", label: "Unattended Dryer", name: "unattended", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/vent-covers/index.html", label: "Vent Covers Guide", name: "vent_covers", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/warnings/index.html", label: "Warning Signs", name: "warnings", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "articles/winter-hazards/index.html", label: "Winter Hazards", name: "winter_hazards", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
 
   # =========================================
-  # 4. כל אזורי השירות (Service Areas)
+  # 4. אזורי שירות קיימים (Service Areas)
   # =========================================
   - name: "areas"
     label: "📍 אזורי שירות (Service Areas)"
-    folder: "areas"
-    extension: "html"
-    format: "html"
-    nested:
-      depth: 2
-    fields:
-      - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
-      - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-      - {label: "כותרת האזור (H1)", name: "h1", widget: "string", selector: "h1"}
-
-  # =========================================
-  # 5. דפי שירותים (Services)
-  # =========================================
-  - name: "services"
-    label: "🛠️ שירותים (Services)"
-    folder: "services"
-    extension: "html"
-    format: "html"
-    nested:
-      depth: 2
-    fields:
-      - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
-      - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-      - {label: "כותרת השירות (H1)", name: "h1", widget: "string", selector: "h1"}
+    files:
+      - {file: "areas/brooklyn/index.html", label: "Brooklyn", name: "brooklyn", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/clifton/index.html", label: "Clifton, NJ", name: "clifton", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/edison/index.html", label: "Edison, NJ", name: "edison", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/fair-lawn/index.html", label: "Fair Lawn, NJ", name: "fair_lawn", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/five-towns/index.html", label: "Five Towns", name: "five_towns", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/lakewood/index.html", label: "Lakewood, NJ", name: "lakewood", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/linden/index.html", label: "Linden, NJ", name: "linden", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/monsey/index.html", label: "Monsey, NY", name: "monsey", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/queens/index.html", label: "Queens, NY", name: "queens", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/staten-island/index.html", label: "Staten Island", name: "staten_island", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/teaneck/index.html", label: "Teaneck, NJ", name: "teaneck", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
+      - {file: "areas/upstate-ny/index.html", label: "Upstate NY", name: "upstate_ny", fields: [{label: "SEO Title", name: "title", widget: "string", selector: "title"}, {label: "H1", name: "h1", widget: "string", selector: "h1"}]}
