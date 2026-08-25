@@ -3,130 +3,113 @@ backend:
   repo: office212/dryer-vent-services-2
   branch: main
 
-media_folder: "images/gallery"
-public_folder: "/images/gallery"
+media_folder: "assets/img/uploads"
+public_folder: "/assets/img/uploads"
 
 collections:
   # =========================================
-  # 1. דף הבית (Home Page)
+  # 1. דף הבית (Home)
   # =========================================
   - name: "home_page"
-    label: "🏠 דף הבית (Home Page)"
+    label: "🏠 דף הבית (Home)"
     files:
       - file: "index.html"
-        label: "תוכן דף הבית"
+        label: "דף הבית"
         name: "index"
         fields:
-          - {label: "כותרת Meta (SEO Title)", name: "title", widget: "string", selector: "title"}
-          - {label: "תיאור Meta (SEO Description)", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-          
-          # Hero Section
-          - label: "רכיב ה-Hero (ראש הדף)"
-            name: "hero_section"
-            widget: "object"
-            fields:
-              - {label: "כותרת ראשי (Hero Title)", name: "hero_title", widget: "string", selector: ".hero-title"}
-              - {label: "טקסט משנה (Hero Subtitle)", name: "hero_sub", widget: "text", selector: ".hero-sub"}
-              - {label: "טקסט כפתור ראשי", name: "cta_btn1", widget: "string", selector: ".hero-actions .btn--primary"}
-              - {label: "טקסט כפתור טלפון", name: "cta_btn2", widget: "string", selector: ".hero-actions .btn-outline"}
-
-          # Trust Bar Items
-          - label: "סרגל אמון (Trust Bar - 4 פריטים)"
-            name: "trust_bar"
-            widget: "list"
-            selector: ".trust-item"
-            fields:
-              - {label: "טקסט פריט", name: "text", widget: "string", selector: "span"}
+          - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+          - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
+          - {label: "Hero Title", name: "hero_title", widget: "string", selector: ".hero-title"}
+          - {label: "Hero Subtitle", name: "hero_sub", widget: "text", selector: ".hero-sub"}
 
   # =========================================
-  # 2. דפים סטטיים מרכזיים (Main Pages)
+  # 2. דפים סטטיים (About, FAQ, Contact, Reviews, Gallery)
   # =========================================
-  - name: "pages"
-    label: "📄 דפים סטטיים (Pages)"
+  - name: "static_pages"
+    label: "📄 דפים כלליים (Static Pages)"
     files:
       - file: "about/index.html"
         label: "אודות (About)"
         name: "about"
         fields:
-          - {label: "כותרת SEO Title", name: "title", widget: "string", selector: "title"}
-          - {label: "תיאור Meta Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-          - {label: "כותרת ראשית בדף", name: "page_h1", widget: "string", selector: "h1"}
+          - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+          - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
+          - {label: "כותרת ראשית (H1)", name: "h1", widget: "string", selector: "h1"}
 
       - file: "faq/index.html"
-        label: "שאלות נפוצות (FAQ Page)"
+        label: "שאלות נפוצות (FAQ)"
         name: "faq"
         fields:
-          - {label: "כותרת SEO Title", name: "title", widget: "string", selector: "title"}
-          - {label: "תיאור Meta Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-          - {label: "כותרת ראשית", name: "page_h1", widget: "string", selector: "h1"}
+          - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+          - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
+          - {label: "כותרת ראשית (H1)", name: "h1", widget: "string", selector: "h1"}
 
       - file: "contact/index.html"
         label: "צור קשר (Contact)"
         name: "contact"
         fields:
-          - {label: "כותרת SEO Title", name: "title", widget: "string", selector: "title"}
-          - {label: "תיאור Meta Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-          - {label: "כותרת ראשית", name: "page_h1", widget: "string", selector: "h1"}
+          - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+          - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
+          - {label: "כותרת ראשית (H1)", name: "h1", widget: "string", selector: "h1"}
 
       - file: "reviews/index.html"
-        label: "המלצות וביקורות (Reviews)"
+        label: "ביקורות (Reviews)"
         name: "reviews"
         fields:
-          - {label: "כותרת SEO Title", name: "title", widget: "string", selector: "title"}
-          - {label: "תיאור Meta Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-          - {label: "כותרת ראשית", name: "page_h1", widget: "string", selector: "h1"}
+          - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+          - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
 
       - file: "gallery/index.html"
         label: "גלריה (Gallery)"
         name: "gallery"
         fields:
-          - {label: "כותרת SEO Title", name: "title", widget: "string", selector: "title"}
-          - {label: "תיאור Meta Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
+          - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+          - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
 
   # =========================================
-  # 3. ניהול מאמרים ופוסטים (Articles)
+  # 3. כל המאמרים (28 דפי Articles + הוספת חדשים)
   # =========================================
   - name: "articles"
-    label: "📝 מאמרים (Articles)"
+    label: "📝 מאמרים (Articles - 28 דפים)"
     folder: "articles"
     create: true
     path: "{{slug}}/index"
     extension: "html"
     format: "html"
     fields:
-      - {label: "כותרת SEO Title", name: "title", widget: "string", selector: "title"}
-      - {label: "תיאור Meta Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
+      - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+      - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
       - {label: "כותרת המאמר (H1)", name: "h1", widget: "string", selector: "h1"}
-      - {label: "תוכן המאמר המלא", name: "body", widget: "markdown", selector: "article, .article-content, main"}
+      - {label: "תוכן המאמר", name: "body", widget: "markdown", selector: ".section, main, article"}
 
   # =========================================
-  # 4. ניהול אזורי שירות (Service Areas)
+  # 4. כל אזורי השירות (10 דפי Service Areas + הוספת חדשים)
   # =========================================
   - name: "areas"
-    label: "📍 אזורי שירות (Service Areas)"
+    label: "📍 אזורי שירות (Areas - 10 דפים)"
     folder: "areas"
     create: true
     path: "{{slug}}/index"
     extension: "html"
     format: "html"
     fields:
-      - {label: "כותרת SEO Title", name: "title", widget: "string", selector: "title"}
-      - {label: "תיאור Meta Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
-      - {label: "כותרת ראשית (H1)", name: "h1", widget: "string", selector: "h1"}
-      - {label: "תוכן העמוד", name: "body", widget: "markdown", selector: ".container, main"}
+      - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+      - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
+      - {label: "כותרת האזור (H1)", name: "h1", widget: "string", selector: "h1"}
+      - {label: "תוכן העמוד", name: "body", widget: "markdown", selector: ".section, main"}
 
   # =========================================
-  # 5. ניהול דפי שירותים (Services)
+  # 5. דפי שירותים (Services + הוספת חדשים)
   # =========================================
   - name: "services"
-    label: "🛠️ שירותים (Services Pages)"
+    label: "🛠️ שירותים (Services)"
     folder: "services"
     create: true
     path: "{{slug}}/index"
     extension: "html"
     format: "html"
     fields:
-      - {label: "כותרת SEO Title", name: "title", widget: "string", selector: "title"}
-      - {label: "תיאור Meta Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
+      - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
+      - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
       - {label: "כותרת השירות (H1)", name: "h1", widget: "string", selector: "h1"}
-      - {label: "תוכן מפורט על השירות", name: "body", widget: "markdown", selector: ".service-detail, main"}
+      - {label: "תוכן העמוד", name: "body", widget: "markdown", selector: ".section, main"}
