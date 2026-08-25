@@ -23,7 +23,7 @@ collections:
           - {label: "Hero Subtitle", name: "hero_sub", widget: "text", selector: ".hero-sub"}
 
   # =========================================
-  # 2. דפים סטטיים (About, FAQ, Contact, Reviews, Gallery)
+  # 2. דפים סטטיים (Static Pages)
   # =========================================
   - name: "static_pages"
     label: "📄 דפים כלליים (Static Pages)"
@@ -67,49 +67,46 @@ collections:
           - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
 
   # =========================================
-  # 3. כל המאמרים (28 דפי Articles + הוספת חדשים)
+  # 3. כל המאמרים (Articles)
   # =========================================
   - name: "articles"
-    label: "📝 מאמרים (Articles - 28 דפים)"
+    label: "📝 מאמרים (Articles)"
     folder: "articles"
-    create: true
-    path: "{{slug}}/index"
     extension: "html"
     format: "html"
+    nested:
+      depth: 2
     fields:
       - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
       - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
       - {label: "כותרת המאמר (H1)", name: "h1", widget: "string", selector: "h1"}
-      - {label: "תוכן המאמר", name: "body", widget: "markdown", selector: ".section, main, article"}
 
   # =========================================
-  # 4. כל אזורי השירות (10 דפי Service Areas + הוספת חדשים)
+  # 4. כל אזורי השירות (Service Areas)
   # =========================================
   - name: "areas"
-    label: "📍 אזורי שירות (Areas - 10 דפים)"
+    label: "📍 אזורי שירות (Service Areas)"
     folder: "areas"
-    create: true
-    path: "{{slug}}/index"
     extension: "html"
     format: "html"
+    nested:
+      depth: 2
     fields:
       - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
       - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
       - {label: "כותרת האזור (H1)", name: "h1", widget: "string", selector: "h1"}
-      - {label: "תוכן העמוד", name: "body", widget: "markdown", selector: ".section, main"}
 
   # =========================================
-  # 5. דפי שירותים (Services + הוספת חדשים)
+  # 5. דפי שירותים (Services)
   # =========================================
   - name: "services"
     label: "🛠️ שירותים (Services)"
     folder: "services"
-    create: true
-    path: "{{slug}}/index"
     extension: "html"
     format: "html"
+    nested:
+      depth: 2
     fields:
       - {label: "SEO Title", name: "title", widget: "string", selector: "title"}
       - {label: "SEO Description", name: "description", widget: "text", selector: 'meta[name="description"]', attr: "content"}
       - {label: "כותרת השירות (H1)", name: "h1", widget: "string", selector: "h1"}
-      - {label: "תוכן העמוד", name: "body", widget: "markdown", selector: ".section, main"}
