@@ -397,7 +397,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 }
 
 /* ===== Footer v2 polish ===== */
-.site-footer { border-top: 4px solid var(--orange); }
+.site-footer { }
 .footer-cols h4 { position: relative; padding-bottom: 10px; }
 .footer-cols h4::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34px; height: 3px; background: var(--orange); border-radius: 2px; }
 .contact-list { list-style: none; padding: 0; margin: 0; }
