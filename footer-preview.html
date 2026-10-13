@@ -17,14 +17,6 @@ body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:
 .site-footer a { color:#b9c6dd; text-decoration:none; transition:color .2s; }
 .site-footer a:hover { color:var(--orange); }
 .demo-note { background:#f7f9fc; border-bottom:1px solid var(--border); padding:14px 20px; text-align:center; color:var(--muted); font-size:.9rem; }
-/* ===== Footer v2: CTA band + 4-column footer ===== */
-.cta-band { background:var(--orange); color:#fff; padding:36px 0; }
-.cta-band-inner { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; }
-.cta-band-title { margin:0; color:#fff; font-size:1.8rem; font-weight:800; }
-.cta-band-actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
-.cta-band .btn--light { color:var(--orange); }
-.cta-band-phone { display:inline-flex; align-items:center; gap:8px; color:#fff; font-weight:800; font-size:1.25rem; text-decoration:none; }
-.cta-band-phone svg { width:22px; height:22px; }
 .footer-cols { display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px; margin-bottom:34px; }
 .footer-cols ul { list-style:none; padding:0; margin:0; }
 .footer-cols li { margin-bottom:9px; }
@@ -34,15 +26,10 @@ body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:
 .footer-bottom { border-top:1px solid rgba(255,255,255,.12); padding-top:22px; }
 .footer-bottom-inner { display:flex; justify-content:space-between; align-items:center; gap:10px 24px; flex-wrap:wrap; font-size:.9rem; color:#b9c6dd; }
 @media (max-width:900px) {
-  .footer-cols { grid-template-columns:1fr 1fr; gap:30px; }
-  .cta-band-inner { flex-direction:column; text-align:center; }
-  .cta-band-actions { justify-content:center; }
-}
+  .footer-cols { grid-template-columns:1fr 1fr; gap:30px; }}
 @media (max-width:600px) {
   .footer-cols { grid-template-columns:1fr; gap:26px; text-align:center; }
-  .logo-badge { margin-inline:auto; }
-  .cta-band-title { font-size:1.5rem; }
-  .footer-bottom-inner { justify-content:center; text-align:center; }
+  .logo-badge { margin-inline:auto; }  .footer-bottom-inner { justify-content:center; text-align:center; }
 }
 
 /* ===== Footer v2 polish ===== */
@@ -60,15 +47,6 @@ body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:
 </head>
 <body>
 <div class="demo-note">תצוגה מקדימה של הפוטר החדש בלבד (עיצוב מלא, לא מוקאפ)</div>
-<div class="cta-band">
-  <div class="container cta-band-inner">
-    <p class="cta-band-title">Dryer taking too long to dry?</p>
-    <div class="cta-band-actions">
-      <a class="btn btn--light" href="/booking/">Book Now</a>
-      <a class="cta-band-phone" href="tel:+13472449382" aria-label="Call Dryer Vent Services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>347-244-9382</a>
-    </div>
-  </div>
-</div>
 <footer class="site-footer">
   <div class="container footer-cols">
     <div class="footer-brand">
