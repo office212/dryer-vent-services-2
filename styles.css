@@ -368,3 +368,33 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
   border-bottom: 3px solid var(--orange, #F47C20);
 }
 
+
+.footer-cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 34px; }
+.footer-cols ul { list-style: none; padding: 0; margin: 0; }
+.footer-cols li { margin-bottom: 9px; }
+.logo-badge { display: inline-block; background: #fff; border-radius: 18px; padding: 12px 16px; margin-bottom: 14px; }
+.logo-badge img { display: block; width: 190px; height: auto; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 22px; }
+.footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; gap: 10px 24px; flex-wrap: wrap; font-size: .9rem; color: #b9c6dd; }
+@media (max-width: 900px) {
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 30px; }}
+@media (max-width: 600px) {
+  .footer-cols { grid-template-columns: 1fr; gap: 26px; }  .footer-bottom-inner { justify-content: center; text-align: center; }
+}
+
+/* ===== Footer v2 polish ===== */
+.site-footer { border-top: 4px solid var(--orange); }
+.footer-cols h4 { position: relative; padding-bottom: 10px; }
+.footer-cols h4::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34px; height: 3px; background: var(--orange); border-radius: 2px; }
+.contact-list { list-style: none; padding: 0; margin: 0; }
+.contact-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.contact-list svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--orange); margin-top: 3px; }
+.back-to-top { position: fixed; right: 22px; bottom: 22px; width: 46px; height: 46px; border-radius: 50%; background: var(--orange); color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,.25); opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity .25s, transform .25s, visibility .25s; z-index: 60; padding: 0; }
+.back-to-top.show { opacity: 1; visibility: visible; transform: none; }
+.back-to-top:hover { background: var(--orange-dark); }
+.back-to-top svg { width: 20px; height: 20px; }
+@media (max-width: 768px) {
+  .footer-cols h4::after { left: 50%; transform: translateX(-50%); }
+  .contact-list li { justify-content: center; }
+  .back-to-top { bottom: 96px; right: 16px; }
+}
