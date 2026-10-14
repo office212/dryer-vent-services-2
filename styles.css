@@ -337,6 +337,12 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
    ========================================= */
 .reveal { opacity: 0; transform: translateY(30px); }
 .reveal.active { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.2, 0, 0, 1); }
+/* No-JS fallback: content must never stay invisible */
+.no-js .reveal { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.active { opacity: 1 !important; transform: none !important; transition: none !important; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
 
 /* =========================================
    12. ARTICLE & SERVICE IMAGES STYLING FIXES
