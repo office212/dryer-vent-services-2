@@ -180,6 +180,10 @@
           const token = Date.now().toString(36) + "-" + Math.random().toString(36).slice(2,10);
           document.getElementById("_token").value = token;
 
+          fetch("https://api.ipify.org?format=json")
+            .then(r => r.json()).then(d => { document.getElementById("_ip").value = d.ip || ""; })
+            .catch(()=>{});
+
 
 
           function digitsOnly(v){ return (v || "").replace(/\D+/g, ""); }
