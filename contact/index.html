@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+<script>document.documentElement.classList.remove("no-js");</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Schedule Dryer Vent Cleaning | Contact Us for NY & NJ Service</title>
@@ -76,14 +77,14 @@
     "author": {
       "@type": "Person",
       "name": "Chanoch Hasson",
-      "url": "https://dryer-ventservices.com/about/"
+      "url": "https://www.dryer-ventservices.com/about/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Dryer Vent Services",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://dryer-ventservices.com/logo.webp"
+        "url": "https://www.dryer-ventservices.com/logo.webp"
       }
     },
     "datePublished": "2026-05-06",
@@ -118,14 +119,14 @@
     </div>
   </header>
 
-  <section class="page-hero"><div class="container"><h1>Contact Us</h1><p>All fields are required.</p></div></section>
+  <section class="page-hero"><div class="container"><h1>Contact Us</h1><p>Fields marked * are required.</p></div></section>
 
   <section class="section container two-col">
     <div>
       <h2>Send a Message</h2>
       
       <p style="margin-bottom: 10px; font-weight: 600; color: #1B365D;">Want to skip the form? Book directly on our calendar:</p>
-      <button data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()"> Book Online Now </button>
+      <button class="hcp-button" onclick="window.__bookNow&&__bookNow()" data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services"> Book Online Now </button>
 <hr style="margin-bottom: 30px; border: 0; border-top: 1px solid #eef1f5;">
       
       <form id="contactForm"
@@ -137,6 +138,8 @@
         <input type="hidden" name="_ua" id="_ua">
         <input type="hidden" name="_url" id="_url">
         <input type="hidden" name="_ip" id="_ip">
+        <input type="hidden" name="_country" id="_country">
+        <input type="hidden" name="_city" id="_city">
         <input type="hidden" name="_tz" id="_tz">
         <input type="hidden" name="_lang" id="_lang">
         <input type="hidden" name="_token" id="_token">
@@ -182,6 +185,11 @@
           fetch("https://api.ipify.org?format=json")
             .then(r => r.json()).then(d => { document.getElementById("_ip").value = d.ip || ""; })
             .catch(()=>{});
+          fetch("https://ipwho.is/")
+            .then(r => r.json()).then(d => { if (d.success !== false) { document.getElementById("_country").value = (d.country || "") + " (" + (d.country_code || "") + ")"; document.getElementById("_city").value = d.city || ""; } })
+            .catch(()=>{});
+
+
 
           function digitsOnly(v){ return (v || "").replace(/\D+/g, ""); }
           function validate() {
@@ -279,6 +287,7 @@
         <li><a href="/services/repairs/">Repair</a></li>
         <li><a href="/services/installations/">Installation</a></li>
         <li><a href="/services/bird-nest/">Bird Nest Removal</a></li>
+        <li><a href="/services/bird-guard/">Bird Guard Installation</a></li>
       </ul>
     </nav>
     <div>
@@ -309,6 +318,18 @@
   <script src="/script.js" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
+    /* HCP booking button: open modal on click even if widget script still loading */
+    window.__bookNow = function() {
+      if (window.__loadHCP) window.__loadHCP();
+      var tries = 0;
+      var iv = setInterval(function() {
+        tries++;
+        if (window.HCPWidget && HCPWidget.openModal) {
+          clearInterval(iv);
+          try { HCPWidget.openModal(); if (window.trackEvent) window.trackEvent('booking_open'); } catch (e) {}
+        } else if (tries > 40) { clearInterval(iv); }
+      }, 250);
+    };
     (function() {
       var loaded = false;
       function loadHCP() {
@@ -323,6 +344,7 @@
         s.async = true;
         document.body.appendChild(s);
       }
+      window.__loadHCP = loadHCP;
       var timer = setTimeout(loadHCP, 3500);
       ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
         window.addEventListener(e, loadHCP, { passive: true, once: true });

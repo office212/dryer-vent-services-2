@@ -1,5 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+/* --- 0. CONVERSION TRACKING --- */
+window.trackEvent = window.trackEvent || function(name, params) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({ event: name }, params || {}));
+  if (typeof window.gtag === 'function') {
+    try { window.gtag('event', name, params || {}); } catch (e) {}
+  }
+};
+document.addEventListener('click', function(e) {
+  var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"], a[href*="wa.me"]') : null;
+  if (a && window.trackEvent) {
+    window.trackEvent(a.href.indexOf('wa.me') > -1 ? 'whatsapp_click' : 'phone_click', { link_url: a.href });
+  }
+});
+
   /* --- 1. SLIDER --- */
   const slides = [
     { before: 'ba01-before.jpg', after: 'ba01-after.jpg' },
@@ -25,8 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if(prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateImages(currentIndex); });
-    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % slides.length; updateImages(currentIndex); });
+    const goPrev = (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateImages(currentIndex); };
+    const goNext = (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % slides.length; updateImages(currentIndex); };
+    prevBtn.addEventListener('click', goPrev);
+    nextBtn.addEventListener('click', goNext);
+    prevBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goPrev(e); } });
+    nextBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goNext(e); } });
   }
 
   if (sliderWrap) {
@@ -66,6 +85,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if(handle) {
       handle.addEventListener('mousedown', startDragMouse);
       handle.addEventListener('touchstart', startDragTouch, { passive: false });
+      handle.addEventListener('keydown', (e) => {
+        const rect = sliderWrap.getBoundingClientRect();
+        const cur = parseFloat(getComputedStyle(sliderWrap).getPropertyValue('--split')) || 50;
+        let next = null;
+        if (e.key === 'ArrowLeft') next = cur - 5;
+        else if (e.key === 'ArrowRight') next = cur + 5;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = 100;
+        if (next !== null) {
+          e.preventDefault();
+          next = Math.max(0, Math.min(100, next));
+          sliderWrap.style.setProperty('--split', next + '%');
+          handle.setAttribute('aria-valuenow', Math.round(next));
+        }
+      });
     }
   }
 
@@ -103,86 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { rootMargin: "0px 0px -20px 0px" });
 
   allRevealElements.forEach(el => observer.observe(el));
-
-  /* --- 3. REVIEWS LOGIC --- */
-  const homeReviews = document.getElementById('home-reviews');
-  const reviewsList = document.getElementById('reviews-list');
-  const loadMoreBtn = document.getElementById('loadMoreReviews');
-
-  const PLACE_URL = 'https://www.google.com/maps/search/?api=1&query=Dryer+Vent+Services&query_place_id=ChIJq81LRSoVi4wRJvvg97db1FU';
-
-  const loadingHtml = '<p class="muted" style="text-align:center; width:100%; grid-column:1/-1;">Loading reviews...</p>';
-  if(homeReviews) homeReviews.innerHTML = loadingHtml;
-  if(reviewsList) reviewsList.innerHTML = loadingHtml;
-
-  const createCard = (r) => {
-    const div = document.createElement('div');
-    div.className = 'review-card-pro';
-    div.style.cursor = 'pointer';
-    div.onclick = () => window.open(PLACE_URL, '_blank');
-
-    const authorName = r.author || 'Google User';
-
-    // יצירת המבנה בנפרד (בלי המידע עצמו עדיין)
-    div.innerHTML = `
-      <div class="review-card-header">
-        <div class="review-avatar-circle"></div>
-        <div class="review-meta">
-          <div class="review-author-name"></div>
-          <div class="review-time"></div>
-        </div>
-        <div style="color:#ffb400">★★★★★</div>
-      </div>
-      <p class="review-body" style="font-size:0.95rem;"></p>
-    `;
-
-    // הזרקת המידע בצורה מאובטחת דרך textContent נגד XSS
-    div.querySelector('.review-avatar-circle').textContent = authorName.charAt(0);
-    div.querySelector('.review-author-name').textContent = authorName;
-    div.querySelector('.review-time').textContent = r.relativeTime || 'Recently';
-    div.querySelector('.review-body').textContent = r.text;
-
-    return div;
-  };
-
-  fetch('https://dryer-vent-services.office-d16.workers.dev/')
-    .then(res => res.json())
-    .then(data => {
-      const reviews = data.reviews || [];
-
-      if(homeReviews) {
-        homeReviews.innerHTML = '';
-        reviews.slice(0, 3).forEach(r => homeReviews.appendChild(createCard(r)));
-      }
-
-      if(reviewsList) {
-        let reviewIndex = 0;
-        const batchSize = 3;
-
-        const showNextBatch = () => {
-          reviewsList.innerHTML = ''; 
-          for(let i=0; i<batchSize; i++) {
-            const r = reviews[(reviewIndex + i) % reviews.length]; 
-            reviewsList.appendChild(createCard(r));
-          }
-          reviewIndex = (reviewIndex + batchSize) % reviews.length;
-        };
-
-        showNextBatch();
-
-        if(loadMoreBtn) {
-          loadMoreBtn.addEventListener('click', () => {
-            showNextBatch();
-            window.scrollTo({ top: reviewsList.offsetTop - 100, behavior: 'smooth' });
-          });
-        }
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      if(homeReviews) homeReviews.innerHTML = '<p class="muted" style="text-align:center;">Could not load reviews at this time.</p>';
-      if(reviewsList) reviewsList.innerHTML = '<p class="muted" style="text-align:center;">Could not load reviews at this time.</p>';
-    });
 
   const yr = document.getElementById('copyright-year');
   if(yr) yr.textContent = new Date().getFullYear();

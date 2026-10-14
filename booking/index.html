@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
+<script>document.documentElement.classList.remove("no-js");</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book Online | Dryer Vent Services NY & NJ</title>
@@ -69,14 +70,14 @@
     "author": {
       "@type": "Person",
       "name": "Chanoch Hasson",
-      "url": "https://dryer-ventservices.com/about/"
+      "url": "https://www.dryer-ventservices.com/about/"
     },
     "publisher": {
       "@type": "Organization",
       "name": "Dryer Vent Services",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://dryer-ventservices.com/logo.webp"
+        "url": "https://www.dryer-ventservices.com/logo.webp"
       }
     },
     "datePublished": "2026-05-06",
@@ -128,7 +129,7 @@
       <h2 style="color: #1B365D; margin-bottom: 15px; font-size: 28px;">Ready to schedule?</h2>
       <p class="muted" style="margin-bottom: 35px; font-size: 16px; line-height: 1.6;">Click the button below to view our live availability and book your dryer vent cleaning or repair in seconds.</p>
 
-      <button data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()">Book Online Now</button>
+      <button class="hcp-button" onclick="window.__bookNow&&__bookNow()" data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services">Book Online Now</button>
 <p style="margin-top: 28px; font-size: 14px; color: #6b7280; line-height: 1.9;">
         ✓ &nbsp;We'll confirm your appointment within a few hours<br>
         ✓ &nbsp;Airflow tested before &amp; after every job<br>
@@ -161,6 +162,7 @@
         <li><a href="/services/repairs/">Repair</a></li>
         <li><a href="/services/installations/">Installation</a></li>
         <li><a href="/services/bird-nest/">Bird Nest Removal</a></li>
+        <li><a href="/services/bird-guard/">Bird Guard Installation</a></li>
       </ul>
     </nav>
     <div>
@@ -197,6 +199,18 @@
 
   
   <script>
+    /* HCP booking button: open modal on click even if widget script still loading */
+    window.__bookNow = function() {
+      if (window.__loadHCP) window.__loadHCP();
+      var tries = 0;
+      var iv = setInterval(function() {
+        tries++;
+        if (window.HCPWidget && HCPWidget.openModal) {
+          clearInterval(iv);
+          try { HCPWidget.openModal(); if (window.trackEvent) window.trackEvent('booking_open'); } catch (e) {}
+        } else if (tries > 40) { clearInterval(iv); }
+      }, 250);
+    };
     (function() {
       var loaded = false;
       function loadHCP() {
@@ -211,6 +225,7 @@
         s.async = true;
         document.body.appendChild(s);
       }
+      window.__loadHCP = loadHCP;
       var timer = setTimeout(loadHCP, 3500);
       ['scroll', 'touchstart', 'mousemove', 'click', 'keydown'].forEach(function(e) {
         window.addEventListener(e, loadHCP, { passive: true, once: true });
