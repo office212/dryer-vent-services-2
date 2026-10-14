@@ -126,7 +126,7 @@
       <h2>Send a Message</h2>
       
       <p style="margin-bottom: 10px; font-weight: 600; color: #1B365D;">Want to skip the form? Book directly on our calendar:</p>
-      <button class="hcp-button" onclick="window.__bookNow&&__bookNow()" data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()"> Book Online Now </button>
+      <button class="hcp-button" onclick="window.__bookNow&&__bookNow()" data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services"> Book Online Now </button>
 <hr style="margin-bottom: 30px; border: 0; border-top: 1px solid #eef1f5;">
       
       <form id="contactForm"
@@ -309,9 +309,7 @@
   <script src="/script.js" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
-
-    <script>
-    /* HCP booking button fix: open modal on click even if widget script still loading */
+    /* HCP booking button: open modal on click even if widget script still loading */
     window.__bookNow = function() {
       if (window.__loadHCP) window.__loadHCP();
       var tries = 0;
@@ -323,7 +321,6 @@
         } else if (tries > 40) { clearInterval(iv); }
       }, 250);
     };
-    </script>
     (function() {
       var loaded = false;
       function loadHCP() {

@@ -129,7 +129,7 @@
       <h2 style="color: #1B365D; margin-bottom: 15px; font-size: 28px;">Ready to schedule?</h2>
       <p class="muted" style="margin-bottom: 35px; font-size: 16px; line-height: 1.6;">Click the button below to view our live availability and book your dryer vent cleaning or repair in seconds.</p>
 
-      <button class="hcp-button" onclick="window.__bookNow&&__bookNow()" data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services" class="hcp-button" onClick="HCPWidget.openModal()">Book Online Now</button>
+      <button class="hcp-button" onclick="window.__bookNow&&__bookNow()" data-token="d4344d0d864946b783322ca9c3694d2c" data-orgname="Dryer-Vent-Services">Book Online Now</button>
 <p style="margin-top: 28px; font-size: 14px; color: #6b7280; line-height: 1.9;">
         ✓ &nbsp;We'll confirm your appointment within a few hours<br>
         ✓ &nbsp;Airflow tested before &amp; after every job<br>
@@ -199,9 +199,7 @@
 
   
   <script>
-
-    <script>
-    /* HCP booking button fix: open modal on click even if widget script still loading */
+    /* HCP booking button: open modal on click even if widget script still loading */
     window.__bookNow = function() {
       if (window.__loadHCP) window.__loadHCP();
       var tries = 0;
@@ -213,7 +211,6 @@
         } else if (tries > 40) { clearInterval(iv); }
       }, 250);
     };
-    </script>
     (function() {
       var loaded = false;
       function loadHCP() {
