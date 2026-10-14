@@ -485,7 +485,8 @@
 
         // Google Analytics
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        window.gtag = function(){dataLayer.push(arguments);};
+        function gtag(){window.gtag.apply(null, arguments);}
         gtag('js', new Date());
         gtag('config', 'G-X77CVTW1CD');
 

@@ -207,7 +207,7 @@
         tries++;
         if (window.HCPWidget && HCPWidget.openModal) {
           clearInterval(iv);
-          try { HCPWidget.openModal(); } catch (e) {}
+          try { HCPWidget.openModal(); if (window.trackEvent) window.trackEvent('booking_open'); } catch (e) {}
         } else if (tries > 40) { clearInterval(iv); }
       }, 250);
     };

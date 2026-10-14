@@ -1,5 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+/* --- 0. CONVERSION TRACKING --- */
+window.trackEvent = window.trackEvent || function(name, params) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({ event: name }, params || {}));
+  if (typeof window.gtag === 'function') {
+    try { window.gtag('event', name, params || {}); } catch (e) {}
+  }
+};
+document.addEventListener('click', function(e) {
+  var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"], a[href*="wa.me"]') : null;
+  if (a && window.trackEvent) {
+    window.trackEvent(a.href.indexOf('wa.me') > -1 ? 'whatsapp_click' : 'phone_click', { link_url: a.href });
+  }
+});
+
   /* --- 1. SLIDER --- */
   const slides = [
     { before: 'ba01-before.jpg', after: 'ba01-after.jpg' },
