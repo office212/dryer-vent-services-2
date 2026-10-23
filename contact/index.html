@@ -225,8 +225,14 @@
               if (res.ok) {
                   const json = await res.json();
                   if (json.result === "success") {
-                      try { if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { method: "contact_form" }); } catch(_) {}
-                      window.location.href = "/thanks/";
+                      let navigated = false;
+                      const go = () => { if (!navigated) { navigated = true; window.location.href = "/thanks/"; } };
+                      try {
+                        if (typeof window.gtag === "function") {
+                          window.gtag("event", "generate_lead", { method: "contact_form", event_callback: go, event_timeout: 1200 });
+                          setTimeout(go, 1500);
+                        } else { go(); }
+                      } catch(_) { go(); }
                   } else {
                       throw new Error(json.error || "Unknown error");
                   }
