@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-
 /* --- 0. CONVERSION TRACKING --- */
 window.trackEvent = window.trackEvent || function(name, params) {
   window.dataLayer = window.dataLayer || [];
@@ -14,6 +12,8 @@ document.addEventListener('click', function(e) {
     window.trackEvent(a.href.indexOf('wa.me') > -1 ? 'whatsapp_click' : 'phone_click', { link_url: a.href });
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
 
   /* --- 1. SLIDER --- */
   const slides = [

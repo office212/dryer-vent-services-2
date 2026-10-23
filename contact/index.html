@@ -225,6 +225,7 @@
               if (res.ok) {
                   const json = await res.json();
                   if (json.result === "success") {
+                      try { if (typeof window.gtag === "function") window.gtag("event", "generate_lead", { method: "contact_form" }); } catch(_) {}
                       window.location.href = "/thanks/";
                   } else {
                       throw new Error(json.error || "Unknown error");
