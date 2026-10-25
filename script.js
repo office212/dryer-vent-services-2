@@ -141,3 +141,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const yr = document.getElementById('copyright-year');
   if(yr) yr.textContent = new Date().getFullYear();
 });
+
+/* --- SERVICE WORKER RETIREMENT --- */
+/* The site never registers a service worker, but a visitor may still
+   have one (and its caches) from an earlier version. Retire any such
+   registration and clear its caches so returning visitors do not keep
+   getting stale cached pages. This snippet deliberately never calls
+   navigator.serviceWorker.register(), so it cannot install a new
+   worker. Every step is guarded so a failure here cannot break the
+   rest of the page. */
+(function retireServiceWorkers() {
+  try {
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+      registrations.forEach(function (registration) {
+        try {
+          var result = registration.unregister();
+          if (result && result.catch) result.catch(function () {});
+        } catch (e) {}
+      });
+    }).catch(function () {});
+    if (window.caches && typeof caches.keys === 'function') {
+      caches.keys().then(function (names) {
+        names.forEach(function (name) {
+          try {
+            var result = caches.delete(name);
+            if (result && result.catch) result.catch(function () {});
+          } catch (e) {}
+        });
+      }).catch(function () {});
+    }
+  } catch (e) {}
+})();
