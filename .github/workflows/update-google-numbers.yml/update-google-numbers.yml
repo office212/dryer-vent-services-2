@@ -1,0 +1,140 @@
+# Updates the Google rating and review count shown on the site, once a day.
+#
+# Source: Places API (New) Place Details, requesting ONLY rating and
+# userRatingCount for the business Place ID below. The API key is read
+# only from the GOOGLE_PLACES_API_KEY repository secret: it is never
+# printed, logged, or written to any file in this repository.
+#
+# On a fetch/validation failure this run fails visibly and changes
+# nothing, so the site keeps its last known numbers. On success it
+# commits and pushes ONLY if a value actually changed.
+#
+# Updated (Google-only) text -- the Housecall Pro combined counts and
+# the Housecall Pro reviews iframe are never touched:
+# - booking/index.html: pill "from N Google reviews", hero line
+#   "Rated R on Google, N reviews", and the big rating number.
+# - reviews/index.html: JSON-LD AggregateRating ratingValue/reviewCount.
+# - every *.html footer: "Rated R <stars> on Google", plus the home
+#   page star labels ("5-Star Google Rated", "Rated 5 Stars on Google").
+# This workflow only runs on push-free triggers (schedule/dispatch),
+# so a commit it pushes does not trigger itself again.
+
+name: Update Google review numbers
+
+on:
+  schedule:
+    # Once daily, 09:00 UTC (05:00 EDT / 04:00 EST).
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  GOOGLE_PLACE_ID: ChIJq81LRSoVi4wRJvvg97db1FU
+
+jobs:
+  update-google-numbers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Fetch Places data and update Google-only numbers
+        id: google
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GOOGLE_PLACES_API_KEY:-}" ]; then
+            echo "::error::GOOGLE_PLACES_API_KEY secret is not set; keeping last known numbers."
+            exit 1
+          fi
+          # -f makes HTTP errors fail the run instead of updating anything.
+          curl -fsSL \
+            -H "X-Goog-Api-Key: ${GOOGLE_PLACES_API_KEY}" \
+            -H "X-Goog-FieldMask: rating,userRatingCount" \
+            "https://places.googleapis.com/v1/places/${GOOGLE_PLACE_ID}" \
+            -o /tmp/place.json
+          python3 - <<'PY'
+          import json, os, pathlib, re, sys
+
+          data = json.loads(pathlib.Path("/tmp/place.json").read_text())
+          rating_raw = data.get("rating")
+          count_raw = data.get("userRatingCount")
+          if rating_raw is None or count_raw is None:
+              print("::error::Places response is missing rating or userRatingCount; keeping last known numbers.", file=sys.stderr)
+              print(f"Response keys: {sorted(data.keys())}", file=sys.stderr)
+              sys.exit(1)
+          try:
+              rating = float(rating_raw)
+              count = int(count_raw)
+          except (TypeError, ValueError):
+              print("::error::Places response has a non-numeric rating/count; keeping last known numbers.", file=sys.stderr)
+              sys.exit(1)
+          if not 0 <= rating <= 5 or count < 0:
+              print("::error::Places response is out of range; keeping last known numbers.", file=sys.stderr)
+              sys.exit(1)
+          rating_str = f"{rating:.1f}"
+          count_str = str(count)
+          # Keep "5-Star" / "5 Stars" wording when the rating is exactly
+          # 5.0, so a 5.0 result does not rewrite them as "5.0-Star".
+          star_str = "5" if rating_str == "5.0" else rating_str
+          stars = "&#9733;&#9733;&#9733;&#9733;&#9733;"
+
+          def update(path, replacements):
+              p = pathlib.Path(path)
+              if not p.exists():
+                  return
+              original = p.read_text()
+              text = original
+              for pattern, replacement in replacements:
+                  text = re.sub(pattern, replacement, text)
+              if text != original:
+                  p.write_text(text)
+                  print(f"Updated {path}")
+
+          # Booking page: pill, hero line and big rating number.
+          update("booking/index.html", [
+              (r"from \d+ Google reviews", f"from {count_str} Google reviews"),
+              (r"Rated \d+(?:\.\d)? on Google, \d+ reviews", f"Rated {rating_str} on Google, {count_str} reviews"),
+              (r'<span class="big">\d+(?:\.\d)?</span>', f'<span class="big">{rating_str}</span>'),
+          ])
+          # Reviews page: JSON-LD AggregateRating only (not the widget).
+          update("reviews/index.html", [
+              (r'"ratingValue": "\d+(?:\.\d)?"', f'"ratingValue": "{rating_str}"'),
+              (r'"reviewCount": "\d+"', f'"reviewCount": "{count_str}"'),
+          ])
+          # Every page footer, plus the home-page star labels. These
+          # patterns never match Housecall Pro iframe/widget markup.
+          for path in sorted(pathlib.Path(".").rglob("*.html")):
+              update(str(path), [
+                  (r"Rated \d+(?:\.\d)? " + stars + r" on Google", f"Rated {rating_str} {stars} on Google"),
+                  (r"\d+(?:\.\d)?-Star Google Rated", f"{star_str}-Star Google Rated"),
+                  (r"Rated \d+(?:\.\d)? Stars on Google", f"Rated {star_str} Stars on Google"),
+              ])
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"rating={rating_str}\n")
+              fh.write(f"count={count_str}\n")
+          print(f"Google rating: {rating_str}, Google reviews: {count_str}")
+          PY
+
+      - name: Commit and push only if values changed
+        env:
+          RATING: ${{ steps.google.outputs.rating }}
+          COUNT: ${{ steps.google.outputs.count }}
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No Google number changes; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -- "*.html"
+          git status --short
+          git commit -m "chore: update Google rating to ${RATING} (${COUNT} reviews)"
+          git push
