@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
@@ -94,6 +94,29 @@
       border-radius:999px;padding:14px 26px;font-weight:700;
       box-shadow:0 8px 20px rgba(27,54,93,.25);
     }
+
+    /* Approved Gallery design: warm ivory, Playfair headlines, hairline dividers, orange as a measured accent only. Scoped to this page. */
+    body[data-page="gallery"]{background:#fdf8f0;}
+    body[data-page="gallery"] h1,body[data-page="gallery"] h2{font-family:'Playfair Display',Georgia,'Times New Roman',serif;color:#1B365D;}
+    body[data-page="gallery"] .site-header{background:#fdf8f0;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid #e8ddd0;}
+    body[data-page="gallery"] .brand-text strong{font-family:'Playfair Display',Georgia,serif;}
+    body[data-page="gallery"] .site-nav{gap:10px;}
+    body[data-page="gallery"] .site-nav a{padding:8px 8px;}
+    @media (max-width:760px){body[data-page="gallery"] .site-nav{background:#fdf8f0;border-bottom:1px solid #e8ddd0;gap:0;}body[data-page="gallery"] .site-nav a{font-family:'Playfair Display',Georgia,'Times New Roman',serif;padding:12px 4px;border-bottom:1px solid #e8ddd0;border-radius:0;}body[data-page="gallery"] .site-nav a:last-child{border-bottom:none;}}
+    body[data-page="gallery"] .page-hero{background:#fdf8f0;border-bottom:1px solid #e8ddd0;padding:72px 0 56px;margin-bottom:0;}
+    body[data-page="gallery"] .page-hero h1{font-size:clamp(38px,5vw,56px);}
+    body[data-page="gallery"] .page-hero p{color:#475569;font-size:1.1rem;}
+    body[data-page="gallery"] .page-hero .btn-outline{color:#1b365d;border-color:#1b365d;background:transparent}
+    .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+    body[data-page="gallery"] .ba-section{background:linear-gradient(160deg,#0c1a33 0%,#0f2347 50%,#0a1628 100%);color:#ffffff;padding:56px 0;}
+    body[data-page="gallery"] .ba-section h2{color:#ffffff;}
+    body[data-page="gallery"] .ba-section .muted{color:#cbd5e1;}
+    body[data-page="gallery"] .ba-section .section-label{color:#F47C20;letter-spacing:.18em;background:transparent;border:none;padding:0;}
+    body[data-page="gallery"] .ba-section .ba-wrap{border-radius:16px;}
+    .gallery-grid figure{background:#ffffff;border:1px solid #e8ddd0;border-radius:16px;box-shadow:none;aspect-ratio:auto;max-height:none;}
+    .gallery-grid img{height:420px;}
+    .gallery-grid figcaption{padding:14px 16px;color:#475569;font-size:.95rem;line-height:1.5;}
+    @media (max-width:600px){.gallery-grid img{height:340px;}}
   </style>
 </head>
 
@@ -130,6 +153,10 @@
   <div class="container">
     <h1>Gallery</h1>
     <p>Our work gallery.</p>
+    <div class="hero-actions">
+      <a href="/booking/" class="btn btn--primary">Book Now</a>
+      <a href="tel:+13472449382" class="btn btn-outline" aria-label="Call us at 3 4 7. 2 4 4. 9 3 8 2.">Call 347-244-9382</a>
+    </div>
   </div>
 </section>
 
@@ -157,21 +184,27 @@
 
     <figure>
       <img src="/images/gallery/Gallery-32.jpg" loading="lazy" alt="Dryer vent cleaning results - Staten Island NY" width="887" height="1920">
+      <figcaption>Dryer vent cleaning results - Staten Island NY</figcaption>
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-41.jpg" loading="lazy" alt="Clogged dryer vent before and after cleaning - New Jersey" width="887" height="1920">
+      <figcaption>Clogged dryer vent before and after cleaning - New Jersey</figcaption>
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-23.jpeg" loading="lazy" alt="Professional dryer vent lint removal - Staten Island" width="1920" height="1080">
+      <figcaption>Professional dryer vent lint removal - Staten Island</figcaption>
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-45.jpg" loading="lazy" alt="Dryer vent duct cleaning service - NY and NJ" width="886" height="1920">
+      <figcaption>Dryer vent duct cleaning service - NY and NJ</figcaption>
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-24.jpg" loading="lazy" alt="Bird nest removal from dryer vent - Staten Island" width="887" height="1920">
+      <figcaption>Bird nest removal from dryer vent - Staten Island</figcaption>
     </figure>
     <figure>
       <img src="/images/gallery/Gallery-44.jpg" loading="lazy" alt="Dryer vent exterior hood cleaning and repair - NY NJ" width="887" height="1920">
+      <figcaption>Dryer vent exterior hood cleaning and repair - NY NJ</figcaption>
     </figure>
 
   </div>
@@ -272,6 +305,9 @@ function makeFigure(base){
     }
   };
   fig.appendChild(img);
+  const cap=document.createElement('figcaption');
+  cap.textContent=img.alt;
+  fig.appendChild(cap);
   return fig;
 }
 
