@@ -64,7 +64,7 @@
 
     /* How it works */
     .steps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-    .step-card{background:#fff;border:1px solid #eef1f5;border-radius:16px;padding:28px 24px;
+    .step-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px 24px;
       box-shadow:0 4px 12px rgba(0,0,0,.03);text-align:left}
     .step-num{width:52px;height:52px;border-radius:50%;background:var(--blue);color:#fff;
       display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin-bottom:16px}
@@ -72,7 +72,7 @@
     .step-card p{margin:0;color:var(--muted)}
 
     /* What's included */
-    .included-wrap{max-width:820px;margin:0 auto;background:#fff;border:1px solid #eef1f5;border-radius:16px;
+    .included-wrap{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:16px;
       padding:34px 34px 26px;box-shadow:0 10px 30px rgba(27,54,93,.07);border-top:4px solid var(--blue)}
     .included-list{list-style:none;padding:0;margin:6px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:6px 30px}
     .included-list li{position:relative;padding-left:30px;margin-bottom:12px;font-size:1.02rem}
@@ -90,7 +90,7 @@
     .reviews-carousel::-webkit-scrollbar{height:8px}
     .reviews-carousel::-webkit-scrollbar-thumb{background:#cfd9e6;border-radius:100px}
     .reviews-carousel::-webkit-scrollbar-track{background:#eef1f5;border-radius:100px}
-    .review-card{flex:0 0 min(330px,86%);scroll-snap-align:start;background:#fff;border:1px solid #eef1f5;
+    .review-card{flex:0 0 min(330px,86%);scroll-snap-align:start;background:#fff;border:1px solid var(--border);
       border-radius:16px;padding:26px;box-shadow:0 4px 12px rgba(0,0,0,.03);text-align:left;
       display:flex;flex-direction:column}
     .review-card .stars{color:var(--orange);font-size:1.15rem;letter-spacing:3px;margin-bottom:12px}
@@ -122,6 +122,8 @@
     @media (max-width: 767px) {
       #proChatIframeContainer { z-index: 2147483647 !important; transform: translateY(-80px) !important; }
     }
+  /* Pulse the primary Book Online Now buttons, like the homepage hero primary button */
+  .booking-hero.btn--primary,.final-cta.btn--primary{animation:pulseCTA 2.5s infinite;}
   </style>
   <meta name="twitter:card" content="summary_large_image">
 
@@ -222,7 +224,7 @@
   </section>
 
   <!-- ===== How it works ===== -->
-  <section class="section">
+  <section class="section fade-in">
     <div class="container">
       <div class="center">
         <span class="section-label">Simple Process</span>
@@ -250,7 +252,7 @@
   </section>
 
   <!-- ===== What's included ===== -->
-  <section class="section section-alt">
+  <section class="section section-alt fade-in">
     <div class="container">
       <div class="center">
         <span class="section-label">Every Visit</span>
@@ -270,7 +272,7 @@
   </section>
 
   <!-- ===== Reviews ===== -->
-  <section class="section">
+  <section class="section fade-in">
     <div class="container">
       <div class="center">
         <span class="section-label">Testimonials</span>
@@ -374,7 +376,7 @@
         </div>
       </div>
 
-      <div class="final-cta" style="margin-top:44px">
+      <div class="final-cta fade-in" style="margin-top:44px">
         <h2>Ready when you are</h2>
         <p class="muted" style="max-width:56ch;margin:0 auto 24px">Send us your information and we will contact you right away to schedule your cleaning.</p>
         <div class="hero-ctas">
@@ -487,3 +489,5 @@
   </script>
 </body>
 </html>
+
+        
