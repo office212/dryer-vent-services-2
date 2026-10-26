@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
@@ -225,11 +225,11 @@
       .faq-page-intro { font-size: 1rem; }
       .faq-item summary { font-size: 1.02rem; }
     }
-  </style>
+  /* Approved FAQ design: warm ivory, Playfair headlines, hairline dividers, orange as a measured accent only. */ body[data-page="faq"]{background:#fdf8f0;} body[data-page="faq"] h1,body[data-page="faq"] h2,body[data-page="faq"] h3{font-family:'Playfair Display',Georgia,serif;} body[data-page="faq"] .site-header{background:#fdf8f0;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid #e8ddd0;} body[data-page="faq"] .brand-text strong{font-family:'Playfair Display',Georgia,serif;} body[data-page="faq"] .site-nav{gap:10px;} body[data-page="faq"] .site-nav a{padding:8px 8px;} @media (max-width:760px){body[data-page="faq"] .site-nav{background:#fdf8f0;border-bottom:1px solid #e8ddd0;}} body[data-page="faq"] .faq-page-wrap{background:#fdf8f0;border-bottom:1px solid #e8ddd0;padding-top:56px;padding-bottom:56px;} body[data-page="faq"] .faq-page-title{font-size:clamp(38px,5vw,56px);color:#1b365d;} body[data-page="faq"] .faq-page-intro{color:#475569;font-size:1.1rem;} .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;} body[data-page="faq"] .hero-actions .btn-outline{color:#1b365d;border-color:#1b365d;background:transparent;} body[data-page="faq"] .hero-actions .btn-outline:hover{background:rgba(27,54,93,0.06);border-color:#1b365d;} body[data-page="faq"] .faq-item{background:#ffffff;border:1px solid #e8ddd0;box-shadow:none;} body[data-page="faq"] .faq-item summary{color:#1b365d;} body[data-page="faq"] .faq-body{border-top:1px solid #e8ddd0;} body[data-page="faq"] .cta-bar{border-top:1px solid #e8ddd0;} body[data-page="faq"] .cta-bar h3{font-family:'Playfair Display',Georgia,serif;} @media (max-width:600px){body[data-page="faq"] .faq-page-wrap{padding-top:40px;padding-bottom:40px;}} </style>
 
 </head>
 
-<body data-page="faq">
+<body data-page="faq"> <div class="home-progress" aria-hidden="true"></div> <script> (function () { var progress = document.querySelector('.home-progress'); if (!progress) return; var ticking = false; function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; var max = document.documentElement.scrollHeight - window.innerHeight; var pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0; progress.style.width = pct + '%'; }); } window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); })(); </script>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
@@ -265,7 +265,7 @@
         for homes and businesses in <strong>Staten Island</strong>, <strong>New York</strong> and <strong>New Jersey</strong>.
       </p>
 
-      <div class="faq-page-list">
+      <div class="hero-actions"><a href="/booking/" class="btn btn--primary">Book Now</a><a href="tel:+13472449382" class="btn btn-outline" aria-label="Call us at 347-244-9382">Call 347-244-9382</a></div><div class="faq-page-list">
 
         <details class="faq-item">
           <summary>
