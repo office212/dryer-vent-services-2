@@ -1,8 +1,8 @@
 {
   "slides": [
     {
-      "before": "ba01-before.jpg",
-      "after": "ba01-after.jpg"
+      "before": "ba18-before.webp",
+      "after": "ba18-after.webp"
     },
     {
       "before": "ba02-before.jpg",
@@ -69,8 +69,8 @@
       "after": "ba17-after.webp"
     },
     {
-      "before": "ba18-before.webp",
-      "after": "ba18-after.webp"
+      "before": "ba01-before.jpg",
+      "after": "ba01-after.jpg"
     }
   ]
 }
