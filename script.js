@@ -21,7 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
     { before: 'ba02-before.jpg', after: 'ba02-after.jpg' },
     { before: 'ba03-before.jpg', after: 'ba03-after.jpg' },
     { before: 'ba04-before.jpg', after: 'ba04-after.jpg' },
-    { before: 'ba05-before.jpg', after: 'ba05-after.jpg' }
+    { before: 'ba05-before.jpg', after: 'ba05-after.jpg' },
+    { before: 'ba06-before.jpg', after: 'ba06-after.jpg' },
+    { before: 'ba07-before.jpg', after: 'ba07-after.jpg' },
+    { before: 'ba08-before.jpg', after: 'ba08-after.jpg' },
+    { before: 'ba09-before.jpg', after: 'ba09-after.jpg' },
+    { before: 'ba10-before.jpg', after: 'ba10-after.jpg' },
+    { before: 'ba11-before.jpg', after: 'ba11-after.jpg' },
+    { before: 'ba12-before.jpg', after: 'ba12-after.jpg' },
+    { before: 'ba13-before.jpg', after: 'ba13-after.jpg' },
+    { before: 'ba14-before.jpg', after: 'ba14-after.jpg' },
+    { before: 'ba15-before.jpg', after: 'ba15-after.jpg' },
+    { before: 'ba16-before.jpg', after: 'ba16-after.jpg' },
+    { before: 'ba17-before.jpg', after: 'ba17-after.jpg' },
+    { before: 'ba18-before.jpg', after: 'ba18-after.jpg' }
   ];
   const imgPath = '/assets/img/before-after/';
   let currentIndex = 0;
