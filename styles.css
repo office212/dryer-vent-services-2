@@ -419,7 +419,7 @@ body.home .hero-modern .hero-title { color: #1B365D; font-size: clamp(38px, 5vw,
 body.home .hero-modern .hero-sub { color: #475569; text-shadow: none; }
 body.home .hero-modern .btn-outline { color: #1B365D; border-color: #1B365D; background: transparent; }
 body.home .hero-modern .btn-outline:hover { background: rgba(27, 54, 93, 0.06); }
-body.home .hero-modern::after { content: ""; flex: 0 0 400px; height: 560px; max-width: 42vw; background-image: url('/images/gallery/hero-bg.webp'); background-size: cover; background-position: center calc(50% + var(--home-hero-shift, 0px)); background-repeat: no-repeat; border-radius: 200px 200px 16px 16px; box-shadow: 0 20px 40px rgba(27, 54, 93, 0.15); }
+
 body.home .trust-bar { background: #fdf8f0; border-top: 1px solid #e8ddd0; border-bottom: 1px solid #e8ddd0; }
 body.home .trust-item { color: #334155; }
 body.home .section-label { background: transparent; border: none; padding: 0; color: #F47C20; letter-spacing: 0.18em; }
@@ -457,7 +457,7 @@ body.home .home-reviews-summary p { color: #475569; margin: 8px 0 0; }
 @media (max-width: 900px) {
   body.home .hero-modern { flex-direction: column; padding: 48px 20px; }
   body.home .hero-modern .hero-inner { max-width: 100%; text-align: left; }
-  body.home .hero-modern::after { flex: 0 0 auto; width: 100%; max-width: 520px; height: 420px; }
+  
   body.home .home-services { grid-template-columns: 1fr; gap: 0; }
   body.home .home-services-preview { display: none; }
   body.home .home-service-row { display: block; }
