@@ -118,11 +118,12 @@
       .hero-title { font-size: 2rem; }
       .hero-sub { font-size: 1rem; margin-bottom: 25px; }
       .hero-inner { text-align: center; margin: 0 auto; } 
-      .hero-actions { flex-direction: column; justify-content: center; align-items: center;}
+      .hero-actions { flex-direction: row; justify-content: center; align-items: center; gap: 10px;} .hero-actions .btn { padding: 14px 14px; white-space: nowrap; }
       .trust-container { gap: 16px; padding: 0 15px; }
       .trust-item { font-size: 0.85rem; width: 45%; justify-content: flex-start; }
       .burger { margin-left: initial !important; }
     }
+    @media (min-width: 768px) { .hero-modern .hero-title { font-size: 3.75rem; } }
 
     /* עיצוב רשת השירותים */
     .services-grid {
