@@ -331,7 +331,7 @@
     body[data-page="reviews"] .review-rate-card p{color:#cbd5e1;}
   </style>
 </head>
-<body data-page="reviews">
+<body data-page="reviews"> <div class="home-progress" aria-hidden="true"></div> <script> (function () { var progress = document.querySelector('.home-progress'); if (!progress) return; var ticking = false; function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; var max = document.documentElement.scrollHeight - window.innerHeight; var pct = max > 0? Math.min(100, Math.max(0, (window.scrollY / max) * 100)): 0; progress.style.width = pct + '%';});} window.addEventListener('scroll', onScroll, { passive: true}); onScroll();})(); </script>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
