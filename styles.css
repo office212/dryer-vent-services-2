@@ -465,5 +465,5 @@ body.home .home-reviews-summary p { color: #475569; margin: 8px 0 0; }
 }
 @media (max-width: 760px) {
   body.home .site-nav { background: #fdf8f0; border-bottom: 1px solid #e8ddd0; }
-  body.home .site-nav.open { background: #fdf8f0; }
+  body.home .site-nav.open { background: #fdf8f0; } /* Homepage full navigation: desktop buttons fit in one row; mobile burger menu in premium ivory, serif, hairline dividers */ body.home .site-nav { gap: 10px; } body.home .site-nav a { padding: 8px 8px; } @media (max-width: 760px) { body.home .site-nav { background: #fdf8f0; border-bottom: 1px solid #e8ddd0; gap: 0; } body.home .site-nav.open { background: #fdf8f0; } body.home .site-nav a { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; padding: 12px 4px; border-bottom: 1px solid #e8ddd0; border-radius: 0; } body.home .site-nav a:last-child { border-bottom: none; } body.home .site-nav a.active { background: transparent; } }
 }
