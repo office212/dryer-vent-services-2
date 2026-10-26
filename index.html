@@ -200,7 +200,7 @@
     .service-card:hover .service-card-link svg {
       transform: translateX(4px);
     }
-  /* Center View All Services vertically: 40px above and below; mobile adds 12px above because the rendered list leaves only 28px of row padding there (28px + 12px = 40px) */ body.home .home-services-section { padding-bottom: 40px; } @media (max-width: 900px) { body.home .home-services-section .home-services + .center { margin-top: 12px; } } </style>
+  /* Center View All Services vertically: 40px above and below; Codex P2 fix: target both .services-grid (static HTML before the button) and .home-services (the wrapper script.js renders in its place); mobile adds 12px above (28px row padding + 12px = 40px) */ body.home .home-services-section { padding-bottom: 40px; } @media (max-width: 900px) { body.home .home-services-section .services-grid + .center, body.home .home-services-section .home-services + .center { margin-top: 12px; } } </style>
 
   <script type="application/ld+json">
 {
