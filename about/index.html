@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
@@ -272,11 +272,11 @@
         padding: 0;
       }
     }
-  </style>
+  /* Approved About design: warm ivory, Playfair headlines, hairline dividers, orange as a measured accent only. */ body[data-page="about"]{background:#fdf8f0;} body[data-page="about"] h1,body[data-page="about"] h2,body[data-page="about"] h3{font-family:'Playfair Display',Georgia,serif;color:#1b365d;} body[data-page="about"] .site-header{background:#fdf8f0;border-bottom:1px solid #e8ddd0;backdrop-filter:none;} body[data-page="about"] .brand-text strong{font-family:'Playfair Display',Georgia,serif;} body[data-page="about"] .site-nav{gap:10px;} body[data-page="about"] .site-nav a{padding:8px 8px;} @media (max-width:760px){body[data-page="about"] .site-nav{background:#fdf8f0;border-bottom:1px solid #e8ddd0;}} body[data-page="about"] .page-hero{background:#fdf8f0;border-bottom:1px solid #e8ddd0;padding:56px 0;} body[data-page="about"] .page-hero h1{font-size:clamp(38px,5vw,56px);color:#1b365d;} body[data-page="about"] .page-hero p{color:#475569;font-size:1.1rem;} body[data-page="about"] .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;} body[data-page="about"] .hero-actions .btn-outline{background:transparent;color:#1b365d;border:2px solid #1b365d;} body[data-page="about"] .hero-actions .btn-outline:hover{background:#eef2f7;} body[data-page="about"] .two-col h2{font-size:clamp(28px,3vw,36px);} body[data-page="about"] .card.media{background:#fff;border:1px solid #e8ddd0;box-shadow:none;} body[data-page="about"] .card.media .inner h3{color:#1b365d;} @media (max-width:600px){body[data-page="about"] .page-hero{padding:40px 0;}} </style>
 
 </head>
 
-<body data-page="about">
+<body data-page="about"> <div class="home-progress" aria-hidden="true"></div> <script> (function () { var progress = document.querySelector('.home-progress'); if (!progress) return; function onScroll() { var max = document.documentElement.scrollHeight - window.innerHeight; var pct = max > 0 ? (window.scrollY / max) * 100 : 0; progress.style.width = pct + '%'; } window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); })(); </script>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
@@ -307,7 +307,7 @@
   <section class="page-hero fade-in">
     <div class="container">
       <h1>About</h1>
-      <p>Local, trusted and experienced.</p>
+      <p>Local, trusted and experienced.</p><div class="hero-actions"><a href="/booking/" class="btn btn--primary">Book Now</a><a href="tel:+13472449382" class="btn btn-outline" aria-label="Call us at 347-244-9382">Call 347-244-9382</a></div>
     </div>
   </section>
 
