@@ -45,6 +45,7 @@
     .booking-hero{background:
      var(--bg-alt);
       border-bottom:1px solid #eef1f5;padding:56px 0 48px;text-align:center}
+    .booking-hero .btn--primary,.final-cta .btn--primary{animation:pulseCTA 2.5s infinite}
     .booking-hero h1{font-size:clamp(32px,6vw,46px);line-height:1.15;margin:0 0 14px;font-weight:800;color:var(--blue)}
     .booking-hero .promise{font-size:clamp(18px,2.6vw,21px);color:#33475f;max-width:640px;margin:0 auto 18px;line-height:1.55}
     .rating-line{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);
@@ -64,7 +65,7 @@
 
     /* How it works */
     .steps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-    .step-card{background:#fff;border:1px solid #eef1f5;border-radius:16px;padding:28px 24px;
+    .step-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px 24px;
       box-shadow:0 4px 12px rgba(0,0,0,.03);text-align:left}
     .step-num{width:52px;height:52px;border-radius:50%;background:var(--blue);color:#fff;
       display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin-bottom:16px}
@@ -72,7 +73,7 @@
     .step-card p{margin:0;color:var(--muted)}
 
     /* What's included */
-    .included-wrap{max-width:820px;margin:0 auto;background:#fff;border:1px solid #eef1f5;border-radius:16px;
+    .included-wrap{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:16px;
       padding:34px 34px 26px;box-shadow:0 10px 30px rgba(27,54,93,.07);border-top:4px solid var(--blue)}
     .included-list{list-style:none;padding:0;margin:6px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:6px 30px}
     .included-list li{position:relative;padding-left:30px;margin-bottom:12px;font-size:1.02rem}
@@ -90,7 +91,7 @@
     .reviews-carousel::-webkit-scrollbar{height:8px}
     .reviews-carousel::-webkit-scrollbar-thumb{background:#cfd9e6;border-radius:100px}
     .reviews-carousel::-webkit-scrollbar-track{background:#eef1f5;border-radius:100px}
-    .review-card{flex:0 0 min(330px,86%);scroll-snap-align:start;background:#fff;border:1px solid #eef1f5;
+    .review-card{flex:0 0 min(330px,86%);scroll-snap-align:start;background:#fff;border:1px solid var(--border);
       border-radius:16px;padding:26px;box-shadow:0 4px 12px rgba(0,0,0,.03);text-align:left;
       display:flex;flex-direction:column}
     .review-card .stars{color:var(--orange);font-size:1.15rem;letter-spacing:3px;margin-bottom:12px}
@@ -220,9 +221,27 @@
       </div>
     </div>
   </section>
-
+<section class="section ba-section section-alt">
+   <div class="container">
+     <div class="center reveal">
+       <p class="section-label">THE DIFFERENCE</p>
+       <h2>Before and After</h2>
+       <p class="muted">Drag the slider to see the difference.</p>
+       </div>
+     <div class="ba-carousel reveal" aria-roledescription="carousel" aria-label="Before and after transformation example">
+       <div class="ba-arrow prev" id="ba-prev" role="button" aria-label="Previous example" tabindex="0">❮</div>
+       <div class="ba-arrow next" id="ba-next" role="button" aria-label="Next example" tabindex="0">❯</div>
+       <div class="ba-wrap">
+         <div class="ba-labels-container" aria-hidden="true"><span class="ba-label">Before</span><span class="ba-label">After</span></div>
+         <div class="ba-after"><img id="ba-after-img" src="/assets/img/before-after/ba18-after.webp" class="ba-img" alt="Dryer vent after professional cleaning - completely clear airflow" loading="lazy" width="800" height="1200"></div>
+         <img id="ba-before-img" src="/assets/img/before-after/ba18-before.webp" class="ba-img" alt="Clogged dryer vent before cleaning - heavy dangerous lint buildup" loading="lazy" width="800" height="1200">
+         <div class="ba-handle" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Drag to compare before and after images" tabindex="0"></div>
+         </div>
+       </div>
+     </div>
+   </section>
   <!-- ===== How it works ===== -->
-  <section class="section">
+  <section class="section fade-in">
     <div class="container">
       <div class="center">
         <span class="section-label">Simple Process</span>
@@ -250,7 +269,7 @@
   </section>
 
   <!-- ===== What's included ===== -->
-  <section class="section section-alt">
+  <section class="section section-alt fade-in">
     <div class="container">
       <div class="center">
         <span class="section-label">Every Visit</span>
@@ -270,7 +289,7 @@
   </section>
 
   <!-- ===== Reviews ===== -->
-  <section class="section">
+  <section class="section fade-in">
     <div class="container">
       <div class="center">
         <span class="section-label">Testimonials</span>
@@ -346,7 +365,7 @@
   </div>
 
   <!-- ===== FAQ ===== -->
-  <section class="section">
+  <section class="section fade-in">
     <div class="container">
       <div class="center">
         <span class="section-label">Answers</span>
@@ -374,7 +393,7 @@
         </div>
       </div>
 
-      <div class="final-cta" style="margin-top:44px">
+      <div class="final-cta fade-in" style="margin-top:44px">
         <h2>Ready when you are</h2>
         <p class="muted" style="max-width:56ch;margin:0 auto 24px">Send us your information and we will contact you right away to schedule your cleaning.</p>
         <div class="hero-ctas">
