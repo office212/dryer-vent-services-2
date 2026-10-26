@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* --- 1. SLIDER --- */
   const slides = [
-    { before: 'ba01-before.jpg', after: 'ba01-after.jpg' },
+    { before: 'ba18-before.webp', after: 'ba18-after.webp' },
     { before: 'ba02-before.jpg', after: 'ba02-after.jpg' },
     { before: 'ba03-before.jpg', after: 'ba03-after.jpg' },
     { before: 'ba04-before.jpg', after: 'ba04-after.jpg' },
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { before: 'ba15-before.webp', after: 'ba15-after.webp' },
     { before: 'ba16-before.webp', after: 'ba16-after.webp' },
     { before: 'ba17-before.webp', after: 'ba17-after.webp' },
-    { before: 'ba18-before.webp', after: 'ba18-after.webp' }
+    { before: 'ba01-before.jpg', after: 'ba01-after.jpg' }
   ];
   const imgPath = '/assets/img/before-after/';
   let currentIndex = 0;
