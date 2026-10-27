@@ -11,7 +11,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X77CVTW1CD');</script>
@@ -103,11 +103,11 @@
     body[data-page="gallery"] .site-nav{gap:10px;}
     body[data-page="gallery"] .site-nav a{padding:8px 8px;}
     @media (max-width:760px){body[data-page="gallery"] .site-nav{background:#fdf8f0;border-bottom:1px solid #e8ddd0;gap:0;}body[data-page="gallery"] .site-nav a{font-family:'Playfair Display',Georgia,'Times New Roman',serif;padding:12px 4px;border-bottom:1px solid #e8ddd0;border-radius:0;}body[data-page="gallery"] .site-nav a:last-child{border-bottom:none;}}
-    body[data-page="gallery"] .page-hero{background:#fdf8f0;border-bottom:1px solid #e8ddd0;padding:72px 0 56px;margin-bottom:0;}
+    body[data-page="gallery"] .page-hero{background:#fdf8f0;border-bottom:1px solid #e8ddd0;padding:72px 0 56px;margin-bottom:0;}body[data-page="gallery"] .page-hero .gallery-eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;font-family:Manrope,Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.22em;font-weight:700;color:#f47c20;text-transform:uppercase;margin:0 auto 18px;}body[data-page="gallery"] .page-hero .gallery-eyebrow::before,body[data-page="gallery"] .page-hero .gallery-eyebrow::after{content:"";display:block;width:44px;height:1px;background:#e5dcc9;}
     body[data-page="gallery"] .page-hero h1{font-size:clamp(38px,5vw,56px);}
     body[data-page="gallery"] .page-hero p{color:#475569;font-size:1.1rem;}
-    body[data-page="gallery"] .page-hero .btn-outline{color:#1b365d;border-color:#1b365d;background:transparent}
-    .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;}
+    body[data-page="gallery"] .hero-actions .gallery-call-link{color:#1b365d;font-weight:700;text-decoration:none;border-bottom:2px solid #f47c20;padding-bottom:3px;}
+    .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;}body[data-page="gallery"] .hero-actions .btn--primary{border-radius:999px;padding:14px 28px;}
     body[data-page="gallery"] .ba-section{background:linear-gradient(160deg,#0c1a33 0%,#0f2347 50%,#0a1628 100%);color:#ffffff;padding:56px 0;}
     body[data-page="gallery"] .ba-section h2{color:#ffffff;}
     body[data-page="gallery"] .ba-section .muted{color:#cbd5e1;}
@@ -151,11 +151,11 @@
 
 <section class="page-hero fade-in">
   <div class="container">
-    <h1>Gallery</h1>
+    <p class="gallery-eyebrow">OUR WORK</p><h1>Gallery</h1>
     <p>Our work gallery.</p>
     <div class="hero-actions">
       <a href="/booking/" class="btn btn--primary">Book Now</a>
-      <a href="tel:+13472449382" class="btn btn-outline" aria-label="Call us at 3 4 7. 2 4 4. 9 3 8 2.">Call 347-244-9382</a>
+      <a href="tel:+13472449382" class="gallery-call-link" aria-label="Call us at 3 4 7. 2 4 4. 9 3 8 2.">Call 347-244-9382</a>
     </div>
   </div>
 </section>
