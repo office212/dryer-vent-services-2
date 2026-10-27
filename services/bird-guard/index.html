@@ -102,7 +102,7 @@ body[data-page="services"] .two-col{gap:24px}
 @media (max-width:767px){
 #proChatIframeContainer{z-index:2147483647 !important;transform:translateY(-80px) !important}
 }
-.site-header .brand-text strong{display:block;font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;line-height:1.1;color:#1b365d}.site-header .brand-text span{display:block;font-size:12px;letter-spacing:.08em;color:#6b7280;margin-top:2px}body[data-page="services"] button.back-to-top{background:#ffffff;color:#1b365d;border:1px solid #e5dcc9}body[data-page="services"] button.back-to-top:hover{background:#f47c20;color:#ffffff;border-color:#f47c20}</style>
+.site-header .brand-text strong{display:block;font-family:'Playfair Display',Georgia,serif;font-size:1.15rem;line-height:1.1;color:#1b365d}.site-header .brand-text span{display:block;font-size:12px;letter-spacing:.08em;color:#6b7280;margin-top:2px}body[data-page="services"] button.back-to-top{background:#ffffff;color:#1b365d;border:1px solid #e5dcc9}body[data-page="services"] button.back-to-top:hover{background:#f47c20;color:#ffffff;border-color:#f47c20}body[data-page="services"].page-hero.svc-sub-eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;font-size:.78rem;letter-spacing:.22em;font-weight:700;color:#F47C20;text-transform:uppercase;margin:0 auto 18px;max-width:none;}body[data-page="services"].page-hero.svc-sub-eyebrow::before,body[data-page="services"].page-hero.svc-sub-eyebrow::after{content:"";display:block;width:56px;height:1px;background:#e5dcc9;}</style>
 </head>
 <body data-page="services"> <div class="home-progress" aria-hidden="true"></div> <script> (function () {   var progress = document.querySelector('.home-progress');   if (!progress) return;   var ticking = false;   function onScroll() {     if (ticking) return;     ticking = true;     requestAnimationFrame(function () {       ticking = false;       var max = document.documentElement.scrollHeight - window.innerHeight;       var pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;       progress.style.width = pct + '%';     });   }   window.addEventListener('scroll', onScroll, { passive: true });   onScroll(); })(); </script>
 <header class="site-header">
@@ -132,7 +132,7 @@ body[data-page="services"] .two-col{gap:24px}
 <main>
 <section class="page-hero fade-in">
 <div class="container center">
-<span class="section-label" style="display:inline-block; font-size:0.72rem; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:#F47C20; background:rgba(244,124,32,0.08); padding:5px 14px; border-radius:100px; margin-bottom:14px; border:1px solid rgba(244,124,32,0.2);">Safety Upgrade</span>
+<p class="svc-sub-eyebrow">SAFETY UPGRADE</p>
 <h1>Specialized Bird & Pest Guards</h1>
 <p>Keep unwanted wildlife out of your home without compromising your dryer's safety. We install advanced guards designed specifically to block pests while allowing dangerous lint to safely escape.</p>
 <div class="svc-hero-actions">
