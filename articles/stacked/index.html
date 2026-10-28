@@ -41,7 +41,7 @@
     .related-articles a::after { content: "→"; color: #f97316; font-size: 1.4rem; font-weight: bold; transition: transform 0.2s ease; line-height: 1; }
     .related-articles a:hover::after { transform: translateX(5px); }
     @media (max-width: 767px) { .blog-post h1 { font-size: 1.8rem; } #proChatIframeContainer { z-index: 2147483647 !important; transform: translateY(-80px) !important; } .related-articles { padding: 20px; } .related-articles a { font-size: 0.95rem; padding: 14px 15px; } }
-  button.back-to-top{background:#ffffff;color:#1b365d;border:1px solid #e5dcc9}button.back-to-top:hover{background:#f47c20;color:#ffffff;border-color:#f47c20}@media (max-width:760px){.site-nav a.active{background:transparent;}}/* Burger unification fix (page-level, homepage match) */.site-nav a{font-family:'Inter',system-ui,sans-serif;font-weight:500}.site-nav a.cta{font-weight:600}.site-nav a.active{font-weight:700}@media (max-width:760px){.site-nav a{font-family:'Playfair Display',Georgia,'Times New Roman',serif}}</style>
+  /* Articles design: Contact/About hero + Booking closing; styles.css untouched */.articles-hero{background:#faf6ef;border-bottom:1px solid #e5dcc9;padding:56px 0 48px;text-align:center}.articles-hero .eyebrow{color:#f47c20;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.85rem;display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 14px}.articles-hero .eyebrow::before,.articles-hero .eyebrow::after{content:"";display:block;width:48px;height:2px;background:#f47c20}.articles-hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3rem);line-height:1.15;color:#1b365d;margin:0 0 16px}.articles-hero p{color:#33475f;font-size:1.15rem;line-height:1.6;max-width:700px;margin:0 auto}.articles-final{background:#faf6ef;border-top:1px solid #e5dcc9;text-align:center}.articles-final .section-label{color:#f47c20;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.85rem;margin:0 0 12px}.articles-final h2{font-family:'Playfair Display',Georgia,serif;color:#1b365d;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.2;margin:0 0 14px}.articles-final .final-cta{text-align:center}.articles-final .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;max-width:760px;margin:8px auto 0}.articles-final .hero-ctas a{flex:1 1 300px;font-size:1.15rem;padding:18px 26px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}.articles-final .hero-ctas-sub{display:flex;gap:12px;max-width:760px;margin:14px auto 0}.articles-final .hero-ctas-sub a{flex:1;font-size:.98rem;padding:10px 16px;min-height:46px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}.articles-final .btn--ghost-call{background:transparent;color:#1b365d;border:2px solid rgba(27,54,93,.45)}.articles-final .btn--ghost-call:hover{background:rgba(27,54,93,.06)}.articles-final .btn--ghost-wa{background:transparent;color:#128c4a;border:2px solid rgba(37,211,102,.65)}.articles-final .btn--ghost-wa:hover{background:rgba(37,211,102,.10)}button.back-to-top{background:#ffffff;color:#1b365d;border:1px solid #e5dcc9}button.back-to-top:hover{background:#f47c20;color:#ffffff;border-color:#f47c20}@media (max-width:760px){.site-nav a.active{background:transparent;}}/* Burger unification fix (page-level, homepage match) */.site-nav a{font-family:'Inter',system-ui,sans-serif;font-weight:500}.site-nav a.cta{font-weight:600}.site-nav a.active{font-weight:700}@media (max-width:760px){.site-nav a{font-family:'Playfair Display',Georgia,'Times New Roman',serif}}</style>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X77CVTW1CD"></script>
   <script>
@@ -95,11 +95,11 @@
   </header>
 
   <main>
-    <article class="blog-post">
+    <section class="articles-hero"><div class="container"><p class="eyebrow">Articles</p>
       <h1>The Danger Behind the Door: Why Stacked Dryers Are at Higher Risk</h1>
-      <p style="font-size: 1.15rem; color: #4b5563; font-weight: 600;">Stacked washer and dryer units are fantastic space-savers, especially in apartments and townhouses. However, their placement in tight, shallow closets creates a unique and significant fire hazard.</p>
+      <p>Stacked washer and dryer units are fantastic space-savers, especially in apartments and townhouses. However, their placement in tight, shallow closets creates a unique and significant fire hazard.</p>
 
-      <img src="/images/gallery/stacked1.jpg" alt="A crushed transition hose behind a stacked washer and dryer" / width="1408" height="768">
+      </div></section><article class="blog-post"><img src="/images/gallery/stacked1.jpg" alt="A crushed transition hose behind a stacked washer and dryer" / width="1408" height="768">
 
       <h2>The Crushed Hose Dilemma</h2>
       <p>Because space is limited, stacked units are often pushed as far back against the wall as possible so the closet doors can close. This frequently results in the flexible aluminum transition hose being severely crushed or kinked. A crushed hose instantly restricts up to 90% of the dryer's airflow.</p>
@@ -125,7 +125,7 @@
         <p style="margin-bottom: 20px;">Do not let a hidden crushed hose start a fire in your home. <strong>Dryer Vent Services</strong> offers expert hose replacements and vent cleanings specifically for hard-to-reach stacked units across Staten Island and NJ.</p>
         <a href="/booking/" class="btn btn--primary" style="display: inline-block; text-decoration: none;">Book a Closet Vent Inspection</a>
       </div>
-    </article>
+    </article><section class="section articles-final"><div class="container"><div class="final-cta"><p class="section-label">Book Your Visit</p><h2>The Right Way to Vent Stacked <em>Units</em></h2><p class="muted" style="max-width:56ch;margin:0 auto 24px">Stacked dryers should never rely on flimsy foil hoses. They require specialized rigid metal ducting or "periscope" vents that maintain a smooth, open pathway for air even when the machine is pushed against the wall.</p><div class="hero-ctas"><a href="/booking/" class="btn btn--primary">Book Online Now</a></div><div class="hero-ctas-sub"><a href="tel:+13472449382" class="btn btn--ghost-call">Call 347-244-9382</a><a href="https://wa.me/13472449382" target="_blank" rel="noopener" class="btn btn--ghost-wa">Chat on WhatsApp</a></div></div></div></section>
   </main>
 
   <footer class="site-footer">
