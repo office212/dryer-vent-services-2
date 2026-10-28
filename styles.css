@@ -406,7 +406,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 }
 
 /* עיצוב פרימיום לדף הבית בלבד — כל החוקים כאן ממוקדים ב-body.home בלבד */
-body.home { background: #fdf8f0; }
+body.home { background: #fdf8f0; } /* Shared area header, moved unchanged from areas pages */ body[data-page="areas"] .site-header, body[data-page="area-detail"] .site-header { background: #fdf8f0; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid #e8ddd0; }
 body.home h1, body.home h2, body.home .home-service-title { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
 .home-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: #F47C20; z-index: 11000; }
 body.home .site-header { position: sticky; top: 0; z-index: 100; background: #fdf8f0; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid #e8ddd0; box-shadow: none; }
