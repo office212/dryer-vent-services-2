@@ -52,7 +52,7 @@
       .related-articles { padding: 20px; }
       .related-articles a { font-size: 0.95rem; padding: 14px 15px; }
     }
-  button.back-to-top{background:#ffffff;color:#1b365d;border:1px solid #e5dcc9}button.back-to-top:hover{background:#f47c20;color:#ffffff;border-color:#f47c20}@media (max-width:760px){.site-nav a.active{background:transparent;}}/* Burger unification fix (page-level, homepage match) */.site-nav a{font-family:'Inter',system-ui,sans-serif;font-weight:500}.site-nav a.cta{font-weight:600}.site-nav a.active{font-weight:700}@media (max-width:760px){.site-nav a{font-family:'Playfair Display',Georgia,'Times New Roman',serif}}</style>
+  /* Articles design: Contact/About hero + Booking closing; styles.css untouched */.articles-hero{background:#faf6ef;border-bottom:1px solid #e5dcc9;padding:56px 0 48px;text-align:center}.articles-hero .eyebrow{color:#f47c20;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.85rem;display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 14px}.articles-hero .eyebrow::before,.articles-hero .eyebrow::after{content:"";display:block;width:48px;height:2px;background:#f47c20}.articles-hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2rem,5vw,3rem);line-height:1.15;color:#1b365d;margin:0 0 16px}.articles-hero p{color:#33475f;font-size:1.15rem;line-height:1.6;max-width:700px;margin:0 auto}.articles-final{background:#faf6ef;border-top:1px solid #e5dcc9;text-align:center}.articles-final .section-label{color:#f47c20;font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.85rem;margin:0 0 12px}.articles-final h2{font-family:'Playfair Display',Georgia,serif;color:#1b365d;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.2;margin:0 0 14px}.articles-final .final-cta{text-align:center}.articles-final .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;max-width:760px;margin:8px auto 0}.articles-final .hero-ctas a{flex:1 1 300px;font-size:1.15rem;padding:18px 26px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}.articles-final .hero-ctas-sub{display:flex;gap:12px;max-width:760px;margin:14px auto 0}.articles-final .hero-ctas-sub a{flex:1;font-size:.98rem;padding:10px 16px;min-height:46px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none}.articles-final .btn--ghost-call{background:transparent;color:#1b365d;border:2px solid rgba(27,54,93,.45)}.articles-final .btn--ghost-call:hover{background:rgba(27,54,93,.06)}.articles-final .btn--ghost-wa{background:transparent;color:#128c4a;border:2px solid rgba(37,211,102,.65)}.articles-final .btn--ghost-wa:hover{background:rgba(37,211,102,.10)}button.back-to-top{background:#ffffff;color:#1b365d;border:1px solid #e5dcc9}button.back-to-top:hover{background:#f47c20;color:#ffffff;border-color:#f47c20}@media (max-width:760px){.site-nav a.active{background:transparent;}}/* Burger unification fix (page-level, homepage match) */.site-nav a{font-family:'Inter',system-ui,sans-serif;font-weight:500}.site-nav a.cta{font-weight:600}.site-nav a.active{font-weight:700}@media (max-width:760px){.site-nav a{font-family:'Playfair Display',Georgia,'Times New Roman',serif}}</style>
 
   <script type="application/ld+json">
   {
@@ -121,14 +121,13 @@
   </header>
 
   <main>
-    <article class="blog-post">
+    <section class="articles-hero"><div class="container"><p class="eyebrow">Articles</p>
       <h1>What is Your Exterior Vent Telling You? 5 Warning Signs Outside Your Home</h1>
 
-      <p style="font-size: 1.15rem; color: #4b5563; font-weight: 600;">
+      <p>
         When trying to figure out why their clothes are taking forever to dry, most homeowners immediately check the washing machine or the dryer drum. But the actual answer to the problem is usually waiting for you outside.
       </p>
-      <p>
-        Taking a quick walk around the exterior of your house while the dryer is running can reveal critical warning signs of a clogged vent. Here is what you should be looking for.
+      </div></section><article class="blog-post"><p>Taking a quick walk around the exterior of your house while the dryer is running can reveal critical warning signs of a clogged vent. Here is what you should be looking for.
       </p>
 
       <h2>1. The Flaps Aren't Opening</h2>
@@ -176,7 +175,7 @@
         <a href="/booking/" class="btn btn--primary" style="display: inline-block; text-decoration: none;">Book a Vent Inspection Today</a>
       </div>
 
-    </article>
+    </article><section class="section articles-final"><div class="container"><div class="final-cta"><p class="section-label">Book Your Visit</p><h2>5. High Bird or Pest <em>Activity</em></h2><p class="muted" style="max-width:56ch;margin:0 auto 24px">Do you notice birds constantly flying to and from the side of your house, right around the vent area? The warm, sheltered exhaust pipe is the perfect spot for birds to build a nest. A nest inside the pipe will block 100% of the airflow and create an immediate fire hazard.</p><div class="hero-ctas"><a href="/booking/" class="btn btn--primary">Book Online Now</a></div><div class="hero-ctas-sub"><a href="tel:+13472449382" class="btn btn--ghost-call">Call 347-244-9382</a><a href="https://wa.me/13472449382" target="_blank" rel="noopener" class="btn btn--ghost-wa">Chat on WhatsApp</a></div></div></div></section>
   </main>
 
   <footer class="site-footer">
