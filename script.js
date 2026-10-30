@@ -70,12 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let pos = x - rect.left;
         if (pos < 0) pos = 0;
         if (pos > rect.width) pos = rect.width;
-        sliderWrap.style.setProperty('--split', (pos / rect.width) * 100 + '%');
+        sliderWrap.style.setProperty('--split', (pos / rect.width) * 100 + '%'); if (handle) handle.setAttribute('aria-valuenow', Math.round((pos / rect.width) * 100));
       });
     };
 
     const moveMouse = (e) => setPosition(e.clientX);
-    const moveTouch = (e) => setPosition(e.touches[0].clientX);
+    const moveTouch = (e) => { e.preventDefault(); setPosition(e.touches[0].clientX); };
 
     const stopDrag = () => {
       window.removeEventListener('mousemove', moveMouse);
