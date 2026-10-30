@@ -13,7 +13,7 @@
 # the Housecall Pro reviews iframe are never touched:
 # - booking/index.html: pill "from N Google reviews", hero line
 #   "Rated R on Google, N reviews", and the big rating number.
-# - reviews/index.html: JSON-LD AggregateRating ratingValue/reviewCount.
+# - reviews/index.html: JSON-LD AggregateRating ratingValue/reviewCount, plus the on-screen rating-strip number.
 # - every *.html footer: "Rated R <stars> on Google", plus the home
 #   page star labels ("5-Star Google Rated", "Rated 5 Stars on Google").
 # This workflow only runs on push-free triggers (schedule/dispatch),
@@ -102,10 +102,11 @@ jobs:
               (r"Rated \d+(?:\.\d)? on Google, \d+ reviews", f"Rated {rating_str} on Google, {count_str} reviews"),
               (r'<span class="big">\d+(?:\.\d)?</span>', f'<span class="big">{rating_str}</span>'),
           ])
-          # Reviews page: JSON-LD AggregateRating only, anchored to the aggregateRating object so an individual Review's reviewRating is never rewritten.
+          # Reviews page: JSON-LD AggregateRating, plus the on-screen strip number, anchored to the aggregateRating object so an individual Review's reviewRating is never rewritten.
           update("reviews/index.html", [
               (r'("aggregateRating"\s*:\s*\{[^}]*?"ratingValue"\s*:\s*")\d+(?:\.\d)?(")', rf'\g<1>{rating_str}\g<2>'),
               (r'("aggregateRating"\s*:\s*\{[^}]*?"reviewCount"\s*:\s*")\d+(")', rf'\g<1>{count_str}\g<2>'),
+                      (r'(<strong>)\d+(</strong><span>Google reviews</span>)', rf'\g<1>{count_str}\g<2>'),
           ])
           # Every page footer, plus the home-page star labels. These
           # patterns never match Housecall Pro iframe/widget markup.
