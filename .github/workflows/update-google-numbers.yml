@@ -12,7 +12,7 @@
 # Updated (Google-only) text -- the Housecall Pro combined counts and
 # the Housecall Pro reviews iframe are never touched:
 # - booking/index.html: pill "from N Google reviews", hero line
-#   "Rated R on Google, N reviews", and the big rating number.
+#   "Rated R on Google <span class="dim">· N reviews</span>", and the big rating number.
 # - reviews/index.html: JSON-LD AggregateRating ratingValue/reviewCount, plus the on-screen rating-strip number.
 # - every *.html footer: "Rated R <stars> on Google", plus the home
 #   page star labels ("5-Star Google Rated", "Rated 5 Stars on Google").
@@ -87,7 +87,7 @@ jobs:
           def update(path, replacements):
               p = pathlib.Path(path)
               if not p.exists():
-                  return
+                                return
               original = p.read_text()
               text = original
               for pattern, replacement in replacements:
@@ -100,6 +100,7 @@ jobs:
           update("booking/index.html", [
               (r"from \d+ Google reviews", f"from {count_str} Google reviews"),
               (r"Rated \d+(?:\.\d)? on Google, \d+ reviews", f"Rated {rating_str} on Google, {count_str} reviews"),
+              (r'(Rated )\d+(?:\.\d)?( on Google <span class="dim">· )\d+( reviews</span>)', rf'\g<1>{rating_str}\g<2>{count_str}\g<3>'),
               (r'<span class="big">\d+(?:\.\d)?</span>', f'<span class="big">{rating_str}</span>'),
           ])
           # Reviews page: JSON-LD AggregateRating, plus the on-screen strip number, anchored to the aggregateRating object so an individual Review's reviewRating is never rewritten.
