@@ -483,3 +483,6 @@ body[data-page="services"] .site-nav a.active,body[data-page="booking"] .site-na
 
 /* Follow-up batch 3, item 2: service sub-page hero Call links only. The sub-page .svc-hero-actions rows have no align-items, so the flex default (stretch) stretches the Call link to the Book button's height and its border-bottom lands at the bottom of that stretched box, far below the number, at every width. Centering the row items (the same treatment the services index hero already has) makes the link box hug its text, so the orange line sits directly under the number. Scoped by .container.center: the services index hero uses a plain .container and is untouched. */
 body[data-page="services"] .container.center .svc-hero-actions{align-items:center}
+
+/* Follow-up batch 3, item 3: Contact page only. The mobile capsule clearance on .footer-bottom (80px + safe-area) also applies on Contact, where the sticky bar is hidden, so it inflates the bottom blue strip with empty blue. This Contact-only override inside the same 760px breakpoint removes that clearance on Contact alone; other pages keep their clearance, and the sticky bar stays hidden on Contact. */
+@media (max-width:760px){body[data-page="contact"] .footer-bottom{padding-bottom:0}}
