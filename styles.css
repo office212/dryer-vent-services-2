@@ -247,35 +247,16 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
   padding: 50px 0 0; 
   line-height: 1.6; 
 }
-.footer-grid { 
-  display: grid; 
-  grid-template-columns: 1.5fr 1fr 1fr; 
-  gap: 40px; 
-  margin-bottom: 30px; 
-}
 .site-footer h4 { color: #fff; margin: 0 0 12px; font-size: 1.1rem; }
 .site-footer a { color: #b9c6dd; transition: color 0.2s; }
 .site-footer a:hover { color: var(--orange); }
 .contact-list li { margin-bottom: 8px; }
-.copyright { 
-  border-top: 1px solid rgba(255,255,255,0.1); 
-  padding-top: 20px; 
-  text-align: center; 
-  font-size: 0.85rem; 
-  opacity: 0.7; 
-}
 
 /* סידור פוטר במובייל - מרווח נכון והסתרת כפתורים כפולים בלבד */
 @media (max-width: 768px) {
   .site-footer {
     padding: 40px 20px 100px; /* מרווח למטה כדי שהסטיקי בר לא יסתיר כלום */
     text-align: center;
-  }
-  .footer-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    margin-bottom: 20px;
   }
   .site-footer h4 { font-size: 1.2rem; }
 
@@ -311,7 +292,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
    ========================================= */
 .mobile-cta { display: none; }
 
-@media (max-width: 920px) { .cards-3, .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 920px) { .cards-3 { grid-template-columns: 1fr; } }
 
 @media (max-width: 760px) {
   .site-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid #eef1f5; padding: 20px; flex-direction: column; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
