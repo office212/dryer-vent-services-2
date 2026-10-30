@@ -195,7 +195,7 @@
             const phone  = digitsOnly(form.phone.value);
             const phone2 = digitsOnly(form.phone2.value);
             const zipDigits = digitsOnly(form.zip.value);
-            const errs = [];
+            const errs = []; if (!document.getElementById("name").value.trim()) errs.push("Please enter your full name."); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById("email").value.trim())) errs.push("Please enter a valid email address.");
             if (phone.length < 10) errs.push("Please enter a valid phone number.");
             if (phone !== phone2)  errs.push("Phone numbers do not match.");
             if (!(zipDigits.length === 5 || zipDigits.length === 9)) errs.push("Please enter a valid ZIP code (5 or 9 digits).");
