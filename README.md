@@ -133,9 +133,9 @@ The site uses a warm, light, editorial look: ivory and paper backgrounds, deep n
 | Name | Hex | Use |
 | --- | --- | --- |
 | Ivory | `#faf7f1` | Main background |
-| Paper | `#fffdf8` | Cards and light panels |
+| Paper | `#ffffff` | Cards and light panels |
 | Navy | `#1b365d` | Headings, brand text, and dark sections |
-| Navy deep | `#0c1a2e` | Darkest backgrounds and footer tones |
+| Navy deep | `#0f233f` | Footer background |
 | Orange | `#f47c20` | Calls to action, accents, and the first line of the header tagline |
 | Cream | `#fdf8f0` | Soft section backgrounds |
 | Hairlines | `#e5dcc9` | Borders and dividers |
@@ -208,7 +208,7 @@ The measurement ID appears in the site's public code, so it is safe to record he
 
 ### Structured data
 
-Every page carries one unified `HomeAndConstructionBusiness` schema entity, so search engines see a single, consistent business identity across the whole site rather than a different business description on each page.
+The business identity is unified wherever it appears in structured data: the same `@id` (`https://www.dryer-ventservices.com/#business`), name, and telephone are used throughout, while each page carries the schema type that fits it — a full `HomeAndConstructionBusiness` entity on the main pages, the business named as `provider` on service and area pages, and page types such as `Article` or `ContactPage` elsewhere.
 
 The schema includes a Google-only `AggregateRating` of 5.0. That rating is provided for Google's use; it is not presented as a separate on-page rating system.
 
