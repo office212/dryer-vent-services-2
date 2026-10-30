@@ -21,8 +21,7 @@ html, body {
   background: var(--bg); color: var(--ink);
   font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
-}
+  scroll-padding-top: 90px;} /* Brand tagline restyle: desktop two lines, mobile one line. Desktop: Cleaning orange centered on line 1, Repairs - Installations navy on line 2 (via br.tagline-break). Mobile (max-width:760px): the break is suppressed and the " - " separator span is shown, so the tagline stays one line with the same word colors. !important is needed because page-level style blocks repeat .brand-text span rules (color #6b7280, display:block) after styles.css. */ .site-header .brand-text .tagline{text-align:center;} .site-header .brand-text .tagline-first,.site-header .brand-text .tagline-rest{display:inline!important;} .site-header .brand-text .tagline-first{color:#f47c20!important;} .site-header .brand-text .tagline-rest{color:#1b365d!important;} .site-header .brand-text .tagline-sep{display:none!important;} @media (max-width:760px){.site-header .brand-text .tagline-break{display:none!important;} .site-header .brand-text .tagline-sep{display:inline!important;}}
 
 a { color: var(--blue); text-decoration: none; }
 img { max-width: 100%; height: auto; display: block; }
