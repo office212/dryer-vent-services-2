@@ -123,7 +123,7 @@
       .trust-item { font-size: 0.85rem; width: 45%; justify-content: flex-start; }
       .burger { margin-left: initial !important; }
     }
-    @media (min-width: 768px) { body.home .hero-modern h1.hero-title { font-size: 3.75rem; } } /* Homepage hero faded background, owner-approved 48% presence: original hero image under a 52% ivory wash */ body.home .hero-modern{background-color:#fdf8f0;background-image:linear-gradient(rgba(253,248,240,0.52),rgba(253,248,240,0.52)),url('/images/gallery/hero-bg.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;}
+    @media (min-width: 768px) { body.home .hero-modern h1.hero-title { font-size: 3.75rem; } } /* Homepage hero faded background, owner-approved 48% presence: original hero image under a 52% ivory wash */ body.home .hero-modern{background-color:#fdf8f0;background-image:linear-gradient(rgba(253,248,240,0.52),rgba(253,248,240,0.52)),url('/images/gallery/hero-bg.jpg');background-image:linear-gradient(rgba(253,248,240,0.52),rgba(253,248,240,0.52)),image-set(url('/images/gallery/hero-bg.webp') type('image/webp'),url('/images/gallery/hero-bg.jpg') type('image/jpeg'));background-size:cover;background-position:center;background-repeat:no-repeat;}
 
     /* עיצוב רשת השירותים */
     .services-grid {
@@ -445,7 +445,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/" aria-label="Dryer Vent Services Homepage">
-        <img src="/logo.webp" alt="Dryer Vent Services Logo" class="logo" loading="eager" fetchpriority="high" width="80" height="47" onerror="this.src='/logo.png'">
+        <img src="/logo.webp" alt="Dryer Vent Services Logo" class="logo" loading="eager" fetchpriority="high" width="80" height="47" onerror="this.onerror=null;this.src='/logo.png';">
         <div class="brand-text"><strong>Dryer Vent Services</strong><span class="tagline"><span class="tagline-first">Cleaning</span><span class="tagline-sep"> - </span><br class="tagline-break"><span class="tagline-rest">Repairs - Installations</span></span></div>
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Main menu">
