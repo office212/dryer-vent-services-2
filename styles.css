@@ -629,7 +629,8 @@ html body[data-page="services"] .page-hero:has(.services-eyebrow) + section .svc
 
 /* 404 and thanks pages: title matches the main pages (Articles) */
 html body .demo-main .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.08; color: #1b365d; }
-html body .demo-main .hero h1 em { color: #1b365d; }
+/* The 404 page keeps its orange italic word; the thanks page uses navy */
+html body[data-page="thanks"] .demo-main .hero h1 em { color: #1b365d; }
 @media (max-width: 760px) {
   html body .demo-main .hero h1 { font-size: 38px; }
 }
