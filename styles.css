@@ -626,3 +626,10 @@ html body[data-page="contact"] .page-hero + section.contact-layout { padding-top
 }
 /* Services: the hero line already separates the list, so the first row drops its own top line */
 html body[data-page="services"] .page-hero:has(.services-eyebrow) + section .svc-index > li:first-child > .svc-row { border-top: 0; }
+
+/* 404 and thanks pages: title matches the main pages (Articles) */
+html body .demo-main .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 56px; font-weight: 700; line-height: 1.08; color: #1b365d; }
+/* The italic word in the title keeps its orange colour on these two pages */
+@media (max-width: 760px) {
+  html body .demo-main .hero h1 { font-size: 38px; }
+}
