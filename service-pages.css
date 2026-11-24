@@ -1,0 +1,42 @@
+/* =========================================
+   SERVICE PAGES
+   Shared styles for the 6 service pages (services/<name>/).
+   Each page links this file right after styles.css, where its own
+   inline <style> block used to be.
+   ========================================= */
+
+body[data-page="services"]{background:#fdf8f0;color:#475569}
+
+
+
+
+
+
+
+
+.svc-hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+body[data-page="services"] main h2{font-family:"Playfair Display",Georgia,serif;color:#1B365D;font-size:2rem;margin-top:0}
+body[data-page="services"] main .section p{color:#475569}
+body[data-page="services"] main strong{color:#1B365D}
+body[data-page="services"] .two-col{gap:48px}
+body[data-page="services"] .checklist{list-style:none;padding:0;margin:20px 0 0}
+body[data-page="services"] .checklist li{position:relative;padding-left:26px;margin-bottom:8px;font-size:0.95rem;color:#475569}
+body[data-page="services"] .checklist li::before{content:"✓";position:absolute;left:0;top:0;color:#F47C20;font-weight:800}
+body[data-page="services"] .svc-process{background:#fdf8f0;border-top:1px solid #e8ddd0;border-bottom:1px solid #e8ddd0}
+body[data-page="services"] .svc-process .container > p{max-width:700px;margin:0 auto 40px}
+body[data-page="services"] .process-card{background:#fff;border:1px solid #e8ddd0;border-radius:12px;padding:28px}
+body[data-page="services"] .process-card h3{font-family:"Playfair Display",Georgia,serif;color:#1B365D}
+body[data-page="services"] .process-card p{color:#475569}
+
+
+
+@media (max-width:760px){
+body[data-page="services"] .page-hero{padding:48px 0 32px}
+body[data-page="services"] .site-nav{background:#fdf8f0}
+body[data-page="services"] .site-nav a{font-family:'Inter',system-ui,sans-serif;border-bottom:1px solid #e8ddd0}
+body[data-page="services"] .two-col{gap:24px}
+}
+@media (max-width:767px){
+#proChatIframeContainer{z-index:2147483647 !important;transform:translateY(-80px) !important}
+}
+/* Burger unification fix (page-level, homepage match) */@media (max-width:760px){body[data-page="services"] .site-nav a{font-family:'Playfair Display',Georgia,'Times New Roman',serif}}
