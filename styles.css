@@ -597,3 +597,30 @@ html body[data-page="areas"] .page-hero h1 + p + :is(.hero-actions,.svc-hero-act
 html body[data-page="contact"] .page-hero h1 + p + :is(.hero-actions,.svc-hero-actions),
 html body[data-page="articles"] .articles-hero h1 + p + :is(.hero-actions,.svc-hero-actions),
 html body[data-page="faq"] .faq-page-wrap h1 + p + :is(.hero-actions,.svc-hero-actions) { margin-top: 24px; }
+
+
+/* Main-page hero: background, divider line, and a 60px gap (like Articles)
+   from the divider line to the first content of the next section. */
+html body[data-page="about"] .page-hero,
+html body[data-page="services"] .page-hero:has(.services-eyebrow),
+html body[data-page="gallery"] .page-hero,
+html body[data-page="reviews"] .page-hero,
+html body[data-page="areas"] .page-hero,
+html body[data-page="contact"] .page-hero,
+html body[data-page="booking"] .booking-hero { background: #faf7f1; border-bottom: 1px solid #e5dcc9; margin-bottom: 0; }
+html body[data-page="about"] .page-hero + section { padding-top: 60px; }
+html body[data-page="services"] .page-hero:has(.services-eyebrow) + section { padding-top: 31px; }
+html body[data-page="gallery"] .page-hero + section { padding-top: 48px; }
+html body[data-page="reviews"] .page-hero + section { padding-top: 32px; }
+html body[data-page="areas"] .page-hero + section { padding-top: 60px; }
+html body[data-page="booking"] .booking-hero + section { padding-top: 60px; }
+html body[data-page="contact"] .page-hero + section.contact-layout { padding-top: 63px; }
+@media (max-width: 760px) {
+  html body[data-page="about"] .page-hero + section { padding-top: 60px; }
+  html body[data-page="services"] .page-hero:has(.services-eyebrow) + section { padding-top: 35px; }
+  html body[data-page="gallery"] .page-hero + section { padding-top: 48px; }
+  html body[data-page="reviews"] .page-hero + section { padding-top: 32px; }
+  html body[data-page="areas"] .page-hero + section { padding-top: 60px; }
+  html body[data-page="booking"] .booking-hero + section { padding-top: 60px; }
+  html body[data-page="contact"] .page-hero + section.contact-layout { padding-top: 48px; }
+}
