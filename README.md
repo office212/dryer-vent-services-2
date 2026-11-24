@@ -73,13 +73,6 @@ It is a **service-area business**: customers are served at their homes, and ther
 | **Bird nest removal** | Nesting material cleared out of the vent so the dryer can exhaust again. | [`/services/bird-nest/`](services/bird-nest/index.html) |
 | **Bird guard installation** | A guard over the exterior opening that keeps birds out while letting air through. | [`/services/bird-guard/`](services/bird-guard/index.html) |
 
-**Cleaning prices** (for reference; prices are not shown on the website):
-
-| Dryer location | Price |
-| --- | --- |
-| Basement or 1st floor | $175 |
-| 2nd floor | $225 |
-
 ### Hours
 
 These match the opening hours published in the site's structured data.
@@ -308,7 +301,7 @@ Where to make common changes:
 
 ## Keeping this README accurate
 
-This README describes the site as it is. When a price, phone number, email, opening hour, service, area, page, color, font, shared file or tracking ID changes, update the matching section **in the same pull request**, so the repository and the live site never drift apart.
+This README describes the site as it is. When a phone number, email, opening hour, service, area, page, color, font, shared file or tracking ID changes, update the matching section **in the same pull request**, so the repository and the live site never drift apart.
 
 <br>
 
