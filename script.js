@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   /* --- 1. SLIDER --- */
   const slides = [
     { before: 'ba18-before.webp', after: 'ba18-after.webp' },
-    { before: 'ba02-before.jpg', after: 'ba02-after.jpg' },
-    { before: 'ba03-before.jpg', after: 'ba03-after.jpg' },
-    { before: 'ba04-before.jpg', after: 'ba04-after.jpg' },
-    { before: 'ba05-before.jpg', after: 'ba05-after.jpg' },
+    { before: 'ba02-before.webp', after: 'ba02-after.webp' },
+    { before: 'ba03-before.webp', after: 'ba03-after.webp' },
+    { before: 'ba04-before.webp', after: 'ba04-after.webp' },
+    { before: 'ba05-before.webp', after: 'ba05-after.webp' },
     { before: 'ba06-before.webp', after: 'ba06-after.webp' },
     { before: 'ba07-before.webp', after: 'ba07-after.webp' },
     { before: 'ba08-before.webp', after: 'ba08-after.webp' },
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { before: 'ba15-before.webp', after: 'ba15-after.webp' },
     { before: 'ba16-before.webp', after: 'ba16-after.webp' },
     { before: 'ba17-before.webp', after: 'ba17-after.webp' },
-    { before: 'ba01-before.jpg', after: 'ba01-after.jpg' }
+    { before: 'ba01-before.webp', after: 'ba01-after.webp' }
   ];
   const imgPath = '/assets/img/before-after/';
   let currentIndex = 0;
@@ -45,11 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('ba-prev');
   const nextBtn = document.getElementById('ba-next');
 
+  // Load the WebP; if it fails, fall back once to the JPG with the same name.
+  function setSrc(img, file) {
+    img.onerror = function () {
+      this.onerror = null;
+      this.src = imgPath + file.replace(/\.webp$/, '.jpg');
+    };
+    img.src = imgPath + file;
+  }
+
   function updateImages(idx) {
     if(!imgBefore || !imgAfter) return;
     const s = slides[idx];
-    imgBefore.src = imgPath + s.before;
-    imgAfter.src = imgPath + s.after;
+    setSrc(imgBefore, s.before);
+    setSrc(imgAfter, s.after);
   }
 
   if(prevBtn && nextBtn) {
