@@ -633,3 +633,7 @@ html body .demo-main .hero h1 { font-family: 'Playfair Display', Georgia, serif;
 @media (max-width: 760px) {
   html body .demo-main .hero h1 { font-size: 38px; }
 }
+
+/* Service Areas: area cards match the article cards (warm ivory, site border, soft shadow) */
+html body[data-page="areas"] .area-card { background: #fffdf8; border: 1px solid #e5dcc9; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: box-shadow 0.3s ease, border-color 0.3s ease; }
+html body[data-page="areas"] .area-card:hover { transform: none; border-color: #d5dff0; box-shadow: 0 12px 30px rgba(27,54,93,0.12); }
