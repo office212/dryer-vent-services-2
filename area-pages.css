@@ -48,7 +48,7 @@ button.back-to-top:hover{background:#B85A00;color:#ffffff;border-color:#B85A00}
 @media (max-width:760px){.site-nav a{font-family:'Playfair Display',Georgia,'Times New Roman',serif}}
 body[data-page="area-detail"] .hero-modern{background:#faf7f1!important;background-image:none!important;text-align:center;padding:56px 24px 48px}
 body[data-page="area-detail"] .hero-modern .hero-inner{max-width:760px;margin:0 auto}
-body[data-page="area-detail"] .hero-modern .section-label{display:flex!important;align-items:center;justify-content:center;gap:16px;text-transform:uppercase;letter-spacing:.22em;font-size:12px;font-weight:700;color:#B85A00!important;background:transparent!important;border:0!important;margin:0 0 18px}
+body[data-page="area-detail"] .hero-modern .section-label{display:flex!important;align-items:center;justify-content:center;gap:16px;text-transform:uppercase;letter-spacing:.22em;font-size:12px;font-weight:700;color:#9A4B00!important;background:transparent!important;border:0!important;margin:0 0 18px}
 body[data-page="area-detail"] .hero-modern .section-label::before,body[data-page="area-detail"] .hero-modern .section-label::after{content:"";width:44px;height:1px;background:#e5dcc9}
 body[data-page="area-detail"] .hero-modern .hero-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(38px,5vw,56px);line-height:1.1;color:#1b365d}
 body[data-page="area-detail"] .hero-modern .gradient-text{background:none!important;-webkit-text-fill-color:#1b365d!important;color:#1b365d!important;font-style:italic}
