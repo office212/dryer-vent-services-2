@@ -609,7 +609,7 @@ html body[data-page="areas"] .page-hero,
 html body[data-page="contact"] .page-hero,
 html body[data-page="booking"] .booking-hero { background: #faf7f1; border-bottom: 1px solid #e5dcc9; margin-bottom: 0; }
 html body[data-page="about"] .page-hero + section { padding-top: 60px; }
-html body[data-page="services"] .page-hero:has(.services-eyebrow) + section { padding-top: 31px; }
+html body[data-page="services"] .page-hero:has(.services-eyebrow) + section { padding-top: 32px; }
 html body[data-page="gallery"] .page-hero + section { padding-top: 48px; }
 html body[data-page="reviews"] .page-hero + section { padding-top: 32px; }
 html body[data-page="areas"] .page-hero + section { padding-top: 60px; }
@@ -617,10 +617,12 @@ html body[data-page="booking"] .booking-hero + section { padding-top: 60px; }
 html body[data-page="contact"] .page-hero + section.contact-layout { padding-top: 63px; }
 @media (max-width: 760px) {
   html body[data-page="about"] .page-hero + section { padding-top: 60px; }
-  html body[data-page="services"] .page-hero:has(.services-eyebrow) + section { padding-top: 35px; }
+  html body[data-page="services"] .page-hero:has(.services-eyebrow) + section { padding-top: 36px; }
   html body[data-page="gallery"] .page-hero + section { padding-top: 48px; }
   html body[data-page="reviews"] .page-hero + section { padding-top: 32px; }
   html body[data-page="areas"] .page-hero + section { padding-top: 60px; }
   html body[data-page="booking"] .booking-hero + section { padding-top: 60px; }
   html body[data-page="contact"] .page-hero + section.contact-layout { padding-top: 48px; }
 }
+/* Services: the hero line already separates the list, so the first row drops its own top line */
+html body[data-page="services"] .page-hero:has(.services-eyebrow) + section .svc-index > li:first-child > .svc-row { border-top: 0; }
