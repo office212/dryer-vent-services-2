@@ -275,13 +275,45 @@
 
 <script>
 const NAMES=[
-"Gallery-36","Gallery-33","Gallery-34","Gallery-40","Gallery-29","Gallery-38",
-"Gallery-35","Gallery-28","Gallery-39","Gallery-18","Gallery-31",
-"Gallery-21","Gallery-37","Gallery-19","Gallery-43","Gallery-26","Gallery-25",
-"Gallery-16","Gallery-27","Gallery-30","Gallery-17","Gallery-20",
-"Gallery-15","Gallery-14","Gallery-11","Gallery-7","Gallery-8","Gallery-3",
-"Gallery-5","Gallery-6","Gallery-1","Gallery-10","Gallery-22","Gallery-9",
-"Gallery-4","Gallery-12","Gallery-2","Gallery-13"];
+  {name:"Gallery-36",w:887,h:1920,alt:"Heavy lint buildup removed from a dryer vent during cleaning"},
+  {name:"Gallery-33",w:886,h:1920,alt:"Inside view of a dryer vent duct with lint lining the walls"},
+  {name:"Gallery-34",w:886,h:1920,alt:"Exterior dryer vent opening with the cover removed for cleaning"},
+  {name:"Gallery-40",w:887,h:1920,alt:"Dryer vent duct packed with compacted lint before cleaning"},
+  {name:"Gallery-29",w:887,h:1920,alt:"Lint-coated exterior dryer vent hood flap"},
+  {name:"Gallery-38",w:887,h:1920,alt:"Cleaning rod running through a dryer vent duct"},
+  {name:"Gallery-35",w:887,h:1920,alt:"Ladder set up against a brick building to reach a high dryer vent"},
+  {name:"Gallery-28",w:886,h:1920,alt:"Exterior louvered dryer vent clogged with lint"},
+  {name:"Gallery-39",w:887,h:1920,alt:"Dryer vent duct opening blocked with a thick lint layer"},
+  {name:"Gallery-18",w:887,h:1920,alt:"Dryer vent with a wire guard on a brick wall"},
+  {name:"Gallery-31",w:887,h:1920,alt:"White exterior dryer vent guard on a siding wall"},
+  {name:"Gallery-21",w:887,h:1920,alt:"Exterior dryer vent with a bird guard on vinyl siding"},
+  {name:"Gallery-37",w:887,h:1920,alt:"Exterior dryer vent opening full of lint before cleaning"},
+  {name:"Gallery-19",w:887,h:1920,alt:"Lint blockage deep inside a dryer vent duct"},
+  {name:"Gallery-43",w:887,h:1920,alt:"Dryer vent on the side wall of a house with vinyl siding"},
+  {name:"Gallery-26",w:887,h:1920,alt:"Foil flexible dryer vent duct seen from the inside"},
+  {name:"Gallery-25",w:887,h:1920,alt:"Rooftop dryer vent with a bird nest and debris"},
+  {name:"Gallery-16",w:887,h:1920,alt:"Dryer vent duct opening surrounded by lint"},
+  {name:"Gallery-27",w:887,h:1920,alt:"Lint caked around an exterior dryer vent hood"},
+  {name:"Gallery-30",w:887,h:1920,alt:"Small exterior dryer vent high on a siding wall"},
+  {name:"Gallery-17",w:887,h:1920,alt:"Brown louvered exterior dryer vent on siding"},
+  {name:"Gallery-20",w:887,h:1920,alt:"Dryer vent cover high on a house wall above a window"},
+  {name:"Gallery-15",w:887,h:1920,alt:"Brown exterior dryer vent with lint packed around the opening"},
+  {name:"Gallery-14",w:887,h:1920,alt:"Exterior dryer vent with a mesh bird guard"},
+  {name:"Gallery-11",w:887,h:1920,alt:"Clean metal dryer vent duct after cleaning"},
+  {name:"Gallery-7",w:887,h:1920,alt:"Damaged exterior dryer vent opening clogged with lint"},
+  {name:"Gallery-8",w:887,h:1920,alt:"White louvered exterior dryer vent on siding"},
+  {name:"Gallery-3",w:887,h:1920,alt:"Pile of lint removed from a dryer vent"},
+  {name:"Gallery-5",w:887,h:1920,alt:"New white louvered dryer vent cover on siding"},
+  {name:"Gallery-6",w:887,h:1920,alt:"Foil dryer vent duct connected at the wall"},
+  {name:"Gallery-1",w:887,h:1920,alt:"Dryer vent duct opening with heavy lint buildup"},
+  {name:"Gallery-10",w:887,h:1920,alt:"Exterior dryer vent with a white bird guard on siding"},
+  {name:"Gallery-22",w:887,h:1920,alt:"Old brown dryer vent hood with lint and debris"},
+  {name:"Gallery-9",w:887,h:1920,alt:"Flexible foil dryer vent duct behind a laundry room dryer"},
+  {name:"Gallery-4",w:887,h:1920,alt:"Lint-covered louvered dryer vent cover on siding"},
+  {name:"Gallery-12",w:887,h:1920,alt:"Ladder against a house to reach a second-floor dryer vent"},
+  {name:"Gallery-2",w:887,h:1920,alt:"Lint built up inside a dryer vent duct opening"},
+  {name:"Gallery-13",w:887,h:1920,alt:"Exterior dryer vent with a mesh bird guard next to a downspout"}
+];
 
 const grid=document.getElementById('grid');
 const loadMoreBtn=document.getElementById('loadMore');
@@ -291,11 +323,14 @@ let idx=0;
 // SMART CHUNK: 3 images on Mobile, 6 on Desktop
 const CHUNK = window.innerWidth < 768 ? 3 : 6;
 
-function makeFigure(base){
+function makeFigure(item){
+  const base=item.name;
   const fig=document.createElement('figure');
   const img=document.createElement('img');
   img.loading='lazy';
-  img.alt='Dryer vent cleaning gallery photo - Staten Island NY NJ';
+  img.width=item.w;
+  img.height=item.h;
+  img.alt=item.alt;
   img.src=`/images/gallery/${base}.jpg`;
   img.onerror=function(){
     if(!this.dataset.tried){
@@ -308,7 +343,7 @@ function makeFigure(base){
   };
   fig.appendChild(img);
   const cap=document.createElement('figcaption');
-  cap.textContent=img.alt;
+  cap.textContent='Dryer vent cleaning gallery photo - Staten Island NY NJ';
   fig.appendChild(cap);
   return fig;
 }

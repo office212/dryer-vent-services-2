@@ -16,18 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
+        uses: actions/checkout@v5
 
       - name: Check JavaScript syntax
         run: node --check script.js
 
       - name: Check internal links, images and HTML parsing
-        shell: python
+        shell: python3 {0}
         run: |
           import os
           import sys
@@ -98,3 +93,54 @@ jobs:
               print("\n".join(errors))
               sys.exit(1)
           print(f"OK: {len(html_files)} HTML files, no broken internal links or images.")
+
+      - name: Check sitemap and canonical links
+        shell: python3 {0}
+        run: |
+          # Every sitemap URL must point to a real page, and every indexable
+          # page must be listed in the sitemap with a canonical link that
+          # matches its own address. Redirect stubs and noindex pages are skipped.
+          import os
+          import re
+          import sys
+
+          SITE = "https://www.dryer-ventservices.com/"
+          errors = []
+
+          sitemap = open("sitemap.xml", encoding="utf-8").read()
+          locs = re.findall(r"<loc>\s*(.*?)\s*</loc>", sitemap)
+          dupes = sorted({u for u in locs if locs.count(u) > 1})
+          for url in dupes:
+              errors.append(f"sitemap.xml: duplicate URL {url}")
+          for url in locs:
+              if not url.startswith(SITE):
+                  errors.append(f"sitemap.xml: URL outside the site: {url}")
+                  continue
+              path = url[len(SITE):]
+              target = os.path.join(path, "index.html") if path == "" or path.endswith("/") else path
+              if not os.path.isfile(target):
+                  errors.append(f"sitemap.xml: {url} has no matching file ({target})")
+
+          listed = set(locs)
+          for dirpath, dirnames, filenames in os.walk("."):
+              dirnames[:] = [d for d in dirnames if d != ".git"]
+              for name in filenames:
+                  if not name.endswith(".html"):
+                      continue
+                  rel = os.path.relpath(os.path.join(dirpath, name), ".").replace(os.sep, "/")
+                  text = open(rel, encoding="utf-8").read()
+                  if 'http-equiv="refresh"' in text or re.search(r'<meta name="robots" content="[^"]*noindex', text):
+                      continue
+                  expected = SITE + (rel[: -len("index.html")] if rel.endswith("index.html") else rel)
+                  canon = re.findall(r'<link rel="canonical" href="([^"]*)"', text)
+                  if len(canon) != 1:
+                      errors.append(f"{rel}: expected one canonical link, found {len(canon)}")
+                  elif canon[0] != expected:
+                      errors.append(f"{rel}: canonical is {canon[0]}, expected {expected}")
+                  if expected not in listed:
+                      errors.append(f"{rel}: indexable page missing from sitemap.xml ({expected})")
+
+          if errors:
+              print("\n".join(errors))
+              sys.exit(1)
+          print(f"OK: {len(locs)} sitemap URLs, all match real pages and canonicals.")
