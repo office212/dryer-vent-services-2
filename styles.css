@@ -638,3 +638,10 @@ html body .demo-main .hero h1 { font-family: 'Playfair Display', Georgia, serif;
 html body[data-page="areas"] .area-card { background: #fffdf8; border: 1px solid #e5dcc9; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: box-shadow 0.3s ease, border-color 0.3s ease; }
 html body[data-page="areas"] .area-card:hover { transform: none; border-color: #d5dff0; box-shadow: 0 12px 30px rgba(27,54,93,0.12); }
 html body[data-page="articles"] .card.media .svc-picture { border-bottom: 3px solid #f47c20; }
+
+/* Heading order (accessibility): footer headings are h3 on some pages and
+   article card titles are h2 on /articles/. These rules keep them looking
+   exactly like the footer h4 and the former card h3. */
+html body .site-footer h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; font-weight: 700; line-height: 1.6; letter-spacing: normal; color: #0d2b4d; margin: 4px 0 16px; text-transform: none; font-style: normal; }
+html body .site-footer h3::after { content: ""; display: block; width: 34px; height: 3px; background: #f07d18; border-radius: 2px; margin-top: 8px; }
+html body[data-page="articles"] .card.media .inner h2 { font-family: 'Inter', system-ui, sans-serif; font-size: 20px; font-weight: 700; line-height: normal; letter-spacing: normal; margin: 0 0 8px; }
