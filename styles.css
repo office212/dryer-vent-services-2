@@ -54,7 +54,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 .site-nav { display: flex; gap: 16px; align-items: center; }
 .site-nav a { padding: 8px 10px; border-radius: 10px; transition: background 0.2s; font-weight: 500; }
 .site-nav a:hover { background: var(--bg-alt); }
-.site-nav a.cta { background: var(--orange); color: #fff; font-weight: 600; }
+.site-nav a.cta { background: var(--orange); color: #fff; font-weight: 600; border-radius: 999px; }
 .site-nav a.cta:hover { opacity: .9; }
 .site-nav a.active { background: var(--bg-alt); font-weight: 700; color: var(--blue); }
 
@@ -486,13 +486,13 @@ body[data-page="services"] .container.center .svc-hero-actions{align-items:cente
   html body #site-nav { background: #fdf8f0; border-bottom: 1px solid #e8ddd0; gap: 0; }
   html body #site-nav a { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-size: 16px; font-weight: 500; color: #1b365d; background: transparent; padding: 12px 4px; border-radius: 0; border-bottom: 1px solid #e8ddd0; }
   html body #site-nav a.active { font-weight: 700; }
-  html body #site-nav a.cta { background: #B85A00; color: #ffffff; font-weight: 600; border-bottom: 0; }
+  html body #site-nav a.cta { background: #B85A00; color: #ffffff; font-weight: 600; border-bottom: 0; border-radius: 999px; }
 }
 
 /* Desktop: current page = bold on a light box; Contact Us stays orange */
 @media (min-width: 761px) {
   html body #site-nav a.active:not(.cta) { background: #f7f9fc; color: #1b365d; font-weight: 700; }
-  html body #site-nav a.cta { background: #B85A00; color: #ffffff; font-weight: 600; }
+  html body #site-nav a.cta { background: #B85A00; color: #ffffff; font-weight: 600; border-radius: 999px; }
 }
 
 /* Booking and Contact use the same body font as the rest of the site */
