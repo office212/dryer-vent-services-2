@@ -13,6 +13,10 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// iOS Safari only applies :active styles (the nav CTA pressed state) when
+// the page has a touchstart listener. This empty, passive one enables it.
+document.addEventListener('touchstart', function () {}, { passive: true });
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* --- 1. SLIDER --- */

@@ -6,7 +6,7 @@
   --blue: #1B365D;
   --blue-2: #3E6AD6;
   --green: #1E9D6D;
-  --orange: #B85A00;
+  --orange: #C2570B;
   --orange-dark: #9A4B00;
   --muted: #6b7280;
   --border: #e6eaf2;
@@ -21,7 +21,7 @@ html, body {
   background: var(--bg); color: var(--ink);
   font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;} /* Brand tagline restyle: desktop two lines, mobile one line. Desktop: Cleaning orange centered on line 1, Repairs - Installations navy on line 2 (via br.tagline-break). Mobile (max-width:760px): the break is suppressed and the " - " separator span is shown, so the tagline stays one line with the same word colors. !important is needed because page-level style blocks repeat .brand-text span rules (color #6b7280, display:block) after styles.css. */ .site-header .brand-text .tagline{text-align:center;} .site-header .brand-text .tagline-first,.site-header .brand-text .tagline-rest{display:inline!important;} .site-header .brand-text .tagline-first{color:#B85A00!important;} .site-header .brand-text .tagline-rest{color:#1b365d!important;} .site-header .brand-text .tagline-sep{display:none!important;} @media (max-width:760px){.site-header .brand-text .tagline-break{display:none!important;} .site-header .brand-text .tagline-sep{display:inline!important;}}
+  scroll-padding-top: 90px;} /* Brand tagline restyle: desktop two lines, mobile one line. Desktop: Cleaning orange centered on line 1, Repairs - Installations navy on line 2 (via br.tagline-break). Mobile (max-width:760px): the break is suppressed and the " - " separator span is shown, so the tagline stays one line with the same word colors. !important is needed because page-level style blocks repeat .brand-text span rules (color #6b7280, display:block) after styles.css. */ .site-header .brand-text .tagline{text-align:center;} .site-header .brand-text .tagline-first,.site-header .brand-text .tagline-rest{display:inline!important;} .site-header .brand-text .tagline-first{color:#C2570B!important;} .site-header .brand-text .tagline-rest{color:#1b365d!important;} .site-header .brand-text .tagline-sep{display:none!important;} @media (max-width:760px){.site-header .brand-text .tagline-break{display:none!important;} .site-header .brand-text .tagline-sep{display:inline!important;}}
 
 a { color: var(--blue); text-decoration: none; }
 img { max-width: 100%; height: auto; display: block; }
@@ -56,6 +56,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 .site-nav a:hover { background: var(--bg-alt); }
 .site-nav a.cta { background: var(--orange); color: #fff; font-weight: 600; }
 .site-nav a.cta:hover { opacity: .9; }
+.site-nav a.cta:active { background: var(--orange-dark); opacity: 1; }
 .site-nav a.active { background: var(--bg-alt); font-weight: 700; color: var(--blue); }
 
 .burger { display: none; flex-direction: column; align-items: center; gap: 4px; background: transparent; border: 0; cursor: pointer; padding: 5px 0; }
@@ -95,7 +96,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
    [7] GRADIENT TEXT
    ========================================= */
 .gradient-text {
-  background: linear-gradient(95deg, #ffffff 0%, #a8c8ff 55%, #B85A00 100%);
+  background: linear-gradient(95deg, #ffffff 0%, #a8c8ff 55%, #C2570B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -143,8 +144,8 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--orange);
-  background: rgba(184, 90, 0, 0.08);
-  border: 1px solid rgba(184, 90, 0, 0.2);
+  background: rgba(194, 87, 11, 0.08);
+  border: 1px solid rgba(194, 87, 11, 0.2);
   padding: 5px 14px;
   border-radius: 100px;
   margin-bottom: 14px;
@@ -152,8 +153,8 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 
 .section-dark .section-label {
   color: #ffb066;
-  background: rgba(184, 90, 0, 0.15);
-  border-color: rgba(184, 90, 0, 0.3);
+  background: rgba(194, 87, 11, 0.15);
+  border-color: rgba(194, 87, 11, 0.3);
 }
 
 /* =========================================
@@ -163,14 +164,14 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 24px; border-radius: 12px; font-weight: 700; transition: all 0.2s; cursor: pointer; text-align: center; border: 2px solid transparent; }
 .btn:active { transform: translateY(1px); }
-.btn--primary { background: var(--orange); color: #fff; box-shadow: 0 4px 12px rgba(184, 90, 0,0.3); }
+.btn--primary { background: var(--orange); color: #fff; box-shadow: 0 4px 12px rgba(194, 87, 11,0.3); }
 .btn--primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
 .btn--light { background: #fff; color: var(--blue); border-color: #fff; }
 .btn--light:hover { background: #f0f4f8; }
 .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); }
 .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 .hero-modern .btn--primary { animation: pulseCTA 2.5s infinite; }
-@keyframes pulseCTA { 0%,100%{ box-shadow:0 0 0 0 rgba(184, 90, 0,0.4);} 70%{ box-shadow:0 0 0 12px rgba(184, 90, 0,0);} }
+@keyframes pulseCTA { 0%,100%{ box-shadow:0 0 0 0 rgba(194, 87, 11,0.4);} 70%{ box-shadow:0 0 0 12px rgba(194, 87, 11,0);} }
 
 /* =========================================
    6. CONTACT FORM & ALT CONTACTS
@@ -353,25 +354,25 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
   width: 100%;
   height: 220px;
   object-fit: cover;
-  border-bottom: 3px solid var(--orange, #B85A00);
+  border-bottom: 3px solid var(--orange, #C2570B);
 }
 
 
-.site-footer { background: linear-gradient(180deg, #fdf9ef 0%, #faf3e2 100%); border-top: 4px solid #B85A00; color: #22303f; padding: 0;}
+.site-footer { background: linear-gradient(180deg, #fdf9ef 0%, #faf3e2 100%); border-top: 4px solid #C2570B; color: #22303f; padding: 0;}
 .site-footer h4 { font-family: 'Playfair Display',Georgia,serif; color: #0d2b4d; font-size: 1.12rem; margin: 4px 0 16px; font-weight: 700;}
-.site-footer h4::after { content: ""; display: block; width: 34px; height: 3px; background: #B85A00; border-radius: 2px; margin-top: 8px;}
+.site-footer h4::after { content: ""; display: block; width: 34px; height: 3px; background: #C2570B; border-radius: 2px; margin-top: 8px;}
 .site-footer a { color: #5d6b7a; text-decoration: none; font-size:.95rem; font-weight: 500; transition: color 0.2s;}
 .site-footer a:hover { color: #9A4B00;}
 .footer-main { max-width: 1200px; margin: 0 auto; padding: 58px 20px 44px; display: grid; gap: 38px;}
 .footer-main ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px;}
 .footer-logo { display: inline-block; margin-bottom: 20px;}
 .footer-logo img { display: block; width: 250px; max-width: 100%; height: auto;}
-.site-footer .footer-book-btn { display: inline-block; background: #B85A00; color: #fff; text-decoration: none; font-weight: 700; font-size:.95rem; padding: 12px 26px; border-radius: 999px;}
+.site-footer .footer-book-btn { display: inline-block; background: #C2570B; color: #fff; text-decoration: none; font-weight: 700; font-size:.95rem; padding: 12px 26px; border-radius: 999px;}
 .site-footer .footer-book-btn:hover { background: #9A4B00; color: #fff;}
 .contact-list li { display: flex; align-items: flex-start; gap: 10px; margin: 0; color: #5d6b7a; font-size:.95rem; line-height: 1.5;}
-.contact-list svg { width: 18px; height: 18px; flex: 0 0 auto; color: #B85A00; margin-top: 2px;}
+.contact-list svg { width: 18px; height: 18px; flex: 0 0 auto; color: #C2570B; margin-top: 2px;}
 .contact-list .footer-wa { display: flex; gap: 10px; align-items: flex-start; }
-.site-footer .footer-phone { color: #0d2b4d; font-weight: 800; font-size: 1.08rem; text-decoration: none; border-bottom: 3px solid #B85A00; padding-bottom: 1px;}
+.site-footer .footer-phone { color: #0d2b4d; font-weight: 800; font-size: 1.08rem; text-decoration: none; border-bottom: 3px solid #C2570B; padding-bottom: 1px;}
 .footer-bottom { background: #071e38; color: #a9bdd2;} .footer-bottom a { color: #a9bdd2; text-decoration: none; } .footer-bottom a:hover { text-decoration: underline; }
 .footer-bottom-inner { max-width: 1200px; margin: 0 auto; padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; justify-content: space-between; font-size:.86rem;}
 .footer-copy-brand { color: #fff; font-weight: 600;}
@@ -393,7 +394,7 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 /* עיצוב פרימיום לדף הבית בלבד — כל החוקים כאן ממוקדים ב-body.home בלבד */
 body.home { background: #fdf8f0; } /* Shared area header, moved unchanged from areas pages */ body[data-page="areas"] .site-header, body[data-page="area-detail"] .site-header { background: #fdf8f0; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid #e8ddd0; }
 body.home h1, body.home h2, body.home .home-service-title { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; }
-.home-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: #B85A00; z-index: 11000; }
+.home-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: #C2570B; z-index: 11000; }
 body.home .site-header { position: sticky; top: 0; z-index: 100; background: #fdf8f0; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid #e8ddd0; box-shadow: none; }
 body.home .site-header.home-scrolled { box-shadow: 0 8px 24px rgba(27, 54, 93, 0.10); }
 body.home .brand-text strong { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 1.15rem; line-height: 1.1; }
@@ -407,17 +408,17 @@ body.home .hero-modern .btn-outline:hover { background: rgba(27, 54, 93, 0.06); 
 
 body.home .trust-bar { background: #fdf8f0; border-top: 1px solid #e8ddd0; border-bottom: 1px solid #e8ddd0; }
 body.home .trust-item { color: #334155; }
-body.home .section-label { background: transparent; border: none; padding: 0; color: #B85A00; letter-spacing: 0.18em; }
+body.home .section-label { background: transparent; border: none; padding: 0; color: #C2570B; letter-spacing: 0.18em; }
 body.home .home-services { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; margin-top: 40px; text-align: left; }
 body.home .home-services-list { display: flex; flex-direction: column; }
 body.home .home-service-row { display: flex; gap: 20px; padding: 28px 0; border-bottom: 1px solid #e8ddd0; color: inherit; }
 body.home .home-service-row:first-child { border-top: 1px solid #e8ddd0; }
-body.home .home-service-num { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; color: #B85A00; padding-top: 4px; }
+body.home .home-service-num { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; color: #C2570B; padding-top: 4px; }
 body.home .home-service-title { font-size: 1.6rem; margin: 0 0 8px; color: #1B365D; }
 body.home .home-service-desc { color: #64748b; line-height: 1.6; margin: 0 0 12px; }
-body.home .home-service-link { color: #B85A00; font-weight: 600; }
+body.home .home-service-link { color: #C2570B; font-weight: 600; }
 body.home .home-service-row-img { display: none; width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-top: 16px; }
-body.home .home-service-row.active .home-service-title { color: #B85A00; }
+body.home .home-service-row.active .home-service-title { color: #C2570B; }
 body.home .home-services-preview { position: sticky; top: 110px; }
 body.home .home-services-preview img { width: 100%; height: 520px; object-fit: cover; border-radius: 16px; }
 body.home .home-ba { background: linear-gradient(160deg, #0c1a33 0%, #0f2347 50%, #0a1628 100%); color: #ffffff; }
@@ -431,13 +432,13 @@ body.home .home-faq .faq-item { background: transparent !important; border: none
 body.home .home-faq .faq-item:first-child { border-top: 1px solid #e8ddd0 !important; }
 body.home .home-faq .faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; color: #1B365D !important; font-weight: 600; list-style: none; }
 body.home .home-faq .faq-item summary::-webkit-details-marker { display: none; }
-body.home .home-faq .faq-item summary::after { content: "+"; flex: 0 0 32px; width: 32px; height: 32px; border: 1px solid #e8ddd0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #B85A00; font-size: 20px; line-height: 1; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
-body.home .home-faq .faq-item details[open] summary::after { transform: rotate(45deg); background: #B85A00; color: #ffffff; border-color: #B85A00; }
+body.home .home-faq .faq-item summary::after { content: "+"; flex: 0 0 32px; width: 32px; height: 32px; border: 1px solid #e8ddd0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #C2570B; font-size: 20px; line-height: 1; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+body.home .home-faq .faq-item details[open] summary::after { transform: rotate(45deg); background: #C2570B; color: #ffffff; border-color: #C2570B; }
 body.home .home-faq .faq-body { padding: 0 0 24px; color: #475569 !important; border-top: none !important; }
 body.home .home-faq .btn-outline, body.home .home-reviews .btn-outline { color: #1B365D; border-color: #1B365D; }
 body.home .home-reviews { background: transparent; }
 body.home .home-reviews-summary { text-align: center; margin: 0 auto 24px; }
-body.home .home-stars { color: #B85A00; letter-spacing: 4px; font-size: 1.4rem; }
+body.home .home-stars { color: #C2570B; letter-spacing: 4px; font-size: 1.4rem; }
 body.home .home-reviews-summary p { color: #475569; margin: 8px 0 0; }
 @media (max-width: 900px) {
   body.home .hero-modern { flex-direction: column; padding: 48px 20px; }
@@ -454,11 +455,11 @@ body.home .home-reviews-summary p { color: #475569; margin: 8px 0 0; }
 }
 /* SCOPED CONSOLIDATIONS - back-to-top + burger (desktop only). Shared by the pages listed below only. Burger mobile (max-width: 760px) Playfair rule stays page-level: services sub-pages carry an earlier mobile Inter rule that would win over a shared rule loaded before the page style. Areas, articles, home, contact (#back-to-top), faq and gallery back-to-top variants, and thanks/404 (shared orange default) intentionally untouched. */
 body[data-page="services"] button.back-to-top,body[data-page="booking"] button.back-to-top,body[data-page="reviews"] button.back-to-top,body[data-page="about"] button.back-to-top{background:#ffffff;color:#1b365d;border:1px solid #e5dcc9}
-body[data-page="services"] button.back-to-top:hover,body[data-page="booking"] button.back-to-top:hover,body[data-page="reviews"] button.back-to-top:hover,body[data-page="about"] button.back-to-top:hover{background:#B85A00;color:#ffffff;border-color:#B85A00}
+body[data-page="services"] button.back-to-top:hover,body[data-page="booking"] button.back-to-top:hover,body[data-page="reviews"] button.back-to-top:hover,body[data-page="about"] button.back-to-top:hover{background:#C2570B;color:#ffffff;border-color:#C2570B}
 body[data-page="services"] .site-nav a,body[data-page="booking"] .site-nav a,body[data-page="contact"] .site-nav a,body[data-page="faq"] .site-nav a,body[data-page="gallery"] .site-nav a,body[data-page="reviews"] .site-nav a,body[data-page="about"] .site-nav a{font-family:'Inter',system-ui,sans-serif;font-weight:500}
 body[data-page="services"] .site-nav a.cta,body[data-page="booking"] .site-nav a.cta,body[data-page="contact"] .site-nav a.cta,body[data-page="faq"] .site-nav a.cta,body[data-page="gallery"] .site-nav a.cta,body[data-page="reviews"] .site-nav a.cta,body[data-page="about"] .site-nav a.cta{font-weight:600}
-body[data-page="services"] .site-nav a.active,body[data-page="booking"] .site-nav a.active,body[data-page="contact"] .site-nav a.active,body[data-page="faq"] .site-nav a.active,body[data-page="gallery"] .site-nav a.active,body[data-page="reviews"] .site-nav a.active,body[data-page="about"] .site-nav a.active{font-weight:700} /* SCOPED CONSOLIDATIONS - services sub-page eyebrows. Shared by services/cleaning, bird-guard, bird-nest, inspection, installations, repairs only. services/index.html carries no svc eyebrow elements. */ body[data-page="services"] .svc-cta-eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:700;color:#ffa25e;margin:0 0 14px} body[data-page="services"] .svc-cta-eyebrow::before,body[data-page="services"] .svc-cta-eyebrow::after{content:"";width:38px;height:1px;background:#B85A00;flex:0 0 auto} body[data-page="services"] .page-hero .svc-sub-eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;font-family:Manrope,Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.22em;font-weight:700;color:#B85A00;text-transform:uppercase;margin:0 auto 18px;max-width:none;} body[data-page="services"] .page-hero .svc-sub-eyebrow::before,body[data-page="services"] .page-hero .svc-sub-eyebrow::after{content:"";display:block;width:44px;height:1px;background:#e5dcc9;} /* SCOPED CONSOLIDATIONS - services closing strip (svc-cta). Shared by services/cleaning, bird-guard, bird-nest, inspection, installations, repairs only. services/index.html carries no svc-cta elements. */ body[data-page="services"] .svc-cta{background:radial-gradient(120% 140% at 50% -10%,#173354 0%,#0c1a2e 58%);color:#fff;padding:88px 24px;text-align:center} body[data-page="services"] .svc-cta h2{font-family:"Playfair Display",Georgia,serif;color:#fff;font-size:clamp(28px,3vw,38px);margin:0 0 28px} body[data-page="services"] .svc-cta .btn{border-radius:999px;background:#B85A00;color:#fff;box-shadow:0 14px 30px rgba(184, 90, 0,.28);padding:16px 34px;font-size:1.05rem} body[data-page="services"] .svc-cta h2 em{font-style:italic;color:#ffa25e} body[data-page="services"] .svc-cta-call-row{margin-top:18px} body[data-page="services"] .svc-cta-call{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid #B85A00;padding-bottom:4px} /* SCOPED CONSOLIDATIONS - services header + hero (desktop only). Site-nav gap and link padding and the hero call-link (plus hover) are identical in all 7 services pages; site-header, brand strong, site-nav active background and page-hero container/h1/p are identical in the 6 sub-pages only, and services/index.html keeps its own variants (ivory header with backdrop-filter, transparent active background, and its own hero metrics), which win over the shared rules where they overlap because the page style loads later. Body background/color, the mobile (max-width:760px) rules, and the svc-hero-actions container stay page-level. */ body[data-page="services"] .site-header{background:#fdf8f0;border-bottom:1px solid #e8ddd0} body[data-page="services"] .brand strong{font-family:"Playfair Display",Georgia,serif;font-size:1.15rem;color:#1B365D} body[data-page="services"] .site-nav{gap:10px} body[data-page="services"] .site-nav a{padding:8px 8px} body[data-page="services"] .site-nav a.active{background:none} /* Desktop header unification (option A, desktop only): brand name, tagline on one line, nav items wrap to two lines as before #121, identical header on all pages. */ @media (min-width:761px){.site-header{background:#fdf8f0;background-image:none;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid #e8ddd0}.brand,.brand-text{flex-shrink:0}.site-header .brand-text strong,.site-header .brand-text span{white-space:nowrap}.site-nav{gap:10px}.site-nav a{padding:8px 8px;font-family:'Inter',system-ui,sans-serif;font-weight:500}.site-nav a.cta{font-weight:600}.site-nav a.active{font-weight:700}} body[data-page="services"] .page-hero{background:#fdf8f0;border-bottom:none;padding:72px 0 48px;text-align:center;height:auto;min-height:unset} body[data-page="services"] .page-hero h1{font-family:"Playfair Display",Georgia,serif;color:#1B365D;font-size:clamp(38px,5vw,56px);line-height:1.1} body[data-page="services"] .page-hero p{color:#475569;font-size:1.1rem;max-width:640px;margin-left:auto;margin-right:auto} body[data-page="services"] .svc-hero-actions .svc-call-link{color:#1b365d;font-weight:700;text-decoration:none;border-bottom:2px solid #B85A00;padding-bottom:3px} /* Punch 5: sub-page hero call links only (services index hero uses plain .container) */ body[data-page="services"] .container.center .svc-hero-actions .svc-call-link{padding-bottom:0} body[data-page="services"] .svc-hero-actions .svc-call-link:hover{background:transparent}
-/* Articles eyebrow: the descendant .articles-hero .eyebrow rule (normalization variant) is the effective rendering on all 29 article pages; the earlier design variant is dead in compound form and overridden in descendant form, so only the normalization rule is shared, scoped to .articles-hero. */.articles-hero .eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;font-family:Manrope,Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.22em;font-weight:700;color:#B85A00;text-transform:uppercase;margin:0 auto 18px}.articles-hero .eyebrow::before,.articles-hero .eyebrow::after{content:"";display:block;width:44px;height:1px;background:#e5dcc9;flex:0 0 auto}
+body[data-page="services"] .site-nav a.active,body[data-page="booking"] .site-nav a.active,body[data-page="contact"] .site-nav a.active,body[data-page="faq"] .site-nav a.active,body[data-page="gallery"] .site-nav a.active,body[data-page="reviews"] .site-nav a.active,body[data-page="about"] .site-nav a.active{font-weight:700} /* SCOPED CONSOLIDATIONS - services sub-page eyebrows. Shared by services/cleaning, bird-guard, bird-nest, inspection, installations, repairs only. services/index.html carries no svc eyebrow elements. */ body[data-page="services"] .svc-cta-eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:700;color:#ffa25e;margin:0 0 14px} body[data-page="services"] .svc-cta-eyebrow::before,body[data-page="services"] .svc-cta-eyebrow::after{content:"";width:38px;height:1px;background:#C2570B;flex:0 0 auto} body[data-page="services"] .page-hero .svc-sub-eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;font-family:Manrope,Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.22em;font-weight:700;color:#C2570B;text-transform:uppercase;margin:0 auto 18px;max-width:none;} body[data-page="services"] .page-hero .svc-sub-eyebrow::before,body[data-page="services"] .page-hero .svc-sub-eyebrow::after{content:"";display:block;width:44px;height:1px;background:#e5dcc9;} /* SCOPED CONSOLIDATIONS - services closing strip (svc-cta). Shared by services/cleaning, bird-guard, bird-nest, inspection, installations, repairs only. services/index.html carries no svc-cta elements. */ body[data-page="services"] .svc-cta{background:radial-gradient(120% 140% at 50% -10%,#173354 0%,#0c1a2e 58%);color:#fff;padding:88px 24px;text-align:center} body[data-page="services"] .svc-cta h2{font-family:"Playfair Display",Georgia,serif;color:#fff;font-size:clamp(28px,3vw,38px);margin:0 0 28px} body[data-page="services"] .svc-cta .btn{border-radius:999px;background:#C2570B;color:#fff;box-shadow:0 14px 30px rgba(194, 87, 11,.28);padding:16px 34px;font-size:1.05rem} body[data-page="services"] .svc-cta h2 em{font-style:italic;color:#ffa25e} body[data-page="services"] .svc-cta-call-row{margin-top:18px} body[data-page="services"] .svc-cta-call{color:#fff;font-weight:700;text-decoration:none;border-bottom:2px solid #C2570B;padding-bottom:4px} /* SCOPED CONSOLIDATIONS - services header + hero (desktop only). Site-nav gap and link padding and the hero call-link (plus hover) are identical in all 7 services pages; site-header, brand strong, site-nav active background and page-hero container/h1/p are identical in the 6 sub-pages only, and services/index.html keeps its own variants (ivory header with backdrop-filter, transparent active background, and its own hero metrics), which win over the shared rules where they overlap because the page style loads later. Body background/color, the mobile (max-width:760px) rules, and the svc-hero-actions container stay page-level. */ body[data-page="services"] .site-header{background:#fdf8f0;border-bottom:1px solid #e8ddd0} body[data-page="services"] .brand strong{font-family:"Playfair Display",Georgia,serif;font-size:1.15rem;color:#1B365D} body[data-page="services"] .site-nav{gap:10px} body[data-page="services"] .site-nav a{padding:8px 8px} body[data-page="services"] .site-nav a.active{background:none} /* Desktop header unification (option A, desktop only): brand name, tagline on one line, nav items wrap to two lines as before #121, identical header on all pages. */ @media (min-width:761px){.site-header{background:#fdf8f0;background-image:none;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid #e8ddd0}.brand,.brand-text{flex-shrink:0}.site-header .brand-text strong,.site-header .brand-text span{white-space:nowrap}.site-nav{gap:10px}.site-nav a{padding:8px 8px;font-family:'Inter',system-ui,sans-serif;font-weight:500}.site-nav a.cta{font-weight:600}.site-nav a.active{font-weight:700}} body[data-page="services"] .page-hero{background:#fdf8f0;border-bottom:none;padding:72px 0 48px;text-align:center;height:auto;min-height:unset} body[data-page="services"] .page-hero h1{font-family:"Playfair Display",Georgia,serif;color:#1B365D;font-size:clamp(38px,5vw,56px);line-height:1.1} body[data-page="services"] .page-hero p{color:#475569;font-size:1.1rem;max-width:640px;margin-left:auto;margin-right:auto} body[data-page="services"] .svc-hero-actions .svc-call-link{color:#1b365d;font-weight:700;text-decoration:none;border-bottom:2px solid #C2570B;padding-bottom:3px} /* Punch 5: sub-page hero call links only (services index hero uses plain .container) */ body[data-page="services"] .container.center .svc-hero-actions .svc-call-link{padding-bottom:0} body[data-page="services"] .svc-hero-actions .svc-call-link:hover{background:transparent}
+/* Articles eyebrow: the descendant .articles-hero .eyebrow rule (normalization variant) is the effective rendering on all 29 article pages; the earlier design variant is dead in compound form and overridden in descendant form, so only the normalization rule is shared, scoped to .articles-hero. */.articles-hero .eyebrow{display:flex;align-items:center;justify-content:center;gap:16px;font-family:Manrope,Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.22em;font-weight:700;color:#C2570B;text-transform:uppercase;margin:0 auto 18px}.articles-hero .eyebrow::before,.articles-hero .eyebrow::after{content:"";display:block;width:44px;height:1px;background:#e5dcc9;flex:0 0 auto}
  /* Hero primary buttons: identical radius and padding on the 5 hero buttons (about, faq, gallery, reviews, services index); base .btn/.btn--primary stays in styles.css; outline and strip variants stay page-level */ body[data-page="about"] .hero-actions .btn--primary,.faq-page-wrap .hero-actions .btn--primary,body[data-page="gallery"] .hero-actions .btn--primary,body[data-page="reviews"] .hero-actions .btn--primary,body[data-page="services"] .svc-hero-actions .btn--primary{border-radius:999px;padding:14px 28px}
 
 /* Follow-up batch 3, item 2: service sub-page hero Call links only. The sub-page .svc-hero-actions rows have no align-items, so the flex default (stretch) stretches the Call link to the Book button's height and its border-bottom lands at the bottom of that stretched box, far below the number, at every width. Centering the row items (the same treatment the services index hero already has) makes the link box hug its text, so the orange line sits directly under the number. Scoped by .container.center: the services index hero uses a plain .container and is untouched. */
@@ -486,14 +487,19 @@ body[data-page="services"] .container.center .svc-hero-actions{align-items:cente
   html body #site-nav { background: #fdf8f0; border-bottom: 1px solid #e8ddd0; gap: 0; }
   html body #site-nav a { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-size: 16px; font-weight: 500; color: #1b365d; background: transparent; padding: 12px 4px; border-radius: 0; border-bottom: 1px solid #e8ddd0; }
   html body #site-nav a.active { font-weight: 700; }
-  html body #site-nav a.cta { background: #B85A00; color: #ffffff; font-weight: 600; border-bottom: 0; }
+  html body #site-nav a.cta { background: var(--orange); color: #ffffff; font-weight: 600; border-bottom: 0; border-radius: 10px; }
 }
 
 /* Desktop: current page = bold on a light box; Contact Us stays orange */
 @media (min-width: 761px) {
   html body #site-nav a.active:not(.cta) { background: #f7f9fc; color: #1b365d; font-weight: 700; }
-  html body #site-nav a.cta { background: #B85A00; color: #ffffff; font-weight: 600; }
+  html body #site-nav a.cta { background: var(--orange); color: #ffffff; font-weight: 600; }
 }
+
+/* Nav CTA pressed state (desktop and mobile): a darker orange while the
+   button is pressed or tapped, with a short fade instead of a flash. */
+html body #site-nav a.cta { transition: background-color 0.15s ease, opacity 0.15s ease; }
+html body #site-nav a.cta:active { background: var(--orange-dark); opacity: 1; }
 
 /* Booking and Contact use the same body font as the rest of the site */
 html body[data-page="booking"],
@@ -544,7 +550,7 @@ html body[data-page="areas"] .page-hero :is(.eyebrow,.faq-eyebrow,.about-eyebrow
 html body[data-page="contact"] .page-hero :is(.eyebrow,.faq-eyebrow,.about-eyebrow,.services-eyebrow,.gallery-eyebrow,.reviews-eyebrow,.booking-hero-eyebrow),
 html body[data-page="articles"] .articles-hero :is(.eyebrow,.faq-eyebrow,.about-eyebrow,.services-eyebrow,.gallery-eyebrow,.reviews-eyebrow,.booking-hero-eyebrow),
 html body[data-page="booking"] .booking-hero :is(.eyebrow,.faq-eyebrow,.about-eyebrow,.services-eyebrow,.gallery-eyebrow,.reviews-eyebrow,.booking-hero-eyebrow),
-html body[data-page="faq"] .faq-page-wrap :is(.eyebrow,.faq-eyebrow,.about-eyebrow,.services-eyebrow,.gallery-eyebrow,.reviews-eyebrow,.booking-hero-eyebrow) { font-family: 'Manrope', Inter, system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; line-height: 1.6; color: #B85A00; margin-top: 0; margin-bottom: 18px; }
+html body[data-page="faq"] .faq-page-wrap :is(.eyebrow,.faq-eyebrow,.about-eyebrow,.services-eyebrow,.gallery-eyebrow,.reviews-eyebrow,.booking-hero-eyebrow) { font-family: 'Manrope', Inter, system-ui, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; line-height: 1.6; color: #C2570B; margin-top: 0; margin-bottom: 18px; }
 
 /* Main-page hero: title */
 html body[data-page="about"] .page-hero h1,
@@ -637,20 +643,20 @@ html body .demo-main .hero h1 { font-family: 'Playfair Display', Georgia, serif;
 /* Service Areas and Articles: the same card look (warm ivory, site border, soft shadow, orange line under the photo) */
 html body[data-page="areas"] .area-card { background: #fffdf8; border: 1px solid #e5dcc9; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: box-shadow 0.3s ease, border-color 0.3s ease; }
 html body[data-page="areas"] .area-card:hover { transform: none; border-color: #d5dff0; box-shadow: 0 12px 30px rgba(27,54,93,0.12); }
-html body[data-page="articles"] .card.media .svc-picture { border-bottom: 3px solid #B85A00; }
+html body[data-page="articles"] .card.media .svc-picture { border-bottom: 3px solid #C2570B; }
 
 /* Heading order (accessibility): footer headings are h3 on some pages and
    article card titles are h2 on /articles/. These rules keep them looking
    exactly like the footer h4 and the former card h3. */
 html body .site-footer h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; font-weight: 700; line-height: 1.6; letter-spacing: normal; color: #0d2b4d; margin: 4px 0 16px; text-transform: none; font-style: normal; }
-html body .site-footer h3::after { content: ""; display: block; width: 34px; height: 3px; background: #B85A00; border-radius: 2px; margin-top: 8px; }
+html body .site-footer h3::after { content: ""; display: block; width: 34px; height: 3px; background: #C2570B; border-radius: 2px; margin-top: 8px; }
 html body[data-page="articles"] .card.media .inner h2 { font-family: 'Inter', system-ui, sans-serif; font-size: 20px; font-weight: 700; line-height: normal; letter-spacing: normal; margin: 0 0 8px; }
 html body[data-page="services"] .svc-index h2.svc-title { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-size: 1.6rem; font-weight: 700; line-height: normal; letter-spacing: normal; color: #1b365d; margin: 0 0 8px; }
 html body[data-page="faq"] .faq-dark-strip h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 700; line-height: normal; letter-spacing: normal; color: #ffffff; margin: 0 0 20px; }
 html body[data-page="faq"] .faq-dark-strip h2 em { font-style: italic; color: #ffa25e; }
 
-/* Brand orange is #B85A00 (passes 4.5:1 on white). Orange TEXT on dark
-   backgrounds keeps its lighter orange, because #B85A00 fails there:
+/* Brand orange is #C2570B (passes 4.5:1 on white). Orange TEXT on dark
+   backgrounds keeps its lighter orange, because #C2570B fails there:
    the before/after label on the homepage and gallery, and the label in
    the dark strip on the 404 page. */
 html body.home .ba-section .section-label,
