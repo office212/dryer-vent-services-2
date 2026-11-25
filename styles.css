@@ -487,7 +487,7 @@ body[data-page="services"] .container.center .svc-hero-actions{align-items:cente
   html body #site-nav { background: #fdf8f0; border-bottom: 1px solid #e8ddd0; gap: 0; }
   html body #site-nav a { font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; font-size: 16px; font-weight: 500; color: #1b365d; background: transparent; padding: 12px 4px; border-radius: 0; border-bottom: 1px solid #e8ddd0; }
   html body #site-nav a.active { font-weight: 700; }
-  html body #site-nav a.cta { background: var(--orange); color: #ffffff; font-weight: 600; border-bottom: 0; border-radius: 999px; }
+  html body #site-nav a.cta { background: var(--orange); color: #ffffff; font-weight: 600; border-bottom: 0; border-radius: 10px; }
 }
 
 /* Desktop: current page = bold on a light box; Contact Us stays orange */
