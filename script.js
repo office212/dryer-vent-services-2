@@ -17,6 +17,16 @@ document.addEventListener('click', function(e) {
 // the page has a touchstart listener. This empty, passive one enables it.
 document.addEventListener('touchstart', function () {}, { passive: true });
 
+// Nav CTA pressed state on touch. :active is unreliable for a quick tap on a
+// link that navigates away, so the button gets .is-pressed while the finger
+// is down (same styles as :active in styles.css).
+document.querySelectorAll('.site-nav a.cta').forEach(function (cta) {
+  var release = function () { cta.classList.remove('is-pressed'); };
+  cta.addEventListener('touchstart', function () { cta.classList.add('is-pressed'); }, { passive: true });
+  cta.addEventListener('touchend', release, { passive: true });
+  cta.addEventListener('touchcancel', release, { passive: true });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* --- 1. SLIDER --- */

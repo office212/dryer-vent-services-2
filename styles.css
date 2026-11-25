@@ -56,7 +56,6 @@ h3 { font-size: 1.25rem; font-weight: 700; color: var(--blue); }
 .site-nav a:hover { background: var(--bg-alt); }
 .site-nav a.cta { background: var(--orange); color: #fff; font-weight: 600; }
 .site-nav a.cta:hover { opacity: .9; }
-.site-nav a.cta:active { background: var(--orange-dark); opacity: 1; }
 .site-nav a.active { background: var(--bg-alt); font-weight: 700; color: var(--blue); }
 
 .burger { display: none; flex-direction: column; align-items: center; gap: 4px; background: transparent; border: 0; cursor: pointer; padding: 5px 0; }
@@ -499,7 +498,16 @@ body[data-page="services"] .container.center .svc-hero-actions{align-items:cente
 /* Nav CTA pressed state (desktop and mobile): a darker orange while the
    button is pressed or tapped, with a short fade instead of a flash. */
 html body #site-nav a.cta { transition: background-color 0.15s ease, opacity 0.15s ease; }
-html body #site-nav a.cta:active { background: var(--orange-dark); opacity: 1; }
+/* Nav CTA pressed state: :active for mouse, .is-pressed for touch (set by
+   script.js while a finger is down). Gray with an orange border, shown at
+   once (transition: none); the 0.15s transition above animates the release.
+   The 2px border takes the place of 2px of padding, so the button's outer
+   box stays exactly the same size. */
+.site-nav a.cta:active, .site-nav a.cta.is-pressed,
+html body #site-nav a.cta:active, html body #site-nav a.cta.is-pressed { background: #6B7280; border: 2px solid var(--orange); color: #ffffff; opacity: 1; transition: none; padding: 6px; }
+@media (max-width: 760px) {
+  html body #site-nav a.cta:active, html body #site-nav a.cta.is-pressed { padding: 10px 2px; }
+}
 
 /* Booking and Contact use the same body font as the rest of the site */
 html body[data-page="booking"],
