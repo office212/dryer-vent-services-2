@@ -751,10 +751,16 @@ footer{background:var(--deep);color:var(--on-navy-muted);font-size:.92rem;paddin
       '<div class="full msg" id="formMsg" hidden></div><div class="full"><button class="btn btn-heat" type="submit">Send Request</button></div></form>'+
     '<aside class="side"><div class="box"><h3>Other ways to reach us</h3><ul class="ways" style="margin-top:14px"><li><small>Call us</small><a href="tel:+13472449382">347-244-9382</a><p>The fastest way to schedule or ask a question.</p></li><li><small>WhatsApp Business</small><a href="https://wa.me/13472449382" target="_blank" rel="noopener">Chat on WhatsApp</a><p>Message us for a quick reply.</p></li><li><small>Email</small><strong style="font-size:1.05rem">office@dryer-ventservices.com</strong></li></ul><div style="margin-top:18px">'+HOURS+'</div></div>'+bookBox('Want to skip the form?','Book directly on our system.')+'</aside></div></section>'};
 
+  var demoNote=false;
+  V.thanks=function(){var n=demoNote;demoNote=false;return (n?'<div class="w" style="padding-block:14px 0"><div class="msg ok">Design demo: the form passed every check, but nothing was actually sent. This is the page customers see after a completed booking.</div></div>':'')+
+    head([['Thank you']],'Thank you','Your visit is booked','Your appointment request has been received and your time slot is reserved. A confirmation is on its way to you, and we will reach out first if we need any extra details before the visit.',false)+
+    '<section class="sec"><div class="w"><p class="kicker">What happens next</p><h2>Three simple steps</h2><p class="lede" style="margin-bottom:30px">Three simple steps between now and a dryer that runs the way it should.</p><ol class="steps"><li><h3>Check your messages</h3><p>A confirmation with your appointment details is on its way to you by text and email. Keep it handy for the day of the visit.</p></li><li><h3>We will remind you</h3><p>You will get a reminder before your appointment, and another heads up when your technician is on the way to your home.</p></li><li><h3>We handle the rest</h3><p>Your technician arrives with everything needed to clean, repair, or install your dryer vent, and walks you through the results before leaving.</p></li></ol></div></section>'+
+    '<section class="sec sec-alt"><div class="w split top-al"><div><p class="kicker">Before we arrive</p><h2>A few things that help</h2><p class="lede">A little preparation makes the visit faster and smoother.</p><ul class="ticks"><li><span><b>Clear the path:</b> make sure we can reach the back of the dryer and move it safely if needed.</span></li><li><span><b>Know your vent exit:</b> if you know where the vent leaves the house, point it out when we arrive. If not, we will find it.</span></li><li><span><b>Keep pets comfortable:</b> the dryer will be moved and the vent run tested, so a quiet room for pets helps everyone.</span></li></ul></div><div class="box dark"><h3>Need to change something?</h3><p>No problem. If you need a different time or have a question about your visit, call us and we will sort it out.</p><a class="btn btn-heat" href="tel:+13472449382">Call 347-244-9382</a><a class="btn btn-line" href="#home">Back to home</a></div></div></section>'};
+
   V.nf=function(){return head([['Page not found']],'404','Page not found','The page you are looking for does not exist or has moved.','<a class="btn btn-heat" href="#home">Back to home</a><a class="btn btn-line" href="#services">Our services</a>')};
 
   /* ---------- router ---------- */
-  var TOP={svc:'services',art:'articles',area:'areas'},PAGES=['services','gallery','reviews','faq','articles','areas','booking','about','contact'];
+  var TOP={svc:'services',art:'articles',area:'areas'},PAGES=['services','gallery','reviews','faq','articles','areas','booking','about','contact','thanks'];
   function route(){
     var h=(location.hash||'').replace(/^#/,'')||'home',m=h.match(/^(svc|art|area)-(.+)$/),html,navKey;
     if(h==='home'){html=null;navKey='home'}
@@ -824,9 +830,8 @@ footer{background:var(--deep);color:var(--on-navy-muted);font-size:.92rem;paddin
     else if(dg(v('f-phone'))!==dg(v('f-phone2')))err='The two phone numbers do not match.';
     else if(!/^\d{5}$/.test(v('f-zip')))err='Please enter a 5-digit ZIP code.';
     else if(!document.querySelector('#form input[name=svc]:checked'))err='Select at least one service.';
-    msg.hidden=false;
-    if(err){msg.className='full msg err';msg.textContent=err}
-    else{msg.className='full msg ok';msg.textContent='The form checks out. This is a design demo, so nothing was sent. On the live site this request goes straight to the office.'}
+    if(err){msg.hidden=false;msg.className='full msg err';msg.textContent=err}
+    else{demoNote=true;location.hash='thanks'}
   });
   $('burger').addEventListener('click',function(){var o=$('nav').classList.toggle('open');this.setAttribute('aria-expanded',o)});
   window.addEventListener('scroll',function(){$('totop').classList.toggle('show',window.scrollY>700)},{passive:true});
