@@ -1,0 +1,799 @@
+<title>Dryer Vent Services Concept</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400..700&display=swap">
+<style>
+/* Layout concept: the page is built around one round "porthole" into a real vent.
+   Galvanized-steel ground, clapboard-siding lines, van-lettering headlines, meter-style readouts. */
+:root{
+  color-scheme: light;
+  --steel:#E9EDF0;        /* galvanized ground */
+  --sheet:#F7F9FA;        /* lighter sheet metal */
+  --white:#FFFFFF;
+  --ink:#0F2240;          /* deep navy ink */
+  --navy:#13315C;         /* band navy */
+  --blue:#0B4F9C;         /* logo blue */
+  --heat:#F28C1E;         /* logo orange, the only accent */
+  --heat-deep:#B85A06;    /* orange for text on light */
+  --muted:#51627A;
+  --line:#C9D2DA;
+  --line-dark:rgba(255,255,255,.16);
+  --on-navy:#E8EEF5;
+  --on-navy-muted:#A9B9CE;
+  --ok:#1F7A4D;
+  --bad:#B3261E;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:5px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--steel);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--sheet)}
+img{display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--heat);outline-offset:3px;border-radius:2px}
+.w{max-width:1200px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-stretch:70%;font-weight:800;line-height:.98;letter-spacing:-.005em;margin:0;text-wrap:balance}
+h2{font-size:clamp(2.3rem,5.4vw,4rem)}
+h3{font-size:1.55rem;line-height:1.05}
+p{margin:0}
+.kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--heat-deep);margin-bottom:14px}
+.lede{font-size:1.12rem;color:var(--muted);max-width:56ch;margin-top:18px}
+.band{padding-block:clamp(64px,9vw,120px)}
+.band-navy{background:var(--navy);color:var(--on-navy)}
+.band-navy .kicker{color:var(--heat)}
+.band-navy .lede{color:var(--on-navy-muted)}
+.band-sheet{background:var(--sheet)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--display);font-stretch:80%;font-weight:700;font-size:1.06rem;letter-spacing:.02em;text-decoration:none;padding:15px 24px;border-radius:var(--r);border:2px solid transparent;cursor:pointer;transition:transform .15s,background .15s,border-color .15s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-heat{background:var(--heat);color:var(--ink)}
+.btn-heat:hover{background:#FF9D33}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:var(--white)}
+.band-navy .btn-line{border-color:var(--on-navy);color:var(--on-navy)}
+.band-navy .btn-line:hover{background:var(--on-navy);color:var(--navy)}
+.tlink{font-weight:600;text-decoration:underline;text-decoration-color:var(--heat);text-decoration-thickness:2px;text-underline-offset:4px}
+.tlink:hover{text-decoration-thickness:4px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(247,249,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .w{display:flex;align-items:center;gap:22px;min-height:68px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.mark{width:36px;height:36px;border-radius:7px;background:var(--blue);display:grid;place-items:center;flex:none}
+.mark::after{content:"";width:18px;height:18px;border-radius:50%;border:3px solid #fff;background:var(--heat)}
+.brand b{font-family:var(--display);font-stretch:72%;font-weight:800;font-size:1.32rem;line-height:1;display:block}
+.brand small{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--heat-deep);display:block;margin-top:3px;white-space:nowrap}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{white-space:nowrap;font-size:.93rem;font-weight:500;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-bottom-color:var(--heat)}
+.top-phone{font-family:var(--mono);font-size:.92rem;font-weight:500;text-decoration:none;white-space:nowrap}
+.top .btn{padding:10px 18px;font-size:.98rem}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:var(--r);background:var(--white);cursor:pointer;padding:0;place-items:center}
+.burger i{display:block;width:20px;height:2px;background:var(--ink);box-shadow:0 6px 0 var(--ink),0 -6px 0 var(--ink)}
+@media (max-width:1180px){
+  .top-phone{display:none}
+  .burger{display:grid}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--sheet);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:6px max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px))}
+  .nav.open{display:flex}
+  .nav a{padding:13px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+}
+@media (max-width:520px){.top .btn{display:none}}
+
+/* hero */
+.hero{background:
+  repeating-linear-gradient(180deg,transparent 0 37px,rgba(15,34,64,.07) 37px 38px,rgba(255,255,255,.7) 38px 40px),
+  linear-gradient(180deg,var(--sheet),var(--steel));
+  border-bottom:1px solid var(--line);overflow:hidden}
+.hero .w{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center;padding-block:clamp(40px,6vw,84px)}
+.status{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.76rem;letter-spacing:.04em;background:var(--white);border:1px solid var(--line);border-radius:99px;padding:6px 14px 6px 11px;margin-bottom:26px}
+.status i{width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}
+.status.closed i{background:var(--bad)}
+h1{font-size:clamp(3.1rem,8.2vw,6.6rem);font-stretch:66%;font-weight:900;line-height:.9;text-transform:uppercase}
+h1 em{font-style:normal;color:var(--blue);display:block}
+.hero-sub{font-size:1.2rem;max-width:44ch;margin-top:24px;color:#2B3D58}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.proof{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.proof b{color:var(--ink);font-weight:500}
+.proof .stars{color:var(--heat-deep);letter-spacing:.1em}
+
+/* porthole */
+.port-col{display:flex;flex-direction:column;align-items:center;gap:20px;min-width:0}
+.port{position:relative;width:min(100%,520px);aspect-ratio:1;border-radius:50%;padding:clamp(14px,2.4vw,24px);
+  background:conic-gradient(from 210deg,#f4f6f8,#9aa6b2,#eef1f4,#7f8b98,#f7f9fa,#aab4be,#f4f6f8);
+  box-shadow:0 30px 60px -22px rgba(15,34,64,.5),inset 0 0 0 1px rgba(255,255,255,.8),0 0 0 1px #8a95a1}
+.port-glass{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#222;cursor:ew-resize;touch-action:pan-y;box-shadow:inset 0 0 0 5px #1b2533,inset 0 0 40px rgba(0,0,0,.6);--split:50%;user-select:none;-webkit-user-select:none}
+.port-glass img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.port-glass .before{clip-path:inset(0 calc(100% - var(--split)) 0 0)}
+.port-glass::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 5px #1b2533,inset 0 12px 50px rgba(0,0,0,.55);pointer-events:none}
+.grip{position:absolute;top:0;bottom:0;left:var(--split);width:3px;margin-left:-1.5px;background:#fff;z-index:2}
+.grip button{position:absolute;top:50%;left:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;border:3px solid #fff;background:var(--heat);color:var(--ink);cursor:ew-resize;font:700 1.1rem var(--mono);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.45);padding:0}
+.tag{position:absolute;top:50%;z-index:1;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(15,34,64,.82);color:#fff;padding:5px 9px;border-radius:3px;margin-top:-64px;pointer-events:none}
+.tag.b{left:16%}.tag.a{right:16%;background:rgba(255,255,255,.9);color:var(--ink)}
+.port-ctrl{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.port-ctrl button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:var(--white);color:var(--ink);font-size:1.1rem;cursor:pointer;display:grid;place-items:center;padding:0}
+.port-ctrl button:hover{background:var(--ink);color:#fff}
+.port-ctrl span{min-width:15ch;text-align:center}
+.port-note{font-size:.86rem;color:var(--muted);text-align:center;max-width:36ch;margin-top:-6px}
+@media (max-width:860px){.hero .w{grid-template-columns:minmax(0,1fr)}.port-col{order:-1}.port{width:min(100%,400px)}}
+
+/* louver divider */
+.louver{height:30px;background:repeating-linear-gradient(180deg,var(--navy) 0 7px,#0c2344 7px 10px);border-top:1px solid #0c2344}
+
+/* symptom check */
+.check-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);margin-top:44px;align-items:start}
+.signs{display:grid;gap:10px;list-style:none;margin:0;padding:0}
+.sign{display:flex;align-items:center;gap:16px;width:100%;text-align:left;font:500 1.06rem/1.35 var(--body);color:var(--on-navy);background:rgba(255,255,255,.05);border:1.5px solid var(--line-dark);border-radius:var(--r);padding:16px 18px;cursor:pointer;transition:background .15s,border-color .15s}
+.sign:hover{border-color:rgba(255,255,255,.45)}
+.sign .box{flex:none;width:26px;height:26px;border-radius:4px;border:2px solid var(--on-navy-muted);display:grid;place-items:center;font:700 .95rem var(--mono);color:transparent}
+.sign[aria-pressed="true"]{background:rgba(242,140,30,.14);border-color:var(--heat)}
+.sign[aria-pressed="true"] .box{background:var(--heat);border-color:var(--heat);color:var(--ink)}
+.readout{background:#0c2344;border:1px solid var(--line-dark);border-radius:10px;padding:26px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 88px)}
+.readout-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-muted)}
+.slats{display:grid;gap:7px;margin:18px 0 22px;padding:14px;background:#081a35;border-radius:6px;border:1px solid var(--line-dark)}
+.slats i{height:15px;border-radius:2px;background:linear-gradient(180deg,#dfe6ee,#aebccc);transition:background .25s}
+.slats i.on{background:repeating-linear-gradient(100deg,#6d6259 0 5px,#8a7d70 5px 9px,#5c524a 9px 13px)}
+.readout h3{color:#fff;font-size:1.9rem}
+.readout p{color:var(--on-navy-muted);margin-top:10px;font-size:1rem}
+.readout .btn{margin-top:20px;width:100%}
+.readout small{display:block;margin-top:14px;font-size:.8rem;color:var(--on-navy-muted)}
+@media (max-width:860px){.check-grid{grid-template-columns:minmax(0,1fr)}.readout{position:static}}
+
+/* visit */
+.visit-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,72px);align-items:start}
+.visit-photo{position:relative}
+.visit-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px}
+.visit-photo figcaption{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:10px}
+figure{margin:0}
+.steps{list-style:none;margin:40px 0 0;padding:0;counter-reset:s;display:grid;gap:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;padding:24px 0;border-top:1px solid var(--line)}
+.steps li::before{content:counter(s);font-family:var(--display);font-stretch:66%;font-weight:900;font-size:3.4rem;line-height:.85;color:var(--heat)}
+.steps p{color:var(--muted);margin-top:8px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:10px}
+.facts div{background:var(--white);padding:20px}
+.facts b{display:block;font-family:var(--mono);font-weight:500;font-size:1.25rem}
+.facts span{font-size:.92rem;color:var(--muted)}
+.incl{margin:34px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.incl li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px}
+.incl li::before{content:"";width:12px;height:12px;margin-top:8px;border-radius:50%;background:var(--heat);box-shadow:0 0 0 3px rgba(242,140,30,.25)}
+@media (max-width:860px){.visit-grid{grid-template-columns:minmax(0,1fr)}.visit-photo img{aspect-ratio:4/3}}
+
+/* services by problem */
+.probs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(28px,4vw,56px);margin-top:44px}
+.prob{display:grid;grid-template-columns:128px minmax(0,1fr);gap:22px;padding:26px 0;border-top:1px solid var(--line);text-decoration:none;align-items:start}
+.prob img{width:128px;height:160px;object-fit:cover;border-radius:6px;transition:transform .3s}
+.prob:hover img{transform:scale(1.03)}
+.prob q{display:block;quotes:"\201C" "\201D";font-family:var(--display);font-stretch:74%;font-weight:700;font-size:1.5rem;line-height:1.08}
+.prob .svc{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--heat-deep);margin:12px 0 6px}
+.prob p{font-size:.97rem;color:var(--muted)}
+.prob .go{display:inline-block;margin-top:10px;font-weight:600;font-size:.93rem;border-bottom:2px solid var(--heat)}
+@media (max-width:860px){.probs{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:440px){.prob{grid-template-columns:92px minmax(0,1fr);gap:16px}.prob img{width:92px;height:120px}.prob q{font-size:1.28rem}}
+
+/* price */
+.price-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.house{max-width:420px;width:100%;margin-inline:auto}
+.roof{height:70px;background:var(--heat);clip-path:polygon(50% 0,100% 100%,0 100%);display:grid;place-items:end center;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding-bottom:8px}
+.floor{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1.5px solid var(--on-navy);border-top:0;padding:17px 20px;font-weight:600}
+.floor:first-of-type{border-top:1.5px solid var(--on-navy)}
+.floor span{font-family:var(--mono);font-size:.74rem;font-weight:400;color:var(--on-navy-muted);text-align:right}
+.floor.ground{border-bottom-width:5px}
+.never{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.never span{font-family:var(--mono);font-size:.8rem;border:1px solid var(--line-dark);border-radius:99px;padding:6px 14px;text-decoration:line-through;text-decoration-color:var(--heat);text-decoration-thickness:2px}
+.price-note{margin-top:22px;color:var(--on-navy-muted);max-width:52ch}
+@media (max-width:860px){.price-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* reviews */
+.rev-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px}
+.score{display:flex;align-items:center;gap:16px}
+.score b{font-family:var(--display);font-stretch:66%;font-weight:900;font-size:4.6rem;line-height:.8}
+.score span{font-family:var(--mono);font-size:.8rem;color:var(--muted);line-height:1.5}
+.score .stars{color:var(--heat-deep);font-size:1rem;letter-spacing:.12em;display:block}
+.pull{margin:44px 0 0;padding:clamp(26px,4vw,48px);background:var(--ink);color:#fff;border-radius:10px}
+.pull blockquote{margin:0;font-family:var(--display);font-stretch:76%;font-weight:700;font-size:clamp(1.6rem,3.6vw,2.7rem);line-height:1.1;text-wrap:balance}
+.pull blockquote mark{background:none;color:var(--heat)}
+.pull figcaption,.rev figcaption{font-family:var(--mono);font-size:.76rem;margin-top:18px;color:var(--on-navy-muted)}
+.revs{columns:3 300px;column-gap:20px;margin-top:20px}
+.rev{break-inside:avoid;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:22px;margin:0 0 20px}
+.rev blockquote{margin:0;font-size:.98rem}
+.rev figcaption{color:var(--muted)}
+.rev figcaption b{color:var(--ink);font-weight:500}
+.rev-foot{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+
+/* gallery */
+.strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 0 18px;margin-top:36px;scrollbar-width:thin}
+.strip button{flex:none;width:clamp(180px,22vw,250px);aspect-ratio:3/4;border:0;padding:0;border-radius:6px;overflow:hidden;cursor:zoom-in;scroll-snap-align:start;background:#ccd}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.strip button:hover img{transform:scale(1.04)}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(92vw,720px);max-height:92vh}
+dialog.lb::backdrop{background:rgba(8,20,40,.88)}
+dialog.lb img{max-height:80vh;width:auto;max-width:100%;border-radius:6px;margin-inline:auto}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;color:#fff;font-size:.9rem}
+.lb-bar button{background:#fff;color:var(--ink);border:0;border-radius:var(--r);padding:9px 15px;font:600 .9rem var(--body);cursor:pointer}
+.lb-bar p{flex:1;text-align:center;min-width:0}
+
+/* areas */
+.areas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);margin-top:44px}
+.areas h3{font-family:var(--mono);font-stretch:100%;font-weight:500;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--heat-deep);padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.areas ul{list-style:none;margin:0;padding:0}
+.areas li a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;padding:15px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.areas li b{font-family:var(--display);font-stretch:70%;font-weight:800;font-size:1.7rem;line-height:1}
+.areas li span{grid-column:1;font-size:.9rem;color:var(--muted)}
+.areas li i{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;font-size:1.2rem;transition:transform .2s}
+.areas li a:hover i{transform:translateX(5px);color:var(--heat-deep)}
+.areas li a:hover b{color:var(--blue)}
+@media (max-width:760px){.areas{grid-template-columns:minmax(0,1fr)}}
+
+/* faq + articles */
+.two{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(32px,6vw,88px);align-items:start}
+.faq{margin-top:34px;border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 28px;gap:14px;align-items:center;padding:18px 0;font-weight:600;font-size:1.08rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:500 1.5rem/1 var(--mono);color:var(--heat-deep);text-align:center;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details div{padding:0 42px 20px 0;color:var(--muted);max-width:68ch}
+.faq details ul{margin:8px 0 0;padding-left:20px}
+.arts{list-style:none;margin:30px 0 22px;padding:0}
+.arts li a{display:block;padding:15px 0;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600;line-height:1.3}
+.arts li a:hover{color:var(--blue)}
+.arts li a::after{content:" \2192";color:var(--heat-deep)}
+.side h3{font-size:2rem}
+@media (max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.about-grid img{width:100%;border-radius:10px;aspect-ratio:3/2;object-fit:cover}
+.about-grid p+p{margin-top:14px}
+.about-grid .body{color:var(--muted);margin-top:20px;max-width:56ch}
+.nums{display:flex;flex-wrap:wrap;gap:14px 40px;margin-top:28px}
+.nums div b{display:block;font-family:var(--display);font-stretch:66%;font-weight:900;font-size:3rem;line-height:.9}
+.nums div span{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+@media (max-width:860px){.about-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,72px);align-items:start}
+.ways{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--line-dark)}
+.ways li{padding:20px 0;border-bottom:1px solid var(--line-dark)}
+.ways small{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--heat)}
+.ways a,.ways strong{font-family:var(--display);font-stretch:72%;font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);text-decoration:none;overflow-wrap:anywhere;user-select:all;-webkit-user-select:all}
+.ways p{font-size:.92rem;color:var(--on-navy-muted)}
+.hours{margin-top:22px;font-family:var(--mono);font-size:.84rem;color:var(--on-navy-muted);display:grid;grid-template-columns:auto 1fr;gap:4px 18px}
+.hours dt{color:var(--on-navy)}
+.hours dd{margin:0}
+form.card{background:var(--sheet);color:var(--ink);border-radius:10px;padding:clamp(22px,3.5vw,38px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+form.card h3{grid-column:1/-1;font-size:2rem}
+form.card .full{grid-column:1/-1}
+label{display:block;font-size:.86rem;font-weight:600;margin-bottom:6px}
+input[type=text],input[type=email],input[type=tel],textarea{width:100%;font:400 1rem var(--body);color:var(--ink);background:var(--white);border:1.5px solid var(--line);border-radius:var(--r);padding:12px 13px}
+input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(11,79,156,.18)}
+textarea{min-height:96px;resize:vertical}
+fieldset{border:0;padding:0;margin:0}
+legend{font-size:.86rem;font-weight:600;margin-bottom:8px;padding:0}
+.picks{display:flex;flex-wrap:wrap;gap:8px}
+.picks label{margin:0;cursor:pointer}
+.picks input{position:absolute;opacity:0}
+.picks span{display:block;border:1.5px solid var(--line);background:var(--white);border-radius:99px;padding:9px 17px;font-weight:500;font-size:.95rem}
+.picks input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.picks input:focus-visible+span{outline:3px solid var(--heat);outline-offset:2px}
+.msg{font-size:.92rem;font-weight:600;border-radius:var(--r);padding:12px 14px}
+.msg.err{background:#FBE9E7;color:var(--bad)}
+.msg.ok{background:#E4F3EA;color:var(--ok)}
+@media (max-width:860px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){form.card{grid-template-columns:minmax(0,1fr)}}
+
+/* footer */
+footer{background:#0A1A33;color:var(--on-navy-muted);font-size:.92rem;padding-block:56px 40px}
+.foot{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:32px}
+.foot h4{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--heat);margin:0 0 12px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.foot a{text-decoration:none}.foot a:hover{color:#fff;text-decoration:underline}
+.foot .brand b{color:#fff}.foot .brand small{color:var(--heat)}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line-dark);font-size:.82rem}
+@media (max-width:760px){.foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}}
+
+/* floating */
+.totop{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:1.1rem;cursor:pointer;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.totop.show{opacity:1;pointer-events:auto}
+.dock{display:none}
+@media (max-width:760px){
+  .dock{display:grid;grid-template-columns:1.4fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--ink);padding:8px max(10px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px));gap:8px}
+  .dock a{display:grid;place-items:center;min-height:48px;border-radius:var(--r);font-family:var(--display);font-stretch:80%;font-weight:700;text-decoration:none;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+  .dock a.b{background:var(--heat);color:var(--ink);border-color:var(--heat)}
+  footer{padding-bottom:110px}
+  .totop{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+
+<header class="top">
+  <div class="w">
+    <a class="brand" href="#home" aria-label="Dryer Vent Services, top of page">
+      <span class="mark" aria-hidden="true"></span>
+      <span><b>Dryer Vent Services</b><small>Cleaning · Repairs · Installations</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main menu">
+      <a href="#check">Do I need it?</a>
+      <a href="#services">Services</a>
+      <a href="#price">Pricing</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#areas">Areas</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="top-phone" href="tel:+13472449382">347-244-9382</a>
+    <a class="btn btn-heat" data-book href="https://www.dryer-ventservices.com/booking/" target="_blank" rel="noopener">Book online</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu"><i></i></button>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+  <div class="w">
+    <div>
+      <div class="status" id="status"><i></i><span>Sun–Thu open 24 hours</span></div>
+      <h1>Your dryer breathes <em>through this.</em></h1>
+      <p class="hero-sub">That's a real vent we opened, packed with lint. Drag the handle to see it after we finished. We clear the whole line, from the back of the dryer to the outside wall, across Staten Island, New York and New Jersey.</p>
+      <div class="hero-cta">
+        <a class="btn btn-heat" data-book href="https://www.dryer-ventservices.com/booking/" target="_blank" rel="noopener">Book a cleaning</a>
+        <a class="btn btn-line" href="tel:+13472449382">Call 347-244-9382</a>
+      </div>
+      <div class="proof">
+        <span><b>5.0</b> <span class="stars" aria-hidden="true">★★★★★</span> <b>100</b> Google reviews</span>
+        <span><b>2,000+</b> vents done since 2020</span>
+        <span><b>Owner-operated</b>, no subcontractors</span>
+      </div>
+    </div>
+    <div class="port-col">
+      <div class="port">
+        <div class="port-glass" id="glass">
+          <img class="after" id="imgA" src="assets/img/before-after/ba18-after.webp" alt="The same dryer vent after cleaning, clear all the way through" width="800" height="1200">
+          <img class="before" id="imgB" src="assets/img/before-after/ba18-before.webp" alt="Dryer vent before cleaning, packed with lint" width="800" height="1200">
+          <span class="tag b" aria-hidden="true">Before</span>
+          <span class="tag a" aria-hidden="true">After</span>
+          <div class="grip"><button type="button" id="grip" role="slider" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">↔</button></div>
+        </div>
+      </div>
+      <div class="port-ctrl">
+        <button type="button" id="prev" aria-label="Previous job">←</button>
+        <span id="count" aria-live="polite">Job 1 of 18</span>
+        <button type="button" id="next" aria-label="Next job">→</button>
+      </div>
+      <p class="port-note">Our own photos from real jobs. Nothing staged.</p>
+    </div>
+  </div>
+</section>
+<div class="louver" aria-hidden="true"></div>
+
+<section class="band band-navy" id="check">
+  <div class="w">
+    <p class="kicker">One-minute check</p>
+    <h2>Is your vent already clogged?</h2>
+    <p class="lede">You can't see inside the wall, but the dryer tells you. Tap everything you've noticed at home.</p>
+    <div class="check-grid">
+      <ul class="signs" id="signs">
+        <li><button class="sign" type="button" aria-pressed="false"><span class="box">✓</span>Clothes are still damp after a full cycle</button></li>
+        <li><button class="sign" type="button" aria-pressed="false"><span class="box">✓</span>The laundry room gets hot or humid when the dryer runs</button></li>
+        <li><button class="sign" type="button" aria-pressed="false"><span class="box">✓</span>The dryer itself gets very hot</button></li>
+        <li><button class="sign" type="button" aria-pressed="false" data-urgent><span class="box">✓</span>There's a burnt or hot smell while it's running</button></li>
+        <li><button class="sign" type="button" aria-pressed="false"><span class="box">✓</span>Lint is collecting on the vent cover or bird guard outside</button></li>
+        <li><button class="sign" type="button" aria-pressed="false"><span class="box">✓</span>It's been more than a year since the last cleaning</button></li>
+      </ul>
+      <div class="readout" aria-live="polite">
+        <div class="readout-top"><span>Your vent</span><span id="rCount">0 of 6 signs</span></div>
+        <div class="slats" id="slats" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <h3 id="rTitle">Nothing ticked yet</h3>
+        <p id="rText">Each sign you tap blocks one slat. If none of them sound familiar and you had a cleaning within the last year, you're probably fine.</p>
+        <a class="btn btn-heat" id="rBtn" data-book href="https://www.dryer-ventservices.com/booking/" target="_blank" rel="noopener">Book a cleaning</a>
+        <small>A quick guide, not an inspection. We measure the actual airflow when we arrive.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band-sheet" id="visit">
+  <div class="w visit-grid">
+    <figure class="visit-photo">
+      <img src="services/images/service-inspection.webp" alt="Technician holding an airflow meter at an exterior dryer vent" width="720" height="960" loading="lazy">
+      <figcaption>Airflow reading at the outside vent. You see the number before and after.</figcaption>
+    </figure>
+    <div>
+      <p class="kicker">What actually happens</p>
+      <h2>No date to pick. No payment up front.</h2>
+      <ol class="steps">
+        <li><div><h3>You send a short form</h3><p>Name, phone number and address. It takes about a minute. Or just call, and we set everything up on the phone.</p></div></li>
+        <li><div><h3>We contact you right away</h3><p>As soon as your details come in, we get in touch and agree on a time that works for you.</p></div></li>
+        <li><div><h3>We clean, you see the readings</h3><p>We arrive at the agreed time, clean the full vent line, and show you the airflow reading from before and after.</p></div></li>
+      </ol>
+      <div class="facts">
+        <div><b>30–45 min</b><span>A standard cleaning. Long, damaged or high-floor vents can take longer.</span></div>
+        <div><b>Sealed vacuum</b><span>No dust released into your home. We leave the area neat.</span></div>
+        <div><b>Before + after</b><span>Airflow tested twice on every job, so you know it's clear.</span></div>
+      </div>
+      <ul class="incl">
+        <li>Full vent line cleaned, from the dryer all the way to the outside vent</li>
+        <li>Exterior vent cover checked and cleared of lint</li>
+        <li>Blocked or crushed sections pointed out and explained on the spot</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="w">
+    <p class="kicker">Services</p>
+    <h2>Tell us what's going on.</h2>
+    <p class="lede">Dryer vents are all we do: cleaning, repairs and full installations.</p>
+    <div class="probs">
+      <a class="prob" href="https://www.dryer-ventservices.com/services/cleaning/" target="_blank" rel="noopener">
+        <img src="services/images/service-cleaning.webp" alt="Inside of a dryer vent lined with lint" width="720" height="960" loading="lazy">
+        <div><q>It takes two or three cycles to dry a load.</q><p class="svc">Dryer vent cleaning</p><p>Rotary brushes and a powerful vacuum clear the lint from the dryer to the outside exit, so one cycle is enough again.</p><span class="go">Cleaning details</span></div>
+      </a>
+      <a class="prob" href="https://www.dryer-ventservices.com/services/repairs/" target="_blank" rel="noopener">
+        <img src="services/images/service-repairs.webp" alt="Flexible dryer vent hose being reconnected" width="633" height="768" loading="lazy">
+        <div><q>The hose behind the dryer is crushed or came off.</q><p class="svc">Repairs &amp; rerouting</p><p>Crushed, torn or disconnected ductwork fixed with rigid metal, connected properly and up to code.</p><span class="go">Repair details</span></div>
+      </a>
+      <a class="prob" href="https://www.dryer-ventservices.com/services/installations/" target="_blank" rel="noopener">
+        <img src="services/images/service-installations.webp" alt="New exterior dryer vent cover on siding" width="693" height="1500" loading="lazy">
+        <div><q>We're renovating, or moving the laundry.</q><p class="svc">New installations</p><p>A new vent route planned and built for your home, including the exterior hood, for safe drying from day one.</p><span class="go">Installation details</span></div>
+      </a>
+      <a class="prob" href="https://www.dryer-ventservices.com/services/inspection/" target="_blank" rel="noopener">
+        <img src="services/images/service-inspection.webp" alt="Airflow meter held at a dryer vent" width="720" height="960" loading="lazy">
+        <div><q>I'm not sure anything is wrong.</q><p class="svc">Airflow inspection</p><p>We measure air velocity with a digital meter and find hidden problems inside the wall before they grow.</p><span class="go">Inspection details</span></div>
+      </a>
+      <a class="prob" href="https://www.dryer-ventservices.com/services/bird-nest/" target="_blank" rel="noopener">
+        <img src="services/images/service-bird-nest.webp" alt="Bird nest material pulled out of a dryer vent" width="924" height="1601" loading="lazy">
+        <div><q>I can hear birds in the vent.</q><p class="svc">Bird nest removal</p><p>Nests and debris cleared out safely so the dryer can exhaust again. No extra charge on top of the cleaning price.</p><span class="go">Nest removal details</span></div>
+      </a>
+      <a class="prob" href="https://www.dryer-ventservices.com/services/bird-guard/" target="_blank" rel="noopener">
+        <img src="services/images/service-bird-guard.webp" alt="Bird guard fitted over an exterior dryer vent" width="720" height="960" loading="lazy">
+        <div><q>I don't want them coming back.</q><p class="svc">Bird &amp; pest guards</p><p>A guard over the outside opening that keeps animals out for good while still letting lint and air escape.</p><span class="go">Bird guard details</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band band-navy" id="price">
+  <div class="w price-grid">
+    <div>
+      <p class="kicker">Pricing</p>
+      <h2>One thing sets the price: your floor.</h2>
+      <p class="lede">A cleaning is a flat rate based on where the dryer sits and where the vent leaves the house. You hear the price before we come, and it doesn't move.</p>
+      <div class="never" aria-label="Things that never add to the price">
+        <span>Long vent</span><span>Bird nest</span><span>Heavy clog</span>
+      </div>
+      <p class="price-note">None of these add a dollar. If we find something that needs a repair or a part, we quote it first and do it only with your approval.</p>
+      <div class="hero-cta"><a class="btn btn-heat" href="tel:+13472449382">Call for your price</a><a class="btn btn-line" href="#contact">Ask in writing</a></div>
+    </div>
+    <div class="house" role="img" aria-label="The four price levels: basement or first floor, second floor, third floor, rooftop">
+      <div class="roof">Rooftop exit</div>
+      <div class="floor">Third floor<span>flat rate</span></div>
+      <div class="floor">Second floor<span>flat rate</span></div>
+      <div class="floor ground">Basement / first floor<span>flat rate</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="reviews">
+  <div class="w">
+    <div class="rev-head">
+      <div><p class="kicker">Google reviews</p><h2>What your neighbors say.</h2></div>
+      <div class="score"><b>5.0</b><span><span class="stars" aria-hidden="true">★★★★★</span>from 100 Google reviews</span></div>
+    </div>
+    <figure class="pull">
+      <blockquote>“Chanoch was very professional and walked me through what was stopping my dryer from working properly. <mark>He even showed me some burnt lint.</mark>”</blockquote>
+      <figcaption>Regina Iannizzotto · Google review</figcaption>
+    </figure>
+    <div class="revs" id="revs"></div>
+    <div class="rev-foot">
+      <a class="btn btn-line" href="https://www.dryer-ventservices.com/reviews/" target="_blank" rel="noopener">Read all reviews</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band-sheet" id="gallery">
+  <div class="w">
+    <p class="kicker">Gallery</p>
+    <h2>Straight from the job.</h2>
+    <p class="lede">Phone photos from our own visits. Tap one to enlarge.</p>
+    <div class="strip" id="strip"></div>
+    <a class="tlink" href="https://www.dryer-ventservices.com/gallery/" target="_blank" rel="noopener">See the full gallery</a>
+  </div>
+</section>
+
+<section class="band" id="areas">
+  <div class="w">
+    <p class="kicker">Where we work</p>
+    <h2>Based in Staten Island. On the road across NY &amp; NJ.</h2>
+    <div class="areas">
+      <div><h3>New York</h3><ul id="ny"></ul></div>
+      <div><h3>New Jersey</h3><ul id="nj"></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="band band-sheet" id="faq">
+  <div class="w two">
+    <div>
+      <p class="kicker">Answers</p>
+      <h2>Questions people ask before booking.</h2>
+      <div class="faq" id="faqList"></div>
+      <p style="margin-top:22px"><a class="tlink" href="https://www.dryer-ventservices.com/faq/" target="_blank" rel="noopener">Open the FAQ page</a></p>
+    </div>
+    <aside class="side" id="articles">
+      <p class="kicker">Worth a read</p>
+      <h3>Safety articles &amp; tips</h3>
+      <ul class="arts">
+        <li><a href="https://www.dryer-ventservices.com/articles/hot-room/" target="_blank" rel="noopener">Why is my laundry room so hot when the dryer runs?</a></li>
+        <li><a href="https://www.dryer-ventservices.com/articles/towels-vs-shirts/" target="_blank" rel="noopener">Why do towels take 3 cycles to dry while shirts dry fast?</a></li>
+        <li><a href="https://www.dryer-ventservices.com/articles/exterior-signs/" target="_blank" rel="noopener">5 exterior warning signs your dryer vent is clogged</a></li>
+        <li><a href="https://www.dryer-ventservices.com/articles/unattended/" target="_blank" rel="noopener">Never run your dryer while sleeping</a></li>
+        <li><a href="https://www.dryer-ventservices.com/articles/gas/" target="_blank" rel="noopener">The hidden danger of gas dryers: carbon monoxide</a></li>
+        <li><a href="https://www.dryer-ventservices.com/articles/lint-trap/" target="_blank" rel="noopener">The myth of the lint trap: why it is not enough</a></li>
+      </ul>
+      <a class="tlink" href="https://www.dryer-ventservices.com/articles/" target="_blank" rel="noopener">All articles</a>
+    </aside>
+  </div>
+</section>
+
+<section class="band" id="about">
+  <div class="w about-grid">
+    <img src="images/gallery/work-car.webp" alt="The Dryer Vent Services van parked in a driveway" width="1620" height="1080" loading="lazy">
+    <div>
+      <p class="kicker">About us</p>
+      <h2>The person who answers the phone is the one who shows up.</h2>
+      <div class="body">
+        <p>Dryer Vent Services is a local, owner-operated business. We've been serving Staten Island, New York and New Jersey since 2020, and dryer vents are the only thing we do.</p>
+        <p>We check the entire line from the back of the dryer to the exterior exit, and we don't call a job done until the airflow reading confirms it.</p>
+      </div>
+      <div class="nums">
+        <div><b>2020</b><span>serving since</span></div>
+        <div><b>2,000+</b><span>vent jobs completed</span></div>
+        <div><b>5.0</b><span>Google rating</span></div>
+      </div>
+      <p style="margin-top:26px"><a class="tlink" href="https://www.dryer-ventservices.com/about/" target="_blank" rel="noopener">More about us</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band band-navy" id="contact">
+  <div class="w contact-grid">
+    <div>
+      <p class="kicker">Get in touch</p>
+      <h2>One call, and the vent is handled.</h2>
+      <ul class="ways">
+        <li><small>Call, the fastest way</small><a href="tel:+13472449382">347-244-9382</a></li>
+        <li><small>WhatsApp Business</small><a href="https://wa.me/13472449382" target="_blank" rel="noopener">Chat on WhatsApp</a><p>Send a photo of your vent if you like.</p></li>
+        <li><small>Email</small><strong>office@dryer-ventservices.com</strong></li>
+      </ul>
+      <dl class="hours">
+        <dt>Sun–Thu</dt><dd>Open 24 hours</dd>
+        <dt>Friday</dt><dd>Until 3:00 PM</dd>
+        <dt>Saturday</dt><dd>From 9:30 PM</dd>
+      </dl>
+    </div>
+    <form class="card" id="form" novalidate>
+      <h3>Send a request</h3>
+      <div><label for="f-name">Full name *</label><input type="text" id="f-name" autocomplete="name" required></div>
+      <div><label for="f-email">Email *</label><input type="email" id="f-email" autocomplete="email" required></div>
+      <div><label for="f-phone">Phone *</label><input type="tel" id="f-phone" autocomplete="tel" required></div>
+      <div><label for="f-phone2">Confirm phone *</label><input type="tel" id="f-phone2" required></div>
+      <div><label for="f-zip">ZIP code *</label><input type="text" id="f-zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" required></div>
+      <fieldset class="full">
+        <legend>Which service do you need? *</legend>
+        <div class="picks">
+          <label><input type="checkbox" id="f-s1" name="svc"><span>Dryer vent cleaning</span></label>
+          <label><input type="checkbox" id="f-s2" name="svc"><span>Repair</span></label>
+          <label><input type="checkbox" id="f-s3" name="svc"><span>New installation</span></label>
+        </div>
+      </fieldset>
+      <div class="full"><label for="f-msg">How can we help? (optional)</label><textarea id="f-msg"></textarea></div>
+      <div class="full msg" id="formMsg" hidden></div>
+      <div class="full" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <button class="btn btn-heat" type="submit">Send request</button>
+        <a class="tlink" data-book href="https://www.dryer-ventservices.com/booking/" target="_blank" rel="noopener">or book directly online</a>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="w">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#home"><span class="mark" aria-hidden="true"></span><span><b>Dryer Vent Services</b><small>Cleaning · Repairs · Installations</small></span></a>
+        <p style="margin-top:16px;max-width:34ch">Staten Island, New York. Serving homes across New York and New Jersey.</p>
+      </div>
+      <div><h4>Explore</h4><ul>
+        <li><a href="#check">Do I need it?</a></li><li><a href="#visit">How a visit works</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li><li><a href="#articles">Articles</a></li><li><a href="#about">About</a></li>
+      </ul></div>
+      <div><h4>Services</h4><ul>
+        <li><a href="https://www.dryer-ventservices.com/services/cleaning/" target="_blank" rel="noopener">Dryer vent cleaning</a></li><li><a href="https://www.dryer-ventservices.com/services/repairs/" target="_blank" rel="noopener">Vent repair</a></li><li><a href="https://www.dryer-ventservices.com/services/installations/" target="_blank" rel="noopener">Vent installation</a></li><li><a href="#areas">Service areas</a></li><li><a data-book href="https://www.dryer-ventservices.com/booking/" target="_blank" rel="noopener">Book online</a></li>
+      </ul></div>
+      <div><h4>Get in touch</h4><ul>
+        <li><a href="tel:+13472449382">347-244-9382</a></li><li>office@dryer-ventservices.com</li><li><a href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp Business</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr">2026</span> Dryer Vent Services. All rights reserved.</span>
+      <a href="https://pro.housecallpro.com/DryerVentServices/556059/terms" target="_blank" rel="noopener">Terms and conditions</a>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="Back to top">↑</button>
+<div class="dock">
+  <a class="b" data-book href="https://www.dryer-ventservices.com/booking/" target="_blank" rel="noopener">Book now</a>
+  <a href="tel:+13472449382">Call</a>
+  <a href="https://wa.me/13472449382" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<dialog class="lb" id="lb" aria-label="Photo viewer">
+  <img id="lbImg" src="" alt="">
+  <div class="lb-bar"><button type="button" id="lbPrev">←</button><p id="lbCap"></p><button type="button" id="lbNext">→</button><button type="button" id="lbClose">Close</button></div>
+</dialog>
+
+<script>
+(function(){
+  var SITE='https://www.dryer-ventservices.com';
+  var $=function(id){return document.getElementById(id)};
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+
+  /* in-page navigation */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a)return;
+    var t=document.getElementById(a.getAttribute('href').slice(1));
+    if(!t)return;
+    e.preventDefault();
+    var y=t.getBoundingClientRect().top+window.scrollY-(t.id==='home'?0:66);
+    window.scrollTo({top:y,behavior:'smooth'});
+    $('nav').classList.remove('open');$('burger').setAttribute('aria-expanded','false');
+  });
+  $('burger').addEventListener('click',function(){
+    var o=$('nav').classList.toggle('open');this.setAttribute('aria-expanded',o);
+  });
+  window.addEventListener('scroll',function(){$('totop').classList.toggle('show',window.scrollY>700)},{passive:true});
+  $('totop').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  $('yr').textContent=new Date().getFullYear();
+
+  /* open-now status, in New York time */
+  try{
+    var p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
+    var m=(+p.hour)*60+(+p.minute),d=p.weekday,open,txt;
+    if(d==='Fri'){open=m<900;txt=open?'Open now, until 3:00 PM today':'Closed now. Back Saturday at 9:30 PM'}
+    else if(d==='Sat'){open=m>=1290;txt=open?'Open now':'Closed now. Back tonight at 9:30 PM'}
+    else{open=true;txt='Open now, 24 hours today'}
+    $('status').classList.toggle('closed',!open);$('status').lastElementChild.textContent=txt;
+  }catch(e){}
+
+  /* before / after porthole */
+  var order=['18','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','01'];
+  var glass=$('glass'),grip=$('grip'),idx=0,split=50;
+  function setSplit(v){split=Math.max(0,Math.min(100,v));glass.style.setProperty('--split',split+'%');grip.setAttribute('aria-valuenow',Math.round(split))}
+  function fromX(x){var r=glass.getBoundingClientRect();setSplit((x-r.left)/r.width*100)}
+  var dragging=false;
+  glass.addEventListener('pointerdown',function(e){dragging=true;try{glass.setPointerCapture(e.pointerId)}catch(_){ }fromX(e.clientX)});
+  glass.addEventListener('pointermove',function(e){if(dragging)fromX(e.clientX)});
+  ['pointerup','pointercancel'].forEach(function(n){glass.addEventListener(n,function(){dragging=false})});
+  grip.addEventListener('keydown',function(e){
+    var n=null;if(e.key==='ArrowLeft')n=split-5;else if(e.key==='ArrowRight')n=split+5;else if(e.key==='Home')n=0;else if(e.key==='End')n=100;
+    if(n!==null){e.preventDefault();setSplit(n)}
+  });
+  function show(i){
+    idx=(i+order.length)%order.length;var b='assets/img/before-after/ba'+order[idx];
+    $('imgB').src=b+'-before.webp';$('imgA').src=b+'-after.webp';
+    $('count').textContent='Job '+(idx+1)+' of '+order.length;
+    var nx=new Image();nx.src='assets/img/before-after/ba'+order[(idx+1)%order.length]+'-before.webp';
+  }
+  $('prev').addEventListener('click',function(){show(idx-1)});
+  $('next').addEventListener('click',function(){show(idx+1)});
+  /* one opening wipe so people see it moves */
+  if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    var t0=null;setSplit(82);
+    requestAnimationFrame(function step(ts){if(dragging)return;if(t0===null)t0=ts+500;var k=Math.min(1,Math.max(0,(ts-t0)/1100));k=1-Math.pow(1-k,3);setSplit(82-32*k);if(k<1)requestAnimationFrame(step)});
+  }
+
+  /* symptom check */
+  var signs=[].slice.call(document.querySelectorAll('.sign')),slats=$('slats').children;
+  function verdict(){
+    var on=signs.filter(function(s){return s.getAttribute('aria-pressed')==='true'}),n=on.length;
+    var urgent=on.some(function(s){return s.hasAttribute('data-urgent')});
+    var onlyYear=n===1&&on[0]===signs[5];
+    for(var i=0;i<slats.length;i++)slats[i].classList.toggle('on',i<n);
+    $('rCount').textContent=n+' of 6 signs';
+    var t,x,b='Book a cleaning';
+    if(!n){t='Nothing ticked yet';x="Each sign you tap blocks one slat. If none of them sound familiar and you had a cleaning within the last year, you're probably fine."}
+    else if(urgent){t='Stop using the dryer and call us';x='A burnt smell means lint is overheating. Lint is extremely flammable, so leave the dryer off until the vent has been checked.';b='Book now'}
+    else if(onlyYear){t="You're due for the yearly cleaning";x='No warning signs yet, which is the best time to do it. Most homes need a cleaning once a year, and busy households every 6 to 9 months.'}
+    else if(n<3){t='Early signs of a vent filling up';x='This is how a clog usually starts. A cleaning now gets you back to one cycle per load and keeps the dryer running cooler.'}
+    else{t='Your vent is very likely blocked';x='Several signs together mean the air has nowhere to go. The dryer is working much harder and hotter than it should.';b='Book now'}
+    $('rTitle').textContent=t;$('rText').textContent=x;$('rBtn').textContent=b;
+  }
+  signs.forEach(function(s){s.addEventListener('click',function(){s.setAttribute('aria-pressed',s.getAttribute('aria-pressed')!=='true');verdict()})});
+
+  /* reviews (as published on the live site) */
+  var reviews=[
+    ['Jacob Friedman','Fast, professional, and thorough. They cleared out lint from my dryer vent and the difference is huge. Dryer runs faster, less heat in the laundry room, and I feel safer knowing the fire risk is gone. Booking was easy and the tech was on time. Highly recommend!'],
+    ['Y. C.',"Chanoch did a great job cleaning my dryer vents at home. Showed up on time, took the time to fully clear the line out, and left the area cleaner than he found it. Polite, professional, and clearly knows what he's doing - dryer runs noticeably better now and cycles are way faster. Easy to recommend if you need this done right."],
+    ['Andrew Muschel','Chanoch was super kind and easy to work with! Walked me through everything on the phone and then came to follow up and take care of our vent. When it needed more work than I thought, he was happy to come back the next day to finish the job! I highly recommend working with him!'],
+    ['Yitzy Grun','Very fast and efficient. Very easy to work with. Very nice and knowledgeable service technicians. Very thorough work. Great customer service across the board. Highly recommended.'],
+    ['jacob kasirer','Amazing service at a great price! Everything was cleaned perfectly. Dryer is working great!! Wonderful experience!!'],
+    ['Chana Mirsky','This service was amazing and professional in every way , he was timely he did it quickly and educated me on how to keep the lint from backing up'],
+    ['Hindy Garfinkel','Prompt and on time - easy to book. Excellent service and very knowledgeable and helpful. Cleaned out and fixed the vent.'],
+    ['Rebecca Berlin','I was very impressed with the way the visit went. I was kept informed about what was needed and given advice that was helpful. I would happily recommend your service.'],
+    ['Shoulamit Schwartz','The guy came on time. Did the service properly. He also was friendly and kind. I would recommend him to my friends.']
+  ];
+  $('revs').innerHTML=reviews.map(function(r){return '<figure class="rev"><blockquote>“'+esc(r[1])+'”</blockquote><figcaption><b>'+esc(r[0])+'</b> · ★★★★★ on Google</figcaption></figure>'}).join('');
+
+  /* gallery + lightbox */
+  var shots=[
+    [40,'Dryer vent duct packed with compacted lint before cleaning'],[11,'Clean metal dryer vent duct after cleaning'],[36,'Lint pulled out of a dryer vent, piled on the ground'],[28,'Exterior louvered dryer vent clogged with lint'],
+    [38,'Cleaning rod running through a dryer vent duct'],[35,'Ladder set up against a brick building to reach a high dryer vent'],[25,'Rooftop dryer vent with a bird nest and debris'],[21,'Exterior dryer vent with a bird guard on vinyl siding'],
+    [27,'Lint caked around an exterior dryer vent hood'],[45,'Long dryer vent duct run seen from the inside'],[9,'Flexible foil dryer vent duct behind a laundry room dryer'],[12,'Ladder against a house to reach a second-floor dryer vent']
+  ];
+  $('strip').innerHTML=shots.map(function(s,i){return '<button type="button" data-i="'+i+'" aria-label="Enlarge: '+s[1]+'"><img src="images/gallery/Gallery-'+s[0]+'.webp" alt="'+s[1]+'" loading="lazy" width="720" height="1559"></button>'}).join('');
+  var lb=$('lb'),li=0;
+  function lbShow(i){li=(i+shots.length)%shots.length;$('lbImg').src='images/gallery/Gallery-'+shots[li][0]+'.webp';$('lbImg').alt=shots[li][1];$('lbCap').textContent=shots[li][1]}
+  $('strip').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;lbShow(+b.dataset.i);if(lb.showModal)lb.showModal();else lb.setAttribute('open','')});
+  $('lbPrev').addEventListener('click',function(){lbShow(li-1)});
+  $('lbNext').addEventListener('click',function(){lbShow(li+1)});
+  $('lbClose').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')lbShow(li-1);if(e.key==='ArrowRight')lbShow(li+1)});
+
+  /* areas */
+  function areas(el,list){$(el).innerHTML=list.map(function(a){return '<li><a href="'+SITE+'/areas/'+a[0]+'/" target="_blank" rel="noopener"><b>'+a[1]+'</b><span>'+a[2]+'</span><i aria-hidden="true">→</i></a></li>'}).join('')}
+  areas('ny',[
+    ['staten-island','Staten Island','North, Mid-Island and South Shores. Home base.'],
+    ['brooklyn','Brooklyn','Brownstones to high-rise condos, tight and complex vent runs.'],
+    ['queens','Queens','Private homes and apartment buildings.'],
+    ['five-towns','Five Towns','Lawrence, Cedarhurst, Woodmere and nearby Nassau County.'],
+    ['monsey','Monsey','Monsey, Spring Valley and Rockland County.'],
+    ['upstate-ny','Upstate NY (summer)','Summer homes in Sullivan County.']]);
+  areas('nj',[
+    ['lakewood','Lakewood','Lakewood, Toms River and Ocean County.'],
+    ['linden','Linden','Linden, Elizabeth and Union County.'],
+    ['clifton','Clifton &amp; Passaic','Clifton, Passaic and the surrounding area.'],
+    ['edison','Edison','Edison, Highland Park and Middlesex County.'],
+    ['teaneck','Teaneck','Teaneck and Bergen County.'],
+    ['fair-lawn','Fair Lawn','Radburn, Fair Lawn and nearby communities.']]);
+
+  /* faq (text from the live FAQ page) */
+  var faq=[
+    ['How much does it cost to clean my dryer vent?','Pricing is based on the location of the dryer within the home: basement or first floor, second floor, third floor, or rooftop. We do not charge extra for long vents, bird nests or heavily clogged vents. Any necessary repairs or replacement parts are billed separately and only with your approval. We do not add fees or change the original quote without your consent.'],
+    ['How long does a standard cleaning take?','About 30–45 minutes. If the vent is long, clogged, damaged, or on a higher floor, it may take longer.'],
+    ['Will my house get dirty during the cleaning?','No. We use a sealed vacuum system and professional brushes that keep the area clean. No dust is released into your home and we leave the work area neat.'],
+    ['How often should I clean my dryer vent?','Once a year. If you have a large household and do laundry frequently, it may be necessary every 6–9 months.'],
+    ['How do I know if I need a cleaning?','<ul><li>Your laundry is not dry after one cycle.</li><li>Your laundry room feels hotter or more humid than usual.</li><li>There is a burnt or hot smell when the dryer is running.</li><li>It has been more than a year since your last cleaning.</li><li>You have a bird guard outside and lint builds up, blocking airflow.</li></ul>'],
+    ['Do you clean the dryer itself or only the vent?','We clean the entire vent route from the back of the dryer to the outside exit. We focus on ducts, vents, hoods and airflow. We do not repair the dryer appliance itself.'],
+    ['Do you charge extra for bird nests or heavy lint?','No. Prices are fixed by the floor the dryer is on and where the vent exits. The price does not change based on the amount of lint, the length of the vent or the presence of bird nests.'],
+    ['How are repairs and new installations priced?','Case by case, based on what we find on site. Replacing damaged ducts, re-routing a vent or installing a new exterior hood is fully assessed and clearly quoted before any work starts.'],
+    ['Can a clogged dryer vent really cause a fire?','Yes. Lint is extremely flammable. A clogged vent traps heat and can cause the dryer and duct to overheat, which increases the risk of a fire. Regular cleaning greatly reduces that risk.'],
+    ['Will cleaning the vent help my dryer work better?','Yes. When the vent is clean and airflow is strong, clothes dry faster, the dryer runs cooler, uses less energy and experiences less wear.'],
+    ['Why choose Dryer Vent Services?','We are fully dedicated to dryer vent work: cleaning, repairs and installations. We use professional equipment, offer honest flat pricing, and work neatly and respectfully in your home.']
+  ];
+  $('faqList').innerHTML=faq.map(function(f,i){return '<details'+(i===0?' open':'')+'><summary>'+f[0]+'</summary><div>'+f[1]+'</div></details>'}).join('');
+
+  /* contact form: same fields and checks as the live form. This demo does not send anything. */
+  $('form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=function(id){return $(id).value.trim()},digits=function(s){return s.replace(/\D/g,'')},msg=$('formMsg'),err='';
+    if(!v('f-name'))err='Please enter your full name.';
+    else if(!/^\S+@\S+\.\S+$/.test(v('f-email')))err='Please enter a valid email address.';
+    else if(digits(v('f-phone')).length<10)err='Please enter a 10-digit phone number.';
+    else if(digits(v('f-phone'))!==digits(v('f-phone2')))err='The two phone numbers do not match.';
+    else if(!/^\d{5}$/.test(v('f-zip')))err='Please enter a 5-digit ZIP code.';
+    else if(!document.querySelector('#form input[name=svc]:checked'))err='Choose at least one service.';
+    msg.hidden=false;
+    if(err){msg.className='full msg err';msg.textContent=err}
+    else{msg.className='full msg ok';msg.textContent='The form checks out. This is a design demo, so nothing was sent. On the live site this request goes straight to the office.'}
+  });
+})();
+</script>
